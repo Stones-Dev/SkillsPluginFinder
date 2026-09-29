@@ -1,0 +1,19 @@
+{
+  "name": "@spf/worker",
+  "version": "1.0.0",
+  "private": true,
+  "bin": {
+    "spf": "./dist/cli.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "spf": "node ./dist/cli.js"
+  },
+  "dependencies": {
+    "@spf/core": "workspace:*",
+    "commander": "^12.1.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0"
+  }
+}
