@@ -1,0 +1,46 @@
+﻿name: collect
+on:
+  schedule:
+    - cron: '0 5 * * 1'
+  workflow_dispatch:
+    inputs:
+      source:
+        description: 'Specific source to collect (optional)'
+        required: false
+        type: string
+
+permissions:
+  contents: write
+
+jobs:
+  collect:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: 'pnpm'
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Run collector pipeline
+        run: pnpm -F worker run spf collect
+        env:
+          GITHUB_TOKEN: $\{{ secrets.GITHUB_TOKEN }}
+
+      - name: Commit and push changes
+        run: |
+          git config user.name "spf-bot"
+          git config user.email "spf-bot@users.noreply.github.com"
+          git add data
+          git commit -m "chore(collect): $(date -u +%G-W%V)" || echo "No changes to commit"
+          git push
