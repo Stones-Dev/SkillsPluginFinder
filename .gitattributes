@@ -1,2 +1,4 @@
-# Auto detect text files and perform LF normalization
-* text=auto
+# LF en el repo y en el árbol de trabajo. Biome espera LF: con core.autocrlf una
+# copia limpia en Windows saldría en CRLF y fallaría el formato.
+* text=auto eol=lf
+*.sqlite binary
