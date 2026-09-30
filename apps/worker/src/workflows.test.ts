@@ -73,3 +73,21 @@ test('el workflow no promete nada que el CLI no haga: --week y --force existen',
   expect(cli).toContain("'--force'");
   expect(antigravity).toContain('`--force`');
 });
+
+const collectWorkflow = read('.github/workflows/collect.yml');
+
+test('collect.yml: el input source llega a spf collect por una variable de entorno, no dentro del script', () => {
+  expect(collectWorkflow).toContain('SOURCE: ${{ inputs.source }}');
+  expect(collectWorkflow).toContain('pnpm spf collect --source "$SOURCE"');
+  // sin --source cuando el input está vacío (el cron): recoge todo
+  expect(collectWorkflow).toMatch(/else\n\s+pnpm spf collect\n\s+fi/);
+  // ninguna expresión ${{ inputs.* }} fuera de una asignación de entorno:
+  // dentro de un `run:` se interpolaría en el shell
+  for (const line of collectWorkflow.split('\n')) {
+    if (line.includes('${{ inputs.')) {
+      expect(line.trim()).toMatch(/^[A-Z_]+: \$\{\{ inputs\.\w+ \}\}$/);
+    }
+  }
+  // la opción que se pasa existe en el CLI
+  expect(cli).toContain("'-s, --source <source>'");
+});
