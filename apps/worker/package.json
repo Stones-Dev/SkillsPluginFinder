@@ -2,6 +2,7 @@
   "name": "@spf/worker",
   "version": "1.0.0",
   "private": true,
+  "type": "module",
   "bin": {
     "spf": "./dist/cli.js"
   },

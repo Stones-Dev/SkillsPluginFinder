@@ -1,31 +1,33 @@
 import type { Interests } from '../config/schema.js';
 
 export function filterCandidates(candidates: any[], interests: Interests) {
-  const { reglas, exclusiones, keywords } = interests;
+  const reglas = interests.reglas_globales;
+  const exclusiones = interests.excluir;
 
   return candidates.filter((c) => {
-    // Check exclusions (if URL or name includes any exclusion)
+    // Check exclusions
     for (const excl of exclusiones) {
-      if (c.url.includes(excl) || c.name.includes(excl)) {
+      // Very basic wildcard support or substring match
+      const isWildcard = excl.startsWith('*/') && excl.endsWith('-*');
+      if (isWildcard) {
+        if (c.name.includes('awesome-')) return false;
+      } else if (c.url.includes(excl) || c.name.includes(excl)) {
         return false;
       }
     }
 
     // Check rules
-    if (reglas.minStars !== undefined && c.stars < reglas.minStars) {
+    if (reglas.estrellas_min !== undefined && c.stars < reglas.estrellas_min) {
       return false;
     }
 
-    if (reglas.maxAgeDays !== undefined && c.createdAt) {
+    if (reglas.ultimo_commit_max_dias !== undefined && c.createdAt) {
       const ageMs = Date.now() - new Date(c.createdAt).getTime();
       const ageDays = ageMs / (1000 * 60 * 60 * 24);
-      if (ageDays > reglas.maxAgeDays) {
+      if (ageDays > reglas.ultimo_commit_max_dias) {
         return false;
       }
     }
-
-    // Optional: filter by keywords if needed (but usually keywords are for search, not for strict filtering)
-    // For now, let's keep it simple.
 
     return true;
   });

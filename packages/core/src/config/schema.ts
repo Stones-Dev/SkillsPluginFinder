@@ -1,26 +1,46 @@
 import { z } from 'zod';
 
-export const interestsSchema = z.object({
-  categorias: z.record(z.number()).default({}), // Category name to weight
-  topics: z.array(z.string()).default([]),
+export const categorySchema = z.object({
+  nombre: z.string(),
+  peso: z.number().min(0).max(1),
+  estrellas_min: z.number().optional(),
+  contexto: z.string().optional(),
   keywords: z.array(z.string()).default([]),
-  proyectos: z.array(z.string()).default([]),
-  exclusiones: z.array(z.string()).default([]),
-  reglas: z
+  topics: z.array(z.string()).default([]),
+});
+
+export const interestsSchema = z.object({
+  version: z.number().default(1),
+  umbral_score: z.number().default(7),
+  enrich_max: z.number().default(80),
+  ventana_dias: z.number().default(14),
+  idioma_informe: z.string().default('es'),
+  reglas_globales: z
     .object({
-      minStars: z.number().default(0),
-      maxAgeDays: z.number().default(365),
-      requireLicense: z.boolean().default(true),
+      estrellas_min: z.number().default(50),
+      ultimo_commit_max_dias: z.number().default(90),
+      licencias_ok: z.array(z.string()).default([]),
+      excluir_forks_sin_cambios: z.boolean().default(true),
+      excluir_archivados: z.boolean().default(true),
     })
     .default({}),
+  categorias: z.record(categorySchema).default({}),
+  excluir: z.array(z.string()).default([]),
+  proyectos: z
+    .array(z.any())
+    .transform((arr) =>
+      arr.map((a) => (typeof a === 'string' ? a : JSON.stringify(a))),
+    )
+    .default([]),
 });
 
 export type Interests = z.infer<typeof interestsSchema>;
+export type Category = z.infer<typeof categorySchema>;
 
 export const scoringSchema = z.object({
   candidateId: z.string(),
   week: z.string(),
-  agent: z.enum(['antigravity', 'claude-code']),
+  agent: z.enum(['antigravity', 'claude-code', 'human']),
   score: z.number().min(1).max(10),
   categoria: z.string(),
   proyectosAfectados: z.array(z.string()),

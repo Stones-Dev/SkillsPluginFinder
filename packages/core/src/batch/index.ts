@@ -1,6 +1,5 @@
 import fs from 'node:fs/promises';
 import path from 'node:path';
-import { z } from 'zod';
 import { type Scoring, scoringSchema } from '../config/schema.js';
 import { getDb } from '../db/index.js';
 import {
@@ -108,7 +107,10 @@ export async function processBatchResults(
   }
 
   for (const r of results) {
-    await db.insert(scoringsTable).values(r).onConflictDoNothing();
+    await db
+      .insert(scoringsTable)
+      .values({ id: `${r.week}:${r.candidateId}`, ...r })
+      .onConflictDoNothing();
   }
 
   return results;

@@ -1,4 +1,4 @@
-﻿## Reglas nuevas para el agente
+## Reglas nuevas para el agente
 
 - Una tarea solo se marca hecha con la salida del comando que lo prueba pegada en el handoff.
 - Sin subagentes para implementar; un commit por tarea; parar y pedir confirmación al cerrar cada sub-fase.

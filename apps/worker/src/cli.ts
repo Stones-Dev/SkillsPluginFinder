@@ -16,11 +16,12 @@ program.name('spf').description('CLI for SkillsPluginFinder').version('1.0.0');
 program
   .command('collect')
   .description('Collect candidates from sources')
-  .action(async () => {
+  .option('-s, --source <source>', 'Source to collect from')
+  .action(async (options) => {
     try {
       console.log('Running collect pipeline...');
-      await runPipeline('collect');
-      console.log('Collection completed.');
+      const collected = await runPipeline('collect', options.source);
+      console.log(`Collected ${collected.length} candidates after filtering.`);
     } catch (err) {
       console.error('Error in collect:', err);
       process.exit(1);

@@ -1,51 +1,69 @@
-﻿import Database from 'better-sqlite3';
-import { drizzle } from 'drizzle-orm/better-sqlite3';
+import fs from 'node:fs';
+import path from 'node:path';
+import Database from 'better-sqlite3';
+import {
+  type BetterSQLite3Database,
+  drizzle,
+} from 'drizzle-orm/better-sqlite3';
+import { repoRoot } from '../paths.js';
 import * as schema from './schema.js';
 
-let db: any;
+export type Db = BetterSQLite3Database<typeof schema>;
 
-export function getDb(dbPath = 'data/seen.sqlite') {
-  if (!db) {
-    try {
-      const sqlite = new Database(dbPath);
-      db = drizzle(sqlite, { schema });
+const connections = new Map<string, Db>();
 
-      sqlite.exec(`
-        CREATE TABLE IF NOT EXISTS candidates (
-          id TEXT PRIMARY KEY,
-          name TEXT NOT NULL,
-          url TEXT NOT NULL,
-          source TEXT NOT NULL,
-          kind TEXT NOT NULL,
-          description TEXT NOT NULL,
-          language TEXT,
-          stars INTEGER,
-          forks INTEGER,
-          created_at TEXT,
-          topics TEXT,
-          categoria_sugerida TEXT
-        );
-        CREATE TABLE IF NOT EXISTS seen (
-          id TEXT PRIMARY KEY,
-          dedupe_key TEXT NOT NULL UNIQUE
-        );
-      `);
-    } catch (err) {
-      console.warn(
-        'Could not load better-sqlite3 bindings, falling back to mock DB',
-      );
-      const mockTable: any[] = [];
-      db = {
-        select: () => ({ from: () => ({ where: () => [] }) }),
-        insert: () => ({
-          values: (v: any) => ({
-            onConflictDoNothing: async () => {
-              mockTable.push(v);
-            },
-          }),
-        }),
-      };
-    }
+export function getDb(
+  dbPath = path.join(repoRoot(), 'data', 'seen.sqlite'),
+): Db {
+  const cached = connections.get(dbPath);
+  if (cached) return cached;
+
+  let sqlite: Database.Database;
+  try {
+    fs.mkdirSync(path.dirname(dbPath), { recursive: true });
+    sqlite = new Database(dbPath);
+  } catch (err) {
+    throw new Error(
+      `No se pudo abrir SQLite en ${dbPath}: ${(err as Error).message}`,
+      { cause: err },
+    );
   }
+
+  sqlite.exec(`
+    CREATE TABLE IF NOT EXISTS candidates (
+      id TEXT PRIMARY KEY,
+      name TEXT NOT NULL,
+      url TEXT NOT NULL,
+      source TEXT NOT NULL,
+      kind TEXT NOT NULL,
+      description TEXT NOT NULL,
+      language TEXT,
+      stars INTEGER,
+      forks INTEGER,
+      created_at TEXT,
+      topics TEXT,
+      categoria_sugerida TEXT
+    );
+    CREATE TABLE IF NOT EXISTS scorings (
+      id TEXT PRIMARY KEY,
+      candidate_id TEXT NOT NULL,
+      week TEXT NOT NULL,
+      agent TEXT NOT NULL,
+      score REAL NOT NULL,
+      categoria TEXT NOT NULL,
+      proyectos_afectados TEXT,
+      por_que TEXT NOT NULL,
+      como_integrar TEXT NOT NULL,
+      riesgos TEXT,
+      uso_browser INTEGER NOT NULL
+    );
+    CREATE TABLE IF NOT EXISTS seen (
+      id TEXT PRIMARY KEY,
+      dedupe_key TEXT NOT NULL UNIQUE
+    );
+  `);
+
+  const db = drizzle(sqlite, { schema });
+  connections.set(dbPath, db);
   return db;
 }

@@ -10,7 +10,10 @@
     "test": "vitest run",
     "lint": "biome check .",
     "format": "biome format --write .",
-    "spf": "pnpm -F worker run spf"
+    "spf": "pnpm -s run build && node --env-file-if-exists=.env apps/worker/dist/cli.js"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": ["@biomejs/biome", "better-sqlite3", "esbuild"]
   },
   "devDependencies": {
     "@biomejs/biome": "^1.9.0",

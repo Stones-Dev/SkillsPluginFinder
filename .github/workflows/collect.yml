@@ -1,4 +1,4 @@
-﻿name: collect
+name: collect
 on:
   schedule:
     - cron: '0 5 * * 1'

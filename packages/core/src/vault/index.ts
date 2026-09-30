@@ -8,8 +8,16 @@ export async function readInterestsFromVault(
   vaultPath: string,
 ): Promise<Interests> {
   const file = await fs.readFile(path.join(vaultPath, 'Intereses.md'), 'utf-8');
-  const { data } = matter(file);
-  return interestsSchema.parse(data);
+  const { content } = matter(file);
+
+  // Extract yaml code block
+  const match = content.match(/```yaml\n([\s\S]*?)```/);
+  if (!match) {
+    throw new Error('No yaml code block found in Intereses.md');
+  }
+
+  const parsedYaml = yaml.parse(match[1]);
+  return interestsSchema.parse(parsedYaml);
 }
 
 export async function writeInterestsToVault(
@@ -18,9 +26,16 @@ export async function writeInterestsToVault(
 ): Promise<void> {
   const filePath = path.join(vaultPath, 'Intereses.md');
   const file = await fs.readFile(filePath, 'utf-8');
-  const parsed = matter(file);
-  const newContent = matter.stringify(parsed.content, interests);
-  await fs.writeFile(filePath, newContent, 'utf-8');
+  const { data, content } = matter(file);
+
+  const newYaml = yaml.stringify(interests);
+  const newContent = content.replace(
+    /```yaml\n[\s\S]*?```/,
+    `\`\`\`yaml\n${newYaml}\`\`\``,
+  );
+
+  const result = matter.stringify(newContent, data);
+  await fs.writeFile(filePath, result, 'utf-8');
 }
 
 export async function syncInterests(

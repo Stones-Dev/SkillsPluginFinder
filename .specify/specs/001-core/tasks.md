@@ -1,4 +1,4 @@
-﻿# Tasks â€” SkillsPluginFinder
+# Tasks â€” SkillsPluginFinder
 
 Lista de tareas generadas a partir de [[Spec]] y [[Plan]], organizadas por sub-fases del Roadmap.
 

@@ -1,7 +1,9 @@
 node_modules/
 dist/
 coverage/
+.next/
+*.tsbuildinfo
 .env
-spf.db
-vault/Informes/
-vault/batch-*.md
+.env.*
+!.env.example
+data/cache/

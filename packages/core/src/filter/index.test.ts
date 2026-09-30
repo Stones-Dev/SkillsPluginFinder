@@ -31,12 +31,21 @@ test('filterCandidates applies rules and exclusions', () => {
   ];
 
   const interests: Interests = {
+    version: 1,
+    umbral_score: 7,
+    enrich_max: 80,
+    ventana_dias: 14,
+    idioma_informe: 'es',
     categorias: {},
-    topics: [],
-    keywords: [],
     proyectos: [],
-    exclusiones: ['bad'],
-    reglas: { minStars: 5, maxAgeDays: 365, requireLicense: false },
+    excluir: ['bad'],
+    reglas_globales: {
+      estrellas_min: 5,
+      ultimo_commit_max_dias: 365,
+      licencias_ok: [],
+      excluir_forks_sin_cambios: true,
+      excluir_archivados: true,
+    },
   };
 
   const filtered = filterCandidates(candidates, interests);
