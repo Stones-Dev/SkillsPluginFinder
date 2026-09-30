@@ -1,9 +1,12 @@
 import matter from 'gray-matter';
 import { expect, test } from 'vitest';
+import { filterCandidates } from '../filter/index.js';
 import type { CandidatesFile } from '../pipeline/candidates-file.js';
 import {
   NOW,
+  catalog,
   interests,
+  realCandidates,
   realScorings,
   realWeekFile,
   scoreFor,
@@ -129,6 +132,39 @@ test('los descartados por reglas se agrupan por regla, con los motivos reales', 
     '> - [hesreallyhim/awesome-claude-code](https://github.com/hesreallyhim/awesome-claude-code) — excluido en Intereses (`*/awesome-*`)',
   );
   expect(md).toContain('licencia: NOASSERTION (no reconocida)');
+});
+
+test('el grupo de estrellas recoge tanto el mínimo como el techo, y se llama «fuera de rango»', () => {
+  // Descartes reales del filtro con las reglas de hoy: los 30 repos reales pasan por
+  // él (8 por encima de 20.000★) y uno de ellos con solo 12 estrellas cae por el mínimo.
+  const candidates = realCandidates();
+  const { descartados } = filterCandidates(
+    [...candidates, { ...candidates[5], id: 'github:x/pocas', stars: 12 }],
+    interests,
+    catalog,
+    NOW,
+  );
+  const stars = descartados.filter((d) => d.regla === 'estrellas');
+  expect(stars).toHaveLength(9);
+
+  const withStars: CandidatesFile = {
+    ...file,
+    descartados: stars.map((d) => ({
+      id: d.candidate.id,
+      name: d.candidate.name,
+      url: d.candidate.url,
+      regla: d.regla,
+      motivo: d.motivo,
+    })),
+  };
+  const out = render({ file: withStars });
+
+  expect(out).toContain('> **Estrellas fuera de rango (9)**');
+  expect(out).not.toContain('Pocas estrellas');
+  expect(out).toContain(
+    '— 215987 estrellas > 20000 (máximo de las reglas globales)',
+  );
+  expect(out).toMatch(/— 12 estrellas < \d+ \(mínimo de /);
 });
 
 test('los diferidos por el tope se listan aparte y explican que pueden volver', () => {

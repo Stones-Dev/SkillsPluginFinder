@@ -26,7 +26,8 @@ const RULE_LABEL: Record<FilterRule, string> = {
   'excluido-catalogo': 'Ya en el catálogo',
   archivado: 'Archivados',
   fork: 'Forks',
-  estrellas: 'Pocas estrellas',
+  // La regla cubre el mínimo y el techo de `estrellas_max`; cada línea dice cuál saltó.
+  estrellas: 'Estrellas fuera de rango',
   inactivo: 'Inactivos',
   licencia: 'Licencia',
 };
