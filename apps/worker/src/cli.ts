@@ -1,14 +1,17 @@
 #!/usr/bin/env node
 import {
+  checkRateLimits,
   closeDatabases,
   collect,
   collectScorings,
+  fetchRateLimits,
+  formatRateLimits,
   isoWeek,
   pipelineSyncInterests,
   prepare,
   publish,
 } from '@spf/core';
-import { Command } from 'commander';
+import { Command, InvalidArgumentError } from 'commander';
 
 const program = new Command();
 
@@ -64,6 +67,50 @@ program
       closeDatabases();
     } catch (err) {
       fail('collect', err);
+    }
+  });
+
+/** Entero positivo de una opción de la CLI. */
+function positiveInt(value: string): number {
+  const n = Number(value);
+  if (!Number.isInteger(n) || n <= 0) {
+    throw new InvalidArgumentError('debe ser un entero positivo');
+  }
+  return n;
+}
+
+program
+  .command('rate-limit')
+  .description(
+    'Consulta los límites de la API de GitHub del GITHUB_TOKEN (GET /rate_limit, no consume cuota); con --min-* falla si no alcanzan',
+  )
+  .option(
+    '--min-core <n>',
+    'Peticiones `core` que deben quedar (el enrich gasta unas 250)',
+    positiveInt,
+  )
+  .option(
+    '--min-search <n>',
+    'Límite por minuto de `search` (30 con token, 10 sin él)',
+    positiveInt,
+  )
+  .action(async (options) => {
+    try {
+      const limits = await fetchRateLimits(process.env.GITHUB_TOKEN);
+      console.log(formatRateLimits(limits).join('\n'));
+      const problems = checkRateLimits(limits, {
+        core: options.minCore,
+        search: options.minSearch,
+      });
+      if (problems.length > 0) {
+        for (const p of problems) console.error(`  ✗ ${p}`);
+        process.exit(1);
+      }
+      if (options.minCore !== undefined || options.minSearch !== undefined) {
+        console.log('  ✓ la cuota alcanza para una recogida');
+      }
+    } catch (err) {
+      fail('rate-limit', err);
     }
   });
 

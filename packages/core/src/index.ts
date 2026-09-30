@@ -5,6 +5,7 @@ export * from './db/schema.js';
 export * from './db/index.js';
 export * from './collectors/github.js';
 export * from './collectors/github-client.js';
+export * from './collectors/rate-limit.js';
 export * from './enrich/github.js';
 export * from './filter/index.js';
 export * from './normalize/index.js';
