@@ -5,6 +5,7 @@ import {
   collectScorings,
   pipelineSyncInterests,
   prepare,
+  publish,
 } from '@spf/core';
 import { Command } from 'commander';
 
@@ -110,10 +111,25 @@ program
 
 program
   .command('publish')
-  .description('Escribe el informe y las filas del catálogo en el vault')
+  .description(
+    'Escribe Informes/<semana>.md y añade filas `candidato` a Catalogo.md en el vault',
+  )
   .requiredOption(...weekOption)
-  .action(() => {
-    fail('publish', 'aún no implementado');
+  .option('--force', 'Sobrescribir un informe ya marcado revisado: true')
+  .action(async (options) => {
+    try {
+      const r = await publish(options.week, { force: options.force });
+      closeDatabases();
+      console.log(
+        [
+          `Informe ${options.week}: ${r.published} hallazgos ≥ umbral de ${r.evaluated} evaluados`,
+          `→ ${r.reportFile}`,
+          `Catálogo: +${r.catalogAdded} filas (candidato)${r.catalogSkipped > 0 ? `, ${r.catalogSkipped} ya estaban` : ''}`,
+        ].join('\n'),
+      );
+    } catch (err) {
+      fail('publish', err);
+    }
   });
 
 const interests = program

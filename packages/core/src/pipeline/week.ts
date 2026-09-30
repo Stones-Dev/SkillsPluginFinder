@@ -35,3 +35,9 @@ export function assertWeek(week: string): string {
   }
   return week;
 }
+
+/** Fecha local `YYYY-MM-DD` en Europe/Madrid (la de las notas del vault). */
+export function madridDate(now: Date): string {
+  const [year, month, day] = localDate(now, 'Europe/Madrid');
+  return `${year}-${String(month).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
+}

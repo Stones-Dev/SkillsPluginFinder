@@ -102,7 +102,7 @@ test('los motivos de descarte son legibles y concretos', () => {
       ?.motivo;
 
   expect(motivo('hesreallyhim/awesome-claude-code')).toBe(
-    'excluido en Intereses (*/awesome-*)',
+    'excluido en Intereses (`*/awesome-*`)',
   );
   expect(motivo('Imbad0202/academic-research-skills')).toBe(
     'licencia: NOASSERTION (no reconocida)',

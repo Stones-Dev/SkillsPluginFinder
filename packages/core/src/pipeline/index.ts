@@ -1,5 +1,6 @@
 import { collectBatch, prepareBatch } from '../batch/index.js';
 import { repoRoot, vaultPath } from '../paths.js';
+import { publishWeek } from '../publish/index.js';
 import { syncInterests as vaultSyncInterests } from '../vault/index.js';
 import { collectWeek } from './collect.js';
 
@@ -30,6 +31,16 @@ export function prepare(week: string) {
 /** `spf collect-batch --week`: valida `scoring.json` y guarda los scorings. */
 export function collectScorings(week: string) {
   return collectBatch({ repoDir: repoRoot(), week });
+}
+
+/** `spf publish --week`: informe en `Informes/` y filas nuevas en `Catalogo.md`. */
+export function publish(week: string, options: { force?: boolean } = {}) {
+  return publishWeek({
+    repoDir: repoRoot(),
+    vaultDir: vaultPath(),
+    week,
+    ...options,
+  });
 }
 
 export async function pipelineSyncInterests() {

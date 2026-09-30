@@ -63,7 +63,7 @@ export function filterCandidates(
     if (pattern !== undefined) {
       return {
         regla: 'excluido-intereses',
-        motivo: `excluido en Intereses (${pattern})`,
+        motivo: `excluido en Intereses (\`${pattern}\`)`,
       };
     }
 

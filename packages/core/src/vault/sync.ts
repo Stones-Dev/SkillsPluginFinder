@@ -6,6 +6,7 @@ import {
   INTERESTS_FILE,
   parseInterestsYaml,
 } from '../config/interests.js';
+import { madridDate } from '../pipeline/week.js';
 import { parseCatalog } from './catalogo.js';
 import { atomicWriteFile } from './fsutil.js';
 import {
@@ -88,9 +89,6 @@ export function lineDiff(a: string, b: string, aLabel: string, bLabel: string) {
   }
   return out.join('\n');
 }
-
-const madridDate = (now: Date) =>
-  new Intl.DateTimeFormat('sv-SE', { timeZone: 'Europe/Madrid' }).format(now);
 
 /**
  * `interests:sync` (Plan §3). Valida todo antes de escribir nada:

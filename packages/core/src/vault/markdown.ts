@@ -51,7 +51,7 @@ export function extractYamlBlock(
 // formateador pueda "normalizar" a un carácter invisible dentro del código.
 const BOM = String.fromCharCode(0xfeff);
 
-const stripBom = (text: string) =>
+export const stripBom = (text: string) =>
   text.startsWith(BOM) ? text.slice(BOM.length) : text;
 
 /** YAML comparable entre plataformas: sin BOM, LF y un único salto final. */
