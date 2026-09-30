@@ -1,5 +1,6 @@
 export * from './paths.js';
 export * from './config/schema.js';
+export * from './config/interests.js';
 export * from './db/schema.js';
 export * from './db/index.js';
 export * from './filter/index.js';

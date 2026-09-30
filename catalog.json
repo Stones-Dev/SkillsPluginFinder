@@ -1,0 +1,101 @@
+[
+  {
+    "nombre": "obra/superpowers",
+    "tipo": "plugin",
+    "categoria": "claude-skills",
+    "estado": "descartado",
+    "semana": "baseline",
+    "score": null,
+    "nota": "Choca con SDD estricto (ver nota de descartes)",
+    "enlace": "https://github.com/obra/superpowers",
+    "repo": "obra/superpowers"
+  },
+  {
+    "nombre": "garrytan/gstack",
+    "tipo": "plugin",
+    "categoria": "claude-skills",
+    "estado": "descartado",
+    "semana": "baseline",
+    "score": null,
+    "nota": "Fase ideación SaaS; solapa con codebase-memory-mcp",
+    "enlace": "https://github.com/garrytan/gstack",
+    "repo": "garrytan/gstack"
+  },
+  {
+    "nombre": "thedotmack/claude-mem",
+    "tipo": "plugin",
+    "categoria": "claude-skills",
+    "estado": "descartado",
+    "semana": "baseline",
+    "score": null,
+    "nota": "Solapa con handoff.md + codebase-memory-mcp",
+    "enlace": "https://github.com/thedotmack/claude-mem",
+    "repo": "thedotmack/claude-mem"
+  },
+  {
+    "nombre": "Frontend Design (Anthropic)",
+    "tipo": "skill",
+    "categoria": "frontend-bonito",
+    "estado": "adoptado",
+    "semana": "baseline",
+    "score": null,
+    "nota": "Ver [[Frontend Design (skill de Anthropic)]]",
+    "enlace": null,
+    "repo": null
+  },
+  {
+    "nombre": "Web Design Guidelines (Vercel)",
+    "tipo": "skill",
+    "categoria": "frontend-bonito",
+    "estado": "adoptado",
+    "semana": "baseline",
+    "score": null,
+    "nota": "Ver [[Web Design Guidelines (skill de Vercel)]]",
+    "enlace": null,
+    "repo": null
+  },
+  {
+    "nombre": "Code Review (Anthropic)",
+    "tipo": "plugin",
+    "categoria": "claude-skills",
+    "estado": "adoptado",
+    "semana": "baseline",
+    "score": null,
+    "nota": "Ver [[Code Review (plugin oficial de Anthropic)]]",
+    "enlace": null,
+    "repo": null
+  },
+  {
+    "nombre": "Security Guidance (Anthropic)",
+    "tipo": "plugin",
+    "categoria": "claude-skills",
+    "estado": "adoptado",
+    "semana": "baseline",
+    "score": null,
+    "nota": "Ver [[Security Guidance (plugin oficial de Anthropic)]]",
+    "enlace": null,
+    "repo": null
+  },
+  {
+    "nombre": "codebase-memory-mcp (DeusData)",
+    "tipo": "mcp-server",
+    "categoria": "mcp-servers",
+    "estado": "adoptado",
+    "semana": "baseline",
+    "score": null,
+    "nota": "Ver [[Codebase-memory-mcp (servidor MCP de DeusData)]]",
+    "enlace": null,
+    "repo": null
+  },
+  {
+    "nombre": "Spec Kit",
+    "tipo": "tool",
+    "categoria": "claude-skills",
+    "estado": "adoptado",
+    "semana": "baseline",
+    "score": null,
+    "nota": "Protocolo 11 del vault",
+    "enlace": null,
+    "repo": null
+  }
+]

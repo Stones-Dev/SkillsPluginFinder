@@ -78,16 +78,32 @@ program
     }
   });
 
-program
-  .command('interests sync')
-  .description('Sync interests between vault and repo')
+const interests = program
+  .command('interests')
+  .description('Intereses y catálogo del vault');
+
+interests
+  .command('sync')
+  .description(
+    'Sincroniza Intereses.md ↔ interests.yaml y exporta Catalogo.md a catalog.json',
+  )
   .action(async () => {
+    const messages = {
+      created: 'interests.yaml creado desde Intereses.md',
+      unchanged: 'interests.yaml ya estaba al día',
+      'vault-to-repo': 'interests.yaml actualizado desde Intereses.md',
+      'repo-to-vault': 'Intereses.md actualizado desde interests.yaml',
+    };
     try {
-      console.log('Syncing interests...');
-      await pipelineSyncInterests();
-      console.log('Sync completed.');
+      const result = await pipelineSyncInterests();
+      console.log(messages[result.interests]);
+      console.log(
+        `catalog.json: ${result.catalogEntries} entradas${result.catalogChanged ? ' (actualizado)' : ' (sin cambios)'}`,
+      );
     } catch (err) {
-      console.error('Error syncing interests:', err);
+      console.error(
+        `Error en interests sync: ${err instanceof Error ? err.message : err}`,
+      );
       process.exit(1);
     }
   });

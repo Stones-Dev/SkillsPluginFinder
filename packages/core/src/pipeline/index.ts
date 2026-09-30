@@ -61,5 +61,5 @@ export async function pipelineUpdateCatalog(results: any[]) {
 }
 
 export async function pipelineSyncInterests() {
-  await vaultSyncInterests(vaultPath(), repoRoot());
+  return vaultSyncInterests({ vaultDir: vaultPath(), repoDir: repoRoot() });
 }

@@ -1,53 +1,85 @@
 import { z } from 'zod';
 
-export const categorySchema = z.object({
-  nombre: z.string(),
-  peso: z.number().min(0).max(1),
-  estrellas_min: z.number().optional(),
-  contexto: z.string().optional(),
-  keywords: z.array(z.string()).default([]),
-  topics: z.array(z.string()).default([]),
-});
+export const categorySchema = z
+  .object({
+    nombre: z.string().min(1),
+    peso: z.number().min(0).max(1),
+    estrellas_min: z.number().int().nonnegative().optional(),
+    contexto: z.string().optional(),
+    keywords: z.array(z.string().min(1)).default([]),
+    topics: z.array(z.string().min(1)).default([]),
+  })
+  .strict();
 
-export const interestsSchema = z.object({
-  version: z.number().default(1),
-  umbral_score: z.number().default(7),
-  enrich_max: z.number().default(80),
-  ventana_dias: z.number().default(14),
-  idioma_informe: z.string().default('es'),
-  reglas_globales: z
-    .object({
-      estrellas_min: z.number().default(50),
-      ultimo_commit_max_dias: z.number().default(90),
-      licencias_ok: z.array(z.string()).default([]),
-      excluir_forks_sin_cambios: z.boolean().default(true),
-      excluir_archivados: z.boolean().default(true),
-    })
-    .default({}),
-  categorias: z.record(categorySchema).default({}),
-  excluir: z.array(z.string()).default([]),
-  proyectos: z
-    .array(z.any())
-    .transform((arr) =>
-      arr.map((a) => (typeof a === 'string' ? a : JSON.stringify(a))),
-    )
-    .default([]),
-});
+export const interestsSchema = z
+  .object({
+    version: z.number().int().default(1),
+    umbral_score: z.number().min(1).max(10).default(7),
+    enrich_max: z.number().int().positive().default(80),
+    ventana_dias: z.number().int().positive().default(14),
+    idioma_informe: z.string().default('es'),
+    reglas_globales: z
+      .object({
+        estrellas_min: z.number().int().nonnegative().default(50),
+        ultimo_commit_max_dias: z.number().int().positive().default(90),
+        licencias_ok: z.array(z.string()).default([]),
+        excluir_forks_sin_cambios: z.boolean().default(true),
+        excluir_archivados: z.boolean().default(true),
+      })
+      .strict()
+      .default({}),
+    categorias: z.record(categorySchema).default({}),
+    excluir: z.array(z.string().min(1)).default([]),
+    proyectos: z.array(z.string().min(1)).default([]),
+  })
+  .strict();
 
 export type Interests = z.infer<typeof interestsSchema>;
 export type Category = z.infer<typeof categorySchema>;
 
-export const scoringSchema = z.object({
-  candidateId: z.string(),
-  week: z.string(),
-  agent: z.enum(['antigravity', 'claude-code', 'human']),
-  score: z.number().min(1).max(10),
-  categoria: z.string(),
-  proyectosAfectados: z.array(z.string()),
-  porQue: z.string(),
-  comoIntegrar: z.string(),
-  riesgos: z.array(z.string()),
-  usoBrowser: z.boolean(),
-});
+export const scoringSchema = z
+  .object({
+    candidateId: z.string().min(1),
+    week: z.string().regex(/^\d{4}-W\d{2}$/, 'semana ISO esperada: YYYY-Www'),
+    agent: z.enum(['antigravity', 'claude-code']),
+    score: z.number().int().min(1).max(10),
+    categoria: z.string().min(1),
+    proyectosAfectados: z.array(z.string()),
+    porQue: z.string().min(1),
+    comoIntegrar: z.string().min(1),
+    riesgos: z.array(z.string()),
+    usoBrowser: z.boolean(),
+  })
+  .strict();
 
 export type Scoring = z.infer<typeof scoringSchema>;
+
+export const CATALOG_ESTADOS = [
+  'candidato',
+  'probado',
+  'adoptado',
+  'descartado',
+] as const;
+
+/** Fila de Catalogo.md exportada a catalog.json (Plan §3). */
+export const catalogEntrySchema = z
+  .object({
+    nombre: z.string().min(1),
+    tipo: z.string(),
+    categoria: z.string(),
+    estado: z.enum(CATALOG_ESTADOS),
+    /** `baseline` o semana ISO `YYYY-Www`. */
+    semana: z.string(),
+    /** `null` cuando la celda es `—` o está vacía. */
+    score: z.number().nullable(),
+    nota: z.string(),
+    /** `null` cuando la celda es `—` o está vacía. */
+    enlace: z.string().nullable(),
+    /** `owner/repo` en minúsculas si se deduce del enlace o del nombre. */
+    repo: z.string().nullable(),
+  })
+  .strict();
+
+export type CatalogEntry = z.infer<typeof catalogEntrySchema>;
+
+export const catalogSchema = z.array(catalogEntrySchema);

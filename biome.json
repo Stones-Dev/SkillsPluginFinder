@@ -6,7 +6,13 @@
     "useIgnoreFile": true
   },
   "files": {
-    "ignore": ["**/.next", "**/dist", "data", "packages/core/tests/fixtures"]
+    "ignore": [
+      "**/.next",
+      "**/dist",
+      "data",
+      "catalog.json",
+      "packages/core/tests/fixtures"
+    ]
   },
   "formatter": {
     "enabled": true,
