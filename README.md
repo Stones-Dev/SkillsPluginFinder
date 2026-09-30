@@ -57,9 +57,10 @@ Para crear `SPF_GITHUB_TOKEN`: *Settings → Secrets and variables → Actions �
 
 ### Primer run
 
-1. Hacer `git push` de `main`.
-2. Lanzar el workflow con *Run workflow* y mirar el paso **Check GitHub API quota**: dice qué token usa y los límites de `core` y `search`.
-3. Comprobar que el paso **Commit and push changes** sube `data/` sin conflictos. El repo debe estar al día antes de lanzarlo: `data/seen.sqlite` es binario y dos escritores a la vez lo hacen inmergeable.
+1. Hacer `git push` de `main`. Desde ese momento el cron queda activo.
+2. **No lanzarlo antes de que empiece la semana que quieres recoger.** La recogida escribe en `data/candidates/<semana actual>.json` y la semana se calcula en hora de Madrid: hasta la medianoche del domingo 4 de octubre sigue siendo la 2026-W40, que ya está evaluada y publicada, y un run manual añadiría candidatos sin evaluar a ese fichero. El cron del lunes 5 (05:00 UTC, las 07:00 en Madrid) ya cae en la 2026-W41 y es el primer run que conviene mirar.
+3. Con el run en marcha (cron o *Run workflow*), mirar el paso **Check GitHub API quota**: dice qué token usa y los límites de `core` y `search`. Si falla por falta de cuota, crear `SPF_GITHUB_TOKEN` y volver a lanzarlo.
+4. Comprobar que el paso **Commit and push changes** sube `data/` sin conflictos. El repo debe estar al día antes de lanzarlo: `data/seen.sqlite` es binario y dos escritores a la vez lo hacen inmergeable.
 
 ## Desarrollo
 
