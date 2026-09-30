@@ -18,12 +18,15 @@ export type Enrichment = {
 };
 
 /**
- * Deja el texto útil del README: quita comentarios, imágenes/badges y etiquetas
- * HTML (conservando el texto) y recorta a `max` caracteres. El resultado sigue
- * siendo contenido no confiable: el batch lo marca como dato, no como instrucción.
+ * Deja el texto útil del README: normaliza los finales de línea a LF (muchos READMEs
+ * de Windows traen CRLF y dejaban `batch.md` con finales mezclados), quita comentarios,
+ * imágenes/badges y etiquetas HTML (conservando el texto) y recorta a `max` caracteres.
+ * El resultado sigue siendo contenido no confiable: el batch lo marca como dato, no
+ * como instrucción.
  */
 export function cleanReadme(raw: string, max = README_EXCERPT_MAX): string {
   const text = raw
+    .replace(/\r\n?/g, '\n')
     .replace(/<!--[\s\S]*?-->/g, '')
     .replace(/<(script|style)\b[\s\S]*?<\/\1>/gi, '')
     .replace(/!\[[^\]]*\]\([^)]*\)/g, '')

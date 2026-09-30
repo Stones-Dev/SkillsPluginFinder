@@ -90,6 +90,21 @@ test('cleanReadme sobre un README real: sin HTML, badges ni imágenes y dentro d
   expect(excerpt.endsWith('…')).toBe(true);
 });
 
+test('cleanReadme pasa los finales de línea CRLF a LF: un README real de Windows no deja \r en el batch', () => {
+  // inicio de un README real (mmdju/divar-mcp) con CRLF; va como JSON para que git no lo normalice
+  const { body } = JSON.parse(text('mmdju__divar-mcp.readme-crlf.json')) as {
+    body: string;
+  };
+  expect(body.match(/\r\n/g)?.length).toBeGreaterThan(20);
+
+  const excerpt = cleanReadme(body);
+  expect(excerpt).not.toContain('\r');
+  expect(excerpt).toBe(cleanReadme(body.replace(/\r\n/g, '\n')));
+  expect(excerpt.split('\n').length).toBeGreaterThan(10);
+  // un CR suelto (Mac antiguo) también se normaliza
+  expect(cleanReadme('uno\rdos\r\ntres')).toBe('uno\ndos\ntres');
+});
+
 test('cleanReadme conserva el texto corto y no parte pares sustitutos al recortar', () => {
   expect(cleanReadme('# Título\n\nTexto ñ — útil.')).toBe(
     '# Título\n\nTexto ñ — útil.',
