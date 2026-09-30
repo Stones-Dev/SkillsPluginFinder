@@ -97,5 +97,71 @@
     "nota": "Protocolo 11 del vault",
     "enlace": null,
     "repo": null
+  },
+  {
+    "nombre": "solanabr/ai-kit",
+    "tipo": "skill",
+    "categoria": "solana",
+    "estado": "candidato",
+    "semana": "2026-W40",
+    "score": 8,
+    "nota": "Configuración completa de Claude Code para Solana: CLAUDE.md compacto, 15 agentes, 31 comandos y skills, con un agente rust-backend-engineer para APIs Axum, indexadores y servicios WebSocket, un agen…",
+    "enlace": "https://github.com/solanabr/ai-kit",
+    "repo": "solanabr/ai-kit"
+  },
+  {
+    "nombre": "AndyShiu/claude-skill-playwright-browser",
+    "tipo": "skill",
+    "categoria": "claude-skills",
+    "estado": "candidato",
+    "semana": "2026-W40",
+    "score": 7,
+    "nota": "Da a Claude Code un navegador en segundo plano para capturas en varios tamaños, health checks (errores de consola, desbordes en móvil, accesibilidad con axe, LCP y CLS) y diffs visuales. Encaja con L…",
+    "enlace": "https://github.com/AndyShiu/claude-skill-playwright-browser",
+    "repo": "andyshiu/claude-skill-playwright-browser"
+  },
+  {
+    "nombre": "crbnos/carbon",
+    "tipo": "mcp-server",
+    "categoria": "sage200",
+    "estado": "candidato",
+    "semana": "2026-W40",
+    "score": 7,
+    "nota": "ERP de fabricación con API REST y servidor MCP sobre un único esquema Postgres: expone más de 1.500 operaciones tipadas como herramientas MCP limitadas a los permisos de la clave o del usuario, con c…",
+    "enlace": "https://github.com/crbnos/carbon",
+    "repo": "crbnos/carbon"
+  },
+  {
+    "nombre": "kuratlielia/arc-library",
+    "tipo": "library",
+    "categoria": "frontend-bonito",
+    "estado": "candidato",
+    "semana": "2026-W40",
+    "score": 7,
+    "nota": "Cien componentes y 22 bloques de código propio con movimiento sereno, teclado y camino para movimiento reducido, instalables con la CLI de shadcn. Un movimiento contenido encaja con una web de despac…",
+    "enlace": "https://github.com/kuratlielia/arc-library",
+    "repo": "kuratlielia/arc-library"
+  },
+  {
+    "nombre": "next-safe-action/next-safe-action",
+    "tipo": "library",
+    "categoria": "nextjs-react",
+    "estado": "candidato",
+    "semana": "2026-W40",
+    "score": 7,
+    "nota": "Server Actions de Next.js con validación zod, middleware y manejo de errores tipado. Encaja con el login por wallet de la web de SonarTrench, el formulario de contacto de LABE Abogados web y las muta…",
+    "enlace": "https://github.com/next-safe-action/next-safe-action",
+    "repo": "next-safe-action/next-safe-action"
+  },
+  {
+    "nombre": "solana-foundation/solana-web3.js",
+    "tipo": "library",
+    "categoria": "solana",
+    "estado": "candidato",
+    "semana": "2026-W40",
+    "score": 7,
+    "nota": "SDK oficial de Solana en TypeScript. La rama 1.x solo recibe correcciones críticas y el desarrollo nuevo está en la v3, en este repositorio bajo solana-foundation, lo que afecta a la web de SonarTren…",
+    "enlace": "https://github.com/solana-foundation/solana-web3.js",
+    "repo": "solana-foundation/solana-web3.js"
   }
 ]
