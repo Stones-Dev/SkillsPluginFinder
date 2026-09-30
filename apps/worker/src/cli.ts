@@ -2,17 +2,28 @@
 import {
   closeDatabases,
   collect,
-  collectBatch,
-  pipelinePublishReport,
+  collectScorings,
   pipelineSyncInterests,
-  pipelineUpdateCatalog,
-  prepareBatch,
+  prepare,
 } from '@spf/core';
 import { Command } from 'commander';
 
 const program = new Command();
 
-program.name('spf').description('CLI for SkillsPluginFinder').version('1.0.0');
+program
+  .name('spf')
+  .description('SkillsPluginFinder: recoge, evalúa y publica hallazgos')
+  .version('1.0.0');
+
+/** Los errores esperados se muestran sin traza; el código de salida avisa al llamador. */
+function fail(command: string, err: unknown): never {
+  console.error(
+    `Error en ${command}: ${err instanceof Error ? err.message : err}`,
+  );
+  process.exit(1);
+}
+
+const weekOption = ['-w, --week <week>', 'Semana ISO (YYYY-Www)'] as const;
 
 program
   .command('collect')
@@ -42,64 +53,67 @@ program
       }
       closeDatabases();
     } catch (err) {
-      console.error(
-        `Error en collect: ${err instanceof Error ? err.message : err}`,
-      );
-      process.exit(1);
+      fail('collect', err);
     }
   });
 
 program
   .command('prepare')
-  .description('Prepare batch for evaluation')
-  .option('-w, --week <week>', 'ISO week (YYYY-Www)')
+  .description(
+    'Mitad local: genera data/batches/<semana>/batch.md para el evaluador',
+  )
+  .requiredOption(...weekOption)
   .action(async (options) => {
     try {
-      if (!options.week) throw new Error('Week is required');
-      console.log(`Preparing batch for week ${options.week}...`);
-      await prepareBatch(options.week);
-      closeDatabases();
-      console.log('Batch prepared.');
-    } catch (err) {
-      console.error(
-        `Error en prepare: ${err instanceof Error ? err.message : err}`,
+      const result = await prepare(options.week);
+      const categories = Object.entries(result.categories)
+        .map(([id, n]) => `${id}: ${n}`)
+        .join(' · ');
+      console.log(
+        [
+          `Batch ${options.week}: ${result.candidates} fichas (${categories || 'ninguna'})`,
+          `→ ${result.file}`,
+          ...(result.scoringExists
+            ? ['  ya existe scoring.json de esta semana; no se ha tocado']
+            : []),
+        ].join('\n'),
       );
-      process.exit(1);
+    } catch (err) {
+      fail('prepare', err);
     }
   });
 
 program
   .command('collect-batch')
-  .description('Collect evaluation results from agent')
-  .option('-w, --week <week>', 'ISO week (YYYY-Www)')
+  .description(
+    'Valida scoring.json del evaluador (cobertura, categorías, sesgo) y guarda los scorings',
+  )
+  .requiredOption(...weekOption)
   .action(async (options) => {
     try {
-      if (!options.week) throw new Error('Week is required');
-      console.log('Collecting batch...');
-      await collectBatch(options.week);
-      console.log('Batch collected.');
+      const { summary } = await collectScorings(options.week);
+      const distribution = Object.entries(summary.distribution)
+        .map(([score, n]) => `${score}:${n}`)
+        .join(' ');
+      console.log(
+        [
+          `Batch ${options.week} válido: ${summary.total} fichas guardadas`,
+          `  distribución (score:fichas) ${distribution}`,
+          `  ≥ ${summary.umbral} (irán al informe): ${summary.aboveThreshold} · ≥ 8: ${summary.high}`,
+        ].join('\n'),
+      );
+      closeDatabases();
     } catch (err) {
-      console.error('Error in collect-batch:', err);
-      process.exit(1);
+      fail('collect-batch', err);
     }
   });
 
 program
   .command('publish')
-  .description('Publish results to vault')
-  .option('-w, --week <week>', 'ISO week (YYYY-Www)')
-  .action(async (options) => {
-    try {
-      if (!options.week) throw new Error('Week is required');
-      console.log('Publishing...');
-      const results = await collectBatch(options.week);
-      await pipelinePublishReport(options.week, results);
-      await pipelineUpdateCatalog(results);
-      console.log('Publish completed.');
-    } catch (err) {
-      console.error('Error in publish:', err);
-      process.exit(1);
-    }
+  .description('Escribe el informe y las filas del catálogo en el vault')
+  .requiredOption(...weekOption)
+  .action(() => {
+    fail('publish', 'aún no implementado');
   });
 
 const interests = program
@@ -125,10 +139,7 @@ interests
         `catalog.json: ${result.catalogEntries} entradas${result.catalogChanged ? ' (actualizado)' : ' (sin cambios)'}`,
       );
     } catch (err) {
-      console.error(
-        `Error en interests sync: ${err instanceof Error ? err.message : err}`,
-      );
-      process.exit(1);
+      fail('interests sync', err);
     }
   });
 

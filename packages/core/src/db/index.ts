@@ -36,20 +36,6 @@ export function getDb(
   }
 
   sqlite.exec(`
-    CREATE TABLE IF NOT EXISTS candidates (
-      id TEXT PRIMARY KEY,
-      name TEXT NOT NULL,
-      url TEXT NOT NULL,
-      source TEXT NOT NULL,
-      kind TEXT NOT NULL,
-      description TEXT NOT NULL,
-      language TEXT,
-      stars INTEGER,
-      forks INTEGER,
-      created_at TEXT,
-      topics TEXT,
-      categoria_sugerida TEXT
-    );
     CREATE TABLE IF NOT EXISTS scorings (
       id TEXT PRIMARY KEY,
       candidate_id TEXT NOT NULL,

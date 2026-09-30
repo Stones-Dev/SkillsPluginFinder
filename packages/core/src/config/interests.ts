@@ -113,3 +113,8 @@ export async function loadCatalog(repoDir: string): Promise<CatalogEntry[]> {
   }
   return parsed.data;
 }
+
+/** Nombre de un proyecto: lo que va antes del " — " en su línea de `proyectos`. */
+export function projectName(line: string): string {
+  return line.split(' — ')[0].trim();
+}

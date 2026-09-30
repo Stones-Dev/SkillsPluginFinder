@@ -1,14 +1,6 @@
-import {
-  createBatch as batchCreate,
-  processBatchResults,
-} from '../batch/index.js';
+import { collectBatch, prepareBatch } from '../batch/index.js';
 import { repoRoot, vaultPath } from '../paths.js';
-import {
-  publishReport as pubReport,
-  updateCatalog as pubUpdateCatalog,
-} from '../publish/index.js';
 import { syncInterests as vaultSyncInterests } from '../vault/index.js';
-import { readCandidatesFile } from './candidates-file.js';
 import { collectWeek } from './collect.js';
 
 export * from './candidates-file.js';
@@ -30,26 +22,14 @@ export function collect(options: {
   });
 }
 
-export async function prepareBatch(week: string) {
-  const file = await readCandidatesFile(repoRoot(), week);
-  if (!file) {
-    throw new Error(
-      `No existe data/candidates/${week}.json: ejecuta "pnpm spf collect" antes de preparar el batch.`,
-    );
-  }
-  return batchCreate(file.candidates, week, repoRoot());
+/** `spf prepare --week`: genera `data/batches/<week>/batch.md`. */
+export function prepare(week: string) {
+  return prepareBatch({ repoDir: repoRoot(), week });
 }
 
-export async function collectBatch(week: string) {
-  return processBatchResults(week, repoRoot());
-}
-
-export async function pipelinePublishReport(week: string, results: any[]) {
-  await pubReport(week, results, vaultPath());
-}
-
-export async function pipelineUpdateCatalog(results: any[]) {
-  await pubUpdateCatalog(results, vaultPath());
+/** `spf collect-batch --week`: valida `scoring.json` y guarda los scorings. */
+export function collectScorings(week: string) {
+  return collectBatch({ repoDir: repoRoot(), week });
 }
 
 export async function pipelineSyncInterests() {

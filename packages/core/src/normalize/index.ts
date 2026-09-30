@@ -7,6 +7,7 @@ import { seen } from '../db/schema.js';
 import type { Candidate, Origin } from './candidate.js';
 
 export * from './candidate.js';
+export * from './risk.js';
 
 const DAY_MS = 24 * 60 * 60 * 1000;
 
