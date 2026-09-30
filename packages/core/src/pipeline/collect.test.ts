@@ -152,6 +152,9 @@ test('recogida completa: lo recogido, filtrado, acotado y enriquecido queda en e
     queries: 1,
     requests: 1,
     cacheHits: 0,
+    // 5 candidatos x (README + contribuidores + package.json); ninguno estaba en caché
+    enrichRequests: 15,
+    enrichCacheHits: 0,
     rawItems: 30,
     uniqueRepos: 30,
     afterDedupe: 30,
@@ -249,6 +252,30 @@ test('las reglas nuevas llegan a la recogida: el techo quita a hummingbot y NOAS
       text: 'Licencia no reconocida',
     });
   }
+});
+
+test('el enrich cuenta aparte sus peticiones de red y sus aciertos de caché', async () => {
+  // 22 plazas: entran todos los candidatos, CloddsBot incluido (el único con README y package.json)
+  writeInterests(interestsYaml(22));
+  const first = await collect();
+  expect(first.run.stats).toMatchObject({
+    requests: 1,
+    enrichRequests: 66, // 22 x 3
+    enrichCacheHits: 0,
+  });
+
+  // Se olvidan los vistos para que vuelvan a entrar: solo están en caché las 3 respuestas 200
+  // de CloddsBot; los 404 no se guardan y se vuelven a pedir.
+  getDb(path.join(repoDir, 'data', 'seen.sqlite'))
+    .delete(seen)
+    .run();
+  const second = await collect();
+  expect(second.run.stats).toMatchObject({
+    requests: 0,
+    cacheHits: 1,
+    enrichRequests: 63,
+    enrichCacheHits: 3,
+  });
 });
 
 test('solo se marcan como vistos los que entran al batch y se registra la ejecución', async () => {

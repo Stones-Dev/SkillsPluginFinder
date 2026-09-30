@@ -30,12 +30,19 @@ export const deferredEntrySchema = z
   })
   .strict();
 
-/** Recuento por etapa de una recogida (RF-10). */
+/**
+ * Recuento por etapa de una recogida (RF-10). `requests` y `cacheHits` son los de
+ * las búsquedas (cuota `search`, 30 por minuto); `enrichRequests` y
+ * `enrichCacheHits` son los del enrich (cuota `core`, 5.000 por hora). Son
+ * opcionales porque los ficheros anteriores a que se contara el enrich no los tienen.
+ */
 export const runStatsSchema = z
   .object({
     queries: count,
     requests: count,
     cacheHits: count,
+    enrichRequests: count.optional(),
+    enrichCacheHits: count.optional(),
     rawItems: count,
     uniqueRepos: count,
     afterDedupe: count,

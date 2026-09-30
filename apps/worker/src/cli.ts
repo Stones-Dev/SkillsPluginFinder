@@ -50,9 +50,10 @@ program
       console.log(
         [
           `Semana ${week} · github-search`,
-          `  ${s.queries} consultas → ${s.requests} peticiones (${s.cacheHits} de caché) → ${s.rawItems} resultados → ${s.uniqueRepos} repos únicos`,
+          `  ${s.queries} consultas → ${s.requests} peticiones de búsqueda (${s.cacheHits} de caché) → ${s.rawItems} resultados → ${s.uniqueRepos} repos únicos`,
           `  tras dedupe: ${s.afterDedupe} · tras reglas: ${s.afterRules} (${s.afterDedupe - s.afterRules} descartados)`,
           `  seleccionados: ${s.selected} · diferidos por el tope: ${s.deferred} · enriquecidos: ${s.enriched}`,
+          `  enrich: ${s.enrichRequests ?? 0} peticiones (${s.enrichCacheHits ?? 0} de caché)`,
           `  errores por fuente: ${run.errorsBySource.length}`,
           `→ ${file} (${totalCandidates} candidatos)`,
         ].join('\n'),

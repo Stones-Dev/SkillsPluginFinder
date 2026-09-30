@@ -107,7 +107,10 @@ export async function collectWeek(
   );
   const { selected, deferred } = selectForEnrichment(kept, interests, now);
 
-  const { octokit } = createGithubClient({ token, ...client });
+  const { octokit, stats: enrichStats } = createGithubClient({
+    token,
+    ...client,
+  });
   const limit = pLimit(ENRICH_CONCURRENCY);
   let done = 0;
   const enriched = await Promise.all(
@@ -127,6 +130,8 @@ export async function collectWeek(
     queries: search.stats.queries,
     requests: search.stats.requests,
     cacheHits: search.stats.cacheHits,
+    enrichRequests: enrichStats.requests,
+    enrichCacheHits: enrichStats.cacheHits,
     rawItems: search.stats.rawItems,
     uniqueRepos: search.stats.uniqueRepos,
     afterDedupe: fresh.length,
