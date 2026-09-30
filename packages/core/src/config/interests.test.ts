@@ -29,6 +29,11 @@ test('parsea la nota real Intereses.md: parámetros, categorías y exclusiones',
   expect(i.umbral_score).toBe(7);
   expect(i.enrich_max).toBe(80);
   expect(i.ventana_dias).toBe(14);
+  expect(i.reglas_globales).toMatchObject({
+    estrellas_min: 50,
+    estrellas_max: 20000,
+    licencia_no_reconocida: 'riesgo',
+  });
   expect(i.reglas_globales.licencias_ok).toEqual([
     'MIT',
     'Apache-2.0',

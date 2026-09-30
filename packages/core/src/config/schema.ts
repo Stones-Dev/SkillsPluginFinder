@@ -21,12 +21,30 @@ export const interestsSchema = z
     reglas_globales: z
       .object({
         estrellas_min: z.number().int().nonnegative().default(50),
+        /** Techo: un repo que ya conoce todo el mundo no es un hallazgo. Sin valor, no hay techo. */
+        estrellas_max: z.number().int().positive().optional(),
         ultimo_commit_max_dias: z.number().int().positive().default(90),
         licencias_ok: z.array(z.string()).default([]),
+        /**
+         * Qué hacer con `NOASSERTION` (GitHub no reconoce la licencia): `riesgo` lo deja
+         * pasar con la señal «Licencia no reconocida»; `descartar` lo trata como fuera de
+         * `licencias_ok`. «Sin licencia» se descarta siempre.
+         */
+        licencia_no_reconocida: z
+          .enum(['descartar', 'riesgo'])
+          .default('descartar'),
         excluir_forks_sin_cambios: z.boolean().default(true),
         excluir_archivados: z.boolean().default(true),
       })
       .strict()
+      .refine(
+        (r) =>
+          r.estrellas_max === undefined || r.estrellas_max > r.estrellas_min,
+        {
+          message: 'estrellas_max debe ser mayor que estrellas_min',
+          path: ['estrellas_max'],
+        },
+      )
       .default({}),
     categorias: z.record(categorySchema).default({}),
     excluir: z.array(z.string().min(1)).default([]),

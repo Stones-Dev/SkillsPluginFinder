@@ -6,8 +6,10 @@ idioma_informe: es
 
 reglas_globales:
   estrellas_min: 50
+  estrellas_max: 20000        # un repo que ya conoce todo el mundo no es un hallazgo
   ultimo_commit_max_dias: 90
   licencias_ok: [MIT, Apache-2.0, BSD-2-Clause, BSD-3-Clause, ISC, MPL-2.0, Unlicense]
+  licencia_no_reconocida: riesgo   # NOASSERTION pasa con señal de riesgo en vez de descartarse
   excluir_forks_sin_cambios: true
   excluir_archivados: true
 

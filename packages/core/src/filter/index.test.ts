@@ -5,6 +5,7 @@ import type { GithubRepo } from '../collectors/github.js';
 import { parseInterestsYaml } from '../config/interests.js';
 import type { CatalogEntry, Interests } from '../config/schema.js';
 import { type Candidate, normalizeGithubRepo } from '../normalize/index.js';
+import { riskSignals } from '../normalize/risk.js';
 import { parseCatalog } from '../vault/catalogo.js';
 import { extractYamlBlock } from '../vault/markdown.js';
 import { filterCandidates, matchesExclusion } from './index.js';
@@ -45,14 +46,33 @@ const only = (
   now: Date,
 ) => filterCandidates([candidate], rules, entries, now);
 
-test('30 repos reales con las reglas y el catálogo reales: 16 pasan y 14 se descartan con su motivo', () => {
+// Reglas de la primera versión de Intereses: sin techo de estrellas y con
+// NOASSERTION descartado. Son también los valores por defecto del esquema.
+const v1: Interests = {
+  ...interests,
+  reglas_globales: {
+    ...interests.reglas_globales,
+    estrellas_max: undefined,
+    licencia_no_reconocida: 'descartar',
+  },
+};
+const withRules = (
+  rules: Partial<Interests['reglas_globales']>,
+): Interests => ({
+  ...interests,
+  reglas_globales: { ...interests.reglas_globales, ...rules },
+});
+
+test('las reglas de Intereses de hoy traen el techo de 20.000 estrellas y NOASSERTION como riesgo', () => {
+  expect(interests.reglas_globales).toMatchObject({
+    estrellas_max: 20000,
+    licencia_no_reconocida: 'riesgo',
+  });
+});
+
+test('30 repos reales con las reglas de la primera versión: 16 pasan y 14 se descartan con su motivo', () => {
   const candidates = items.map(normalize);
-  const { kept, descartados } = filterCandidates(
-    candidates,
-    interests,
-    catalog,
-    NOW,
-  );
+  const { kept, descartados } = filterCandidates(candidates, v1, catalog, NOW);
 
   expect(kept.map((c) => c.name).sort()).toEqual(
     [
@@ -96,16 +116,59 @@ test('30 repos reales con las reglas y el catálogo reales: 16 pasan y 14 se des
   for (const d of descartados) expect(d.motivo.length).toBeGreaterThan(0);
 });
 
+test('30 repos reales con las reglas de hoy: el techo quita los 8 gigantes y NOASSERTION pasa', () => {
+  const { kept, descartados } = filterCandidates(
+    items.map(normalize),
+    interests,
+    catalog,
+    NOW,
+  );
+
+  expect(kept.map((c) => c.name).sort()).toEqual(
+    [
+      'Jeffallan/claude-skills',
+      'SimoneAvogadro/android-reverse-engineering-skill',
+      'czlonkowski/n8n-skills',
+      'daymade/claude-code-skills',
+      'diet103/claude-code-infrastructure-showcase',
+      'krusemediallc/arcads-claude-code',
+      'skills-directory/skill-codex',
+      'tradermonty/claude-trading-skills',
+      'wanshuiyin/Auto-claude-code-research-in-sleep',
+      'ykdojo/claude-code-tips', // NOASSERTION: antes se descartaba
+      'zebbern/claude-code-guide',
+    ].sort(),
+  );
+  expect(Math.max(...kept.map((c) => c.stars))).toBeLessThanOrEqual(20000);
+
+  const byRule: Record<string, string[]> = {};
+  for (const d of descartados) {
+    byRule[d.regla] = [...(byRule[d.regla] ?? []), d.candidate.name];
+  }
+  expect(
+    Object.fromEntries(Object.entries(byRule).map(([k, v]) => [k, v.length])),
+  ).toEqual({
+    estrellas: 8, // los de más de 20.000★, incluido un NOASSERTION (Imbad0202)
+    'excluido-intereses': 4,
+    inactivo: 6,
+    licencia: 1, // CC-BY-SA-4.0: fuera de la lista blanca, como antes
+  });
+  expect(byRule.estrellas).toContain('multica-ai/andrej-karpathy-skills'); // 215.987★
+  expect(kept.length + descartados.length).toBe(30);
+});
+
 test('los motivos de descarte son legibles y concretos', () => {
-  const motivo = (name: string) =>
-    filterCandidates([real(name)], interests, catalog, NOW).descartados[0]
-      ?.motivo;
+  const motivo = (name: string, rules: Interests = interests) =>
+    filterCandidates([real(name)], rules, catalog, NOW).descartados[0]?.motivo;
 
   expect(motivo('hesreallyhim/awesome-claude-code')).toBe(
     'excluido en Intereses (`*/awesome-*`)',
   );
-  expect(motivo('Imbad0202/academic-research-skills')).toBe(
+  expect(motivo('ykdojo/claude-code-tips', v1)).toBe(
     'licencia: NOASSERTION (no reconocida)',
+  );
+  expect(motivo('Imbad0202/academic-research-skills')).toBe(
+    '49962 estrellas > 20000 (máximo de las reglas globales)',
   );
   expect(motivo('FlorianBruniaux/claude-code-ultimate-guide')).toBe(
     'licencia: CC-BY-SA-4.0 (fuera de licencias_ok)',
@@ -115,18 +178,86 @@ test('los motivos de descarte son legibles y concretos', () => {
   );
 });
 
-test('un repo real sin licencia se descarta por licencia cuando está activo', () => {
-  // multica-ai/andrej-karpathy-skills: sin licencia, último push el 2026-04-20.
-  const candidate = real('multica-ai/andrej-karpathy-skills');
-  const aprilNow = new Date('2026-05-01T00:00:00Z');
+test('un repo real sin licencia se descarta por licencia cuando está activo, también con NOASSERTION como riesgo', () => {
+  // WorldFlowAI/everything-claude-code: 3.762★, sin licencia, último push el 2026-01-23.
+  const candidate = real('WorldFlowAI/everything-claude-code');
+  const febNow = new Date('2026-02-15T00:00:00Z');
 
-  expect(
-    only(candidate, interests, catalog, aprilNow).descartados[0],
-  ).toMatchObject({ regla: 'licencia', motivo: 'licencia: ninguna' });
-  // en septiembre ya lleva 163 días inactivo: gana la regla anterior
+  for (const rules of [interests, v1]) {
+    expect(
+      only(candidate, rules, catalog, febNow).descartados[0],
+    ).toMatchObject({ regla: 'licencia', motivo: 'licencia: ninguna' });
+  }
+  // en septiembre ya lleva 249 días inactivo: gana la regla anterior
   expect(only(candidate, interests, catalog, NOW).descartados[0].regla).toBe(
     'inactivo',
   );
+});
+
+test('estrellas_max: el techo es inclusivo, se evalúa tras el mínimo y sin él no hay techo', () => {
+  const base = real('Jeffallan/claude-skills');
+  const withStars = (
+    stars: number,
+    categoria = 'claude-skills',
+  ): Candidate => ({
+    ...base,
+    stars,
+    categoriaSugerida: categoria,
+  });
+
+  expect(only(withStars(20000), interests, [], NOW).kept).toHaveLength(1);
+  expect(
+    only(withStars(20001), interests, [], NOW).descartados[0],
+  ).toMatchObject({
+    regla: 'estrellas',
+    motivo: '20001 estrellas > 20000 (máximo de las reglas globales)',
+  });
+  // hummingbot/hummingbot (20.279★ en la búsqueda real de topic:solana) queda fuera por poco
+  expect(
+    only(withStars(20279, 'solana'), interests, [], NOW).descartados[0].regla,
+  ).toBe('estrellas');
+  // el mínimo gana al máximo en el orden de evaluación, y la categoría sigue mandando en él
+  expect(only(withStars(19), interests, [], NOW).descartados[0].motivo).toBe(
+    '19 estrellas < 20 (mínimo de claude-skills)',
+  );
+  // sin estrellas_max no hay techo
+  expect(only(withStars(215987), v1, [], NOW).kept).toHaveLength(1);
+  // un techo propio
+  expect(
+    only(withStars(600), withRules({ estrellas_max: 500 }), [], NOW)
+      .descartados[0].motivo,
+  ).toBe('600 estrellas > 500 (máximo de las reglas globales)');
+});
+
+test('licencia_no_reconocida: riesgo deja pasar NOASSERTION con la señal de licencia; descartar lo descarta', () => {
+  // ykdojo/claude-code-tips: 10.168★, activo, NOASSERTION
+  const tips = real('ykdojo/claude-code-tips');
+  expect(tips.license).toBe('NOASSERTION');
+
+  expect(only(tips, interests, catalog, NOW).kept).toHaveLength(1);
+  expect(riskSignals(tips)).toContainEqual({
+    level: 'warn',
+    text: 'Licencia no reconocida',
+  });
+
+  expect(only(tips, v1, catalog, NOW).descartados[0]).toMatchObject({
+    regla: 'licencia',
+    motivo: 'licencia: NOASSERTION (no reconocida)',
+  });
+  // una licencia conocida fuera de la lista blanca se descarta con cualquiera de las dos opciones
+  expect(
+    only({ ...tips, license: 'GPL-3.0' }, interests, catalog, NOW)
+      .descartados[0].motivo,
+  ).toBe('licencia: GPL-3.0 (fuera de licencias_ok)');
+  // con la lista blanca vacía la regla de licencia no se aplica
+  expect(
+    only(
+      tips,
+      withRules({ licencias_ok: [], licencia_no_reconocida: 'descartar' }),
+      catalog,
+      NOW,
+    ).kept,
+  ).toHaveLength(1);
 });
 
 test('lo adoptado o descartado en el catálogo se excluye; probado y candidato no', () => {

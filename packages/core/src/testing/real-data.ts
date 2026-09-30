@@ -4,7 +4,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import type { GithubRepo } from '../collectors/github.js';
 import { parseInterestsYaml } from '../config/interests.js';
-import type { Scoring } from '../config/schema.js';
+import type { Interests, Scoring } from '../config/schema.js';
 import {
   applyEnrichment,
   cleanReadme,
@@ -76,6 +76,21 @@ export function cloddsBot(): Candidate {
 }
 
 /**
+ * Las reglas de la primera versión de Intereses, sin `estrellas_max` y con
+ * `licencia_no_reconocida: descartar`. La semana de prueba del informe y de la
+ * publicación se construye con ellas para que esos tests no se muevan cada vez
+ * que se calibra el filtro; las reglas nuevas se prueban en `filter` y `quota`.
+ */
+export const weekInterests: Interests = {
+  ...interests,
+  reglas_globales: {
+    ...interests.reglas_globales,
+    estrellas_max: undefined,
+    licencia_no_reconocida: 'descartar',
+  },
+};
+
+/**
  * Una semana realista: los 30 repos reales pasan por el filtro y el tope reales
  * (enrich_max = 12) y se les añade CloddsBot. Los descartados y diferidos llevan
  * los motivos que produce el pipeline, no textos inventados.
@@ -83,13 +98,13 @@ export function cloddsBot(): Candidate {
 export function realWeekFile(): CandidatesFile {
   const { kept, descartados } = filterCandidates(
     realCandidates(),
-    interests,
+    weekInterests,
     catalog,
     NOW,
   );
   const { selected, deferred } = selectForEnrichment(
     kept,
-    { ...interests, enrich_max: 12 },
+    { ...weekInterests, enrich_max: 12 },
     NOW,
   );
   return {

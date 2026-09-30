@@ -92,6 +92,12 @@ export function filterCandidates(
         motivo: `${c.stars} estrellas < ${minStars} (mínimo de ${category ? c.categoriaSugerida : 'las reglas globales'})`,
       };
     }
+    if (rules.estrellas_max !== undefined && c.stars > rules.estrellas_max) {
+      return {
+        regla: 'estrellas',
+        motivo: `${c.stars} estrellas > ${rules.estrellas_max} (máximo de las reglas globales)`,
+      };
+    }
 
     const idleDays = Math.floor(
       (now.getTime() - Date.parse(c.lastCommitAt)) / DAY_MS,
@@ -109,12 +115,14 @@ export function filterCandidates(
         return { regla: 'licencia', motivo: 'licencia: ninguna' };
       }
       if (license.toUpperCase() === 'NOASSERTION') {
-        return {
-          regla: 'licencia',
-          motivo: 'licencia: NOASSERTION (no reconocida)',
-        };
-      }
-      if (!licensesOk.has(license.toLowerCase())) {
+        // Con `riesgo` pasa y `riskSignals` lo marca como «Licencia no reconocida».
+        if (rules.licencia_no_reconocida === 'descartar') {
+          return {
+            regla: 'licencia',
+            motivo: 'licencia: NOASSERTION (no reconocida)',
+          };
+        }
+      } else if (!licensesOk.has(license.toLowerCase())) {
         return {
           regla: 'licencia',
           motivo: `licencia: ${license} (fuera de licencias_ok)`,

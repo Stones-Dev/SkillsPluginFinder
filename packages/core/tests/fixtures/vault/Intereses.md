@@ -41,8 +41,10 @@ idioma_informe: es
 
 reglas_globales:
   estrellas_min: 50
+  estrellas_max: 20000        # un repo que ya conoce todo el mundo no es un hallazgo
   ultimo_commit_max_dias: 90
   licencias_ok: [MIT, Apache-2.0, BSD-2-Clause, BSD-3-Clause, ISC, MPL-2.0, Unlicense]
+  licencia_no_reconocida: riesgo   # NOASSERTION pasa con señal de riesgo en vez de descartarse
   excluir_forks_sin_cambios: true
   excluir_archivados: true
 
@@ -126,6 +128,9 @@ proyectos:
 
 ## Notas de calibración
 
+- 2026-09-30, primera ejecución real (Claude Code): 109 consultas → 906 repos únicos → 610 tras reglas → 80 enriquecidos, 530 diferidos. El tope se llenó de repos gigantes (42 de 80 con >10k★, mediana 14k) por consultas `topic:` ordenadas por estrellas: freeCodeCamp, react, rust-lang/rust. Añadido `estrellas_max: 20000` y prioridad de novedad en la selección para enrich. Revisar en F4 si el techo es correcto.
+- 2026-09-30: 296 descartes, 268 por licencia (132 NOASSERTION, 61 AGPL, 32 sin licencia, 25 GPL). NOASSERTION pasa a señal de riesgo. Pendiente F4: para `kind` skill/plugin/mcp-server (se ejecutan, no se enlazan) valorar aceptar copyleft con aviso; para `library` mantener la lista blanca.
+- 2026-09-30: `claude-skills` tenía 98 elegibles y solo 11 entraban por cuota; el reparto por peso no refleja el volumen real por categoría. Revisar cuotas en F4.
 - Semana 1-4: no tocar pesos; anotar aquí qué hallazgos fueron ruido y por qué, y ajustar en bloque en la semana 4.
 - Si una categoría devuelve 0 candidatos tres semanas seguidas, revisar `keywords`/`topics` antes que bajar `estrellas_min`.
 - Añadir aquí (no en el repo) cualquier proyecto nuevo del vault para que el scoring lo tenga en cuenta.

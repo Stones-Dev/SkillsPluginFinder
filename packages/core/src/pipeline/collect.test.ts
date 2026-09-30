@@ -13,6 +13,7 @@ import {
 } from 'vitest';
 import { closeDatabases, getDb } from '../db/index.js';
 import { runs, seen } from '../db/schema.js';
+import { riskSignals } from '../normalize/risk.js';
 import { parseCatalog } from '../vault/catalogo.js';
 import { readCandidatesFile } from './candidates-file.js';
 import { collectWeek } from './collect.js';
@@ -32,10 +33,11 @@ const NOW = new Date('2026-09-30T12:00:00Z'); // semana 2026-W40
 const QUERY = 'topic:solana pushed:>2026-09-16 stars:>=30';
 
 // Config de prueba: una sola categoría, así hay una única consulta y coincide con
-// la respuesta real grabada de esa misma búsqueda. El resto son las reglas reales.
-const INTERESTS = `version: 1
+// la respuesta real grabada de esa misma búsqueda. El resto son las reglas reales
+// de la primera versión; `extraRules` añade las nuevas en los tests que las usan.
+const interestsYaml = (enrichMax: number, extraRules = '') => `version: 1
 umbral_score: 7
-enrich_max: 5
+enrich_max: ${enrichMax}
 ventana_dias: 14
 idioma_informe: es
 reglas_globales:
@@ -44,7 +46,7 @@ reglas_globales:
   licencias_ok: [MIT, Apache-2.0, BSD-2-Clause, BSD-3-Clause, ISC, MPL-2.0, Unlicense]
   excluir_forks_sin_cambios: true
   excluir_archivados: true
-categorias:
+${extraRules}categorias:
   solana:
     nombre: Blockchain Solana
     peso: 0.8
@@ -55,6 +57,9 @@ excluir:
 proyectos:
   - SonarTrench — bot de alertas memecoins Solana
 `;
+const INTERESTS = interestsYaml(5);
+const writeInterests = (yaml: string) =>
+  fs.writeFileSync(path.join(repoDir, 'interests.yaml'), yaml);
 
 let searches: Request[] = [];
 let mode: 'ok' | 'fail' = 'ok';
@@ -110,7 +115,7 @@ let repoDir: string;
 beforeAll(() => server.listen({ onUnhandledFrame: 'error' }));
 beforeEach(() => {
   repoDir = fs.mkdtempSync(path.join(os.tmpdir(), 'spf-collect-'));
-  fs.writeFileSync(path.join(repoDir, 'interests.yaml'), INTERESTS);
+  writeInterests(INTERESTS);
   fs.writeFileSync(
     path.join(repoDir, 'catalog.json'),
     JSON.stringify(
@@ -158,12 +163,13 @@ test('recogida completa: lo recogido, filtrado, acotado y enriquecido queda en e
   expect(summary.run.errorsBySource).toEqual([]);
 
   const file = await readCandidatesFile(repoDir, '2026-W40');
+  // ninguno se creó dentro de la ventana: van los 5 de push más reciente, no los de más estrellas
   expect(file?.candidates.map((c) => c.name)).toEqual([
-    'hummingbot/hummingbot',
+    'cake-tech/cake_wallet',
+    'rango-exchange/rango-client',
     'otter-sec/anchor',
-    'mortdeus/solana-copy-sniper-mev-trading-bot',
-    'alsk1992/CloddsBot',
-    'solana-foundation/solana-web3.js',
+    'anza-xyz/kit',
+    'hyperledger-solang/solang',
   ]);
   expect(file?.descartados).toHaveLength(8);
   expect(file?.descartados.every((d) => d.regla === 'licencia')).toBe(true);
@@ -174,6 +180,8 @@ test('recogida completa: lo recogido, filtrado, acotado y enriquecido queda en e
 });
 
 test('el enriquecimiento real llega al candidato: README limpio, contribuidores y postinstall', async () => {
+  // CloddsBot es el último de los 22 por push reciente: con 22 plazas entran todos
+  writeInterests(interestsYaml(22));
   await collect();
   const file = await readCandidatesFile(repoDir, '2026-W40');
   const clodds = file?.candidates.find((c) => c.name === 'alsk1992/CloddsBot');
@@ -192,6 +200,51 @@ test('el enriquecimiento real llega al candidato: README limpio, contribuidores 
   expect(other?.readmeExcerpt).toBeUndefined();
   expect(other?.risk.postinstall).toBeUndefined();
   expect(other?.risk.notes[0]).toMatch(/^Contribuidores no disponible/);
+});
+
+test('las reglas nuevas llegan a la recogida: el techo quita a hummingbot y NOASSERTION pasa con su señal', async () => {
+  writeInterests(
+    interestsYaml(
+      30,
+      '  estrellas_max: 20000\n  licencia_no_reconocida: riesgo\n',
+    ),
+  );
+  const summary = await collect();
+  const file = await readCandidatesFile(repoDir, '2026-W40');
+
+  // 22 con las reglas de antes − hummingbot (20.279★) + 4 NOASSERTION = 25; 5 descartados
+  expect(summary.run.stats).toMatchObject({
+    afterDedupe: 30,
+    afterRules: 25,
+    selected: 25,
+    deferred: 0,
+  });
+  expect(file?.descartados.map((d) => `${d.regla}: ${d.name}`).sort()).toEqual([
+    'estrellas: hummingbot/hummingbot',
+    'licencia: Drakkar-Software/OctoBot',
+    'licencia: regolith-labs/ore',
+    'licencia: rpcpool/yellowstone-grpc',
+    'licencia: vybenetwork/solana-mcp-vybe',
+  ]);
+  expect(
+    file?.descartados.find((d) => d.name === 'hummingbot/hummingbot')?.motivo,
+  ).toBe('20279 estrellas > 20000 (máximo de las reglas globales)');
+
+  const noassertion = file?.candidates.filter(
+    (c) => c.license === 'NOASSERTION',
+  );
+  expect(noassertion?.map((c) => c.name).sort()).toEqual([
+    'OneKeyHQ/app-monorepo',
+    'firedancer-io/firedancer',
+    'metaplex-foundation/metaplex-program-library',
+    'mytonwallet-org/mytonwallet',
+  ]);
+  for (const c of noassertion ?? []) {
+    expect(riskSignals(c)).toContainEqual({
+      level: 'warn',
+      text: 'Licencia no reconocida',
+    });
+  }
 });
 
 test('solo se marcan como vistos los que entran al batch y se registra la ejecución', async () => {

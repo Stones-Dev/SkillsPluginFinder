@@ -61,6 +61,41 @@ export function allocateQuota(
   return alloc;
 }
 
+/** Plazas mínimas de cada categoría con elegibles: ninguna se queda sin voz por ser pequeña. */
+export const MIN_SLOTS_PER_CATEGORY = 3;
+
+/**
+ * Reparte las plazas del tope entre categorías según lo que hay en cada una:
+ * primero el mínimo (`MIN_SLOTS_PER_CATEGORY`, o todos los elegibles si son
+ * menos) y el resto en proporción a `peso × elegibles`, de modo que el peso
+ * sigue contando pero una categoría con 98 candidatos no recibe lo mismo que
+ * una con 10. Si el tope no da ni para los mínimos, se reparte por peso entre
+ * ellos. Invariante (la de `allocateQuota`): la suma es `min(total, Σ sizes)`.
+ */
+export function allocateSlots(
+  sizes: Record<string, number>,
+  weights: Record<string, number>,
+  total: number,
+  minPerCategory = MIN_SLOTS_PER_CATEGORY,
+): Record<string, number> {
+  const floors: Record<string, number> = {};
+  const rest: Record<string, number> = {};
+  const volume: Record<string, number> = {};
+  for (const [k, size] of Object.entries(sizes)) {
+    floors[k] = Math.min(minPerCategory, size);
+    rest[k] = size - floors[k];
+    volume[k] = (weights[k] ?? 0) * size;
+  }
+
+  const floorTotal = Object.values(floors).reduce((sum, n) => sum + n, 0);
+  if (floorTotal >= total) return allocateQuota(floors, weights, total);
+
+  const extra = allocateQuota(rest, volume, total - floorTotal);
+  const alloc: Record<string, number> = {};
+  for (const k of Object.keys(sizes)) alloc[k] = floors[k] + extra[k];
+  return alloc;
+}
+
 export type Deferred = {
   id: string;
   name: string;
@@ -71,9 +106,10 @@ export type Deferred = {
 };
 
 /**
- * Tope `enrich_max` (cuota de API y de tiempo del evaluador): cada categoría
- * recibe plazas proporcionales a su `peso`; dentro de una categoría van primero
- * los creados dentro de la ventana y después los de más estrellas. Lo que no
+ * Tope `enrich_max` (cuota de API y de tiempo del evaluador). Las plazas de cada
+ * categoría salen de `allocateSlots`. Dentro de una categoría van primero los
+ * creados dentro de la ventana y después el resto, y en cada grupo los de
+ * `pushed` más reciente: se busca lo nuevo y vivo, no lo más popular. Lo que no
  * cabe queda *diferido*: no se marca como visto y puede volver otra semana.
  */
 export function selectForEnrichment(
@@ -96,7 +132,7 @@ export function selectForEnrichment(
     sizes[id] = list.length;
     weights[id] = interests.categorias[id]?.peso ?? 0;
   }
-  const quota = allocateQuota(sizes, weights, interests.enrich_max);
+  const quota = allocateSlots(sizes, weights, interests.enrich_max);
 
   const inWindow = (c: Candidate) => Date.parse(c.createdAt) >= windowStart;
   const order = [...byCategory.keys()].sort(
@@ -109,7 +145,7 @@ export function selectForEnrichment(
     const ranked = [...(byCategory.get(id) ?? [])].sort(
       (a, b) =>
         Number(inWindow(b)) - Number(inWindow(a)) ||
-        b.stars - a.stars ||
+        Date.parse(b.lastCommitAt) - Date.parse(a.lastCommitAt) ||
         a.name.localeCompare(b.name),
     );
     selected.push(...ranked.slice(0, quota[id]));
