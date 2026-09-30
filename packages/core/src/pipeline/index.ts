@@ -1,3 +1,4 @@
+import path from 'node:path';
 import {
   createBatch as batchCreate,
   processBatchResults,
@@ -19,19 +20,27 @@ import {
   syncInterests as vaultSyncInterests,
 } from '../vault/index.js';
 
-export async function runPipeline(step: string, source?: string) {
+export async function runPipeline(
+  step: string,
+  source?: string,
+  logger?: (message: string) => void,
+) {
   if (step === 'collect') {
     if (source && source !== 'github-search') {
       throw new Error(`Fuente no soportada: ${source} (solo github-search)`);
     }
     const interests = await readInterestsFromVault(vaultPath());
-    const token = process.env.GITHUB_TOKEN || '';
-    const raw = await collectFromGithub(
-      token,
-      Object.values(interests.categorias || {}).flatMap(
-        (c) => c.keywords || [],
-      ),
+    const { repos, errors, stats } = await collectFromGithub({
+      token: process.env.GITHUB_TOKEN,
+      interests,
+      cacheDir: path.join(repoRoot(), 'data', 'cache', 'github'),
+      logger,
+    });
+    logger?.(
+      `github-search: ${stats.executed}/${stats.queries} consultas (${stats.requests} peticiones, ${stats.cacheHits} de caché), ${stats.rawItems} resultados, ${stats.uniqueRepos} repos únicos, ${errors.length} errores`,
     );
+    for (const e of errors) logger?.(`  error: ${e.query ?? ''} ${e.message}`);
+    const raw = repos.map((r) => r.repo);
 
     const normalized = raw.map(normalizeCandidate);
     const deduped = await dedupeCandidates(normalized);

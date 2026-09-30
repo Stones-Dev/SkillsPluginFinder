@@ -20,10 +20,14 @@ program
   .action(async (options) => {
     try {
       console.log('Running collect pipeline...');
-      const collected = await runPipeline('collect', options.source);
+      const collected = await runPipeline('collect', options.source, (m) =>
+        console.log(m),
+      );
       console.log(`Collected ${collected.length} candidates after filtering.`);
     } catch (err) {
-      console.error('Error in collect:', err);
+      console.error(
+        `Error en collect: ${err instanceof Error ? err.message : err}`,
+      );
       process.exit(1);
     }
   });

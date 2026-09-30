@@ -1,0 +1,27 @@
+{
+    "name": "@solana/web3.js-workspace",
+    "version": "0.0.0",
+    "private": true,
+    "description": "Monorepo for @solana/web3.js v3 and companion tooling",
+    "engines": {
+        "node": ">=20.19.0"
+    },
+    "packageManager": "pnpm@10.33.2",
+    "scripts": {
+        "compile:js": "pnpm -r compile:js",
+        "compile:typedefs": "pnpm -r compile:typedefs",
+        "compile:docs": "pnpm -r compile:docs",
+        "test:unit": "pnpm -r test:unit",
+        "test:lint": "pnpm -r test:lint",
+        "test:live": "pnpm -r --if-present run test:live",
+        "test:format": "pnpm -r test:format",
+        "test:typecheck": "pnpm -r test:typecheck",
+        "test:smoke": "pnpm -r test:smoke"
+    },
+    "devDependencies": {
+        "@solana-config/oxc": "^0.1.1",
+        "oxfmt": "^0.65.0",
+        "oxlint": "^1.80.0",
+        "oxlint-tsgolint": "^7.0.2001"
+    }
+}

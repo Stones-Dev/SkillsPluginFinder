@@ -1,0 +1,31 @@
+{
+  "status": 200,
+  "headers": {
+    "content-type": "application/json; charset=utf-8",
+    "link": "<https://api.github.com/repositories/1142556666/contributors?per_page=1&page=2>; rel=\"next\", <https://api.github.com/repositories/1142556666/contributors?per_page=1&page=4>; rel=\"last\""
+  },
+  "body": [
+    {
+      "login": "alsk1992",
+      "id": 193760801,
+      "node_id": "U_kgDOC4yOIQ",
+      "avatar_url": "https://avatars.githubusercontent.com/u/193760801?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/alsk1992",
+      "html_url": "https://github.com/alsk1992",
+      "followers_url": "https://api.github.com/users/alsk1992/followers",
+      "following_url": "https://api.github.com/users/alsk1992/following{/other_user}",
+      "gists_url": "https://api.github.com/users/alsk1992/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/alsk1992/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/alsk1992/subscriptions",
+      "organizations_url": "https://api.github.com/users/alsk1992/orgs",
+      "repos_url": "https://api.github.com/users/alsk1992/repos",
+      "events_url": "https://api.github.com/users/alsk1992/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/alsk1992/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false,
+      "contributions": 443
+    }
+  ]
+}
