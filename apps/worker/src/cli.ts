@@ -3,6 +3,7 @@ import {
   closeDatabases,
   collect,
   collectScorings,
+  isoWeek,
   pipelineSyncInterests,
   prepare,
   publish,
@@ -25,6 +26,13 @@ function fail(command: string, err: unknown): never {
 }
 
 const weekOption = ['-w, --week <week>', 'Semana ISO (YYYY-Www)'] as const;
+
+program
+  .command('week')
+  .description('Imprime la semana ISO de hoy (YYYY-Www, Europe/Madrid)')
+  .action(() => {
+    console.log(isoWeek(new Date()));
+  });
 
 program
   .command('collect')
