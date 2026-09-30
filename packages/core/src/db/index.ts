@@ -10,13 +10,19 @@ import * as schema from './schema.js';
 
 export type Db = BetterSQLite3Database<typeof schema>;
 
-const connections = new Map<string, Db>();
+const connections = new Map<string, { db: Db; sqlite: Database.Database }>();
+
+/** Cierra todas las conexiones abiertas (tests y cierre limpio del CLI). */
+export function closeDatabases() {
+  for (const { sqlite } of connections.values()) sqlite.close();
+  connections.clear();
+}
 
 export function getDb(
   dbPath = path.join(repoRoot(), 'data', 'seen.sqlite'),
 ): Db {
   const cached = connections.get(dbPath);
-  if (cached) return cached;
+  if (cached) return cached.db;
 
   let sqlite: Database.Database;
   try {
@@ -64,6 +70,6 @@ export function getDb(
   `);
 
   const db = drizzle(sqlite, { schema });
-  connections.set(dbPath, db);
+  connections.set(dbPath, { db, sqlite });
   return db;
 }

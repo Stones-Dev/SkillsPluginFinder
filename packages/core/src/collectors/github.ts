@@ -1,4 +1,5 @@
 import type { Interests } from '../config/schema.js';
+import type { Origin } from '../normalize/candidate.js';
 import { createGithubClient, requireToken } from './github-client.js';
 
 export const SOURCE_ID = 'github-search';
@@ -25,13 +26,6 @@ export type GithubRepo = {
   fork: boolean;
   default_branch: string;
   owner: { login: string };
-};
-
-/** De qué consulta salió un repositorio (para `categoriaSugerida`). */
-export type Origin = {
-  categoria: string;
-  tipo: 'keyword' | 'topic';
-  query: string;
 };
 
 export type GithubQuery = { q: string; origins: Origin[] };

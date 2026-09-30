@@ -4,11 +4,12 @@ import {
   processBatchResults,
 } from '../batch/index.js';
 import { collectFromGithub } from '../collectors/github.js';
+import { loadCatalog } from '../config/interests.js';
 import { filterCandidates } from '../filter/index.js';
 import {
   dedupeCandidates,
   markAsSeen,
-  normalizeCandidate,
+  normalizeGithubRepo,
 } from '../normalize/index.js';
 import { repoRoot, vaultPath } from '../paths.js';
 import {
@@ -40,11 +41,14 @@ export async function runPipeline(
       `github-search: ${stats.executed}/${stats.queries} consultas (${stats.requests} peticiones, ${stats.cacheHits} de caché), ${stats.rawItems} resultados, ${stats.uniqueRepos} repos únicos, ${errors.length} errores`,
     );
     for (const e of errors) logger?.(`  error: ${e.query ?? ''} ${e.message}`);
-    const raw = repos.map((r) => r.repo);
 
-    const normalized = raw.map(normalizeCandidate);
+    const now = new Date();
+    const normalized = repos.map((r) =>
+      normalizeGithubRepo(r, { interests, now }),
+    );
     const deduped = await dedupeCandidates(normalized);
-    return filterCandidates(deduped, interests);
+    const catalog = await loadCatalog(repoRoot());
+    return filterCandidates(deduped, interests, catalog, now).kept;
   }
   return [];
 }
@@ -53,7 +57,7 @@ export async function prepareBatch(week: string) {
   const candidates = await runPipeline('collect');
   if (candidates.length > 0) {
     await batchCreate(candidates, week, repoRoot());
-    await markAsSeen(candidates.map((c) => c.url));
+    await markAsSeen(candidates.map((c) => c.id));
   }
 }
 
