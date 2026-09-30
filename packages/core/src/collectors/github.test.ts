@@ -14,7 +14,12 @@ import {
 import { parseInterestsYaml } from '../config/interests.js';
 import { interestsSchema } from '../config/schema.js';
 import { extractYamlBlock } from '../vault/markdown.js';
-import { buildQueries, collectFromGithub, sinceDate } from './github.js';
+import {
+  buildQueries,
+  collectFromGithub,
+  sinceDate,
+  starsQualifier,
+} from './github.js';
 
 const fixtures = path.resolve(import.meta.dirname, '../../tests/fixtures');
 const searchFixture = JSON.parse(
@@ -112,10 +117,32 @@ test('buildQueries: keyword con created:>, topic con pushed:>, stars mínimas y 
   ]);
 });
 
-test('buildQueries con Intereses.md real: 110 consultas declaradas, 109 únicas', () => {
+test('starsQualifier: >=MIN sin techo y MIN..MAX con él', () => {
+  expect(starsQualifier(50, undefined)).toBe('>=50');
+  expect(starsQualifier(50, 20000)).toBe('50..20000');
+});
+
+test('buildQueries con estrellas_max: cada consulta lleva el rango MIN..MAX de su categoría', () => {
+  const capped = interestsSchema.parse({
+    ventana_dias: 14,
+    reglas_globales: { estrellas_min: 50, estrellas_max: 20000 },
+    categorias: { ...interests.categorias },
+  });
+  const queries = buildQueries(capped, NOW).map((q) => q.q);
+
+  expect(queries).toEqual([
+    '"claude code skill" created:>2026-09-16 stars:20..20000',
+    '"SKILL.md" created:>2026-09-16 stars:20..20000',
+    'topic:claude-code pushed:>2026-09-16 stars:20..20000',
+    '"tokio" created:>2026-09-16 stars:50..20000',
+    'topic:rust pushed:>2026-09-16 stars:50..20000',
+  ]);
+});
+
+test('buildQueries con Intereses.md real: 110 consultas declaradas, 109 únicas, todas con rango', () => {
   const queries = buildQueries(realInterests, NOW);
 
-  // 70 keywords + 40 topics; "SKILL.md" (>=20 estrellas) está en dos categorías.
+  // 70 keywords + 40 topics; "SKILL.md" (20..20000 estrellas) está en dos categorías.
   expect(queries).toHaveLength(109);
   const skillMd = queries.find((q) => q.q.startsWith('"SKILL.md"'));
   expect(skillMd?.origins.map((o) => o.categoria)).toEqual([
@@ -124,15 +151,15 @@ test('buildQueries con Intereses.md real: 110 consultas declaradas, 109 únicas'
   ]);
   for (const { q } of queries) {
     expect(q).toMatch(
-      /^("[^"]+" created:>2026-09-16|topic:[\w.-]+ pushed:>2026-09-16) stars:>=\d+$/,
+      /^("[^"]+" created:>2026-09-16|topic:[\w.-]+ pushed:>2026-09-16) stars:\d+\.\.20000$/,
     );
   }
   // estrellas_min propia (sage200: 5) frente a la global (rust: 50).
   expect(queries.find((q) => q.q.startsWith('"sage 200"'))?.q).toContain(
-    'stars:>=5',
+    'stars:5..20000',
   );
   expect(queries.find((q) => q.q.startsWith('"tokio"'))?.q).toContain(
-    'stars:>=50',
+    'stars:50..20000',
   );
 });
 

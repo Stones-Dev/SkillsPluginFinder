@@ -32,3 +32,26 @@ test('estrellas_max y licencia_no_reconocida se validan', () => {
   expect(parse({ estrellas_max: 0 }).success).toBe(false);
   expect(parse({ licencia_no_reconocida: 'ignorar' }).success).toBe(false);
 });
+
+test('una categoría con estrellas_min por encima del techo se rechaza con su ruta', () => {
+  const parse = (estrellas_min: number) =>
+    interestsSchema.safeParse({
+      reglas_globales: { estrellas_min: 50, estrellas_max: 20000 },
+      categorias: { c: { nombre: 'C', peso: 1, estrellas_min } },
+    });
+
+  expect(parse(5).success).toBe(true);
+  expect(parse(19999).success).toBe(true);
+  const bad = parse(20000);
+  expect(bad.success).toBe(false);
+  expect(bad.error?.issues[0]).toMatchObject({
+    path: ['categorias', 'c', 'estrellas_min'],
+    message: 'estrellas_min debe ser menor que reglas_globales.estrellas_max',
+  });
+  // sin techo no hay nada que comparar
+  expect(
+    interestsSchema.safeParse({
+      categorias: { c: { nombre: 'C', peso: 1, estrellas_min: 99999 } },
+    }).success,
+  ).toBe(true);
+});

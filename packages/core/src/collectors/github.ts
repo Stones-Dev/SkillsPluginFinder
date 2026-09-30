@@ -65,14 +65,26 @@ export function sinceDate(now: Date, days: number): string {
 }
 
 /**
+ * Calificador `stars:` de una consulta: `>=MIN` sin techo y `MIN..MAX` con él
+ * (inclusivo por los dos lados, igual que el filtro). Con la búsqueda ordenada
+ * por estrellas y solo 30 resultados por página, sin el techo los huecos de
+ * cada consulta los ocuparían repos que el filtro va a descartar.
+ */
+export function starsQualifier(min: number, max: number | undefined): string {
+  return max === undefined ? `>=${min}` : `${min}..${max}`;
+}
+
+/**
  * Consultas de Fuentes.md derivadas de Intereses:
- * - keyword: `"<kw>" created:>SINCE stars:>=MIN` (novedades)
- * - topic:   `topic:<t> pushed:>SINCE stars:>=MIN` (actividad reciente)
- * `MIN` es la `estrellas_min` de la categoría o, si no tiene, la global. Las
- * consultas idénticas de varias categorías se lanzan una sola vez.
+ * - keyword: `"<kw>" created:>SINCE stars:<RANGO>` (novedades)
+ * - topic:   `topic:<t> pushed:>SINCE stars:<RANGO>` (actividad reciente)
+ * `RANGO` va de `estrellas_min` (la de la categoría o, si no tiene, la global) a
+ * `estrellas_max` si existe (ver `starsQualifier`). Las consultas idénticas de
+ * varias categorías se lanzan una sola vez.
  */
 export function buildQueries(interests: Interests, now: Date): GithubQuery[] {
   const since = sinceDate(now, interests.ventana_dias);
+  const max = interests.reglas_globales.estrellas_max;
   const byQuery = new Map<string, GithubQuery>();
 
   const add = (q: string, origin: Origin) => {
@@ -83,16 +95,17 @@ export function buildQueries(interests: Interests, now: Date): GithubQuery[] {
 
   for (const [categoria, cat] of Object.entries(interests.categorias)) {
     const min = cat.estrellas_min ?? interests.reglas_globales.estrellas_min;
+    const stars = starsQualifier(min, max);
     for (const keyword of cat.keywords) {
       const phrase = keyword.replaceAll('"', '');
-      add(`"${phrase}" created:>${since} stars:>=${min}`, {
+      add(`"${phrase}" created:>${since} stars:${stars}`, {
         categoria,
         tipo: 'keyword',
         query: keyword,
       });
     }
     for (const topic of cat.topics) {
-      add(`topic:${topic} pushed:>${since} stars:>=${min}`, {
+      add(`topic:${topic} pushed:>${since} stars:${stars}`, {
         categoria,
         tipo: 'topic',
         query: topic,

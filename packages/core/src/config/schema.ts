@@ -50,7 +50,25 @@ export const interestsSchema = z
     excluir: z.array(z.string().min(1)).default([]),
     proyectos: z.array(z.string().min(1)).default([]),
   })
-  .strict();
+  .strict()
+  .superRefine((interests, ctx) => {
+    // Una categoría con mínimo propio por encima del techo dejaría una consulta imposible.
+    const max = interests.reglas_globales.estrellas_max;
+    if (max === undefined) return;
+    for (const [id, category] of Object.entries(interests.categorias)) {
+      if (
+        category.estrellas_min !== undefined &&
+        category.estrellas_min >= max
+      ) {
+        ctx.addIssue({
+          code: z.ZodIssueCode.custom,
+          path: ['categorias', id, 'estrellas_min'],
+          message:
+            'estrellas_min debe ser menor que reglas_globales.estrellas_max',
+        });
+      }
+    }
+  });
 
 export type Interests = z.infer<typeof interestsSchema>;
 export type Category = z.infer<typeof categorySchema>;

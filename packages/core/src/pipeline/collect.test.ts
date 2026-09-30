@@ -212,6 +212,10 @@ test('las reglas nuevas llegan a la recogida: el techo quita a hummingbot y NOAS
   const summary = await collect();
   const file = await readCandidatesFile(repoDir, '2026-W40');
 
+  // la petición real lleva el rango: los huecos de la búsqueda no los ocupan gigantes
+  expect(new URL(searches[0].url).searchParams.get('q')).toBe(
+    'topic:solana pushed:>2026-09-16 stars:30..20000',
+  );
   // 22 con las reglas de antes − hummingbot (20.279★) + 4 NOASSERTION = 25; 5 descartados
   expect(summary.run.stats).toMatchObject({
     afterDedupe: 30,
