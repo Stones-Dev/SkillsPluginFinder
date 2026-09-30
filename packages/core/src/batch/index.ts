@@ -1,17 +1,24 @@
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import { z } from 'zod';
+import { type Scoring, scoringSchema } from '../config/schema.js';
 import { getDb } from '../db/index.js';
-import { candidates as candidatesTable, scorings as scoringsTable } from '../db/schema.js';
-import { scoringSchema, Scoring } from '../config/schema.js';
+import {
+  candidates as candidatesTable,
+  scorings as scoringsTable,
+} from '../db/schema.js';
 
-export async function createBatch(candidates: any[], week: string, repoPath: string) {
+export async function createBatch(
+  candidates: any[],
+  week: string,
+  repoPath: string,
+) {
   if (candidates.length === 0) return false;
 
   const db = getDb();
-  
+
   // Insert candidates into DB
-  const toInsert = candidates.map(c => ({
+  const toInsert = candidates.map((c) => ({
     id: c.id,
     name: c.name,
     url: c.url,
@@ -23,9 +30,9 @@ export async function createBatch(candidates: any[], week: string, repoPath: str
     forks: c.forks,
     createdAt: c.createdAt,
     topics: c.topics,
-    categoriaSugerida: c.categoriaSugerida
+    categoriaSugerida: c.categoriaSugerida,
   }));
-  
+
   for (const item of toInsert) {
     await db.insert(candidatesTable).values(item).onConflictDoNothing();
   }
@@ -33,11 +40,13 @@ export async function createBatch(candidates: any[], week: string, repoPath: str
   // Create batch.md
   const batchDir = path.join(repoPath, 'data', 'batches', week);
   await fs.mkdir(batchDir, { recursive: true });
-  
-  const batchFilePath = path.join(batchDir, `batch.md`);
+
+  const batchFilePath = path.join(batchDir, 'batch.md');
   let content = `# Batch ${week}\n\n`;
-  content += `<proyectos>\n<!-- TODO: Insert projects from interests -->\n</proyectos>\n\n`;
-  content += `<ya_catalogado>\n<!-- TODO: Insert already cataloged items -->\n</ya_catalogado>\n\n`;
+  content +=
+    '<proyectos>\n<!-- TODO: Insert projects from interests -->\n</proyectos>\n\n';
+  content +=
+    '<ya_catalogado>\n<!-- TODO: Insert already cataloged items -->\n</ya_catalogado>\n\n';
 
   for (const c of candidates) {
     content += `## ${c.name}\n`;
@@ -45,16 +54,25 @@ export async function createBatch(candidates: any[], week: string, repoPath: str
     content += `- **URL:** ${c.url}\n`;
     content += `- **Description:** ${c.description}\n`;
     content += `- **Suggested Category:** ${c.categoriaSugerida}\n`;
-    content += `\n`;
+    content += '\n';
   }
-  
+
   await fs.writeFile(batchFilePath, content, 'utf-8');
   return true;
 }
 
-export async function processBatchResults(week: string, repoPath: string): Promise<Scoring[]> {
-  const scoringPath = path.join(repoPath, 'data', 'batches', week, 'scoring.json');
-  
+export async function processBatchResults(
+  week: string,
+  repoPath: string,
+): Promise<Scoring[]> {
+  const scoringPath = path.join(
+    repoPath,
+    'data',
+    'batches',
+    week,
+    'scoring.json',
+  );
+
   let raw: string;
   try {
     raw = await fs.readFile(scoringPath, 'utf-8');
@@ -82,7 +100,9 @@ export async function processBatchResults(week: string, repoPath: string): Promi
   for (let i = 0; i < data.length; i++) {
     const parsed = scoringSchema.safeParse(data[i]);
     if (!parsed.success) {
-      throw new Error(`Validation failed for scoring at index ${i}: ${parsed.error.message}`);
+      throw new Error(
+        `Validation failed for scoring at index ${i}: ${parsed.error.message}`,
+      );
     }
     results.push(parsed.data);
   }

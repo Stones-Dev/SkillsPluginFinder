@@ -1,13 +1,17 @@
 #!/usr/bin/env node
+import {
+  collectBatch,
+  pipelinePublishReport,
+  pipelineSyncInterests,
+  pipelineUpdateCatalog,
+  prepareBatch,
+  runPipeline,
+} from '@spf/core';
 import { Command } from 'commander';
-import { runPipeline, prepareBatch, collectBatch, pipelinePublishReport, pipelineUpdateCatalog, pipelineSyncInterests } from '@spf/core';
 
 const program = new Command();
 
-program
-  .name('spf')
-  .description('CLI for SkillsPluginFinder')
-  .version('1.0.0');
+program.name('spf').description('CLI for SkillsPluginFinder').version('1.0.0');
 
 program
   .command('collect')

@@ -1,26 +1,43 @@
-import { readInterestsFromVault, syncInterests as vaultSyncInterests } from '../vault/index.js';
+﻿import path from 'node:path';
+import {
+  createBatch as batchCreate,
+  processBatchResults,
+} from '../batch/index.js';
 import { collectFromGithub } from '../collectors/github.js';
-import { normalizeCandidate, dedupeCandidates, markAsSeen } from '../normalize/index.js';
 import { filterCandidates } from '../filter/index.js';
-import { createBatch as batchCreate, processBatchResults } from '../batch/index.js';
-import { publishReport as pubReport, updateCatalog as pubUpdateCatalog } from '../publish/index.js';
-import path from 'node:path';
+import {
+  dedupeCandidates,
+  markAsSeen,
+  normalizeCandidate,
+} from '../normalize/index.js';
+import {
+  publishReport as pubReport,
+  updateCatalog as pubUpdateCatalog,
+} from '../publish/index.js';
+import {
+  readInterestsFromVault,
+  syncInterests as vaultSyncInterests,
+} from '../vault/index.js';
 
 // If CWD is apps/worker, vault is at ../../vault.
-const DEFAULT_VAULT_PATH = path.resolve(process.cwd(), '../../vault');
+function getVaultPath() {
+  const p = process.env.VAULT_PATH;
+  if (!p) throw new Error('VAULT_PATH environment variable is required');
+  return p;
+}
 const DEFAULT_REPO_PATH = path.resolve(process.cwd(), '../../');
 
 export async function runPipeline(step: string) {
   console.log(`Running pipeline step: ${step}`);
   if (step === 'collect') {
-    const interests = await readInterestsFromVault(DEFAULT_VAULT_PATH);
+    const interests = await readInterestsFromVault(getVaultPath());
     const token = process.env.GITHUB_TOKEN || '';
     const raw = await collectFromGithub(token, interests.keywords || []);
-    
+
     const normalized = raw.map(normalizeCandidate);
     const deduped = await dedupeCandidates(normalized);
     const filtered = filterCandidates(deduped, interests);
-    
+
     console.log(`Collected ${filtered.length} candidates after filtering.`);
     return filtered;
   }
@@ -32,7 +49,7 @@ export async function prepareBatch(week: string) {
   const candidates = await runPipeline('collect');
   if (candidates.length > 0) {
     await batchCreate(candidates, week, DEFAULT_REPO_PATH);
-    await markAsSeen(candidates.map(c => c.url));
+    await markAsSeen(candidates.map((c) => c.url));
   }
 }
 
@@ -44,15 +61,15 @@ export async function collectBatch(week: string) {
 
 export async function pipelinePublishReport(week: string, results: any[]) {
   console.log(`Publishing results for week ${week}...`);
-  await pubReport(week, results, DEFAULT_VAULT_PATH);
+  await pubReport(week, results, getVaultPath());
 }
 
 export async function pipelineUpdateCatalog(results: any[]) {
-  console.log(`Updating catalog...`);
-  await pubUpdateCatalog(results, DEFAULT_VAULT_PATH);
+  console.log('Updating catalog...');
+  await pubUpdateCatalog(results, getVaultPath());
 }
 
 export async function pipelineSyncInterests() {
-  console.log(`Syncing interests...`);
-  await vaultSyncInterests(DEFAULT_VAULT_PATH, DEFAULT_REPO_PATH);
+  console.log('Syncing interests...');
+  await vaultSyncInterests(getVaultPath(), DEFAULT_REPO_PATH);
 }

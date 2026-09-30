@@ -1,15 +1,15 @@
-import Database from 'better-sqlite3';
+﻿import Database from 'better-sqlite3';
 import { drizzle } from 'drizzle-orm/better-sqlite3';
 import * as schema from './schema.js';
 
 let db: any;
 
-export function getDb(dbPath = 'spf.db') {
+export function getDb(dbPath = 'data/seen.sqlite') {
   if (!db) {
     try {
       const sqlite = new Database(dbPath);
       db = drizzle(sqlite, { schema });
-      
+
       sqlite.exec(`
         CREATE TABLE IF NOT EXISTS candidates (
           id TEXT PRIMARY KEY,
@@ -31,11 +31,19 @@ export function getDb(dbPath = 'spf.db') {
         );
       `);
     } catch (err) {
-      console.warn("Could not load better-sqlite3 bindings, falling back to mock DB");
+      console.warn(
+        'Could not load better-sqlite3 bindings, falling back to mock DB',
+      );
       const mockTable: any[] = [];
       db = {
         select: () => ({ from: () => ({ where: () => [] }) }),
-        insert: () => ({ values: (v: any) => ({ onConflictDoNothing: async () => { mockTable.push(v); } }) })
+        insert: () => ({
+          values: (v: any) => ({
+            onConflictDoNothing: async () => {
+              mockTable.push(v);
+            },
+          }),
+        }),
       };
     }
   }

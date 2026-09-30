@@ -1,4 +1,4 @@
-import { sqliteTable, text, integer, real } from 'drizzle-orm/sqlite-core';
+import { integer, real, sqliteTable, text } from 'drizzle-orm/sqlite-core';
 
 export const candidates = sqliteTable('candidates', {
   id: text('id').primaryKey(),
@@ -27,7 +27,9 @@ export const scorings = sqliteTable('scorings', {
   agent: text('agent').notNull(),
   score: real('score').notNull(),
   categoria: text('categoria').notNull(),
-  proyectosAfectados: text('proyectos_afectados', { mode: 'json' }).$type<string[]>(),
+  proyectosAfectados: text('proyectos_afectados', { mode: 'json' }).$type<
+    string[]
+  >(),
   porQue: text('por_que').notNull(),
   comoIntegrar: text('como_integrar').notNull(),
   riesgos: text('riesgos', { mode: 'json' }).$type<string[]>(),

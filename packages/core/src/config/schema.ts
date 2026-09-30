@@ -6,11 +6,13 @@ export const interestsSchema = z.object({
   keywords: z.array(z.string()).default([]),
   proyectos: z.array(z.string()).default([]),
   exclusiones: z.array(z.string()).default([]),
-  reglas: z.object({
-    minStars: z.number().default(0),
-    maxAgeDays: z.number().default(365),
-    requireLicense: z.boolean().default(true)
-  }).default({})
+  reglas: z
+    .object({
+      minStars: z.number().default(0),
+      maxAgeDays: z.number().default(365),
+      requireLicense: z.boolean().default(true),
+    })
+    .default({}),
 });
 
 export type Interests = z.infer<typeof interestsSchema>;
@@ -25,7 +27,7 @@ export const scoringSchema = z.object({
   porQue: z.string(),
   comoIntegrar: z.string(),
   riesgos: z.array(z.string()),
-  usoBrowser: z.boolean()
+  usoBrowser: z.boolean(),
 });
 
 export type Scoring = z.infer<typeof scoringSchema>;
