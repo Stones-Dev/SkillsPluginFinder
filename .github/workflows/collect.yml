@@ -32,9 +32,24 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
+      # Falla antes de gastar nada si la cuota del token no alcanza para una recogida:
+      # 109 búsquedas (cubo `search`, 30 por minuto) y unas 250 peticiones de enrich
+      # (cubo `core`; 80 repos x 3 = 240, 255 medidas). 400 deja margen. Si hay que subir
+      # `enrich_max` en Intereses, sube también --min-core. Imprime los límites, nunca el token.
+      - name: Check GitHub API quota
+        env:
+          GITHUB_TOKEN: ${{ secrets.SPF_GITHUB_TOKEN || secrets.GITHUB_TOKEN }}
+          TOKEN_NAME: ${{ secrets.SPF_GITHUB_TOKEN && 'SPF_GITHUB_TOKEN' || 'GITHUB_TOKEN automático de Actions' }}
+        run: |
+          echo "Token usado: $TOKEN_NAME"
+          pnpm spf rate-limit --min-core 400 --min-search 30
+
       - name: Run collector pipeline
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          # El secret SPF_GITHUB_TOKEN (un PAT de solo lectura) es opcional: si existe, se usa
+          # en vez del token automático, que según la documentación de GitHub tiene 1.000 peticiones
+          # por hora y repositorio.
+          GITHUB_TOKEN: ${{ secrets.SPF_GITHUB_TOKEN || secrets.GITHUB_TOKEN }}
           # El input va por una variable de entorno y no dentro del script: así un valor
           # con comillas o `$(...)` no se interpreta como shell. Vacío en el cron.
           SOURCE: ${{ inputs.source }}

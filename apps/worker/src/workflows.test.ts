@@ -91,3 +91,38 @@ test('collect.yml: el input source llega a spf collect por una variable de entor
   // la opción que se pasa existe en el CLI
   expect(cli).toContain("'-s, --source <source>'");
 });
+
+test('collect.yml: comprueba la cuota antes de recoger, con el mismo token y sin imprimirlo', () => {
+  const quota = collectWorkflow.indexOf(
+    'pnpm spf rate-limit --min-core 400 --min-search 30',
+  );
+  const collectStep = collectWorkflow.indexOf('name: Run collector pipeline');
+  const commit = collectWorkflow.indexOf('name: Commit and push changes');
+  expect(quota).toBeGreaterThan(0);
+  expect(quota).toBeLessThan(collectStep);
+  expect(collectStep).toBeLessThan(commit);
+
+  // el comando que cita el workflow existe en el CLI y acepta esas opciones
+  expect(cli).toContain(".command('rate-limit')");
+  expect(cli).toContain("'--min-core <n>'");
+  expect(cli).toContain("'--min-search <n>'");
+
+  // los dos pasos que llaman a la API usan el mismo token: el secret opcional o el automático
+  const tokenLine =
+    'GITHUB_TOKEN: ${{ secrets.SPF_GITHUB_TOKEN || secrets.GITHUB_TOKEN }}';
+  expect(collectWorkflow.split(tokenLine)).toHaveLength(3);
+
+  // solo se usan esos dos secrets
+  const secrets = new Set(
+    [...collectWorkflow.matchAll(/secrets\.(\w+)/g)].map((m) => m[1]),
+  );
+  expect([...secrets].sort()).toEqual(['GITHUB_TOKEN', 'SPF_GITHUB_TOKEN']);
+
+  // el token no se vuelca al log: ni echo, ni trazas del shell, ni volcado del entorno
+  for (const line of collectWorkflow.split('\n')) {
+    const code = line.trim();
+    if (code.startsWith('#')) continue;
+    if (/^echo\b/.test(code)) expect(code).not.toMatch(/GITHUB_TOKEN/);
+    expect(code).not.toMatch(/\bset -x\b|\bprintenv\b|^env$/);
+  }
+});
