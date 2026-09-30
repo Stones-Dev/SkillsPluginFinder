@@ -1,9 +1,9 @@
 {
   "extends": "../../tsconfig.json",
   "compilerOptions": {
-    "outDir": "./dist",
-    "rootDir": "./src"
+    "rootDir": "../..",
+    "noEmit": true,
+    "paths": { "@spf/core": ["../../packages/core/src/index.ts"] }
   },
-  "include": ["src/**/*"],
-  "references": [{ "path": "../../packages/core" }]
+  "include": ["src/**/*"]
 }

@@ -10,6 +10,7 @@
     "build": "pnpm -r run build",
     "test": "vitest run",
     "lint": "biome check .",
+    "typecheck": "pnpm -r exec tsc --noEmit",
     "format": "biome format --write .",
     "spf": "pnpm -s run build && node --env-file-if-exists=.env apps/worker/dist/cli.js"
   },
