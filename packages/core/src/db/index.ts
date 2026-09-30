@@ -67,6 +67,16 @@ export function getDb(
       id TEXT PRIMARY KEY,
       dedupe_key TEXT NOT NULL UNIQUE
     );
+    CREATE TABLE IF NOT EXISTS runs (
+      id TEXT PRIMARY KEY,
+      half TEXT NOT NULL,
+      week TEXT NOT NULL,
+      trigger TEXT NOT NULL,
+      started_at TEXT NOT NULL,
+      finished_at TEXT NOT NULL,
+      stats TEXT NOT NULL,
+      errors_by_source TEXT NOT NULL
+    );
   `);
 
   const db = drizzle(sqlite, { schema });

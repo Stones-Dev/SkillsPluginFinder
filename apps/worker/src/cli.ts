@@ -1,11 +1,12 @@
 #!/usr/bin/env node
 import {
+  closeDatabases,
+  collect,
   collectBatch,
   pipelinePublishReport,
   pipelineSyncInterests,
   pipelineUpdateCatalog,
   prepareBatch,
-  runPipeline,
 } from '@spf/core';
 import { Command } from 'commander';
 
@@ -15,15 +16,31 @@ program.name('spf').description('CLI for SkillsPluginFinder').version('1.0.0');
 
 program
   .command('collect')
-  .description('Collect candidates from sources')
-  .option('-s, --source <source>', 'Source to collect from')
+  .description(
+    'Mitad nube: recoge, filtra y enriquece candidatos en data/candidates/YYYY-Www.json',
+  )
+  .option('-s, --source <source>', 'Fuente a recoger (solo github-search)')
   .action(async (options) => {
     try {
-      console.log('Running collect pipeline...');
-      const collected = await runPipeline('collect', options.source, (m) =>
-        console.log(m),
+      const { week, file, run, totalCandidates } = await collect({
+        source: options.source,
+        logger: (m) => console.log(m),
+      });
+      const s = run.stats;
+      console.log(
+        [
+          `Semana ${week} · github-search`,
+          `  ${s.queries} consultas → ${s.requests} peticiones (${s.cacheHits} de caché) → ${s.rawItems} resultados → ${s.uniqueRepos} repos únicos`,
+          `  tras dedupe: ${s.afterDedupe} · tras reglas: ${s.afterRules} (${s.afterDedupe - s.afterRules} descartados)`,
+          `  seleccionados: ${s.selected} · diferidos por el tope: ${s.deferred} · enriquecidos: ${s.enriched}`,
+          `  errores por fuente: ${run.errorsBySource.length}`,
+          `→ ${file} (${totalCandidates} candidatos)`,
+        ].join('\n'),
       );
-      console.log(`Collected ${collected.length} candidates after filtering.`);
+      for (const e of run.errorsBySource) {
+        console.log(`  error: ${e.query ?? e.source}: ${e.message}`);
+      }
+      closeDatabases();
     } catch (err) {
       console.error(
         `Error en collect: ${err instanceof Error ? err.message : err}`,
@@ -41,9 +58,12 @@ program
       if (!options.week) throw new Error('Week is required');
       console.log(`Preparing batch for week ${options.week}...`);
       await prepareBatch(options.week);
+      closeDatabases();
       console.log('Batch prepared.');
     } catch (err) {
-      console.error('Error in prepare:', err);
+      console.error(
+        `Error en prepare: ${err instanceof Error ? err.message : err}`,
+      );
       process.exit(1);
     }
   });

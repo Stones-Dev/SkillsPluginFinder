@@ -35,3 +35,19 @@ export const scorings = sqliteTable('scorings', {
   riesgos: text('riesgos', { mode: 'json' }).$type<string[]>(),
   usoBrowser: integer('uso_browser', { mode: 'boolean' }).notNull(),
 });
+
+/** Una fila por ejecución de cualquiera de las dos mitades (RF-10, Plan §4). */
+export const runs = sqliteTable('runs', {
+  id: text('id').primaryKey(),
+  half: text('half', { enum: ['collect', 'evaluate'] }).notNull(),
+  week: text('week').notNull(),
+  trigger: text('trigger').notNull(),
+  startedAt: text('started_at').notNull(),
+  finishedAt: text('finished_at').notNull(),
+  stats: text('stats', { mode: 'json' })
+    .$type<Record<string, number>>()
+    .notNull(),
+  errorsBySource: text('errors_by_source', { mode: 'json' })
+    .$type<{ source: string; query?: string; message: string }[]>()
+    .notNull(),
+});

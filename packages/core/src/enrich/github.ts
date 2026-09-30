@@ -1,4 +1,5 @@
 import type { GithubClient } from '../collectors/github-client.js';
+import type { Candidate } from '../normalize/candidate.js';
 
 export const README_EXCERPT_MAX = 2000;
 
@@ -154,5 +155,29 @@ export async function enrichGithubRepo(
     singleMaintainer: contributors === null ? null : contributors === 1,
     lifecycleScripts: scripts,
     notes,
+  };
+}
+
+/**
+ * Incorpora el enriquecimiento al candidato. `postinstall` es `true` si hay
+ * scripts de instalación, `false` si hay `package.json` sin ellos y queda sin
+ * definir cuando no se pudo saber (sin `package.json` en la raíz o error).
+ */
+export function applyEnrichment(
+  candidate: Candidate,
+  enrichment: Enrichment,
+): Candidate {
+  const { lifecycleScripts: scripts } = enrichment;
+  return {
+    ...candidate,
+    contributors: enrichment.contributors ?? undefined,
+    readmeExcerpt: enrichment.readmeExcerpt ?? undefined,
+    risk: {
+      ...candidate.risk,
+      singleMaintainer: enrichment.singleMaintainer ?? undefined,
+      lifecycleScripts: scripts ?? undefined,
+      postinstall: scripts ? scripts.length > 0 : undefined,
+      notes: [...candidate.risk.notes, ...enrichment.notes],
+    },
   };
 }
