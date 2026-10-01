@@ -1,4 +1,5 @@
 import type { Interests, Scoring } from '../config/schema.js';
+import { type Cruce, type CruceItem, crossLine } from '../cross/cross.js';
 import { FILTER_RULES, type FilterRule } from '../filter/index.js';
 import type { Candidate } from '../normalize/candidate.js';
 import { riskSignals } from '../normalize/risk.js';
@@ -13,9 +14,15 @@ export type ReportInput = {
   scorings: Scoring[];
   /** `created` de un informe anterior de la misma semana, si lo había. */
   created?: string;
+  /** El cruce de las dos evaluaciones; los `scorings` ya llevan su score final. */
+  cruce?: Cruce | null;
 };
 
-export type Finding = { scoring: Scoring; candidate: Candidate };
+export type Finding = {
+  scoring: Scoring;
+  candidate: Candidate;
+  cruce?: CruceItem;
+};
 
 const oneLine = (text: string) => text.replace(/\s+/g, ' ').trim();
 /** Celda de tabla Markdown: una línea y con los `|` escapados. */
@@ -99,6 +106,8 @@ function findingCard(f: Finding): string {
       ? s.riesgos.map((r) => `  - ${oneLine(r)}`)
       : ['  - Ninguno señalado por el evaluador'];
 
+  const crossed = crossLine(f.cruce);
+
   return [
     `### ${s.score} · [${c.name}](${c.url})`,
     '',
@@ -106,6 +115,7 @@ function findingCard(f: Finding): string {
     '',
     `**Proyectos:** ${s.proyectosAfectados.length > 0 ? s.proyectosAfectados.join(', ') : 'ninguno en concreto'}`,
     '',
+    ...(crossed ? [crossed, ''] : []),
     `- **Por qué:** ${oneLine(s.porQue)}`,
     `- **Cómo integrar:** ${oneLine(s.comoIntegrar)}`,
     '- **Riesgos:**',
@@ -182,9 +192,14 @@ export function renderReport(input: ReportInput): string {
   const umbral = interests.umbral_score;
   const byId = new Map(file.candidates.map((c) => [c.id, c]));
 
+  const crossById = new Map(
+    (input.cruce?.items ?? []).map((i) => [i.candidateId, i]),
+  );
   const findings: Finding[] = scorings.flatMap((scoring) => {
     const candidate = byId.get(scoring.candidateId);
-    return candidate ? [{ scoring, candidate }] : [];
+    return candidate
+      ? [{ scoring, candidate, cruce: crossById.get(scoring.candidateId) }]
+      : [];
   });
   const published = findings
     .filter((f) => f.scoring.score >= umbral)
@@ -192,8 +207,13 @@ export function renderReport(input: ReportInput): string {
   const below = findings.filter((f) => f.scoring.score < umbral).sort(byScore);
 
   const agents = [...new Set(scorings.map((s) => s.agent))];
+  const crossedBoth = (input.cruce?.fuentes.length ?? 0) > 1;
   const agent =
-    agents.length === 0 ? 'ninguno' : agents.length === 1 ? agents[0] : 'mixto';
+    agents.length === 0
+      ? 'ninguno'
+      : agents.length === 1 && !crossedBoth
+        ? agents[0]
+        : 'mixto';
 
   const sections: string[] = [
     frontmatter(input, agent),
@@ -229,6 +249,11 @@ export function renderReport(input: ReportInput): string {
       '',
       `- Candidatos: \`data/candidates/${week}.json\``,
       `- Batch y scoring crudo del evaluador: \`data/batches/${week}/batch.md\` · \`scoring.json\``,
+      ...(crossedBoth
+        ? [
+            `- Segunda evaluación (Antigravity) y cruce: \`data/batches/${week}/scoring-antigravity.json\` · \`cruce.json\` (score = media; disputa si difieren en 3 o más; confianza alta si los dos llegan a 7)`,
+          ]
+        : []),
     ].join('\n'),
   );
 

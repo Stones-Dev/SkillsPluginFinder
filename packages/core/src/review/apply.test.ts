@@ -1,6 +1,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { afterEach, beforeEach, expect, test } from 'vitest';
+import { DISPUTA_MARK } from '../cross/cross.js';
 import { closeDatabases, getDb } from '../db/index.js';
 import { runs } from '../db/schema.js';
 import {
@@ -10,12 +11,7 @@ import {
   writeTree,
 } from '../testing/git-repo.js';
 import { parseCatalog } from '../vault/catalogo.js';
-import {
-  DISPUTA_MARK,
-  applyReview,
-  formatApply,
-  parseReviewEstado,
-} from './apply.js';
+import { applyReview, formatApply, parseReviewEstado } from './apply.js';
 import { prepareReview, reviewDirFor, reviewJsonSchema } from './prepare.js';
 import { SIGNAL_TYPES, type SignalType } from './signals.js';
 

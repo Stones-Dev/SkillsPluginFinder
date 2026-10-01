@@ -7,8 +7,10 @@ import {
   collect,
   collectAntigravityScorings,
   collectScorings,
+  cross,
   fetchRateLimits,
   formatApply,
+  formatCross,
   formatPrepare,
   formatRateLimits,
   formatReviewList,
@@ -217,6 +219,20 @@ program
   });
 
 program
+  .command('cross')
+  .description(
+    'Cruza las evaluaciones de Claude Code y Antigravity (media, disputa si difieren en 3 o más, confianza alta si los dos llegan a 7) y escribe cruce.json',
+  )
+  .requiredOption(...weekOption)
+  .action(async (options) => {
+    try {
+      console.log(formatCross(await cross(options.week)).join('\n'));
+    } catch (err) {
+      fail('cross', err);
+    }
+  });
+
+program
   .command('publish')
   .description(
     'Escribe Informes/<semana>.md y añade filas `candidato` a Catalogo.md en el vault',
@@ -231,7 +247,7 @@ program
         [
           `Informe ${options.week}: ${r.published} hallazgos ≥ umbral de ${r.evaluated} evaluados`,
           `→ ${r.reportFile}`,
-          `Catálogo: +${r.catalogAdded} filas (candidato)${r.catalogSkipped > 0 ? `, ${r.catalogSkipped} ya estaban` : ''}`,
+          `Catálogo: +${r.catalogAdded} filas (candidato)${r.catalogSkipped > 0 ? `, ${r.catalogSkipped} ya estaban` : ''}${r.catalogUpdated > 0 ? `, ${r.catalogUpdated} actualizadas con el score del cruce` : ''}`,
         ].join('\n'),
       );
     } catch (err) {

@@ -4,6 +4,7 @@ import {
   collectBatch,
   prepareBatch,
 } from '../batch/index.js';
+import { crossWeek } from '../cross/index.js';
 import { repoRoot, vaultPath } from '../paths.js';
 import { publishWeek } from '../publish/index.js';
 import {
@@ -47,6 +48,11 @@ export function collectScorings(week: string, agent?: EvaluatorAgent) {
 /** `spf collect-batch --agent antigravity`: el segundo evaluador; un fallo se anota en `runs` y no es fatal. */
 export function collectAntigravityScorings(week: string, reason?: string) {
   return collectAntigravity({ repoDir: repoRoot(), week, reason });
+}
+
+/** `spf cross --week`: cruza las dos evaluaciones y escribe `cruce.json`. */
+export function cross(week: string) {
+  return crossWeek({ repoDir: repoRoot(), week });
 }
 
 /** `spf publish --week`: informe en `Informes/` y filas nuevas en `Catalogo.md`. */

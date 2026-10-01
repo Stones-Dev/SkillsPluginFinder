@@ -1,3 +1,5 @@
+import { leadingMarks, stripMarks } from '../cross/cross.js';
+import { editCatalogRow } from '../vault/catalogo-edit.js';
 import {
   type MdTable,
   isCatalogTable,
@@ -98,4 +100,41 @@ export function addCatalogRows(
     );
   }
   return { text: updated, added, skipped };
+}
+
+/**
+ * Tras cruzar las dos evaluaciones, las filas de esta semana que siguen en `candidato`
+ * y ya estaban en el catálogo se ponen al día: el score pasa a ser el final y la nota
+ * lleva (o pierde) la marca de disputa o de confianza alta. Solo se toca el score y el
+ * principio de la nota; cualquier otro estado (probado, adoptado, descartado) y las
+ * filas de otras semanas quedan como están. Si no hay nada que cambiar, no se escribe.
+ * `rows` son las filas calculadas por `publish` (su nota ya lleva las marcas).
+ */
+export function refreshCrossedRows(
+  text: string,
+  rows: NewCatalogRow[],
+  today: string,
+): { text: string; updated: string[] } {
+  const entries = parseCatalog(text);
+  let current = text;
+  const updated: string[] = [];
+  for (const row of rows) {
+    const repo = repoFromLink(row.enlace, row.nombre);
+    const entry = entries.find((e) => e.repo === repo);
+    if (!repo || !entry) continue;
+    if (entry.estado !== 'candidato' || entry.semana !== row.semana) continue;
+
+    const nota = `${leadingMarks(row.nota)}${stripMarks(entry.nota)}`;
+    // `entry.nota` ya viene sin el escape de los pipes: se compara con la nota en una línea.
+    const wanted = nota.replace(/\s+/g, ' ').trim();
+    if (entry.score === row.score && entry.nota === wanted) continue;
+    current = editCatalogRow(
+      current,
+      repo,
+      { score: row.score, nota },
+      today,
+    ).text;
+    updated.push(row.nombre);
+  }
+  return { text: current, updated };
 }

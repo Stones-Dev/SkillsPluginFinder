@@ -6,8 +6,8 @@ import {
   repoFromLink,
   scanTables,
   splitRow,
-} from '../vault/catalogo.js';
-import { setFrontmatterUpdated } from '../vault/markdown.js';
+} from './catalogo.js';
+import { setFrontmatterUpdated } from './markdown.js';
 
 export type RowPatch = {
   estado?: CatalogEntry['estado'];

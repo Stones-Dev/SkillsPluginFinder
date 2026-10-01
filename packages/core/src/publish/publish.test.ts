@@ -71,6 +71,7 @@ test('publica el informe y las filas del catálogo, y sobrescribe el informe bas
     published: 5,
     catalogAdded: 5,
     catalogSkipped: 0,
+    catalogUpdated: 0,
   });
   const md = fs.readFileSync(report(), 'utf8');
   expect(md).not.toContain('Se evaluaron 1 candidatos');
@@ -132,6 +133,7 @@ test('registra la ejecución de la mitad local', async () => {
     published: 5,
     catalogAdded: 5,
     catalogSkipped: 0,
+    catalogUpdated: 0,
   });
 });
 

@@ -2,12 +2,13 @@ import crypto from 'node:crypto';
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import type { CatalogEntry } from '../config/schema.js';
+import { DISPUTA_MARK } from '../cross/cross.js';
 import { type Db, getDb } from '../db/index.js';
 import { runs } from '../db/schema.js';
 import { madridDate } from '../pipeline/week.js';
+import { editCatalogRow } from '../vault/catalogo-edit.js';
 import { parseCatalog } from '../vault/catalogo.js';
 import { atomicWriteFile } from '../vault/fsutil.js';
-import { editCatalogRow } from './catalog-edit.js';
 import { removeDir } from './clone.js';
 import { planOpenLoop } from './daily.js';
 import { repoFromReviewId } from './list.js';
@@ -31,9 +32,6 @@ export function parseReviewEstado(value: string): ReviewEstado {
   }
   return value as ReviewEstado;
 }
-
-/** Marca que `cruzar-evaluaciones` deja en la nota del catálogo cuando los dos evaluadores discrepan. */
-export const DISPUTA_MARK = '⚖ disputa';
 
 export type ApplyOptions = {
   repoDir: string;

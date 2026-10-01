@@ -1,5 +1,4 @@
 export * from './apply.js';
-export * from './catalog-edit.js';
 export * from './clone.js';
 export * from './daily.js';
 export * from './inventory.js';

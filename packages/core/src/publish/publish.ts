@@ -2,12 +2,13 @@ import crypto from 'node:crypto';
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import { validateBatch } from '../batch/collect.js';
+import { applyCruce, markFor, readCruce } from '../cross/cross.js';
 import { type Db, getDb } from '../db/index.js';
 import { runs } from '../db/schema.js';
 import { assertWeek, madridDate } from '../pipeline/week.js';
 import { atomicWriteFile } from '../vault/fsutil.js';
 import { stripBom } from '../vault/markdown.js';
-import { addCatalogRows } from './catalog.js';
+import { addCatalogRows, refreshCrossedRows } from './catalog.js';
 import { renderReport } from './report.js';
 
 export type PublishOptions = {
@@ -27,6 +28,8 @@ export type PublishSummary = {
   published: number;
   catalogAdded: number;
   catalogSkipped: number;
+  /** Filas `candidato` ya existentes que se pusieron al día con el score final del cruce. */
+  catalogUpdated: number;
 };
 
 async function readIfExists(file: string): Promise<string | null> {
@@ -71,19 +74,28 @@ export async function publishWeek(
     /^created:\s*(\d{4}-\d{2}-\d{2})\s*$/m,
   )?.[1];
 
+  // Con las dos evaluaciones cruzadas (`spf cross`), el score que se publica es el final.
+  const cruce = await readCruce(repoDir, week);
+  const crossed = cruce && cruce.fuentes.length > 1 ? cruce : null;
+  const finalScorings = crossed ? applyCruce(scorings, crossed) : scorings;
+  const crossById = new Map(
+    (crossed?.items ?? []).map((i) => [i.candidateId, i]),
+  );
+
   const report = renderReport({
     week,
     now,
     interests,
     file: candidates,
-    scorings,
+    scorings: finalScorings,
     created,
+    cruce: crossed,
   });
 
   const catalogFile = path.join(vaultDir, 'Catalogo.md');
   const catalogText = await fs.readFile(catalogFile, 'utf8');
   const byId = new Map(candidates.candidates.map((c) => [c.id, c]));
-  const rows = scorings
+  const rows = finalScorings
     .filter((s) => s.score >= interests.umbral_score)
     .sort(
       (a, b) => b.score - a.score || a.candidateId.localeCompare(b.candidateId),
@@ -98,17 +110,26 @@ export async function publishWeek(
               categoria: s.categoria,
               semana: week,
               score: s.score,
-              nota: `${s.porQue} · [[${week}]]`,
+              nota: `${markFor(crossById.get(s.candidateId))}${s.porQue} · [[${week}]]`,
               enlace: c.url,
             },
           ]
         : [];
     });
-  const catalog = addCatalogRows(catalogText, rows, today);
+  const added = addCatalogRows(catalogText, rows, today);
+  // Las filas `candidato` de esta semana que ya estaban se ponen al día con el score final.
+  const refreshed = crossed
+    ? refreshCrossedRows(added.text, added.skipped, today)
+    : { text: added.text, updated: [] as string[] };
+  const catalog = {
+    ...added,
+    text: refreshed.text,
+    updated: refreshed.updated,
+  };
 
   await fs.mkdir(path.dirname(reportFile), { recursive: true });
   await atomicWriteFile(reportFile, report);
-  if (catalog.added.length > 0)
+  if (catalog.added.length > 0 || catalog.updated.length > 0)
     await atomicWriteFile(catalogFile, catalog.text);
 
   const db = opts.db ?? getDb(path.join(repoDir, 'data', 'seen.sqlite'));
@@ -124,6 +145,7 @@ export async function publishWeek(
       published: rows.length,
       catalogAdded: catalog.added.length,
       catalogSkipped: catalog.skipped.length,
+      catalogUpdated: catalog.updated.length,
     },
     errorsBySource: [],
   });
@@ -134,5 +156,6 @@ export async function publishWeek(
     published: rows.length,
     catalogAdded: catalog.added.length,
     catalogSkipped: catalog.skipped.length,
+    catalogUpdated: catalog.updated.length,
   };
 }

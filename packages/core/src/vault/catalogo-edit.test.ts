@@ -2,8 +2,8 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { expect, test } from 'vitest';
 import { reviewFixtures } from '../testing/git-repo.js';
-import { parseCatalog } from '../vault/catalogo.js';
-import { editCatalogRow } from './catalog-edit.js';
+import { editCatalogRow } from './catalogo-edit.js';
+import { parseCatalog } from './catalogo.js';
 
 const text = fs
   .readFileSync(

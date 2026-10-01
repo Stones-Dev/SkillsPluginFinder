@@ -38,7 +38,7 @@ test('cada `pnpm spf …` que cita el workflow es un comando real del CLI', () =
   }
 });
 
-test('el flujo sigue el orden del Plan §6 y §7 bis: pull → sync → prepare → evaluar → collect-batch → agy → collect-batch --agent antigravity → publish → sync → commit', () => {
+test('el flujo sigue el orden del Plan §6 y §7 bis: pull → sync → prepare → evaluar → collect-batch → agy → collect-batch --agent antigravity → cross → publish → sync → commit → revisar-hallazgos', () => {
   const at = (needle: string) => antigravity.indexOf(needle);
   const order = [
     'git pull',
@@ -48,9 +48,12 @@ test('el flujo sigue el orden del Plan §6 y §7 bis: pull → sync → prepare 
     'pnpm spf collect-batch --week <semana>`',
     'scripts/agy-eval.ps1 -Week <semana>',
     'pnpm spf collect-batch --week <semana> --agent antigravity`',
+    'pnpm spf cross --week <semana>',
     'pnpm spf publish --week <semana>',
     '**Sincronizar otra vez.**',
     'git commit -m "feat(evaluate): semana <semana>"',
+    '12. **Revisar los hallazgos.**',
+    '13. **Resumen para Stones.**',
   ];
   const positions = order.map(at);
   expect(positions.every((p) => p >= 0)).toBe(true);
@@ -70,10 +73,12 @@ test('las reglas duras del proyecto están escritas para el evaluador', () => {
   expect(antigravity).toContain('`usoBrowser: true`');
 });
 
-test('el workflow no promete nada que el CLI no haga: --week y --force existen', () => {
+test('el workflow no promete nada que el CLI no haga: --week y --force existen, y el --force queda para cruzar-evaluaciones', () => {
   expect(cli).toContain("'-w, --week <week>'");
   expect(cli).toContain("'--force'");
-  expect(antigravity).toContain('`--force`');
+  // un informe ya revisado no se sobrescribe desde aquí: se remite al workflow que sabe cuándo forzar
+  expect(antigravity).not.toContain('--force');
+  expect(antigravity).toContain('el workflow `cruzar-evaluaciones`');
 });
 
 test('el paso de Antigravity cita opciones del CLI y códigos de salida del wrapper que existen de verdad', () => {
