@@ -59,7 +59,10 @@ program
   .description(
     'Mitad nube: recoge, filtra y enriquece candidatos en data/candidates/YYYY-Www.json',
   )
-  .option('-s, --source <source>', 'Fuente a recoger (solo github-search)')
+  .option(
+    '-s, --source <source>',
+    'Fuente a recoger: github-search o awesome-list (sin la opción, todas)',
+  )
   .option(
     '--dry-run',
     'Ensayo: hace la búsqueda, el dedupe (solo lectura), las reglas y el tope y cuenta lo que pasaría, sin escribir data/candidates, seen.sqlite, runs ni caché, y sin enriquecer',
@@ -87,6 +90,11 @@ program
           `  tras dedupe: ${s.afterDedupe} · tras reglas: ${s.afterRules} (${s.afterDedupe - s.afterRules} descartados)`,
           `  seleccionados: ${s.selected} · diferidos por el tope: ${s.deferred} · enriquecidos: ${s.enriched}`,
           `  enrich: ${s.enrichRequests ?? 0} peticiones (${s.enrichCacheHits ?? 0} de caché)`,
+          ...(s.awesomeLists === undefined
+            ? []
+            : [
+                `  awesome-list: ${s.awesomeLists} listas · ${s.awesomeRequests ?? 0} peticiones core (${s.awesomeNotModified ?? 0} READMEs con 304) · ${s.awesomeNuevos ?? 0} enlaces nuevos → ${s.awesomeResueltos ?? 0} resueltos, ${s.awesomePendientes ?? 0} pendientes`,
+              ]),
           `  errores por fuente: ${run.errorsBySource.length}`,
           `→ ${file} (${totalCandidates} candidatos)`,
         ].join('\n'),

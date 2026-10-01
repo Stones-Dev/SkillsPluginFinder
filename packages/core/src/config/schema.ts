@@ -48,10 +48,35 @@ export const interestsSchema = z
       .default({}),
     categorias: z.record(categorySchema).default({}),
     excluir: z.array(z.string().min(1)).default([]),
+    /**
+     * Listas `awesome-*` que sigue el colector `awesome-list`: `owner/repo` de la
+     * lista → id de la categoría a la que pertenecen sus novedades. Opcional: sin el
+     * bloque, el colector no hace nada.
+     */
+    awesome_listas: z
+      .record(
+        z
+          .string()
+          .regex(
+            /^[\w.-]+\/[\w.-]+$/,
+            'se espera owner/repo, p. ej. sindresorhus/awesome',
+          ),
+        z.string().min(1),
+      )
+      .default({}),
     proyectos: z.array(z.string().min(1)).default([]),
   })
   .strict()
   .superRefine((interests, ctx) => {
+    for (const [lista, categoria] of Object.entries(interests.awesome_listas)) {
+      if (!(categoria in interests.categorias)) {
+        ctx.addIssue({
+          code: z.ZodIssueCode.custom,
+          path: ['awesome_listas', lista],
+          message: `la categoría "${categoria}" no existe en categorias`,
+        });
+      }
+    }
     // Una categoría con mínimo propio por encima del techo dejaría una consulta imposible.
     const max = interests.reglas_globales.estrellas_max;
     if (max === undefined) return;

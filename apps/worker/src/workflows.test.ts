@@ -142,7 +142,7 @@ test('collect.yml: el input source llega a spf collect por una variable de entor
 
 test('collect.yml: comprueba la cuota antes de recoger, con el mismo token y sin imprimirlo', () => {
   const quota = collectWorkflow.indexOf(
-    'pnpm spf rate-limit --min-core 400 --min-search 30',
+    'pnpm spf rate-limit --min-core 600 --min-search 30',
   );
   const collectStep = collectWorkflow.indexOf('name: Run collector pipeline');
   const commit = collectWorkflow.indexOf('name: Commit and push changes');

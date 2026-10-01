@@ -1,6 +1,6 @@
 import { z } from 'zod';
 
-export const SOURCE_IDS = ['github-search'] as const;
+export const SOURCE_IDS = ['github-search', 'awesome-list'] as const;
 
 export const KINDS = [
   'skill',
@@ -17,7 +17,8 @@ export const KINDS = [
 export const originSchema = z
   .object({
     categoria: z.string().min(1),
-    tipo: z.enum(['keyword', 'topic']),
+    /** `awesome`: salió de una lista `awesome-*`; `query` es el `owner/repo` de la lista. */
+    tipo: z.enum(['keyword', 'topic', 'awesome']),
     query: z.string().min(1),
   })
   .strict();

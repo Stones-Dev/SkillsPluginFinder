@@ -55,3 +55,29 @@ test('una categoría con estrellas_min por encima del techo se rechaza con su ru
     }).success,
   ).toBe(true);
 });
+
+test('awesome_listas es opcional y por defecto está vacío', () => {
+  expect(interestsSchema.parse({}).awesome_listas).toEqual({});
+});
+
+test('awesome_listas: owner/repo → categoría existente; lo demás se rechaza con su ruta', () => {
+  const parse = (awesome_listas: Record<string, unknown>) =>
+    interestsSchema.safeParse({
+      categorias: { rust: { nombre: 'Rust', peso: 0.7 } },
+      awesome_listas,
+    });
+
+  expect(parse({ 'rust-unofficial/awesome-rust': 'rust' }).success).toBe(true);
+
+  const unknown = parse({ 'rust-unofficial/awesome-rust': 'solana' });
+  expect(unknown.success).toBe(false);
+  expect(unknown.error?.issues[0]).toMatchObject({
+    path: ['awesome_listas', 'rust-unofficial/awesome-rust'],
+    message: 'la categoría "solana" no existe en categorias',
+  });
+
+  for (const key of ['awesome-rust', 'a/b/c', 'https://github.com/a/b', '']) {
+    expect(parse({ [key]: 'rust' }).success, key).toBe(false);
+  }
+  expect(parse({ 'rust-unofficial/awesome-rust': '' }).success).toBe(false);
+});

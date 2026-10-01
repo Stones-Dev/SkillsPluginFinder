@@ -1,0 +1,24 @@
+{
+  "repo": "unicodeveloper/awesome-nextjs",
+  "note": "READMEs grabados con GET /repos/{repo}/readme?ref=<commit> y accept application/vnd.github.raw+json el 2026-10-01",
+  "versions": {
+    "current": {
+      "commit": "e695d9896a71a22ed79133f72ca9f15e5b27dddc",
+      "committedAt": "2026-09-22T07:49:57Z",
+      "etag": "\"6c9911dcb50c084c449fc73d81f9dd43ea34917d\"",
+      "contentType": "application/vnd.github.raw+json; charset=utf-8"
+    },
+    "2026-01-30": {
+      "commit": "3c3ca1a1fd01bec975a8298b14c5dd30980bb6cb",
+      "committedAt": "2026-01-30T18:32:57Z",
+      "etag": "\"ca0f9a47d8ff3d50c7169033f4287a3b7d24b2e4\"",
+      "contentType": "application/vnd.github.raw+json; charset=utf-8"
+    },
+    "2026-09-10": {
+      "commit": "15a11fb2bf8359756ae74e637a0b151f6248afea",
+      "committedAt": "2026-09-10T05:32:38Z",
+      "etag": "\"7cb70d96ab852e8a40630c443be67ed8f77c3683\"",
+      "contentType": "application/vnd.github.raw+json; charset=utf-8"
+    }
+  }
+}

@@ -2,10 +2,19 @@ import crypto from 'node:crypto';
 import path from 'node:path';
 import pLimit from 'p-limit';
 import {
+  AWESOME_SOURCE_ID,
+  type AwesomeListReport,
+  type AwesomeResult,
+  collectFromAwesomeLists,
+  finalizeSnapshots,
+  writeAwesomeSnapshots,
+} from '../collectors/awesome.js';
+import {
   createGithubClient,
   requireToken,
 } from '../collectors/github-client.js';
 import {
+  type GithubRepo,
   SOURCE_ID,
   type SourceError,
   collectFromGithub,
@@ -16,6 +25,8 @@ import { runs } from '../db/schema.js';
 import { applyEnrichment, enrichGithubRepo } from '../enrich/github.js';
 import { type FilterRule, filterCandidates } from '../filter/index.js';
 import {
+  type Candidate,
+  type Origin,
   dedupeCandidates,
   markAsSeen,
   normalizeGithubRepo,
@@ -31,6 +42,8 @@ import { selectForEnrichment } from './quota.js';
 import { isoWeek } from './week.js';
 
 const ENRICH_CONCURRENCY = 4;
+/** Fuentes que entiende `--source`; sin él se recogen todas. */
+export const COLLECT_SOURCES = [SOURCE_ID, AWESOME_SOURCE_ID] as const;
 
 export type CollectOptions = {
   repoDir: string;
@@ -42,10 +55,11 @@ export type CollectOptions = {
   logger?: (message: string) => void;
   db?: Db;
   /**
-   * Ensayo: colector, normalize, dedupe (solo lectura), reglas y tope, con resumen,
+   * Ensayo: colectores, normalize, dedupe (solo lectura), reglas y tope, con resumen,
    * **sin escribir nada**: ni `data/candidates/`, ni `seen.sqlite`, ni `runs`, ni la
    * caché HTTP de `data/cache/`. Tampoco enriquece (gastaría ~3 peticiones `core`
-   * por repo). Sí gasta las peticiones de búsqueda.
+   * por repo). Sí gasta las peticiones de búsqueda. Única excepción: crea las
+   * instantáneas de `data/awesome/` que falten (nunca sobrescribe una existente).
    */
   dryRun?: boolean;
   /** Solo tests. */
@@ -83,6 +97,18 @@ export type DryRunSummary = {
   seenLeida: boolean;
   /** Ejemplos de lo que entraría al batch, por si se quiere mirar a ojo. */
   muestra: { name: string; categoria: string; stars: number }[];
+  /** Fuentes que se ejecutaron. */
+  fuentes: string[];
+  /** Colector `awesome-list`; ausente si no se ejecutó. */
+  awesome?: {
+    listas: AwesomeListReport[];
+    /** Peticiones `core` gastadas (READMEs y `GET /repos`). */
+    requests: number;
+    /** READMEs que contestaron 304 gracias a la ETag. */
+    notModified: number;
+    /** Instantáneas de `data/awesome/` que no existían y se han creado. */
+    snapshotsCreadas: number;
+  };
 };
 
 export type CollectSummary = {
@@ -110,11 +136,16 @@ export async function collectWeek(
   options: CollectOptions,
 ): Promise<CollectSummary | DryRunSummary> {
   const { repoDir, logger } = options;
-  if (options.source && options.source !== SOURCE_ID) {
+  if (
+    options.source &&
+    !(COLLECT_SOURCES as readonly string[]).includes(options.source)
+  ) {
     throw new Error(
-      `Fuente no soportada: ${options.source} (solo ${SOURCE_ID})`,
+      `Fuente no soportada: ${options.source} (solo ${COLLECT_SOURCES.join(', ')})`,
     );
   }
+  const wants = (source: string) =>
+    !options.source || options.source === source;
   // Antes de leer o escribir nada: sin token no se hace ningún trabajo a medias.
   const token = requireToken(options.token);
 
@@ -138,12 +169,29 @@ export async function collectWeek(
     retryBaseMs: options.retryBaseMs,
   };
 
-  const search = await collectFromGithub({
-    token,
-    interests,
-    now,
-    ...client,
-  });
+  const hasAwesome = Object.keys(interests.awesome_listas).length > 0;
+  if (options.source === AWESOME_SOURCE_ID && !hasAwesome) {
+    throw new Error(
+      'Sin listas que recoger: añade el bloque awesome_listas a Intereses.md y ejecuta "pnpm spf interests sync".',
+    );
+  }
+  const fuentes: string[] = [];
+
+  const search = wants(SOURCE_ID)
+    ? await collectFromGithub({ token, interests, now, ...client })
+    : {
+        repos: [],
+        errors: [],
+        stats: {
+          queries: 0,
+          executed: 0,
+          requests: 0,
+          cacheHits: 0,
+          rawItems: 0,
+          uniqueRepos: 0,
+        },
+      };
+  if (wants(SOURCE_ID)) fuentes.push(SOURCE_ID);
   const failedQueries = search.errors.filter((e) => e.query).length;
   if (search.stats.executed > 0 && failedQueries === search.stats.executed) {
     throw new Error(
@@ -151,7 +199,40 @@ export async function collectWeek(
     );
   }
 
-  const normalized = search.repos.map((r) =>
+  let awesome: AwesomeResult | undefined;
+  if (wants(AWESOME_SOURCE_ID) && hasAwesome) {
+    awesome = await collectFromAwesomeLists({
+      token,
+      interests,
+      now,
+      snapshotDir: path.join(repoDir, 'data', 'awesome'),
+      logger,
+      throttle: options.throttle,
+      retryBaseMs: options.retryBaseMs,
+    });
+    fuentes.push(AWESOME_SOURCE_ID);
+    if (!wants(SOURCE_ID) && awesome.lists.every((l) => l.estado === 'error')) {
+      throw new Error(
+        `Todas las listas de ${AWESOME_SOURCE_ID} fallaron (${awesome.errors[0].message}); no se escribe nada.`,
+      );
+    }
+  }
+
+  // Un repo que sale de varias fuentes es un solo candidato con todos sus orígenes.
+  const found = new Map<
+    string,
+    { repo: GithubRepo; origins: Origin[]; source: Candidate['source'] }
+  >();
+  for (const r of search.repos) {
+    found.set(r.repo.full_name.toLowerCase(), { ...r, source: SOURCE_ID });
+  }
+  for (const r of awesome?.repos ?? []) {
+    const key = r.repo.full_name.toLowerCase();
+    const existing = found.get(key);
+    if (existing) existing.origins.push(...r.origins);
+    else found.set(key, { ...r, source: AWESOME_SOURCE_ID });
+  }
+  const normalized = [...found.values()].map((r) =>
     normalizeGithubRepo(r, { interests, now }),
   );
   let fresh = normalized;
@@ -175,7 +256,19 @@ export async function collectWeek(
   );
   const { selected, deferred } = selectForEnrichment(kept, interests, now);
 
+  const deferredNames = deferred.map((d) => d.name.toLowerCase());
+
   if (options.dryRun) {
+    // Única escritura del ensayo: la instantánea que falta, para que la próxima
+    // pasada ya tenga con qué comparar. Una que existe no se toca.
+    const snapshotsCreadas = awesome
+      ? (
+          await writeAwesomeSnapshots(
+            finalizeSnapshots(awesome, deferredNames),
+            { onlyMissing: true },
+          )
+        ).length
+      : 0;
     const byRule: DryRunSummary['descartadosPorRegla'] = {};
     for (const d of descartados) byRule[d.regla] = (byRule[d.regla] ?? 0) + 1;
     const categories = new Map<
@@ -198,14 +291,21 @@ export async function collectWeek(
       stats: {
         queries: search.stats.queries,
         requests: search.stats.requests,
-        rawItems: search.stats.rawItems,
-        uniqueRepos: search.stats.uniqueRepos,
+        rawItems: search.stats.rawItems + (awesome?.stats.resueltos ?? 0),
+        uniqueRepos: found.size,
         afterDedupe: fresh.length,
         afterRules: kept.length,
         selected: selected.length,
         deferred: deferred.length,
       },
-      errorsBySource: search.errors,
+      fuentes,
+      awesome: awesome && {
+        listas: awesome.lists,
+        requests: awesome.stats.requests,
+        notModified: awesome.stats.notModified,
+        snapshotsCreadas,
+      },
+      errorsBySource: [...search.errors, ...(awesome?.errors ?? [])],
       descartadosPorRegla: byRule,
       categorias: [...categories.entries()]
         .map(([categoria, n]) => ({ categoria, ...n }))
@@ -247,19 +347,27 @@ export async function collectWeek(
     cacheHits: search.stats.cacheHits,
     enrichRequests: enrichStats.requests,
     enrichCacheHits: enrichStats.cacheHits,
-    rawItems: search.stats.rawItems,
-    uniqueRepos: search.stats.uniqueRepos,
+    rawItems: search.stats.rawItems + (awesome?.stats.resueltos ?? 0),
+    uniqueRepos: found.size,
     afterDedupe: fresh.length,
     afterRules: kept.length,
     selected: selected.length,
     deferred: deferred.length,
     enriched: enriched.length,
+    ...(awesome && {
+      awesomeLists: awesome.stats.lists,
+      awesomeRequests: awesome.stats.requests,
+      awesomeNotModified: awesome.stats.notModified,
+      awesomeNuevos: awesome.stats.nuevos,
+      awesomeResueltos: awesome.stats.resueltos,
+      awesomePendientes: awesome.stats.pendientes,
+    }),
   };
   const run: RunRecord = {
     at: now.toISOString(),
     trigger: options.trigger ?? 'manual',
     stats,
-    errorsBySource: search.errors,
+    errorsBySource: [...search.errors, ...(awesome?.errors ?? [])],
   };
 
   const merged = mergeCandidatesFile(await readCandidatesFile(repoDir, week), {
@@ -293,6 +401,12 @@ export async function collectWeek(
     errorsBySource: run.errorsBySource,
   });
 
+  // Lo último: si algo falló antes, las instantáneas siguen siendo las de la semana
+  // anterior y las novedades se vuelven a ver en la siguiente ejecución.
+  if (awesome) {
+    await writeAwesomeSnapshots(finalizeSnapshots(awesome, deferredNames));
+  }
+
   return { week, file, run, totalCandidates: merged.candidates.length };
 }
 
@@ -305,7 +419,7 @@ export function formatDryRun(r: DryRunSummary): string[] {
       .map(([rule, n]) => `${rule} ${n}`)
       .join(' · ') || 'ninguno';
   const lines = [
-    `DRY-RUN · semana ${r.week} · github-search — no se escribe nada (ni data/candidates, ni seen.sqlite, ni runs, ni caché) y no se enriquece`,
+    `DRY-RUN · semana ${r.week} · ${r.fuentes.join(' + ')} — no se escribe nada (ni data/candidates, ni seen.sqlite, ni runs, ni caché${r.awesome ? ', salvo las instantáneas de data/awesome que falten' : ''}) y no se enriquece`,
     `  ${s.queries} consultas → ${s.requests} peticiones de búsqueda → ${s.rawItems} resultados → ${s.uniqueRepos} repos únicos`,
     `  dedupe (${r.seenLeida ? 'seen.sqlite en solo lectura' : 'sin seen.sqlite: nada visto'}): ${s.afterDedupe} · tras reglas: ${s.afterRules} (${s.afterDedupe - s.afterRules} descartados: ${rules})`,
     `  entrarían al batch: ${s.selected} · diferidos por el tope: ${s.deferred} · el enrich gastaría ~${r.enrichRequestsEstimadas} peticiones core`,
@@ -319,6 +433,7 @@ export function formatDryRun(r: DryRunSummary): string[] {
   for (const e of r.errorsBySource) {
     lines.push(`    error: ${e.query ?? e.source}: ${e.message}`);
   }
+  if (r.awesome) lines.push(...formatAwesome(r.awesome));
   if (r.muestra.length > 0) {
     lines.push(
       '  primeros del batch:',
@@ -326,4 +441,20 @@ export function formatDryRun(r: DryRunSummary): string[] {
     );
   }
   return lines;
+}
+
+function formatAwesome(a: NonNullable<DryRunSummary['awesome']>): string[] {
+  const state: Record<AwesomeListReport['estado'], string> = {
+    'primera-pasada': 'primera pasada (instantánea, sin candidatos)',
+    'sin-cambios': 'sin cambios',
+    'con-cambios': 'con cambios',
+    error: 'ERROR',
+  };
+  return [
+    `  awesome-list: ${a.listas.length} listas · ${a.requests} peticiones core (${a.notModified} READMEs con 304) · instantáneas creadas: ${a.snapshotsCreadas}`,
+    ...a.listas.map(
+      (l) =>
+        `    ${l.repo.padEnd(38)} ${state[l.estado]}${l.enlaces === null ? '' : ` · ${l.enlaces} enlaces`}${l.estado === 'con-cambios' ? ` · +${l.nuevos} -${l.quitados} (resueltos ${l.resueltos}, desaparecidos ${l.desaparecidos}, pendientes ${l.pendientes})` : ''} → ${l.categoria}`,
+    ),
+  ];
 }

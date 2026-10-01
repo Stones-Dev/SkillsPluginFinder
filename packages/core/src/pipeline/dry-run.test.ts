@@ -1,4 +1,3 @@
-import crypto from 'node:crypto';
 import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
@@ -14,6 +13,7 @@ import {
 } from 'vitest';
 import { closeDatabases, getDb, getReadonlyDb } from '../db/index.js';
 import { runs, seen } from '../db/schema.js';
+import { treeSnapshot as snapshot } from '../testing/tree.js';
 import { parseCatalog } from '../vault/catalogo.js';
 import { collectWeek, formatDryRun } from './collect.js';
 
@@ -104,28 +104,6 @@ const dryRun = (over: Partial<Parameters<typeof collectWeek>[0]> = {}) =>
   collectWeek({ ...options(over), dryRun: true });
 const collect = (over: Partial<Parameters<typeof collectWeek>[0]> = {}) =>
   collectWeek(options(over));
-
-/** Cada fichero de `dir` con su tamaño, su fecha de modificación y su SHA-256. */
-function snapshot(dir: string): Record<string, string> {
-  const out: Record<string, string> = {};
-  const walk = (current: string) => {
-    for (const entry of fs.readdirSync(current, { withFileTypes: true })) {
-      const file = path.join(current, entry.name);
-      if (entry.isDirectory()) {
-        walk(file);
-        continue;
-      }
-      const stat = fs.statSync(file);
-      const sha = crypto
-        .createHash('sha256')
-        .update(fs.readFileSync(file))
-        .digest('hex');
-      out[path.relative(dir, file)] = `${stat.size}|${stat.mtimeMs}|${sha}`;
-    }
-  };
-  if (fs.existsSync(dir)) walk(dir);
-  return out;
-}
 
 test('sin data/ en absoluto: el ensayo no crea ni el directorio, ni la base, ni la caché', async () => {
   const before = snapshot(repoDir);

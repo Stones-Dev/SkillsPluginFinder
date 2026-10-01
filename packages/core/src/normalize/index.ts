@@ -91,9 +91,14 @@ export function suggestCategory(
   };
 }
 
-/** Repositorio de la API de búsqueda de GitHub → `Candidate` (Plan §4). */
+/** Repositorio de la API de GitHub (búsqueda o `GET /repos`) → `Candidate` (Plan §4). */
 export function normalizeGithubRepo(
-  input: { repo: GithubRepo; origins: Origin[] },
+  input: {
+    repo: GithubRepo;
+    origins: Origin[];
+    /** Colector del que salió; por defecto `github-search`. */
+    source?: Candidate['source'];
+  },
   ctx: { interests: Interests; now: Date },
 ): Candidate {
   const { repo, origins } = input;
@@ -108,7 +113,7 @@ export function normalizeGithubRepo(
     id: `github:${repo.full_name.toLowerCase()}`,
     name: repo.full_name,
     url: repo.html_url,
-    source: 'github-search',
+    source: input.source ?? 'github-search',
     kind: classifyKind({ name: repo.full_name, description, topics }),
     description,
     language: repo.language ?? undefined,

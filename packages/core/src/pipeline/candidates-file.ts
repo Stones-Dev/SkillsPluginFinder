@@ -50,6 +50,16 @@ export const runStatsSchema = z
     selected: count,
     deferred: count,
     enriched: count,
+    /** Colector `awesome-list` (ausentes si no se ejecutó); las peticiones son del cubo `core`. */
+    awesomeLists: count.optional(),
+    awesomeRequests: count.optional(),
+    /** READMEs que contestaron 304 gracias a la ETag. */
+    awesomeNotModified: count.optional(),
+    /** Enlaces nuevos respecto a la instantánea anterior. */
+    awesomeNuevos: count.optional(),
+    awesomeResueltos: count.optional(),
+    /** Enlaces que vuelven la próxima semana (tope por lista o error transitorio). */
+    awesomePendientes: count.optional(),
   })
   .strict();
 

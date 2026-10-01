@@ -4,7 +4,7 @@ Sistema semanal que rastrea GitHub en busca de skills, plugins, servidores MCP, 
 
 Funciona en tres tramos (detalle en `Plan.md` del vault):
 
-- **Recogida** (`spf collect`): determinista, sin IA y sin acceso al vault. Busca en GitHub, filtra por reglas, enriquece lo que entra en el tope y escribe `data/candidates/YYYY-Www.json`. Puede correr en GitHub Actions.
+- **Recogida** (`spf collect`): determinista, sin IA y sin acceso al vault. Busca en GitHub (`github-search`) y compara cada semana los README de las listas `awesome-*` (`awesome-list`), filtra por reglas, enriquece lo que entra en el tope y escribe `data/candidates/YYYY-Www.json`. Puede correr en GitHub Actions.
 - **Evaluación** (`spf prepare`, `collect-batch`, `cross`, `publish`): en local, la hacen **dos agentes** sobre el mismo `data/batches/<semana>/batch.md`: Claude Code (`scoring.json`) y Antigravity por su CLI `agy` (`scoring-antigravity.json`). `spf cross` los cruza (media; disputa si difieren en 3 o más; confianza alta si los dos llegan a 7) y `publish` escribe el informe y las filas de `Catalogo.md` en el vault.
 - **Revisión** (`spf review`): por cada hallazgo en `candidato`, inventario automático del clon y veredicto `probado`, `descartado` o `adoptado`. El agente puede adoptar sin confirmación, **salvo** que haya una señal de supply-chain (scripts de instalación, registro propio, MCP remoto, repo de menos de 30 días con un solo mantenedor, privilegios, o una disputa entre los dos evaluadores): entonces queda en `probado` y se avisa en la nota diaria. Lo adoptado va a `03-Conocimiento/` y a `## Mejoras propuestas` de la nota del proyecto afectado.
 
@@ -30,7 +30,7 @@ Se ejecutan con `pnpm spf <comando>` (compila antes).
 | Comando | Qué hace |
 |---|---|
 | `week` | Imprime la semana ISO de hoy (`YYYY-Www`, Europe/Madrid). |
-| `collect [--source github-search] [--dry-run]` | Mitad nube: recoge, filtra y enriquece. Con `--dry-run` hace el ensayo —búsqueda, dedupe (`seen.sqlite` en solo lectura), reglas y tope— y cuenta lo que pasaría **sin escribir nada** (ni `data/candidates/`, ni `seen.sqlite`, ni `runs`, ni la caché de `data/cache/`) y sin enriquecer; sí gasta las ~109 búsquedas (≈ 4 min). Es la forma segura de probar un colector o un cambio de `Intereses.md` antes del lunes. |
+| `collect [--source github-search|awesome-list] [--dry-run]` | Mitad nube: recoge, filtra y enriquece; sin `--source`, todas las fuentes. Con `--dry-run` hace el ensayo —colectores, dedupe (`seen.sqlite` en solo lectura), reglas y tope— y cuenta lo que pasaría **sin escribir nada** (ni `data/candidates/`, ni `seen.sqlite`, ni `runs`, ni la caché de `data/cache/`) y sin enriquecer; sí gasta las ~109 búsquedas (≈ 4 min). **Única excepción:** crea las instantáneas de `data/awesome/` que falten (nunca sobrescribe una existente; ver abajo). Es la forma segura de probar un colector o un cambio de `Intereses.md` antes del lunes. |
 | `rate-limit [--min-core N] [--min-search N]` | Consulta los límites de la API de GitHub del token (`GET /rate_limit`, no gasta cuota). Con los mínimos, sale con error si no alcanzan. |
 | `prepare --week <semana>` | Genera `data/batches/<semana>/batch.md`. |
 | `collect-batch --week <semana> [--agent antigravity] [--reason <texto>]` | Valida el scoring del evaluador y guarda los scorings. Con `--agent antigravity` valida `scoring-antigravity.json` y un fallo **no es fatal**: se anota en `runs` (con `--reason`, la causa del wrapper de `agy`) y la semana sigue solo con Claude Code. |
@@ -62,13 +62,27 @@ Después de que el cron de `collect.yml` deje la recogida del lunes, el equipo d
 - **El flujo commitea pero no hace push.** Haz `git push` tras cada lunes: el commit local choca con el del bot de Actions de la semana siguiente (`data/seen.sqlite` es binario y no se puede fusionar). Si `git pull --ff-only` no es fast-forward, el flujo aborta (código 10) y lo deja en el log.
 - **A mano:** `claude -p "/evaluar-semana"` (o `/evaluar-semana` dentro de una sesión). Para repetir solo el cruce de una semana: `/cruzar-evaluaciones <semana>`; solo la revisión: `/revisar-hallazgos`.
 
+## Listas `awesome-*` (`awesome-list`)
+
+Las listas que sigue el colector van en el bloque opcional `awesome_listas` de `Intereses.md` (`owner/repo` de la lista → categoría de sus novedades; la categoría tiene que existir). Cada semana, por lista:
+
+1. `GET /repos/{owner}/{repo}/readme` en formato `raw` con `If-None-Match` (la ETag de la semana anterior). Un `304` cuesta **0** peticiones; una respuesta `200` cuesta 1 (medido con las cabeceras `x-ratelimit-*`).
+2. Se extraen los enlaces `github.com/<owner>/<repo>` del README (nada más se lee de él: es contenido no confiable) y se comparan con la instantánea `data/awesome/<owner>-<repo>.json`.
+3. Los enlaces nuevos se resuelven con `GET /repos/{owner}/{repo}` (como mucho 100 por lista y semana; el resto vuelve la siguiente) y entran por el mismo normalize, dedupe, reglas y tope que lo que sale de la búsqueda. Un repo que sale de las dos fuentes es un solo candidato con los dos orígenes.
+
+- **Primera pasada** (sin instantánea): solo se anota qué enlaces hay; no hay candidatos.
+- **Nada se pierde:** la instantánea se escribe al final de la recogida, así que un fallo a mitad deja las novedades para la siguiente. Los candidatos que el tope `enrich_max` difiere, los enlaces por encima de los 100 y los que fallan por un error transitorio no entran en la instantánea (y su ETag se anula) y vuelven la semana siguiente; un repo que ya no existe (404/410/451) se da por visto.
+- **`--dry-run` crea la instantánea que falta y nunca sobrescribe una existente**: si lo hiciera, el ensayo se comería las novedades que debe ver la recogida real. Es la única escritura que hace.
+- Una instantánea corrupta, o de otra lista con el mismo nombre de fichero, no se sobrescribe: la lista da error y las demás siguen.
+- Las instantáneas van al repo (`data/awesome/`): sin ellas, la recogida de Actions sería siempre una primera pasada.
+
 ## GitHub Actions (`collect.yml`)
 
-El workflow `collect` ejecuta solo la mitad nube: el cron corre los lunes a las 05:00 UTC y también se puede lanzar a mano (*Actions → collect → Run workflow*), con un input opcional `source` (hoy solo `github-search`; vacío recoge todo). Al terminar hace commit de `data/` con el usuario `spf-bot`.
+El workflow `collect` ejecuta solo la mitad nube: el cron corre los lunes a las 05:00 UTC y también se puede lanzar a mano (*Actions → collect → Run workflow*), con un input opcional `source` (`github-search` o `awesome-list`; vacío recoge todo). Al terminar hace commit de `data/` con el usuario `spf-bot`.
 
 **Estado: escrito y validado con `actionlint`, pero sin ejecutar todavía en GitHub.**
 
-Antes de recoger, un paso ejecuta `pnpm spf rate-limit --min-core 400 --min-search 30` y deja en el log los límites del token (nunca el token). Si no alcanzan, el job falla antes de gastar nada.
+Antes de recoger, un paso ejecuta `pnpm spf rate-limit --min-core 600 --min-search 30` y deja en el log los límites del token (nunca el token). Si no alcanzan, el job falla antes de gastar nada.
 
 ### Secrets
 
