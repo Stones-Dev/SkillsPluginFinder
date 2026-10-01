@@ -1,0 +1,52 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-settings.json",
+  "permissions": {
+    "allow": [
+      "Read",
+      "Glob",
+      "Grep",
+      "Edit",
+      "Write",
+      "Bash(pnpm spf:*)",
+      "Bash(pnpm -s spf:*)",
+      "Bash(powershell -NoProfile -File scripts/agy-eval.ps1:*)",
+      "Bash(powershell.exe -NoProfile -File scripts/agy-eval.ps1:*)",
+      "Bash(git pull --ff-only)",
+      "Bash(git status:*)",
+      "Bash(git diff:*)",
+      "Bash(git log:*)",
+      "Bash(git add data interests.yaml catalog.json)",
+      "Bash(git commit -m:*)",
+      "WebFetch(domain:github.com)",
+      "WebFetch(domain:raw.githubusercontent.com)",
+      "WebFetch(domain:api.github.com)",
+      "WebFetch(domain:www.npmjs.com)",
+      "WebFetch(domain:registry.npmjs.org)",
+      "mcp__obsidian__vault_read",
+      "mcp__obsidian__vault_list",
+      "mcp__obsidian__search_simple",
+      "mcp__obsidian__search_query",
+      "mcp__obsidian__vault_get_document_map"
+    ],
+    "deny": [
+      "Bash(git push:*)",
+      "Bash(git tag:*)",
+      "Bash(git reset:*)",
+      "Bash(git checkout:*)",
+      "Bash(git clean:*)",
+      "Bash(git clone:*)",
+      "Bash(rm:*)",
+      "Bash(curl:*)",
+      "Bash(wget:*)",
+      "Bash(npm:*)",
+      "Bash(npx:*)",
+      "Bash(pnpm install:*)",
+      "Bash(pnpm add:*)",
+      "Bash(pnpm dlx:*)",
+      "Bash(pip:*)",
+      "Read(./.env)",
+      "Read(./.env.*)",
+      "Edit(./.env)"
+    ]
+  }
+}

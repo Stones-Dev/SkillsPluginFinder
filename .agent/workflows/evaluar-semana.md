@@ -15,7 +15,7 @@ Semana: `$ARGUMENTS` en Claude Code, o la que indique Stones. Si no hay ninguna,
 
 ## Pasos
 
-1. **Traer los candidatos.** `git pull`. Si no existe `data/candidates/<semana>.json`, la recogida no se ha hecho: díselo a Stones (`pnpm spf collect` necesita `GITHUB_TOKEN`) y para aquí.
+1. **Traer los candidatos.** `git pull --ff-only`. Si no existe `data/candidates/<semana>.json`, la recogida no se ha hecho: díselo a Stones (`pnpm spf collect` necesita `GITHUB_TOKEN`) y para aquí.
 2. **Sincronizar intereses.** `pnpm spf interests sync`. Si aborta porque han cambiado a la vez `Intereses.md` e `interests.yaml`, para y pregunta a Stones cuál vale; no elijas tú.
 3. **Preparar el batch.** `pnpm spf prepare --week <semana>` escribe `data/batches/<semana>/batch.md`.
 4. **Leer el batch entero.** Instrucciones, rúbrica, formato de salida, `<proyectos>`, `<ya_catalogado>` y las fichas.

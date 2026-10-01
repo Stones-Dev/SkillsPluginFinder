@@ -34,7 +34,7 @@ Argumento: `$ARGUMENTS` en Claude Code. Puede ser un id (`github:owner/repo`, el
    3. **Añadir la mejora propuesta** a la sección `## Mejoras propuestas` de la nota índice de cada proyecto afectado (`02-Proyectos/<Proyecto>/<Proyecto>.md`), una línea por proyecto: `- [ ] YYYY-Www · [[nota]] — qué aporta, dónde encaja, esfuerzo. Origen: [[Informe YYYY-Www]]`. Si la sección no existe, créala justo antes de `## Notas relacionadas` (o al final si no la hay). No dupliques una línea que ya esté.
    4. Si un proyecto afectado **no tiene nota índice** en el vault, no la crees: salta su entrada y añade una línea a «Bucles abiertos» de la nota diaria de hoy (`01-Diario/YYYY-MM-DD.md`; si no existe, créala desde `99-Meta/Plantillas/Plantilla Diario.md`): `- [[SkillsPluginFinder]]: <id> adoptado, pero <Proyecto> no tiene nota índice en el vault; sin entrada en «Mejoras propuestas».`
 8. **Sincronizar.** `pnpm spf interests sync`: exporta `Catalogo.md` a `catalog.json`, de modo que la próxima recogida excluya lo adoptado y descartado. Comprueba que `data/review/` queda vacío.
-9. **Commit.** `git add data catalog.json interests.yaml` y `git commit -m "chore(review): revisión de hallazgos <fecha>"`. Enseña `git status`; no hagas push.
+9. **Commit.** `git add data interests.yaml catalog.json` y `git commit -m "chore(review): revisión de hallazgos <fecha>"`. Enseña `git status`; no hagas push.
 10. **Resumen para Stones.** Por hallazgo: id, estado escrito y por qué; las señales y los bloqueos de la puerta; las notas creadas o ampliadas; las entradas añadidas por proyecto y lo que se saltó; y la salida de cada comando.
 
 ## Cómo decidir

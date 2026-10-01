@@ -14,6 +14,7 @@ import {
   formatPrepare,
   formatRateLimits,
   formatReviewList,
+  formatStatus,
   isoWeek,
   parseReviewEstado,
   parseSignalType,
@@ -23,6 +24,7 @@ import {
   reviewApply,
   reviewList,
   reviewPrepare,
+  status,
 } from '@spf/core';
 import { Command, InvalidArgumentError } from 'commander';
 
@@ -322,6 +324,24 @@ program
       if (outcomes.some((o) => !o.ok)) process.exit(1);
     } catch (err) {
       fail('review', err);
+    }
+  });
+
+program
+  .command('status')
+  .description(
+    'Estado del flujo semanal de una semana. Sale con 0 si está cerrada, 1 si quedan pasos y 2 si no hay recogida (lo usa el reintento de las 12:00)',
+  )
+  .requiredOption(...weekOption)
+  .action(async (options) => {
+    try {
+      const result = await status(options.week);
+      closeDatabases();
+      console.log(formatStatus(result).join('\n'));
+      if (result.nothingToEvaluate) process.exit(2);
+      if (!result.complete) process.exit(1);
+    } catch (err) {
+      fail('status', err);
     }
   });
 

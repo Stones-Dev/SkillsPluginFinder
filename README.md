@@ -1,15 +1,16 @@
 # SkillsPluginFinder
 
-Sistema semanal que rastrea GitHub en busca de skills, plugins, servidores MCP, agent-skills y librerías útiles para los proyectos de Stones, los puntúa contra una lista de intereses y deja un informe en el vault de Obsidian. El humano decide qué se prueba; el sistema **nunca instala, clona ni ejecuta** nada de lo que encuentra.
+Sistema semanal que rastrea GitHub en busca de skills, plugins, servidores MCP, agent-skills y librerías útiles para los proyectos de Stones, los puntúa contra una lista de intereses, deja un informe en el vault de Obsidian y revisa los mejores hallazgos. **Nunca instala nada ni ejecuta código de lo que encuentra**: la recogida y la evaluación solo leen metadatos y READMEs, y la revisión hace como mucho un clon superficial en solo lectura (sin hooks, sin submódulos, sin `install`) en `data/review/`, que nunca entra en git ni en los tests. Lo que se adopta con la revisión es una propuesta escrita; integrarla en un proyecto es trabajo de la sesión de ese proyecto (`Constitution.md` §1 del vault).
 
-Funciona en dos mitades (detalle en `Plan.md` del vault):
+Funciona en tres tramos (detalle en `Plan.md` del vault):
 
 - **Recogida** (`spf collect`): determinista, sin IA y sin acceso al vault. Busca en GitHub, filtra por reglas, enriquece lo que entra en el tope y escribe `data/candidates/YYYY-Www.json`. Puede correr en GitHub Actions.
-- **Evaluación** (`spf prepare`, `collect-batch`, `publish`): en local, la hace un agente (Claude Code o Antigravity) leyendo `data/batches/<semana>/batch.md`; escribe el informe y las filas de `Catalogo.md` en el vault.
+- **Evaluación** (`spf prepare`, `collect-batch`, `cross`, `publish`): en local, la hacen **dos agentes** sobre el mismo `data/batches/<semana>/batch.md`: Claude Code (`scoring.json`) y Antigravity por su CLI `agy` (`scoring-antigravity.json`). `spf cross` los cruza (media; disputa si difieren en 3 o más; confianza alta si los dos llegan a 7) y `publish` escribe el informe y las filas de `Catalogo.md` en el vault.
+- **Revisión** (`spf review`): por cada hallazgo en `candidato`, inventario automático del clon y veredicto `probado`, `descartado` o `adoptado`. El agente puede adoptar sin confirmación, **salvo** que haya una señal de supply-chain (scripts de instalación, registro propio, MCP remoto, repo de menos de 30 días con un solo mantenedor, privilegios, o una disputa entre los dos evaluadores): entonces queda en `probado` y se avisa en la nota diaria. Lo adoptado va a `03-Conocimiento/` y a `## Mejoras propuestas` de la nota del proyecto afectado.
 
 ## Requisitos
 
-Node ≥ 22 y pnpm (la versión fijada está en `packageManager`). Después, `pnpm install`.
+Node ≥ 22 y pnpm (la versión fijada está en `packageManager`). Después, `pnpm install`. Para el flujo semanal local (más abajo) también hacen falta Git y las CLI de Claude Code (`claude`) y Antigravity (`agy`), con la sesión iniciada en las dos.
 
 ## Configuración (`.env`)
 
@@ -32,11 +33,32 @@ Se ejecutan con `pnpm spf <comando>` (compila antes).
 | `collect [--source github-search]` | Mitad nube: recoge, filtra y enriquece. |
 | `rate-limit [--min-core N] [--min-search N]` | Consulta los límites de la API de GitHub del token (`GET /rate_limit`, no gasta cuota). Con los mínimos, sale con error si no alcanzan. |
 | `prepare --week <semana>` | Genera `data/batches/<semana>/batch.md`. |
-| `collect-batch --week <semana>` | Valida el `scoring.json` del evaluador y guarda los scorings. |
-| `publish --week <semana> [--force]` | Escribe `Informes/<semana>.md` y añade filas `candidato` a `Catalogo.md`. No sobrescribe un informe con `revisado: true` sin `--force`. |
+| `collect-batch --week <semana> [--agent antigravity] [--reason <texto>]` | Valida el scoring del evaluador y guarda los scorings. Con `--agent antigravity` valida `scoring-antigravity.json` y un fallo **no es fatal**: se anota en `runs` (con `--reason`, la causa del wrapper de `agy`) y la semana sigue solo con Claude Code. |
+| `cross --week <semana>` | Cruza las dos evaluaciones y escribe `data/batches/<semana>/cruce.json`. Dice si el cruce cambia el informe. |
+| `publish --week <semana> [--force]` | Escribe `Informes/<semana>.md` (con el score cruzado, si hay cruce) y añade filas `candidato` a `Catalogo.md`; las filas `candidato` ya existentes de esa semana se ponen al día con el score y la marca del cruce. No sobrescribe un informe con `revisado: true` sin `--force`. |
+| `review --list` | Filas `candidato` de `Catalogo.md` con id, categoría, score, proyecto afectado y URL. |
+| `review --prepare <id> \| --week <semana>` | Clon superficial en solo lectura en `data/review/<owner>__<repo>/`, inventario de supply-chain y `review.md` + `review.json`. |
+| `review --apply <id> --estado probado\|descartado\|adoptado --nota "…" [--senal <tipo…>]` | Escribe el estado en `Catalogo.md` (edita solo esa línea). `adoptado` se rechaza ante cualquier señal de supply-chain: escribe `probado`, avisa en la nota diaria y sale con código 1. Borra el clon. |
+| `status --week <semana>` | Qué pasos del flujo semanal están hechos. Sale con 0 si la semana está cerrada, 1 si quedan pasos y 2 si no hay recogida. |
 | `interests sync` | Sincroniza `Intereses.md` (vault) con `interests.yaml` y exporta `Catalogo.md` a `catalog.json`. |
 
-El flujo de evaluación semanal está en `.claude/commands/evaluar-semana.md` (y su copia para Antigravity en `.agent/workflows/`).
+Los flujos de los agentes están en `.claude/commands/` (y su copia para Antigravity en `.agent/workflows/`): `evaluar-semana` (encadena todo lo de abajo), `cruzar-evaluaciones` y `revisar-hallazgos`.
+
+## Flujo semanal automático (local)
+
+Después de que el cron de `collect.yml` deje la recogida del lunes, el equipo de Stones hace el resto sin supervisión con dos tareas del Programador de tareas de Windows:
+
+| Tarea | Cuándo | Qué hace |
+|---|---|---|
+| `SPF - evaluar semana (lunes 09:00)` | lunes 09:00 | `git pull --ff-only` y `claude -p "/evaluar-semana <semana>"`: evalúa → `agy` evalúa lo mismo (`scripts/agy-eval.ps1`) → cruce → informe → revisión de hallazgos. |
+| `SPF - reintento (lunes 12:00)` | lunes 12:00 | Lo mismo, pero **solo** si `pnpm spf status` dice que la semana no está cerrada (la primera pasada se quedó a medias). |
+
+- **Registrarlas, una vez:** `powershell -NoProfile -File scripts/schedule-windows.ps1` (con `-WhatIf` enseña qué haría sin registrar nada; con `-Unregister` las quita; `-WakeToRun` despierta el equipo). Solo se ejecutan con la sesión iniciada: el vault está en Proton Drive y `claude` usa tu inicio de sesión. `-StartWhenAvailable` las lanza al volver si el equipo estaba apagado.
+- **Permisos:** `.claude/settings.weekly.json` (lo pasa `scripts/run-weekly.ps1` con `--settings`) es una allowlist concreta de órdenes `pnpm spf`, git de lectura y commit, `agy-eval.ps1`, lectura y escritura de ficheros y `WebFetch` de unos pocos dominios de lectura; deniega `git push`, `git tag`, `rm`, `curl`, `npm`/`npx` y `.env`. Lo que no esté en la lista falla en vez de ejecutarse; **no se usa `--dangerously-skip-permissions`**. Afecta solo a este flujo, no a tus sesiones interactivas en el repo.
+- **Antigravity (`agy`):** `scripts/agy-eval.ps1` lo lanza con `--mode accept-edits --sandbox` (escribe ficheros sin pedir permiso, pero aborta si intenta usar la terminal), 40 minutos como máximo, y compara el estado del repo, `.env` y las notas `Catalogo.md`/`Intereses.md` antes y después: si cambia algo más que su fichero de salida, sale con 5 sin revertir y el flujo se detiene para que lo mires. Si falla por cualquier otro motivo, la semana sigue con la evaluación de Claude Code.
+- **Logs:** `data/logs/weekly-<modo>-<fecha>.log` y `.claude.out.txt`/`.err.txt` (ignorados por git).
+- **El flujo commitea pero no hace push.** Haz `git push` tras cada lunes: el commit local choca con el del bot de Actions de la semana siguiente (`data/seen.sqlite` es binario y no se puede fusionar). Si `git pull --ff-only` no es fast-forward, el flujo aborta (código 10) y lo deja en el log.
+- **A mano:** `claude -p "/evaluar-semana"` (o `/evaluar-semana` dentro de una sesión). Para repetir solo el cruce de una semana: `/cruzar-evaluaciones <semana>`; solo la revisión: `/revisar-hallazgos`.
 
 ## GitHub Actions (`collect.yml`)
 

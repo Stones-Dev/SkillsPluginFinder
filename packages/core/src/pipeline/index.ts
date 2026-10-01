@@ -13,6 +13,7 @@ import {
   listForReview,
   prepareReview,
 } from '../review/index.js';
+import { weekStatus } from '../status/index.js';
 import { syncInterests as vaultSyncInterests } from '../vault/index.js';
 import { collectWeek } from './collect.js';
 
@@ -88,6 +89,11 @@ export function reviewApply(
     vaultDir: vaultPath(),
     ...options,
   });
+}
+
+/** `spf status --week`: qué pasos del flujo semanal están hechos. */
+export function status(week: string) {
+  return weekStatus({ repoDir: repoRoot(), vaultDir: vaultPath(), week });
 }
 
 export async function pipelineSyncInterests() {
