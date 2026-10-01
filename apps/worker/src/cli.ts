@@ -6,10 +6,12 @@ import {
   collectScorings,
   fetchRateLimits,
   formatRateLimits,
+  formatReviewList,
   isoWeek,
   pipelineSyncInterests,
   prepare,
   publish,
+  reviewList,
 } from '@spf/core';
 import { Command, InvalidArgumentError } from 'commander';
 
@@ -185,6 +187,26 @@ program
       );
     } catch (err) {
       fail('publish', err);
+    }
+  });
+
+program
+  .command('review')
+  .description(
+    'Revisión de los hallazgos en estado candidato (solo lectura de lo ajeno)',
+  )
+  .option(
+    '--list',
+    'Lista las filas candidato de Catalogo.md con su categoría, score, proyecto afectado y URL',
+  )
+  .action(async (options) => {
+    try {
+      if (!options.list) {
+        throw new Error('indica una acción: --list');
+      }
+      console.log(formatReviewList(await reviewList()).join('\n'));
+    } catch (err) {
+      fail('review', err);
     }
   });
 

@@ -11,4 +11,5 @@ export * from './filter/index.js';
 export * from './normalize/index.js';
 export * from './batch/index.js';
 export * from './publish/index.js';
+export * from './review/index.js';
 export * from './pipeline/index.js';
