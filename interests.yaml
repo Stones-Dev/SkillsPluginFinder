@@ -77,6 +77,17 @@ excluir:
   - anthropics/skills            # ya conocido; se sigue por su changelog, no como hallazgo
   - "*/awesome-*"                # las listas son fuentes, no hallazgos
 
+awesome_listas:                  # colector awesome-list: lista -> categoría de sus novedades
+  hesreallyhim/awesome-claude-code: claude-skills
+  punkpeye/awesome-mcp-servers: mcp-servers
+  wong2/awesome-mcp-servers: mcp-servers
+  unicodeveloper/awesome-nextjs: nextjs-react
+  brillout/awesome-react-components: nextjs-react
+  rust-unofficial/awesome-rust: rust
+  StockpileLabs/awesome-solana-oss: solana   # avareum/awesome-solana (Fuentes.md) no recibe commits desde 2023-08
+  quozd/awesome-dotnet: dotnet
+  thangchung/awesome-dotnet-core: dotnet
+
 proyectos:
   - CRMDecoversia — CRM comercial, Laravel 11 backend + Node/Next.js frontend, JWT, colas, exports
   - AgentJobFinder — agente Python 3.12 (httpx, sqlmodel, apscheduler) + tracker FastAPI/Jinja2, redacción vía Claude Code
