@@ -46,10 +46,19 @@ describe.each([
 });
 
 test('schedule-windows.ps1 registra las dos tareas del lunes, con las condiciones acordadas, y se puede deshacer', () => {
-  expect(scheduler).toContain('"$TaskPrefix - evaluar semana (lunes 09:00)"');
+  // la hora va como 09h00 en el NOMBRE: con ':' Register-ScheduledTask falla con 0x80070057
+  expect(scheduler).toContain('"$TaskPrefix - evaluar semana (lunes 09h00)"');
   expect(scheduler).toContain("Mode = 'first'; At = '09:00'");
-  expect(scheduler).toContain('"$TaskPrefix - reintento (lunes 12:00)"');
+  expect(scheduler).toContain('"$TaskPrefix - reintento (lunes 12h00)"');
   expect(scheduler).toContain("Mode = 'retry'; At = '12:00'");
+  expect(scheduler).toContain("$invalidInName = '[\\\\/:*?\"<>|]'");
+  // falla de verdad: -ErrorAction Stop, comprobación con Get-ScheduledTask/Info y salida 1
+  expect(scheduler).toContain('-Force -ErrorAction Stop');
+  expect(scheduler).toContain('Get-ScheduledTask -TaskName $t.Name');
+  expect(scheduler).toContain('Get-ScheduledTaskInfo');
+  expect(scheduler).toContain('exit 1');
+  expect(scheduler).toContain('Registrada y comprobada');
+  expect(scheduler).not.toMatch(/Write-Host "Registrada: /);
   expect(scheduler).toContain('-Weekly -DaysOfWeek Monday');
   expect(scheduler).toContain('run-weekly.ps1');
   expect(scheduler).toContain('-LogonType Interactive'); // Proton Drive solo está montado con la sesión iniciada
@@ -76,7 +85,141 @@ test('run-weekly.ps1 lanza claude -p /evaluar-semana con la allowlist, el vault 
   // el reintento decide con `spf status`
   expect(runner).toContain("'status', '--week', $Week");
   expect(runner).toContain('data\\logs');
+  // solo lunes (hora de Madrid), y la guarda va antes de tocar el vault, git, pnpm o claude
+  expect(runner).toContain("$madrid.DayOfWeek -ne 'Monday'");
+  expect(runner).toContain("'Romance Standard Time'");
+  const guard = runner.indexOf("$madrid.DayOfWeek -ne 'Monday'");
+  for (const later of [
+    "'pull', '--ff-only'",
+    "'status', '--week', $Week",
+    '$vaultPath = ',
+    'Start-Process',
+  ]) {
+    expect(runner.indexOf(later), later).toBeGreaterThan(guard);
+  }
 });
+
+// Pruebas REALES del registrador: crean tareas con un prefijo de prueba en el Programador de tareas
+// del usuario (sin administrador) y las eliminan siempre al terminar.
+describe.skipIf(!isWindows)(
+  'scripts/schedule-windows.ps1 contra el Programador de tareas',
+  () => {
+    const schedule = path.join(root, 'scripts', 'schedule-windows.ps1');
+    const prefix = `SPFTEST${process.pid}`;
+    const powershell = (command: string) =>
+      spawnSync(
+        'powershell.exe',
+        ['-NoProfile', '-ExecutionPolicy', 'Bypass', '-Command', command],
+        {
+          encoding: 'utf8',
+          timeout: 60_000,
+        },
+      );
+    const listTasks = () =>
+      powershell(
+        `Get-ScheduledTask -TaskName '${prefix}*' -ErrorAction SilentlyContinue | ForEach-Object { $_.TaskName }`,
+      )
+        .stdout.split(/\r?\n/)
+        .map((l) => l.trim())
+        .filter(Boolean);
+    const runSchedule = (...args: string[]) =>
+      spawnSync(
+        'powershell.exe',
+        [
+          '-NoProfile',
+          '-ExecutionPolicy',
+          'Bypass',
+          '-File',
+          schedule,
+          '-TaskPrefix',
+          prefix,
+          ...args,
+        ],
+        { encoding: 'utf8', timeout: 60_000 },
+      );
+    afterEach(() => {
+      runSchedule('-Unregister');
+    });
+
+    test('registra las dos tareas, comprueba que existen y que el próximo lanzamiento es un lunes a la hora, y luego las elimina', () => {
+      const r = runSchedule();
+
+      expect(r.status, r.stdout + r.stderr).toBe(0);
+      expect(r.stdout).toMatch(
+        /Registrada y comprobada: .* - evaluar semana \(lunes 09h00\).*proximo lanzamiento \d{4}-\d{2}-\d{2} 09:00/,
+      );
+      expect(r.stdout).toMatch(
+        /Registrada y comprobada: .* - reintento \(lunes 12h00\).*proximo lanzamiento \d{4}-\d{2}-\d{2} 12:00/,
+      );
+      expect(listTasks().sort()).toEqual([
+        `${prefix} - evaluar semana (lunes 09h00)`,
+        `${prefix} - reintento (lunes 12h00)`,
+      ]);
+
+      // las dos son lunes de verdad, y la acción lanza el runner con su modo
+      const info = powershell(
+        `Get-ScheduledTask -TaskName '${prefix}*' | ForEach-Object { $i = Get-ScheduledTaskInfo -TaskName $_.TaskName; '{0}|{1}|{2}|{3}' -f $_.TaskName, $i.NextRunTime.DayOfWeek, $i.NextRunTime.ToString('HH:mm'), $_.Actions[0].Arguments }`,
+      ).stdout;
+      expect(info).toContain('|Monday|09:00|');
+      expect(info).toContain('|Monday|12:00|');
+      expect(info).toContain('run-weekly.ps1" -Mode first');
+      expect(info).toContain('run-weekly.ps1" -Mode retry');
+
+      const removed = runSchedule('-Unregister');
+      expect(removed.status, removed.stdout + removed.stderr).toBe(0);
+      expect(removed.stdout).toContain('Eliminada y comprobada');
+      expect(listTasks()).toEqual([]);
+    });
+
+    test('registrar dos veces es idempotente (-Force): no duplica ni falla', () => {
+      expect(runSchedule().status).toBe(0);
+      const again = runSchedule();
+
+      expect(again.status, again.stdout + again.stderr).toBe(0);
+      expect(listTasks()).toHaveLength(2);
+    });
+
+    test('-WhatIf no registra nada y lo dice', () => {
+      const r = runSchedule('-WhatIf');
+
+      expect(r.status, r.stdout + r.stderr).toBe(0);
+      expect(r.stdout).toContain('(-WhatIf: no se ha registrado nada)');
+      expect(r.stdout).not.toContain('Registrada y comprobada');
+      expect(listTasks()).toEqual([]);
+    });
+
+    test('falla de verdad (código 1, por stderr y sin "Registrada") con un prefijo que el Programador no admite, como los dos puntos', () => {
+      const r = spawnSync(
+        'powershell.exe',
+        [
+          '-NoProfile',
+          '-ExecutionPolicy',
+          'Bypass',
+          '-File',
+          schedule,
+          '-TaskPrefix',
+          'SPFTEST:colon',
+        ],
+        { encoding: 'utf8', timeout: 60_000 },
+      );
+
+      expect(r.status).toBe(1);
+      expect(r.stderr).toContain('ERROR:');
+      expect(r.stderr).toContain('caracter no permitido');
+      expect(r.stdout).not.toContain('Registrada');
+    });
+
+    test('falla de verdad si Register-ScheduledTask rechaza la tarea (regresión del 0x80070057 con "09:00" en el nombre)', () => {
+      // Se fuerza el mismo error que daba el nombre con ':' llamando a Register-ScheduledTask directamente.
+      const r = powershell(
+        `$a = New-ScheduledTaskAction -Execute 'powershell.exe'; $t = New-ScheduledTaskTrigger -Weekly -DaysOfWeek Monday -At '09:00'; try { Register-ScheduledTask -TaskName '${prefix} - x (lunes 09:00)' -Action $a -Trigger $t -ErrorAction Stop | Out-Null; 'REGISTRO_OK' } catch { 'FALLA: ' + $_.Exception.Message }`,
+      );
+
+      expect(r.stdout).toContain('FALLA:');
+      expect(r.stdout).not.toContain('REGISTRO_OK');
+    });
+  },
+);
 
 describe('.claude/settings.weekly.json', () => {
   const { allow, deny } = settings.permissions;
@@ -217,6 +360,7 @@ describe.skipIf(!isWindows)(
       fs.writeFileSync(path.join(tmp, 'fake-claude.js'), FAKE_CLAUDE);
       fs.writeFileSync(calls, '');
     });
+    // biome-ignore lint/suspicious/noDuplicateTestHooks: cada describe.skipIf tiene su propio ámbito de hooks
     afterEach(() => {
       fs.rmSync(tmp, { recursive: true, force: true });
     });
@@ -229,6 +373,8 @@ describe.skipIf(!isWindows)(
         exe: process.execPath,
         prefix: [path.join(tmp, 'fake-claude.js')],
       },
+      /** `true`: sin `-AllowAnyDay`, para probar la guarda del lunes. */
+      guard = false,
     ) {
       const r = spawnSync(
         'powershell.exe',
@@ -243,6 +389,7 @@ describe.skipIf(!isWindows)(
           '-RepoRoot',
           repo,
           '-SkipPull',
+          ...(guard ? [] : ['-AllowAnyDay']),
           '-Claude',
           claude.exe,
           ...(claude.prefix.length > 0
@@ -409,6 +556,7 @@ describe.skipIf(!isWindows)(
           'first',
           '-RepoRoot',
           repo,
+          '-AllowAnyDay',
         ],
         {
           encoding: 'utf8',
@@ -424,6 +572,73 @@ describe.skipIf(!isWindows)(
       );
       expect(r.status).toBe(10);
       expect(logText()).toContain('no fue fast-forward');
+    });
+
+    describe('guarda: solo se lanza los lunes (hora de Madrid)', () => {
+      const MONDAY = '2026-10-05T09:00:00';
+      const THURSDAY = '2026-10-01T09:00:00';
+
+      test('un jueves, sin -AllowAnyDay: sale con 0 sin tocar nada (ni vault, ni git, ni pnpm, ni claude) y lo deja en el log', () => {
+        // el vault ni existe: la guarda va antes, así que no debe llegar a quejarse (11)
+        const r = run(
+          'first',
+          { FAKE_STATUS: '1', VAULT_PATH: path.join(tmp, 'no-existe') },
+          ['-Now', THURSDAY],
+          undefined,
+          true,
+        );
+
+        expect(r.code, r.out).toBe(0);
+        expect(calledWith('claude')).toHaveLength(0);
+        expect(calledWith('pnpm')).toHaveLength(0);
+        expect(logText()).toContain(
+          'hoy no es lunes (Thursday 2026-10-01, hora de Madrid)',
+        );
+        expect(logText()).toContain('RESULTADO (0)');
+        expect(logText()).not.toContain('git pull');
+      });
+
+      test('lo mismo con el reintento de las 12:00 y con cualquier día que no sea lunes', () => {
+        for (const day of [
+          '2026-10-02',
+          '2026-10-03',
+          '2026-10-04',
+          '2026-10-06',
+          '2026-10-07',
+        ]) {
+          const r = run(
+            'retry',
+            { FAKE_STATUS: '1' },
+            ['-Now', `${day}T12:00:00`],
+            undefined,
+            true,
+          );
+          expect(r.code, `${day}: ${r.out}`).toBe(0);
+        }
+        expect(calledWith('claude')).toHaveLength(0);
+        expect(calledWith('pnpm')).toHaveLength(0);
+      });
+
+      test('un lunes sigue su curso: mira el estado y lanza el flujo', () => {
+        const r = run(
+          'first',
+          { FAKE_STATUS: '1', FAKE_WEEK: '2026-W41' },
+          ['-Now', MONDAY],
+          undefined,
+          true,
+        );
+
+        expect(r.code, r.out).toBe(0);
+        expect(calledWith('claude')).toHaveLength(1);
+        expect(logText()).not.toContain('hoy no es lunes');
+      });
+
+      test('-AllowAnyDay se salta la guarda a propósito', () => {
+        const r = run('first', { FAKE_STATUS: '1' }, ['-Now', THURSDAY]);
+
+        expect(r.code, r.out).toBe(0);
+        expect(calledWith('claude')).toHaveLength(1);
+      });
     });
   },
 );

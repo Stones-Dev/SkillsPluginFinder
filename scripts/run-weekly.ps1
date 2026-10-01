@@ -13,6 +13,9 @@
     2 sin recogida   -> no hay nada que evaluar (la nube aun no ha recogido): first sale con 12, retry con 0
     1 sin cerrar     -> lanza el flujo
 
+  **Solo se lanza los lunes** (hora de Madrid): otro dia sale con 0 sin hacer nada y lo deja en el log. Con -AllowAnyDay se
+  salta esa guarda (lanzamiento manual a proposito).
+
   No hace git push (lo hace Stones) y git pull es --ff-only: si no es fast-forward aborta con 10, porque
   data/seen.sqlite es binario y dos escritores a la vez lo hacen inmergeable.
 
@@ -44,6 +47,10 @@
   Tiempo maximo de claude antes de matarlo. Por defecto 9000 (150 minutos).
 .PARAMETER SkipPull
   No hace git pull (pruebas).
+.PARAMETER AllowAnyDay
+  Se salta la guarda del lunes (lanzamiento manual a proposito).
+.PARAMETER Now
+  Fecha y hora que se toman por "ahora" para la guarda del lunes (pruebas). Por defecto, la de Madrid.
 
 .EXAMPLE
   powershell -NoProfile -File scripts/run-weekly.ps1 -Mode first
@@ -59,7 +66,9 @@ param(
   [string[]]$PnpmPrefixArgs = @(),
   [string]$Model,
   [int]$TimeoutSeconds = 9000,
-  [switch]$SkipPull
+  [switch]$SkipPull,
+  [switch]$AllowAnyDay,
+  [datetime]$Now
 )
 
 $ErrorActionPreference = 'Stop'
@@ -102,6 +111,19 @@ function Invoke-Native([string]$File, [string[]]$ArgList) {
 }
 
 Write-Log "modo $Mode, repo $RepoRoot"
+
+# --- guarda: el flujo semanal solo se lanza los lunes (hora de Madrid, la de `spf week`) ---------------------------------
+# Antes de tocar nada. Sin ella, lanzar la tarea a mano otro dia (Start-ScheduledTask) relanzaria /evaluar-semana sobre una
+# semana ya evaluada y a medias de revisar. Para lanzarlo a proposito un martes, p. ej. tras un lunes con el equipo apagado
+# mas de lo que cubre -StartWhenAvailable: -AllowAnyDay.
+if ($PSBoundParameters.ContainsKey('Now')) { $madrid = $Now }
+else {
+  try { $madrid = [TimeZoneInfo]::ConvertTimeBySystemTimeZoneId([DateTime]::UtcNow, 'Romance Standard Time') }
+  catch { $madrid = Get-Date }
+}
+if (-not $AllowAnyDay -and $madrid.DayOfWeek -ne 'Monday') {
+  Finish 0 "hoy no es lunes ($($madrid.DayOfWeek) $($madrid.ToString('yyyy-MM-dd')), hora de Madrid): no hago nada. Para lanzarlo a mano otro dia, -AllowAnyDay"
+}
 
 # --- el vault (hace falta su raiz para --add-dir) -----------------------------------------------------------------------
 $vaultPath = $env:VAULT_PATH
