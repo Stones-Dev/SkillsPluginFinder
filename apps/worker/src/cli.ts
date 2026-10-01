@@ -1,9 +1,11 @@
 #!/usr/bin/env node
 import {
+  type BatchSummary,
   SIGNAL_TYPES,
   checkRateLimits,
   closeDatabases,
   collect,
+  collectAntigravityScorings,
   collectScorings,
   fetchRateLimits,
   formatApply,
@@ -79,6 +81,14 @@ program
     }
   });
 
+/** Agente evaluador de una opción de la CLI. */
+function parseAgent(value: string): 'claude-code' | 'antigravity' {
+  if (value !== 'claude-code' && value !== 'antigravity') {
+    throw new InvalidArgumentError('debe ser claude-code o antigravity');
+  }
+  return value;
+}
+
 /** Entero positivo de una opción de la CLI. */
 function positiveInt(value: string): number {
   const n = Number(value);
@@ -152,23 +162,55 @@ program
 program
   .command('collect-batch')
   .description(
-    'Valida scoring.json del evaluador (cobertura, categorías, sesgo) y guarda los scorings',
+    'Valida el scoring del evaluador (cobertura, categorías, sesgo) y guarda los scorings',
   )
   .requiredOption(...weekOption)
+  .option(
+    '--agent <agent>',
+    'Evaluador: claude-code (scoring.json, por defecto) o antigravity (scoring-antigravity.json; un fallo se anota en runs y no es fatal)',
+    parseAgent,
+  )
+  .option(
+    '--reason <texto>',
+    'Con --agent antigravity: por qué falló el wrapper de agy, para dejarlo en runs',
+  )
   .action(async (options) => {
     try {
-      const { summary } = await collectScorings(options.week);
+      if (options.reason && options.agent !== 'antigravity') {
+        throw new Error('--reason solo se usa con --agent antigravity');
+      }
+      const antigravity = options.agent === 'antigravity';
+      let summary: BatchSummary;
+      if (antigravity) {
+        const outcome = await collectAntigravityScorings(
+          options.week,
+          options.reason,
+        );
+        closeDatabases();
+        if (!outcome.ok) {
+          console.log(
+            [
+              `Antigravity no aporta evaluación a ${options.week}: ${outcome.error}`,
+              '  anotado en runs; la semana sigue solo con la evaluación de Claude Code',
+            ].join('\n'),
+          );
+          return;
+        }
+        summary = outcome.validated.summary;
+      } else {
+        summary = (await collectScorings(options.week, options.agent)).summary;
+        closeDatabases();
+      }
       const distribution = Object.entries(summary.distribution)
         .map(([score, n]) => `${score}:${n}`)
         .join(' ');
       console.log(
         [
-          `Batch ${options.week} válido: ${summary.total} fichas guardadas`,
+          `Batch ${options.week} válido (${antigravity ? 'antigravity' : 'claude-code'}): ${summary.total} fichas guardadas`,
           `  distribución (score:fichas) ${distribution}`,
           `  ≥ ${summary.umbral} (irán al informe): ${summary.aboveThreshold} · ≥ 8: ${summary.high}`,
         ].join('\n'),
       );
-      closeDatabases();
     } catch (err) {
       fail('collect-batch', err);
     }

@@ -26,10 +26,13 @@ Semana: `$ARGUMENTS` en Claude Code, o la que indique Stones. Si no hay ninguna,
 4. **Leer el batch entero.** Instrucciones, rúbrica, formato de salida, `<proyectos>`, `<ya_catalogado>` y las fichas.
 5. **Evaluar** (guía abajo) y escribir `data/batches/<semana>/scoring.json`: un array con **un objeto por ficha**. Si el batch no tiene fichas, escribe `[]`.
 6. **Validar.** `pnpm spf collect-batch --week <semana>`. Si lo rechaza, corrige **todos** los problemas que lista y repite. Si rechaza por sesgo (más de la mitad de scores ≥ 8), reevalúa con la rúbrica en la mano; no bajes números al azar para colarlo.
-7. **Publicar.** `pnpm spf publish --week <semana>` escribe `Informes/<semana>.md` y añade filas `candidato` a `Catalogo.md` en el vault (`VAULT_PATH`). Si dice que el informe ya está revisado, para y pregunta a Stones antes de usar `--force`.
-8. **Sincronizar otra vez.** `pnpm spf interests sync`, por si algo cambió durante la sesión.
-9. **Commit.** `git add data interests.yaml catalog.json` y `git commit -m "feat(evaluate): semana <semana>"`. Enseña `git status` y **pregunta a Stones** antes de cualquier push.
-10. **Resumen para Stones.** Nº de fichas y distribución de scores, los hallazgos ≥ umbral (nombre y score), ruta del informe, filas añadidas al catálogo y la salida de cada comando.
+7. **Segunda evaluación (Antigravity).** Solo si eres Claude Code; si eres Antigravity, sáltate este paso. `powershell -NoProfile -File scripts/agy-eval.ps1 -Week <semana>` lanza `agy` sobre el mismo `batch.md` (hasta 40 minutos; puede tardar) y deja `data/batches/<semana>/scoring-antigravity.json`. No lo evalúes tú ni abras ese fichero antes de terminar: la gracia es que sea una segunda opinión independiente. Con código de salida 0, `pnpm spf collect-batch --week <semana> --agent antigravity` lo valida con el mismo esquema y guarda sus scorings.
+   - Con cualquier otro código (2 sin `FIN`, 3 tiempo agotado, 4 error de `agy`, 6 fichero inválido), o si `collect-batch --agent antigravity` lo rechaza, **no es fatal**: `pnpm spf collect-batch --week <semana> --agent antigravity --reason "agy-eval.ps1 salió con código N: <mensaje>"` lo anota en `runs` y la semana sigue solo con tu evaluación. No reintentes ni arregles su fichero a mano.
+   - Con código **5 (integridad)**, `agy` cambió algo más que su fichero (el wrapper lo dice y no revierte nada): anótalo igual con `--reason`, **para** y avisa a Stones con el detalle. No publiques esa semana hasta que se revise.
+8. **Publicar.** `pnpm spf publish --week <semana>` escribe `Informes/<semana>.md` y añade filas `candidato` a `Catalogo.md` en el vault (`VAULT_PATH`). Si dice que el informe ya está revisado, para y pregunta a Stones antes de usar `--force`.
+9. **Sincronizar otra vez.** `pnpm spf interests sync`, por si algo cambió durante la sesión.
+10. **Commit.** `git add data interests.yaml catalog.json` y `git commit -m "feat(evaluate): semana <semana>"`. Enseña `git status`. No hagas push: lo hace Stones.
+11. **Resumen para Stones.** Nº de fichas y distribución de scores, los hallazgos ≥ umbral (nombre y score), ruta del informe, filas añadidas al catálogo, si Antigravity aportó su evaluación (o por qué no) y la salida de cada comando.
 
 ## Cómo evaluar
 

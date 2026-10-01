@@ -1,4 +1,9 @@
-import { collectBatch, prepareBatch } from '../batch/index.js';
+import {
+  type EvaluatorAgent,
+  collectAntigravity,
+  collectBatch,
+  prepareBatch,
+} from '../batch/index.js';
 import { repoRoot, vaultPath } from '../paths.js';
 import { publishWeek } from '../publish/index.js';
 import {
@@ -35,8 +40,13 @@ export function prepare(week: string) {
 }
 
 /** `spf collect-batch --week`: valida `scoring.json` y guarda los scorings. */
-export function collectScorings(week: string) {
-  return collectBatch({ repoDir: repoRoot(), week });
+export function collectScorings(week: string, agent?: EvaluatorAgent) {
+  return collectBatch({ repoDir: repoRoot(), week, agent });
+}
+
+/** `spf collect-batch --agent antigravity`: el segundo evaluador; un fallo se anota en `runs` y no es fatal. */
+export function collectAntigravityScorings(week: string, reason?: string) {
+  return collectAntigravity({ repoDir: repoRoot(), week, reason });
 }
 
 /** `spf publish --week`: informe en `Informes/` y filas nuevas en `Catalogo.md`. */

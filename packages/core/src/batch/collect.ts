@@ -20,6 +20,24 @@ import { HIGH_SCORE, MAX_HIGH_SHARE } from './rubric.js';
 export const batchDir = (repoDir: string, week: string) =>
   path.join(repoDir, 'data', 'batches', assertWeek(week));
 
+/** Quién evalúa: el agente principal (Claude Code) o el segundo evaluador (Antigravity). */
+export type EvaluatorAgent = Scoring['agent'];
+
+/** `scoring.json` es el de Claude Code; el de Antigravity vive al lado, con su nombre. */
+export const scoringFileName = (agent: EvaluatorAgent = 'claude-code') =>
+  agent === 'antigravity' ? 'scoring-antigravity.json' : 'scoring.json';
+
+/**
+ * Id de la fila en `scorings`. El de Claude Code conserva el formato de siempre
+ * (`week:candidateId`) y el de Antigravity añade el agente, para que no se pisen.
+ */
+export const scoringRowId = (
+  s: Pick<Scoring, 'week' | 'candidateId' | 'agent'>,
+) =>
+  s.agent === 'antigravity'
+    ? `${s.week}:${s.candidateId}:antigravity`
+    : `${s.week}:${s.candidateId}`;
+
 export type BatchSummary = {
   total: number;
   /** Nº de fichas por score, 1 a 10. */
@@ -68,7 +86,13 @@ function summarize(scorings: Scoring[], umbral: number): BatchSummary {
  */
 export function checkScoring(
   raw: unknown,
-  ctx: { week: string; candidates: Candidate[]; interests: Interests },
+  ctx: {
+    week: string;
+    candidates: Candidate[];
+    interests: Interests;
+    /** Si se indica, todas las filas deben venir de ese agente. */
+    agent?: EvaluatorAgent;
+  },
 ): { scorings: Scoring[]; problems: string[]; summary: BatchSummary } {
   const { week, candidates, interests } = ctx;
   const problems: string[] = [];
@@ -104,6 +128,11 @@ export function checkScoring(
 
     if (s.week !== week)
       problems.push(`${where}: week "${s.week}" no es "${week}"`);
+    if (ctx.agent && s.agent !== ctx.agent) {
+      problems.push(
+        `${where}: agent "${s.agent}" no es "${ctx.agent}" (todas las filas de este fichero deben llevarlo)`,
+      );
+    }
     if (!known.has(s.candidateId)) {
       problems.push(`${where}: no es el id de ninguna ficha de este batch`);
     }
@@ -149,10 +178,12 @@ export type ValidatedBatch = {
   interests: Interests;
 };
 
-/** Lee y valida `data/batches/<week>/scoring.json`; lanza `BatchRejectedError` si algo falla. */
+/** Lee y valida `data/batches/<week>/scoring.json` (o `scoring-antigravity.json`); lanza `BatchRejectedError` si algo falla. */
 export async function validateBatch(opts: {
   repoDir: string;
   week: string;
+  /** Por defecto Claude Code (`scoring.json`). */
+  agent?: EvaluatorAgent;
 }): Promise<ValidatedBatch> {
   const { repoDir } = opts;
   const week = assertWeek(opts.week);
@@ -164,7 +195,8 @@ export async function validateBatch(opts: {
   }
   const interests = await loadInterests(repoDir);
 
-  const file = path.join(batchDir(repoDir, week), 'scoring.json');
+  const fileName = scoringFileName(opts.agent);
+  const file = path.join(batchDir(repoDir, week), fileName);
   let text: string;
   try {
     text = await fs.readFile(file, 'utf8');
@@ -181,7 +213,7 @@ export async function validateBatch(opts: {
     raw = JSON.parse(text);
   } catch (err) {
     throw new BatchRejectedError(week, [
-      `scoring.json no es JSON válido: ${(err as Error).message}`,
+      `${fileName} no es JSON válido: ${(err as Error).message}`,
     ]);
   }
 
@@ -189,6 +221,7 @@ export async function validateBatch(opts: {
     week,
     candidates: candidates.candidates,
     interests,
+    agent: opts.agent === 'antigravity' ? 'antigravity' : undefined,
   });
   if (problems.length > 0) throw new BatchRejectedError(week, problems);
   return { scorings, summary, candidates, interests };
@@ -201,6 +234,7 @@ export async function validateBatch(opts: {
 export async function collectBatch(opts: {
   repoDir: string;
   week: string;
+  agent?: EvaluatorAgent;
   db?: Db;
 }): Promise<ValidatedBatch> {
   const validated = await validateBatch(opts);
@@ -208,7 +242,7 @@ export async function collectBatch(opts: {
 
   db.transaction((tx) => {
     for (const s of validated.scorings) {
-      const row = { id: `${s.week}:${s.candidateId}`, ...s };
+      const row = { id: scoringRowId(s), ...s };
       tx.insert(scoringsTable)
         .values(row)
         .onConflictDoUpdate({

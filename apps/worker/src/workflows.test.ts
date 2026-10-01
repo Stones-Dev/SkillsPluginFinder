@@ -38,14 +38,16 @@ test('cada `pnpm spf …` que cita el workflow es un comando real del CLI', () =
   }
 });
 
-test('el flujo sigue el orden del Plan §6: pull → sync → prepare → evaluar → collect-batch → publish → sync → commit', () => {
+test('el flujo sigue el orden del Plan §6 y §7 bis: pull → sync → prepare → evaluar → collect-batch → agy → collect-batch --agent antigravity → publish → sync → commit', () => {
   const at = (needle: string) => antigravity.indexOf(needle);
   const order = [
     'git pull',
     'pnpm spf interests sync',
     'pnpm spf prepare --week <semana>',
     '**Evaluar**',
-    'pnpm spf collect-batch --week <semana>',
+    'pnpm spf collect-batch --week <semana>`',
+    'scripts/agy-eval.ps1 -Week <semana>',
+    'pnpm spf collect-batch --week <semana> --agent antigravity`',
     'pnpm spf publish --week <semana>',
     '**Sincronizar otra vez.**',
     'git commit -m "feat(evaluate): semana <semana>"',
@@ -72,6 +74,47 @@ test('el workflow no promete nada que el CLI no haga: --week y --force existen',
   expect(cli).toContain("'-w, --week <week>'");
   expect(cli).toContain("'--force'");
   expect(antigravity).toContain('`--force`');
+});
+
+test('el paso de Antigravity cita opciones del CLI y códigos de salida del wrapper que existen de verdad', () => {
+  const agyScript = read('scripts/agy-eval.ps1');
+
+  // el CLI: --agent y --reason, y el agente de la opción
+  expect(cli).toContain("'--agent <agent>'");
+  expect(cli).toContain("'--reason <texto>'");
+  expect(antigravity).toContain('--agent antigravity');
+  expect(antigravity).toContain(
+    '--reason "agy-eval.ps1 salió con código N: <mensaje>"',
+  );
+
+  // el wrapper: cada código que cita el workflow lo emite el script
+  for (const [code, label] of [
+    ['2', 'sin `FIN`'],
+    ['3', 'tiempo agotado'],
+    ['4', 'error de `agy`'],
+    ['5', 'integridad'],
+    ['6', 'fichero inválido'],
+  ]) {
+    expect(antigravity, `el workflow no explica el código ${code}`).toContain(
+      `${code} ${label}`.replace('5 integridad', '5 (integridad)'),
+    );
+    expect(agyScript, `agy-eval.ps1 no sale con ${code}`).toMatch(
+      new RegExp(`Stop-WithCode ${code} `),
+    );
+  }
+  // la segunda evaluación es independiente y su fallo no es fatal, salvo la integridad
+  expect(antigravity).toContain('**no es fatal**');
+  expect(antigravity).toContain('No publiques esa semana hasta que se revise');
+  expect(antigravity).toContain('segunda opinión independiente');
+  // el wrapper deja el fichero que el workflow valida
+  expect(agyScript).toContain('scoring-antigravity.json');
+});
+
+test('en modo desatendido el commit no pregunta ni empuja: el push lo hace Stones', () => {
+  expect(antigravity).not.toContain(
+    'pregunta a Stones** antes de cualquier push',
+  );
+  expect(antigravity).toContain('No hagas push: lo hace Stones.');
 });
 
 const collectWorkflow = read('.github/workflows/collect.yml');

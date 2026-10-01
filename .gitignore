@@ -9,3 +9,4 @@ coverage/
 data/cache/
 .claude/settings.local.json
 data/review/
+data/logs/
