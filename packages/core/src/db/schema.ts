@@ -27,7 +27,7 @@ export const scorings = sqliteTable('scorings', {
 /** Una fila por ejecución de cualquiera de las dos mitades (RF-10, Plan §4). */
 export const runs = sqliteTable('runs', {
   id: text('id').primaryKey(),
-  half: text('half', { enum: ['collect', 'evaluate'] }).notNull(),
+  half: text('half', { enum: ['collect', 'evaluate', 'review'] }).notNull(),
   week: text('week').notNull(),
   trigger: text('trigger').notNull(),
   startedAt: text('started_at').notNull(),

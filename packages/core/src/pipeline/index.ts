@@ -1,7 +1,12 @@
 import { collectBatch, prepareBatch } from '../batch/index.js';
 import { repoRoot, vaultPath } from '../paths.js';
 import { publishWeek } from '../publish/index.js';
-import { listForReview, prepareReview } from '../review/index.js';
+import {
+  type ApplyOptions,
+  applyReview,
+  listForReview,
+  prepareReview,
+} from '../review/index.js';
 import { syncInterests as vaultSyncInterests } from '../vault/index.js';
 import { collectWeek } from './collect.js';
 
@@ -52,6 +57,17 @@ export function reviewList() {
 /** `spf review --prepare`: clon seguro e inventario de uno o varios hallazgos. */
 export function reviewPrepare(options: { ids?: string[]; week?: string }) {
   return prepareReview({
+    repoDir: repoRoot(),
+    vaultDir: vaultPath(),
+    ...options,
+  });
+}
+
+/** `spf review --apply`: escribe el estado de un hallazgo en Catalogo.md (con la puerta de seguridad). */
+export function reviewApply(
+  options: Omit<ApplyOptions, 'repoDir' | 'vaultDir'>,
+) {
+  return applyReview({
     repoDir: repoRoot(),
     vaultDir: vaultPath(),
     ...options,

@@ -1,17 +1,22 @@
 #!/usr/bin/env node
 import {
+  SIGNAL_TYPES,
   checkRateLimits,
   closeDatabases,
   collect,
   collectScorings,
   fetchRateLimits,
+  formatApply,
   formatPrepare,
   formatRateLimits,
   formatReviewList,
   isoWeek,
+  parseReviewEstado,
+  parseSignalType,
   pipelineSyncInterests,
   prepare,
   publish,
+  reviewApply,
   reviewList,
   reviewPrepare,
 } from '@spf/core';
@@ -206,11 +211,39 @@ program
     'Clon superficial (sin instalar ni ejecutar nada) e inventario de un hallazgo (github:owner/repo) o, con --week, de todos los de esa semana',
   )
   .option('-w, --week <week>', 'Semana ISO (YYYY-Www) para --prepare')
+  .option(
+    '--apply <id>',
+    'Escribe el estado de un hallazgo en Catalogo.md (con --estado y --nota); adoptado se rechaza ante cualquier señal de supply-chain',
+  )
+  .option('--estado <estado>', 'Con --apply: probado, descartado o adoptado')
+  .option('--nota <texto>', 'Con --apply: el motivo del veredicto')
+  .option(
+    '--senal <tipo...>',
+    `Con --apply: señales de supply-chain vistas al leer el clon (${SIGNAL_TYPES.join(', ')}); solo suman`,
+  )
   .action(async (options) => {
     try {
-      const modes = [options.list, options.prepare].filter(Boolean).length;
+      const modes = [options.list, options.prepare, options.apply].filter(
+        Boolean,
+      ).length;
       if (modes !== 1) {
-        throw new Error('indica una sola acción: --list o --prepare');
+        throw new Error('indica una sola acción: --list, --prepare o --apply');
+      }
+      if (options.apply) {
+        if (!options.estado || !options.nota) {
+          throw new Error('--apply necesita --estado y --nota');
+        }
+        const result = await reviewApply({
+          id: options.apply,
+          estado: parseReviewEstado(options.estado),
+          nota: options.nota,
+          senales: (options.senal ?? []).map(parseSignalType),
+        });
+        closeDatabases();
+        console.log(formatApply(result).join('\n'));
+        // La revisión se escribió (probado), pero se pidió adoptado y la puerta lo frenó.
+        if (result.blocked) process.exit(1);
+        return;
       }
       if (options.list) {
         console.log(formatReviewList(await reviewList()).join('\n'));
