@@ -88,6 +88,8 @@ awesome_listas:                  # colector awesome-list: lista -> categoría de
   quozd/awesome-dotnet: dotnet
   thangchung/awesome-dotnet-core: dotnet
 
+anthropic_categoria: claude-skills   # colector anthropic-skills: categoría de los repos de los plugins nuevos del marketplace oficial
+
 proyectos:
   - CRMDecoversia — CRM comercial, Laravel 11 backend + Node/Next.js frontend, JWT, colas, exports
   - AgentJobFinder — agente Python 3.12 (httpx, sqlmodel, apscheduler) + tracker FastAPI/Jinja2, redacción vía Claude Code
