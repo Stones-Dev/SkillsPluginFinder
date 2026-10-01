@@ -1,0 +1,652 @@
+{
+  "version": 1,
+  "week": "2026-W40",
+  "generatedAt": "2026-10-01T09:54:14.346Z",
+  "fuentes": [
+    "claude-code",
+    "antigravity"
+  ],
+  "umbral": 7,
+  "items": [
+    {
+      "candidateId": "github:echris6/motion-video-kit",
+      "claude": 3,
+      "antigravity": 5,
+      "final": 4,
+      "disputa": false,
+      "confianzaAlta": false
+    },
+    {
+      "candidateId": "github:tamaratran/jev-pruner",
+      "claude": 4,
+      "antigravity": 5,
+      "final": 4.5,
+      "disputa": false,
+      "confianzaAlta": false
+    },
+    {
+      "candidateId": "github:joetawil7/first-pass",
+      "claude": 6,
+      "antigravity": 6,
+      "final": 6,
+      "disputa": false,
+      "confianzaAlta": false
+    },
+    {
+      "candidateId": "github:rylaispirit/cinematic-video-prompt-skill",
+      "claude": 2,
+      "antigravity": 2,
+      "final": 2,
+      "disputa": false,
+      "confianzaAlta": false
+    },
+    {
+      "candidateId": "github:howseen-ai/claude-motion-design",
+      "claude": 3,
+      "antigravity": 4,
+      "final": 3.5,
+      "disputa": false,
+      "confianzaAlta": false
+    },
+    {
+      "candidateId": "github:jakeschincariol/arena-skill",
+      "claude": 3,
+      "antigravity": 2,
+      "final": 2.5,
+      "disputa": false,
+      "confianzaAlta": false
+    },
+    {
+      "candidateId": "github:uditakhourii/quicksilver",
+      "claude": 3,
+      "antigravity": 5,
+      "final": 4,
+      "disputa": false,
+      "confianzaAlta": false
+    },
+    {
+      "candidateId": "github:brumar/chess-postmortem-skills",
+      "claude": 2,
+      "antigravity": 1,
+      "final": 1.5,
+      "disputa": false,
+      "confianzaAlta": false
+    },
+    {
+      "candidateId": "github:andyshiu/claude-skill-playwright-browser",
+      "claude": 7,
+      "antigravity": 7,
+      "final": 7,
+      "disputa": false,
+      "confianzaAlta": true
+    },
+    {
+      "candidateId": "github:minosdevs/copycat-skill",
+      "claude": 3,
+      "antigravity": 5,
+      "final": 4,
+      "disputa": false,
+      "confianzaAlta": false
+    },
+    {
+      "candidateId": "github:sagochiko/aws-drawio-diagram-skill",
+      "claude": 2,
+      "antigravity": 3,
+      "final": 2.5,
+      "disputa": false,
+      "confianzaAlta": false
+    },
+    {
+      "candidateId": "github:charlie947/motion-graphics-skills",
+      "claude": 2,
+      "antigravity": 4,
+      "final": 3,
+      "disputa": false,
+      "confianzaAlta": false
+    },
+    {
+      "candidateId": "github:tomascupr/reelql",
+      "claude": 2,
+      "antigravity": 3,
+      "final": 2.5,
+      "disputa": false,
+      "confianzaAlta": false
+    },
+    {
+      "candidateId": "github:capturegrubenchant/solidworks",
+      "claude": 1,
+      "antigravity": 2,
+      "final": 1.5,
+      "disputa": false,
+      "confianzaAlta": false
+    },
+    {
+      "candidateId": "github:xiaopuouo/openchatx-mcp",
+      "claude": 2,
+      "antigravity": 4,
+      "final": 3,
+      "disputa": false,
+      "confianzaAlta": false
+    },
+    {
+      "candidateId": "github:admte/orc-claude-plugin",
+      "claude": 2,
+      "antigravity": 2,
+      "final": 2,
+      "disputa": false,
+      "confianzaAlta": false
+    },
+    {
+      "candidateId": "github:insane0777/awwwards-mcp",
+      "claude": 6,
+      "antigravity": 8,
+      "final": 7,
+      "disputa": false,
+      "confianzaAlta": false
+    },
+    {
+      "candidateId": "github:mmdju/divar-mcp",
+      "claude": 2,
+      "antigravity": 1,
+      "final": 1.5,
+      "disputa": false,
+      "confianzaAlta": false
+    },
+    {
+      "candidateId": "github:zkousama/morocco-communes",
+      "claude": 2,
+      "antigravity": 1,
+      "final": 1.5,
+      "disputa": false,
+      "confianzaAlta": false
+    },
+    {
+      "candidateId": "github:maximilianfeix/proxy-scraper",
+      "claude": 2,
+      "antigravity": 4,
+      "final": 3,
+      "disputa": false,
+      "confianzaAlta": false
+    },
+    {
+      "candidateId": "github:ateymoori/oh-my-android",
+      "claude": 3,
+      "antigravity": 6,
+      "final": 4.5,
+      "disputa": true,
+      "confianzaAlta": false
+    },
+    {
+      "candidateId": "github:marko-js/marko",
+      "claude": 3,
+      "antigravity": 3,
+      "final": 3,
+      "disputa": false,
+      "confianzaAlta": false
+    },
+    {
+      "candidateId": "github:stenciljs/core",
+      "claude": 3,
+      "antigravity": 4,
+      "final": 3.5,
+      "disputa": false,
+      "confianzaAlta": false
+    },
+    {
+      "candidateId": "github:formbricks/formbricks",
+      "claude": 3,
+      "antigravity": 5,
+      "final": 4,
+      "disputa": false,
+      "confianzaAlta": false
+    },
+    {
+      "candidateId": "github:elie222/inbox-zero",
+      "claude": 3,
+      "antigravity": 4,
+      "final": 3.5,
+      "disputa": false,
+      "confianzaAlta": false
+    },
+    {
+      "candidateId": "github:assistant-ui/assistant-ui",
+      "claude": 4,
+      "antigravity": 8,
+      "final": 6,
+      "disputa": true,
+      "confianzaAlta": false
+    },
+    {
+      "candidateId": "github:huggingface/chat-ui",
+      "claude": 3,
+      "antigravity": 3,
+      "final": 3,
+      "disputa": false,
+      "confianzaAlta": false
+    },
+    {
+      "candidateId": "github:carbon-design-system/carbon",
+      "claude": 4,
+      "antigravity": 4,
+      "final": 4,
+      "disputa": false,
+      "confianzaAlta": false
+    },
+    {
+      "candidateId": "github:grommet/grommet",
+      "claude": 3,
+      "antigravity": 3,
+      "final": 3,
+      "disputa": false,
+      "confianzaAlta": false
+    },
+    {
+      "candidateId": "github:chakra-ui/panda",
+      "claude": 3,
+      "antigravity": 5,
+      "final": 4,
+      "disputa": false,
+      "confianzaAlta": false
+    },
+    {
+      "candidateId": "github:chakra-ui/ark",
+      "claude": 4,
+      "antigravity": 6,
+      "final": 5,
+      "disputa": false,
+      "confianzaAlta": false
+    },
+    {
+      "candidateId": "github:tixl3d/tixl",
+      "claude": 2,
+      "antigravity": 2,
+      "final": 2,
+      "disputa": false,
+      "confianzaAlta": false
+    },
+    {
+      "candidateId": "github:primer/react",
+      "claude": 3,
+      "antigravity": 4,
+      "final": 3.5,
+      "disputa": false,
+      "confianzaAlta": false
+    },
+    {
+      "candidateId": "github:dockview/dockview",
+      "claude": 3,
+      "antigravity": 5,
+      "final": 4,
+      "disputa": false,
+      "confianzaAlta": false
+    },
+    {
+      "candidateId": "github:cloudscape-design/components",
+      "claude": 4,
+      "antigravity": 3,
+      "final": 3.5,
+      "disputa": false,
+      "confianzaAlta": false
+    },
+    {
+      "candidateId": "github:kuratlielia/arc-library",
+      "claude": 7,
+      "antigravity": 7,
+      "final": 7,
+      "disputa": false,
+      "confianzaAlta": true
+    },
+    {
+      "candidateId": "github:fuma-nama/fumadocs",
+      "claude": 5,
+      "antigravity": 6,
+      "final": 5.5,
+      "disputa": false,
+      "confianzaAlta": false
+    },
+    {
+      "candidateId": "github:next-safe-action/next-safe-action",
+      "claude": 7,
+      "antigravity": 9,
+      "final": 8,
+      "disputa": false,
+      "confianzaAlta": true
+    },
+    {
+      "candidateId": "github:rari-build/rari",
+      "claude": 4,
+      "antigravity": 4,
+      "final": 4,
+      "disputa": false,
+      "confianzaAlta": false
+    },
+    {
+      "candidateId": "github:gregrickaby/viewer-for-reddit",
+      "claude": 2,
+      "antigravity": 2,
+      "final": 2,
+      "disputa": false,
+      "confianzaAlta": false
+    },
+    {
+      "candidateId": "github:mikehasa/golive-skill",
+      "claude": 4,
+      "antigravity": 5,
+      "final": 4.5,
+      "disputa": false,
+      "confianzaAlta": false
+    },
+    {
+      "candidateId": "github:feitangyuan/onetake",
+      "claude": 2,
+      "antigravity": 3,
+      "final": 2.5,
+      "disputa": false,
+      "confianzaAlta": false
+    },
+    {
+      "candidateId": "github:dicklesworthstone/skillranker",
+      "claude": 3,
+      "antigravity": 4,
+      "final": 3.5,
+      "disputa": false,
+      "confianzaAlta": false
+    },
+    {
+      "candidateId": "github:kishormorol/cli-faq-shortcuts",
+      "claude": 6,
+      "antigravity": 7,
+      "final": 6.5,
+      "disputa": false,
+      "confianzaAlta": false
+    },
+    {
+      "candidateId": "github:bestagentkits/motion-video-skill",
+      "claude": 2,
+      "antigravity": 3,
+      "final": 2.5,
+      "disputa": false,
+      "confianzaAlta": false
+    },
+    {
+      "candidateId": "github:rimagination/easyplot",
+      "claude": 2,
+      "antigravity": 2,
+      "final": 2,
+      "disputa": false,
+      "confianzaAlta": false
+    },
+    {
+      "candidateId": "github:xjli360/sealeap-ecommerce-skills",
+      "claude": 2,
+      "antigravity": 3,
+      "final": 2.5,
+      "disputa": false,
+      "confianzaAlta": false
+    },
+    {
+      "candidateId": "github:changroro/code-video",
+      "claude": 2,
+      "antigravity": 3,
+      "final": 2.5,
+      "disputa": false,
+      "confianzaAlta": false
+    },
+    {
+      "candidateId": "github:agihunt/blurt",
+      "claude": 3,
+      "antigravity": 5,
+      "final": 4,
+      "disputa": false,
+      "confianzaAlta": false
+    },
+    {
+      "candidateId": "github:metamask/metamask-mobile",
+      "claude": 2,
+      "antigravity": 2,
+      "final": 2,
+      "disputa": false,
+      "confianzaAlta": false
+    },
+    {
+      "candidateId": "github:solana-foundation/solana-web3.js",
+      "claude": 7,
+      "antigravity": 9,
+      "final": 8,
+      "disputa": false,
+      "confianzaAlta": true
+    },
+    {
+      "candidateId": "github:cake-tech/cake_wallet",
+      "claude": 3,
+      "antigravity": 4,
+      "final": 3.5,
+      "disputa": false,
+      "confianzaAlta": false
+    },
+    {
+      "candidateId": "github:kairos-io/kairos",
+      "claude": 2,
+      "antigravity": 2,
+      "final": 2,
+      "disputa": false,
+      "confianzaAlta": false
+    },
+    {
+      "candidateId": "github:firedancer-io/firedancer",
+      "claude": 3,
+      "antigravity": 4,
+      "final": 3.5,
+      "disputa": false,
+      "confianzaAlta": false
+    },
+    {
+      "candidateId": "github:kuest/prediction-market",
+      "claude": 2,
+      "antigravity": 2,
+      "final": 2,
+      "disputa": false,
+      "confianzaAlta": false
+    },
+    {
+      "candidateId": "github:solana-playground/solana-playground",
+      "claude": 3,
+      "antigravity": 5,
+      "final": 4,
+      "disputa": false,
+      "confianzaAlta": false
+    },
+    {
+      "candidateId": "github:solanabr/ai-kit",
+      "claude": 8,
+      "antigravity": 8,
+      "final": 8,
+      "disputa": false,
+      "confianzaAlta": true
+    },
+    {
+      "candidateId": "github:compiler-explorer/compiler-explorer",
+      "claude": 3,
+      "antigravity": 3,
+      "final": 3,
+      "disputa": false,
+      "confianzaAlta": false
+    },
+    {
+      "candidateId": "github:fyroxengine/fyrox",
+      "claude": 2,
+      "antigravity": 3,
+      "final": 2.5,
+      "disputa": false,
+      "confianzaAlta": false
+    },
+    {
+      "candidateId": "github:firezone/firezone",
+      "claude": 2,
+      "antigravity": 3,
+      "final": 2.5,
+      "disputa": false,
+      "confianzaAlta": false
+    },
+    {
+      "candidateId": "github:microsoft/aspire",
+      "claude": 5,
+      "antigravity": 5,
+      "final": 5,
+      "disputa": false,
+      "confianzaAlta": false
+    },
+    {
+      "candidateId": "github:lmnr-ai/lmnr",
+      "claude": 4,
+      "antigravity": 7,
+      "final": 5.5,
+      "disputa": true,
+      "confianzaAlta": false
+    },
+    {
+      "candidateId": "github:defguard/wireguard-rs",
+      "claude": 2,
+      "antigravity": 3,
+      "final": 2.5,
+      "disputa": false,
+      "confianzaAlta": false
+    },
+    {
+      "candidateId": "github:liquibase/liquibase",
+      "claude": 3,
+      "antigravity": 4,
+      "final": 3.5,
+      "disputa": false,
+      "confianzaAlta": false
+    },
+    {
+      "candidateId": "github:limesurvey/limesurvey",
+      "claude": 2,
+      "antigravity": 2,
+      "final": 2,
+      "disputa": false,
+      "confianzaAlta": false
+    },
+    {
+      "candidateId": "github:linq2db/linq2db",
+      "claude": 5,
+      "antigravity": 8,
+      "final": 6.5,
+      "disputa": true,
+      "confianzaAlta": false
+    },
+    {
+      "candidateId": "github:dataplat/dbatools",
+      "claude": 5,
+      "antigravity": 7,
+      "final": 6,
+      "disputa": false,
+      "confianzaAlta": false
+    },
+    {
+      "candidateId": "github:crbnos/carbon",
+      "claude": 7,
+      "antigravity": 8,
+      "final": 7.5,
+      "disputa": false,
+      "confianzaAlta": true
+    },
+    {
+      "candidateId": "github:squidex/squidex",
+      "claude": 3,
+      "antigravity": 4,
+      "final": 3.5,
+      "disputa": false,
+      "confianzaAlta": false
+    },
+    {
+      "candidateId": "github:lefayjey/linwinpwn",
+      "claude": 1,
+      "antigravity": 2,
+      "final": 1.5,
+      "disputa": false,
+      "confianzaAlta": false
+    },
+    {
+      "candidateId": "github:open-mercato/open-mercato",
+      "claude": 6,
+      "antigravity": 8,
+      "final": 7,
+      "disputa": false,
+      "confianzaAlta": false
+    },
+    {
+      "candidateId": "github:abap2ui5/samples",
+      "claude": 2,
+      "antigravity": 2,
+      "final": 2,
+      "disputa": false,
+      "confianzaAlta": false
+    },
+    {
+      "candidateId": "github:muhammad-abdullah333/sap-mcp-bridge",
+      "claude": 5,
+      "antigravity": 5,
+      "final": 5,
+      "disputa": false,
+      "confianzaAlta": false
+    },
+    {
+      "candidateId": "github:dotnet/runtime",
+      "claude": 2,
+      "antigravity": 3,
+      "final": 2.5,
+      "disputa": false,
+      "confianzaAlta": false
+    },
+    {
+      "candidateId": "github:monogame/monogame",
+      "claude": 2,
+      "antigravity": 2,
+      "final": 2,
+      "disputa": false,
+      "confianzaAlta": false
+    },
+    {
+      "candidateId": "github:microsoft/agent-framework",
+      "claude": 4,
+      "antigravity": 8,
+      "final": 6,
+      "disputa": true,
+      "confianzaAlta": false
+    },
+    {
+      "candidateId": "github:dotnet/benchmarkdotnet",
+      "claude": 3,
+      "antigravity": 7,
+      "final": 5,
+      "disputa": true,
+      "confianzaAlta": false
+    },
+    {
+      "candidateId": "github:dotnet/orleans",
+      "claude": 2,
+      "antigravity": 4,
+      "final": 3,
+      "disputa": false,
+      "confianzaAlta": false
+    },
+    {
+      "candidateId": "github:meysamhadeli/booking-microservices",
+      "claude": 3,
+      "antigravity": 4,
+      "final": 3.5,
+      "disputa": false,
+      "confianzaAlta": false
+    },
+    {
+      "candidateId": "github:bitfoundation/bitplatform",
+      "claude": 2,
+      "antigravity": 3,
+      "final": 2.5,
+      "disputa": false,
+      "confianzaAlta": false
+    }
+  ]
+}

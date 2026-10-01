@@ -1,0 +1,1297 @@
+[
+  {
+    "candidateId": "github:echris6/motion-video-kit",
+    "week": "2026-W40",
+    "agent": "antigravity",
+    "score": 5,
+    "categoria": "claude-skills",
+    "proyectosAfectados": [],
+    "porQue": "Ofrece un framework muy estructurado para crear vídeos promocionales mediante código y Three.js, pero ninguno de los proyectos actuales de Stones requiere producción de vídeo comercial. Queda como una curiosidad técnica de calidad para Claude Code sin encaje inmediato.",
+    "comoIntegrar": "Instalar el skill en ~/.claude/skills/motion-video-kit y probar la generación de un clip corto desde Claude Code.",
+    "riesgos": [
+      "Repo muy joven (3 días)",
+      "Un único contribuidor"
+    ],
+    "usoBrowser": false
+  },
+  {
+    "candidateId": "github:tamaratran/jev-pruner",
+    "week": "2026-W40",
+    "agent": "antigravity",
+    "score": 5,
+    "categoria": "claude-skills",
+    "proyectosAfectados": [],
+    "porQue": "Propone recortar la salida ruidosa de bash en Claude Code usando el modelo Jev para ahorrar contexto en sesiones de desarrollo intensivas. Sin embargo, introduce dependencia de un servicio de pago externo (TypeSafe) y latencia adicional en cada comando sin justificación en los proyectos actuales.",
+    "comoIntegrar": "Configurar el plugin en Claude Code registrando la clave de API de TypeSafe y evaluando el filtrado en tests con output largo.",
+    "riesgos": [
+      "Repo joven (12 días)",
+      "Requiere API key y servicio comercial de terceros (TypeSafe Jev)"
+    ],
+    "usoBrowser": false
+  },
+  {
+    "candidateId": "github:joetawil7/first-pass",
+    "week": "2026-W40",
+    "agent": "antigravity",
+    "score": 6,
+    "categoria": "claude-skills",
+    "proyectosAfectados": [
+      "AgentJobFinder"
+    ],
+    "porQue": "Plantea un flujo riguroso de preguntas previas, doble agente revisor y comprobación de tests antes de dar por buena una tarea en Claude Code. Aunque aportaría disciplina en AgentJobFinder, solapa con la skill de Code Review ya adoptada en el catálogo y añade excesiva fricción.",
+    "comoIntegrar": "Probar el plugin en un repositorio de prueba para validar si sus 10 preguntas previas no ralentizan en exceso el flujo de trabajo.",
+    "riesgos": [
+      "Repo muy joven (5 días)",
+      "Un único contribuidor",
+      "Solape parcial con Code Review adoptado"
+    ],
+    "usoBrowser": false
+  },
+  {
+    "candidateId": "github:rylaispirit/cinematic-video-prompt-skill",
+    "week": "2026-W40",
+    "agent": "antigravity",
+    "score": 2,
+    "categoria": "claude-skills",
+    "proyectosAfectados": [],
+    "porQue": "Es un catálogo de vocabulario cinematográfico para prompting en modelos de vídeo como Veo o Sora, enfocado en creadores de contenido y con explicaciones en vietnamita. No tiene aplicación técnica en ninguno de los proyectos de software ni agentes de Stones.",
+    "comoIntegrar": "No aplica",
+    "riesgos": [
+      "Repo joven (10 días)",
+      "Un único contribuidor",
+      "Contenido principalmente de prompting y documentación en vietnamita"
+    ],
+    "usoBrowser": false
+  },
+  {
+    "candidateId": "github:howseen-ai/claude-motion-design",
+    "week": "2026-W40",
+    "agent": "antigravity",
+    "score": 4,
+    "categoria": "claude-skills",
+    "proyectosAfectados": [],
+    "porQue": "Permite generar vídeos de motion design usando HTML, Playwright y ffmpeg de forma determinista y sin herramientas propietarias. Es una aproximación atractiva, pero ningún proyecto activo contempla la producción automatizada de vídeo promocional.",
+    "comoIntegrar": "Probar el comando /motion-design en un script aislado tras instalar dependencias de Playwright y ffmpeg.",
+    "riesgos": [
+      "Repo muy joven (3 días)",
+      "Un único contribuidor",
+      "Requiere dependencias pesadas (Chromium vía Playwright y ffmpeg)"
+    ],
+    "usoBrowser": false
+  },
+  {
+    "candidateId": "github:jakeschincariol/arena-skill",
+    "week": "2026-W40",
+    "agent": "antigravity",
+    "score": 2,
+    "categoria": "claude-skills",
+    "proyectosAfectados": [],
+    "porQue": "Plantea resolver problemas difíciles enfrentando hasta 100 subagentes de Claude Code en un torneo eliminatorio. El consumo de tokens y el coste económico por ejecución son desproporcionados para un entorno real de desarrollo, resultando inviable para el flujo de trabajo.",
+    "comoIntegrar": "No aplica",
+    "riesgos": [
+      "Repo muy joven (3 días)",
+      "Consumo descontrolado de tokens de API",
+      "Un único contribuidor"
+    ],
+    "usoBrowser": false
+  },
+  {
+    "candidateId": "github:uditakhourii/quicksilver",
+    "week": "2026-W40",
+    "agent": "antigravity",
+    "score": 5,
+    "categoria": "claude-skills",
+    "proyectosAfectados": [],
+    "porQue": "Permite a Claude Code delegar decisiones rápidas de filtrado de archivos o logs en el modelo económico Jev, reduciendo el consumo de tokens en repositorios grandes. Requiere suscripción y API key de TypeSafe.ai, lo que frena su adopción directa sin necesidad crítica demostrada.",
+    "comoIntegrar": "Instalar el skill manualmente y configurar JEV_API_KEY para pruebas puntuales de triaje de logs.",
+    "riesgos": [
+      "Repo muy joven (5 días)",
+      "Un único contribuidor",
+      "Dependencia de API de terceros comercial (TypeSafe Jev)"
+    ],
+    "usoBrowser": false
+  },
+  {
+    "candidateId": "github:brumar/chess-postmortem-skills",
+    "week": "2026-W40",
+    "agent": "antigravity",
+    "score": 1,
+    "categoria": "claude-skills",
+    "proyectosAfectados": [],
+    "porQue": "Skill ultraespecífico para generar análisis narrados y vídeos de partidas de ajedrez combinando Stockfish y Whisper. No tiene ninguna relación con los proyectos comerciales ni de infraestructura de Stones.",
+    "comoIntegrar": "No aplica",
+    "riesgos": [
+      "Repo muy joven (5 días)",
+      "Un único contribuidor",
+      "Licencia no reconocida"
+    ],
+    "usoBrowser": false
+  },
+  {
+    "candidateId": "github:andyshiu/claude-skill-playwright-browser",
+    "week": "2026-W40",
+    "agent": "antigravity",
+    "score": 7,
+    "categoria": "claude-skills",
+    "proyectosAfectados": [
+      "LABE Abogados web",
+      "CRMDecoversia"
+    ],
+    "porQue": "Añade a Claude Code la capacidad de levantar un navegador Playwright en segundo plano para sacar capturas multipantalla, detectar desbordamientos en móvil y verificar flujos interactivos. Encaja directamente en la optimización responsive de LABE Abogados web y las pantallas de gestión de CRMDecoversia.",
+    "comoIntegrar": "Clonar el skill en .claude/skills/playwright-browser en el proyecto LABE Abogados web y ejecutar una comprobación de desbordamiento horizontal en viewport móvil.",
+    "riesgos": [
+      "Repo joven (6 días)",
+      "Requiere entorno Node con Playwright y binarios de navegadores instalados"
+    ],
+    "usoBrowser": false
+  },
+  {
+    "candidateId": "github:minosdevs/copycat-skill",
+    "week": "2026-W40",
+    "agent": "antigravity",
+    "score": 5,
+    "categoria": "claude-skills",
+    "proyectosAfectados": [
+      "LABE Abogados web"
+    ],
+    "porQue": "Permite clonar sitios web extrayendo variables CSS, tipografías y estructura con verificación de diff por píxeles en bucle. Aunque podría usarse para estudiar referencias competitivas en LABE Abogados web, el objetivo de los proyectos es diseño original y no clonado literal.",
+    "comoIntegrar": "Añadir a .claude/skills/copycat para ensayar la extracción de tokens de diseño sobre una landing de referencia.",
+    "riesgos": [
+      "Repo muy joven (4 días)",
+      "Un único contribuidor",
+      "Riesgos de derechos de autor si se clonan activos de terceros"
+    ],
+    "usoBrowser": false
+  },
+  {
+    "candidateId": "github:sagochiko/aws-drawio-diagram-skill",
+    "week": "2026-W40",
+    "agent": "antigravity",
+    "score": 3,
+    "categoria": "claude-skills",
+    "proyectosAfectados": [],
+    "porQue": "Skill enfocado exclusivamente en generar diagramas de arquitectura para servicios de AWS en formato draw.io XML. La infraestructura de Stones no está centrada en topologías complejas de AWS, por lo que carece de utilidad práctica.",
+    "comoIntegrar": "No aplica",
+    "riesgos": [
+      "Repo joven (5 días)",
+      "Un único contribuidor",
+      "Documentación principal en japonés"
+    ],
+    "usoBrowser": false
+  },
+  {
+    "candidateId": "github:charlie947/motion-graphics-skills",
+    "week": "2026-W40",
+    "agent": "antigravity",
+    "score": 4,
+    "categoria": "claude-skills",
+    "proyectosAfectados": [],
+    "porQue": "Conjunto de trece habilidades para crear gráficos animados y piezas de lanzamiento directamente con código. Aunque técnicamente está bien planteado para prescindir de After Effects, no hay demanda de producción audiovisual en los proyectos actuales.",
+    "comoIntegrar": "Instalar selectivamente el skill brand-intake en un entorno aislado para valorar su utilidad en assets gráficos estáticos.",
+    "riesgos": [
+      "Repo muy joven (4 días)",
+      "Un único contribuidor",
+      "Requiere npx skills o clonado manual de múltiples subcarpetas"
+    ],
+    "usoBrowser": false
+  },
+  {
+    "candidateId": "github:tomascupr/reelql",
+    "week": "2026-W40",
+    "agent": "antigravity",
+    "score": 3,
+    "categoria": "claude-skills",
+    "proyectosAfectados": [],
+    "porQue": "Combina extracción de transcripciones y momentos clave de vídeos cortos con evaluaciones de marca mediante el modelo Jev. Está orientado a analistas de marketing y agencias de redes sociales, fuera del ámbito de desarrollo de software y ERP de Stones.",
+    "comoIntegrar": "No aplica",
+    "riesgos": [
+      "Repo joven (5 días)",
+      "Un único contribuidor",
+      "Depende de API externa de ReelQL y de TypeSafe Jev"
+    ],
+    "usoBrowser": false
+  },
+  {
+    "candidateId": "github:capturegrubenchant/solidworks",
+    "week": "2026-W40",
+    "agent": "antigravity",
+    "score": 2,
+    "categoria": "mcp-servers",
+    "proyectosAfectados": [],
+    "porQue": "Servidor MCP especializado en controlar instancias de SolidWorks mediante COM y macros VBA para modelado CAD 3D. Ninguno de los proyectos de Stones está relacionado con ingeniería mecánica o diseño industrial CAD.",
+    "comoIntegrar": "No aplica",
+    "riesgos": [
+      "Repo joven (5 días)",
+      "Un único contribuidor",
+      "Requiere instalación de SolidWorks en Windows con permisos elevados"
+    ],
+    "usoBrowser": false
+  },
+  {
+    "candidateId": "github:xiaopuouo/openchatx-mcp",
+    "week": "2026-W40",
+    "agent": "antigravity",
+    "score": 4,
+    "categoria": "mcp-servers",
+    "proyectosAfectados": [],
+    "porQue": "Permite usar ChatGPT web como planificador conectándolo a herramientas locales mediante el túnel seguro de OpenAI. Stones utiliza principalmente Claude Code y Antigravity en local, por lo que una pasarela orientada a ChatGPT no encaja en el flujo actual.",
+    "comoIntegrar": "Configurar el servidor MCP local para pruebas si se requiriese conectar ChatGPT a tareas del sistema.",
+    "riesgos": [
+      "Repo joven (7 días)",
+      "Ejecuta scripts postinstall en npm",
+      "Otorga control de terminal y ficheros locales a través de un túnel externo"
+    ],
+    "usoBrowser": false
+  },
+  {
+    "candidateId": "github:admte/orc-claude-plugin",
+    "week": "2026-W40",
+    "agent": "antigravity",
+    "score": 2,
+    "categoria": "mcp-servers",
+    "proyectosAfectados": [],
+    "porQue": "Plugin y servidor MCP remoto específico para la plataforma comercial ORC8R Cloud. Al no utilizar este servicio en la infraestructura de proyectos, no aporta ninguna funcionalidad aprovechable.",
+    "comoIntegrar": "No aplica",
+    "riesgos": [
+      "Repo joven (4 días)",
+      "Dependencia total de servicio SaaS de terceros (orc8r.com)"
+    ],
+    "usoBrowser": false
+  },
+  {
+    "candidateId": "github:insane0777/awwwards-mcp",
+    "week": "2026-W40",
+    "agent": "antigravity",
+    "score": 8,
+    "categoria": "mcp-servers",
+    "proyectosAfectados": [
+      "LABE Abogados web",
+      "CRMDecoversia"
+    ],
+    "porQue": "Permite a agentes de codificación consultar directamente referencias de diseño galardonadas en Awwwards, inspeccionando paletas, tipografías y componentes reales sin requerir clave de API. Es un recurso valioso para elevar el acabado visual en LABE Abogados web y las interfaces de usuario de CRMDecoversia.",
+    "comoIntegrar": "Registrar el servidor MCP en la configuración de Claude Code / Antigravity y probar la herramienta search_sites filtrando por temática corporativa y legal.",
+    "riesgos": [
+      "Repo joven (12 días)",
+      "Depende del scraping o indexación de Awwwards que podría romperse ante cambios en la web"
+    ],
+    "usoBrowser": false
+  },
+  {
+    "candidateId": "github:mmdju/divar-mcp",
+    "week": "2026-W40",
+    "agent": "antigravity",
+    "score": 1,
+    "categoria": "mcp-servers",
+    "proyectosAfectados": [],
+    "porQue": "Servidor MCP diseñado exclusivamente para interactuar con la plataforma de clasificados iraní Divar en moneda Toman. Carece por completo de interés o aplicabilidad en cualquiera de los proyectos de Stones.",
+    "comoIntegrar": "No aplica",
+    "riesgos": [
+      "Repo joven (12 días)",
+      "Un único contribuidor",
+      "Licencia no reconocida"
+    ],
+    "usoBrowser": false
+  },
+  {
+    "candidateId": "github:zkousama/morocco-communes",
+    "week": "2026-W40",
+    "agent": "antigravity",
+    "score": 1,
+    "categoria": "mcp-servers",
+    "proyectosAfectados": [],
+    "porQue": "Conjunto de datos abiertos y servidor MCP enfocado exclusivamente en las divisiones administrativas y censos de Marruecos. No tiene ninguna relación con los proyectos en curso ni con el ámbito geográfico de actuación.",
+    "comoIntegrar": "No aplica",
+    "riesgos": [
+      "Repo joven (9 días)",
+      "Ámbito geográfico hiperespecífico sin relación con los proyectos"
+    ],
+    "usoBrowser": false
+  },
+  {
+    "candidateId": "github:maximilianfeix/proxy-scraper",
+    "week": "2026-W40",
+    "agent": "antigravity",
+    "score": 4,
+    "categoria": "mcp-servers",
+    "proyectosAfectados": [
+      "AgentJobFinder"
+    ],
+    "porQue": "Ofrece un servidor MCP y rotador para consumir proxies públicos gratuitos tras verificaciones básicas. Aunque AgentJobFinder realiza peticiones HTTP para rastreo de ofertas, basar la recolección en proxies abiertos es demasiado inestable e inseguro para producción.",
+    "comoIntegrar": "Evaluar el CLI proxy-scraper en un entorno aislado para pruebas de contingencia si un endpoint bloquea la IP local.",
+    "riesgos": [
+      "Repo joven (6 días)",
+      "Riesgo de seguridad inherente a proxies públicos (interceptación de tráfico, inyecciones)",
+      "Alta volatilidad de los nodos"
+    ],
+    "usoBrowser": false
+  },
+  {
+    "candidateId": "github:ateymoori/oh-my-android",
+    "week": "2026-W40",
+    "agent": "antigravity",
+    "score": 6,
+    "categoria": "mcp-servers",
+    "proyectosAfectados": [
+      "Reproductor IPTV Multiplataforma"
+    ],
+    "porQue": "Permite a agentes como Claude Code controlar el emulador de Android, inspeccionar layouts en dp y auditar accesibilidad vía MCP. Sería muy útil para probar la interfaz de Reproductor IPTV Multiplataforma, pero al ser una aplicación nativa exclusiva para macOS no puede utilizarse en el entorno Windows habitual de Stones.",
+    "comoIntegrar": "Si se dispone de un equipo macOS secundario, instalar vía Homebrew cask y conectar el servidor MCP a la sesión de Claude Code.",
+    "riesgos": [
+      "Repo joven (6 días)",
+      "Exclusivo de macOS (requiere Swift/SwiftUI)",
+      "Un único contribuidor"
+    ],
+    "usoBrowser": false
+  },
+  {
+    "candidateId": "github:marko-js/marko",
+    "week": "2026-W40",
+    "agent": "antigravity",
+    "score": 3,
+    "categoria": "frontend-bonito",
+    "proyectosAfectados": [],
+    "porQue": "Framework completo de UI competidor de React y Vue creado por eBay. Al estar la base de código de Stones sólidamente asentada sobre Next.js 15 y React, introducir un paradigma de plantillas incompatible no tiene sentido arquitectónico.",
+    "comoIntegrar": "No aplica",
+    "riesgos": [
+      "Incompatible con el stack Next.js/React existente",
+      "Curva de aprendizaje y ecosistema propio cerrado"
+    ],
+    "usoBrowser": false
+  },
+  {
+    "candidateId": "github:stenciljs/core",
+    "week": "2026-W40",
+    "agent": "antigravity",
+    "score": 4,
+    "categoria": "frontend-bonito",
+    "proyectosAfectados": [],
+    "porQue": "Herramienta madura para empaquetar sistemas de diseño independientes en Web Components reutilizables en múltiples frameworks. En los proyectos actuales (CRMDecoversia, LABE Abogados web) los componentes se construyen directamente sobre React y Tailwind sin necesidad de una capa intermedia de Web Components.",
+    "comoIntegrar": "Compilar un componente aislado si se necesitase incrustar un widget agnóstico dentro de una vista Blade de Laravel.",
+    "riesgos": [
+      "Complejidad añadida en la cadena de compilación",
+      "Licencia no reconocida"
+    ],
+    "usoBrowser": false
+  },
+  {
+    "candidateId": "github:formbricks/formbricks",
+    "week": "2026-W40",
+    "agent": "antigravity",
+    "score": 5,
+    "categoria": "frontend-bonito",
+    "proyectosAfectados": [
+      "CRMDecoversia"
+    ],
+    "porQue": "Plataforma de encuestas de código abierto con una arquitectura ejemplar en Next.js, Tailwind y Prisma. Aunque ofrece patrones inspiradores para formularios complejos y flujos de feedback en CRMDecoversia, es una aplicación completa sobredimensionada para ser consumida como componente.",
+    "comoIntegrar": "Explorar su implementación de widgets de encuesta embebibles como referencia para módulos de valoración en el CRM.",
+    "riesgos": [
+      "Monorepo masivo y pesado",
+      "Licencia no reconocida"
+    ],
+    "usoBrowser": false
+  },
+  {
+    "candidateId": "github:elie222/inbox-zero",
+    "week": "2026-W40",
+    "agent": "antigravity",
+    "score": 4,
+    "categoria": "frontend-bonito",
+    "proyectosAfectados": [],
+    "porQue": "Aplicación completa de asistente de email construida con Next.js y shadcn/ui. Sus patrones de interfaz son limpios y modernos, pero Stones no necesita un cliente de correo con IA sino componentes integrables en sus propios servicios.",
+    "comoIntegrar": "Consultar la disposición de componentes de shadcn/ui en su código fuente para inspirar paneles de control.",
+    "riesgos": [
+      "Ejecuta scripts postinstall",
+      "Licencia no reconocida",
+      "Aplicación de usuario final en lugar de librería"
+    ],
+    "usoBrowser": false
+  },
+  {
+    "candidateId": "github:assistant-ui/assistant-ui",
+    "week": "2026-W40",
+    "agent": "antigravity",
+    "score": 8,
+    "categoria": "frontend-bonito",
+    "proyectosAfectados": [
+      "SonarTrench",
+      "AgentJobFinder"
+    ],
+    "porQue": "Proporciona primitivas desacopladas y de alta calidad para integrar interfaces conversacionales tipo ChatGPT en Next.js con soporte nativo de shadcn/ui y streaming. Resulta idóneo para dotar a la web de SonarTrench de un asistente interactivo de alertas o enriquecer la interfaz de AgentJobFinder.",
+    "comoIntegrar": "Ejecutar npx assistant-ui@latest init en la app Next.js de SonarTrench y conectar el runtime al endpoint de backend existente.",
+    "riesgos": [
+      "Dependencia del ecosistema Vercel AI SDK para máxima comodidad",
+      "Evolución rápida de la API de componentes"
+    ],
+    "usoBrowser": false
+  },
+  {
+    "candidateId": "github:huggingface/chat-ui",
+    "week": "2026-W40",
+    "agent": "antigravity",
+    "score": 3,
+    "categoria": "frontend-bonito",
+    "proyectosAfectados": [],
+    "porQue": "Aplicación completa de chat para LLMs desarrollada en SvelteKit para Hugging Face. Dado que los proyectos frontend de Stones se basan exclusivamente en React y Next.js 15, no es integrable como componente ni librería.",
+    "comoIntegrar": "No aplica",
+    "riesgos": [
+      "Basado en SvelteKit, incompatible con la arquitectura React existente"
+    ],
+    "usoBrowser": false
+  },
+  {
+    "candidateId": "github:carbon-design-system/carbon",
+    "week": "2026-W40",
+    "agent": "antigravity",
+    "score": 4,
+    "categoria": "frontend-bonito",
+    "proyectosAfectados": [],
+    "porQue": "Sistema de diseño maduro y exhaustivo creado por IBM para aplicaciones empresariales. Su enfoque fuertemente acoplado a Sass y sus directrices corporativas rígidas contrastan con la agilidad y estética basada en Tailwind CSS adoptada en CRMDecoversia y LABE Abogados web.",
+    "comoIntegrar": "Consultar la accesibilidad y documentación de componentes de tabla compleja como referencia teórica.",
+    "riesgos": [
+      "Scripts postinstall en package.json",
+      "Pesado y con alta fricción para convivir con Tailwind"
+    ],
+    "usoBrowser": false
+  },
+  {
+    "candidateId": "github:grommet/grommet",
+    "week": "2026-W40",
+    "agent": "antigravity",
+    "score": 3,
+    "categoria": "frontend-bonito",
+    "proyectosAfectados": [],
+    "porQue": "Librería veterana que depende fuertemente de styled-components y CSS-in-JS clásico en tiempo de ejecución. Este modelo causa problemas de hidratación y rendimiento con React Server Components y Next.js 15, alejándose de los estándares del proyecto.",
+    "comoIntegrar": "No aplica",
+    "riesgos": [
+      "Arquitectura CSS-in-JS obsoleta para Next.js App Router",
+      "Baja tracción moderna"
+    ],
+    "usoBrowser": false
+  },
+  {
+    "candidateId": "github:chakra-ui/panda",
+    "week": "2026-W40",
+    "agent": "antigravity",
+    "score": 5,
+    "categoria": "frontend-bonito",
+    "proyectosAfectados": [],
+    "porQue": "Ofrece un compilador CSS-in-JS sin sobrecarga en runtime escrito en Rust con excelente soporte para TypeScript y design tokens. Pese a su potencia técnica, todos los proyectos frontend activos de Stones tienen su diseño ya implementado en Tailwind CSS, por lo que una migración no está justificada.",
+    "comoIntegrar": "Probar en un sandbox aislado con npx panda init para evaluar la ergonomía de variantes respecto a Tailwind.",
+    "riesgos": [
+      "Requiere paso de compilación adicional y configuración de PostCSS",
+      "Fricción con clases utilitarias existentes de Tailwind"
+    ],
+    "usoBrowser": false
+  },
+  {
+    "candidateId": "github:chakra-ui/ark",
+    "week": "2026-W40",
+    "agent": "antigravity",
+    "score": 6,
+    "categoria": "frontend-bonito",
+    "proyectosAfectados": [
+      "CRMDecoversia"
+    ],
+    "porQue": "Proporciona componentes sin estilos basados en máquinas de estados finitos garantizando una accesibilidad impecable en React. Aunque podría resolver componentes interactivos complejos en CRMDecoversia, solapa con la suite de Radix UI que ya viene integrada mediante shadcn/ui en los proyectos.",
+    "comoIntegrar": "Importar un componente específico (como Combobox o DatePicker) en CRMDecoversia si la variante de shadcn/ui presenta limitaciones.",
+    "riesgos": [
+      "Scripts postinstall en package.json",
+      "Solape conceptual con Radix UI"
+    ],
+    "usoBrowser": false
+  },
+  {
+    "candidateId": "github:tixl3d/tixl",
+    "week": "2026-W40",
+    "agent": "antigravity",
+    "score": 2,
+    "categoria": "frontend-bonito",
+    "proyectosAfectados": [],
+    "porQue": "Aplicación de escritorio en C# y DirectX para creación de gráficos interactivos y visuales en directo. Clasificada por error en frontend-bonito, no tiene ninguna utilidad para el desarrollo web en Next.js ni para los proyectos activos.",
+    "comoIntegrar": "No aplica",
+    "riesgos": [
+      "Categoría sugerida incorrecta",
+      "Exclusivo de Windows y DirectX",
+      "Enfocado en arte digital y visuales VJ"
+    ],
+    "usoBrowser": false
+  },
+  {
+    "candidateId": "github:primer/react",
+    "week": "2026-W40",
+    "agent": "antigravity",
+    "score": 4,
+    "categoria": "frontend-bonito",
+    "proyectosAfectados": [],
+    "porQue": "Implementación oficial del sistema visual de GitHub para React. Aunque cuenta con componentes bien probados y accesibles, impone una estética inconfundiblemente asociada a GitHub que no encaja con la imagen corporativa requerida en LABE Abogados web ni CRMDecoversia.",
+    "comoIntegrar": "Revisar su implementación de componentes complejos de navegación para extraer ideas de accesibilidad.",
+    "riesgos": [
+      "Fuerte identidad visual corporativa ajena",
+      "Dificultad para desacoplar de sus propios tokens de estilo"
+    ],
+    "usoBrowser": false
+  },
+  {
+    "candidateId": "github:dockview/dockview",
+    "week": "2026-W40",
+    "agent": "antigravity",
+    "score": 5,
+    "categoria": "frontend-bonito",
+    "proyectosAfectados": [
+      "CRMDecoversia"
+    ],
+    "porQue": "Ofrece un motor de docking y splitviews excelente, con soporte completo de serialización y sin dependencias externas. Sin embargo, ni CRMDecoversia ni los paneles de administración de Stones requieren un entorno multifiltro estilo IDE, por lo que su adopción supondría sobreingeniería.",
+    "comoIntegrar": "Probar el paquete dockview-react en una vista experimental de CRMDecoversia si se decide permitir personalización avanzada del workspace por el usuario.",
+    "riesgos": [
+      "Licencia no reconocida en metadatos",
+      "Complejidad en gestión de estado y persistencia de layouts"
+    ],
+    "usoBrowser": false
+  },
+  {
+    "candidateId": "github:cloudscape-design/components",
+    "week": "2026-W40",
+    "agent": "antigravity",
+    "score": 3,
+    "categoria": "frontend-bonito",
+    "proyectosAfectados": [],
+    "porQue": "Sistema de diseño desarrollado por Amazon para la consola de AWS. Su estética está extremadamente marcada hacia paneles de infraestructura cloud y resulta ajena a la identidad moderna y accesible buscada en las aplicaciones de Stones.",
+    "comoIntegrar": "No aplica",
+    "riesgos": [
+      "Scripts postinstall en package.json",
+      "Alta rigidez y fuerte acoplamiento a patrones de AWS"
+    ],
+    "usoBrowser": false
+  },
+  {
+    "candidateId": "github:kuratlielia/arc-library",
+    "week": "2026-W40",
+    "agent": "antigravity",
+    "score": 7,
+    "categoria": "frontend-bonito",
+    "proyectosAfectados": [
+      "LABE Abogados web",
+      "SonarTrench"
+    ],
+    "porQue": "Librería de componentes para React y Next.js con animaciones físicas suaves ('calm motion') lista para instalar mediante la CLI de shadcn. Proporciona bloques y elementos visuales pulidos que encajan de inmediato para enriquecer la estética de LABE Abogados web y la landing de SonarTrench.",
+    "comoIntegrar": "Añadir un componente interactivo como Billing toggle o Line chart a LABE Abogados web usando la CLI de shadcn.",
+    "riesgos": [
+      "Repo joven (6 días)",
+      "Un único contribuidor",
+      "Parte de los bloques destacados pertenecen a la versión Pro comercial"
+    ],
+    "usoBrowser": false
+  },
+  {
+    "candidateId": "github:fuma-nama/fumadocs",
+    "week": "2026-W40",
+    "agent": "antigravity",
+    "score": 6,
+    "categoria": "nextjs-react",
+    "proyectosAfectados": [
+      "Sage 200 MCP"
+    ],
+    "porQue": "Framework moderno y extremadamente rápido para crear sitios de documentación con Next.js App Router y MDX. Aunque tiene una calidad excelente, actualmente Sage 200 MCP está en fase de exploración y no requiere aún un portal público de documentación desplegado.",
+    "comoIntegrar": "Inicializar una plantilla de Fumadocs en una subcarpeta docs/ cuando Sage 200 MCP requiera documentación técnica para integradores.",
+    "riesgos": [
+      "Exclusivo para ESM",
+      "Sobredimensionado mientras los proyectos se documenten en markdown dentro del vault o repo"
+    ],
+    "usoBrowser": false
+  },
+  {
+    "candidateId": "github:next-safe-action/next-safe-action",
+    "week": "2026-W40",
+    "agent": "antigravity",
+    "score": 9,
+    "categoria": "nextjs-react",
+    "proyectosAfectados": [
+      "SonarTrench",
+      "LABE Abogados web"
+    ],
+    "porQue": "Es la solución estándar y consolidada para dotar a las Server Actions de Next.js de validación estricta de esquemas, middleware de autenticación y manejo consistente de errores. Resuelve un problema cotidiano y crítico tanto en las mutaciones de SonarTrench como en los formularios de captación de LABE Abogados web.",
+    "comoIntegrar": "Instalar next-safe-action vía pnpm en SonarTrench y envolver la primera mutación de autenticación de wallet con un cliente seguro con Zod.",
+    "riesgos": [
+      "Requiere adaptar las firmas de Server Actions existentes al formato de la versión 8"
+    ],
+    "usoBrowser": false
+  },
+  {
+    "candidateId": "github:rari-build/rari",
+    "week": "2026-W40",
+    "agent": "antigravity",
+    "score": 4,
+    "categoria": "nextjs-react",
+    "proyectosAfectados": [],
+    "porQue": "Reimplementa el stack de React Server Components sobre un runtime en Rust para lograr tiempos de respuesta ultra bajos. Sin embargo, es un framework naciente que requeriría reescribir las aplicaciones Next.js 15 existentes perdiendo la compatibilidad con el ecosistema de Vercel.",
+    "comoIntegrar": "Ejecutar npm create rari-app@latest en un directorio de pruebas para evaluar el estado de soporte de RSC y velocidad de desarrollo.",
+    "riesgos": [
+      "Framework muy reciente y con ecosistema inmaduro",
+      "Rompimiento total con Next.js y su tooling asociado"
+    ],
+    "usoBrowser": false
+  },
+  {
+    "candidateId": "github:gregrickaby/viewer-for-reddit",
+    "week": "2026-W40",
+    "agent": "antigravity",
+    "score": 2,
+    "categoria": "nextjs-react",
+    "proyectosAfectados": [],
+    "porQue": "Aplicación completa de cliente de lectura para Reddit construida sobre Next.js y Server Actions. Es un proyecto de portfolio o uso personal sin utilidad como librería ni componente reutilizable para la cartera de Stones.",
+    "comoIntegrar": "No aplica",
+    "riesgos": [
+      "Un único contribuidor",
+      "Dependiente de la API y cuotas de Reddit"
+    ],
+    "usoBrowser": false
+  },
+  {
+    "candidateId": "github:mikehasa/golive-skill",
+    "week": "2026-W40",
+    "agent": "antigravity",
+    "score": 5,
+    "categoria": "agent-skills",
+    "proyectosAfectados": [
+      "SonarTrench",
+      "AgentJobFinder"
+    ],
+    "porQue": "Permite a agentes de IA orquestar el despliegue de bases de datos, dominios y hosting en proveedores externos como Vercel y Neon. Aunque automatiza tareas repetitivas de lanzamiento, se encuentra en fase alfa temprana y delegar credenciales de producción en un agente introduce riesgos operativos innecesarios.",
+    "comoIntegrar": "Probar el comando golive plan en modo solo lectura sobre un proyecto auxiliar para revisar qué cambios detecta.",
+    "riesgos": [
+      "Repo joven (7 días)",
+      "Versión alfa temprana (0.1.0-alpha.7)",
+      "Manejo de credenciales de proveedores en la nube y riesgo de costes imprevistos",
+      "Un único contribuidor"
+    ],
+    "usoBrowser": false
+  },
+  {
+    "candidateId": "github:feitangyuan/onetake",
+    "week": "2026-W40",
+    "agent": "antigravity",
+    "score": 3,
+    "categoria": "agent-skills",
+    "proyectosAfectados": [],
+    "porQue": "Skill de agente orientado a generar vídeos de lanzamiento de producto de plano secuencia continuo en código. Al igual que otras opciones de vídeo del batch, ningún proyecto activo de Stones contempla la creación de clips comerciales.",
+    "comoIntegrar": "No aplica",
+    "riesgos": [
+      "Repo muy joven (4 días)",
+      "0 contribuidores registrados",
+      "Licencia no reconocida",
+      "Documentación bilingüe con partes en chino"
+    ],
+    "usoBrowser": false
+  },
+  {
+    "candidateId": "github:dicklesworthstone/skillranker",
+    "week": "2026-W40",
+    "agent": "antigravity",
+    "score": 4,
+    "categoria": "agent-skills",
+    "proyectosAfectados": [
+      "Vault Obsidian"
+    ],
+    "porQue": "Herramienta en Rust pensada para seleccionar dinámicamente qué skill cargar en cada turno de un agente basándose en la API de TypeSafe Jev. Para el volumen actual de skills de Stones, la selección nativa de Claude Code y la organización en el Vault Obsidian son suficientes y no requieren costes de inferencia adicionales.",
+    "comoIntegrar": "Compilar el binario sr con cargo y probar sr demo para inspeccionar la lógica de puntuación.",
+    "riesgos": [
+      "Repo joven (13 días)",
+      "Un único contribuidor",
+      "Requiere clave de API de pago de TypeSafe.ai",
+      "Licencia no reconocida"
+    ],
+    "usoBrowser": false
+  },
+  {
+    "candidateId": "github:kishormorol/cli-faq-shortcuts",
+    "week": "2026-W40",
+    "agent": "antigravity",
+    "score": 7,
+    "categoria": "agent-skills",
+    "proyectosAfectados": [
+      "Vault Obsidian"
+    ],
+    "porQue": "Extrae patrones repetidos en el historial de sesiones de Claude Code usando solo la librería estándar de Python para sugerir comandos rápidos personalizados. Puede ayudar a Stones a estandarizar instrucciones recurrentes de mantenimiento y despliegue dentro del flujo de trabajo habitual.",
+    "comoIntegrar": "Clonar el script en .claude/skills/faq-shortcuts y ejecutar /faq-shortcuts para revisar los prompts más frecuentes de las últimas semanas.",
+    "riesgos": [
+      "Repo joven (11 días)",
+      "Depende de la persistencia de formatos de historial en Claude Code"
+    ],
+    "usoBrowser": false
+  },
+  {
+    "candidateId": "github:bestagentkits/motion-video-skill",
+    "week": "2026-W40",
+    "agent": "antigravity",
+    "score": 3,
+    "categoria": "agent-skills",
+    "proyectosAfectados": [],
+    "porQue": "Skill para agentes que compone vídeos promocionales sincronizados con música y voz sintetizada en HyperFrames. Al no existir tareas de marketing audiovisual en los proyectos de Stones, no aporta valor operativo.",
+    "comoIntegrar": "No aplica",
+    "riesgos": [
+      "Repo joven (5 días)",
+      "Un único contribuidor",
+      "Requiere herramientas de generación de audio y voz externas"
+    ],
+    "usoBrowser": false
+  },
+  {
+    "candidateId": "github:rimagination/easyplot",
+    "week": "2026-W40",
+    "agent": "antigravity",
+    "score": 2,
+    "categoria": "agent-skills",
+    "proyectosAfectados": [],
+    "porQue": "Enfocado en el diseño de figuras de alta precisión para papers académicos en revistas científicas usando R/ggplot2 y paletas específicas. No guarda relación con las aplicaciones web, bots ni sistemas empresariales de Stones.",
+    "comoIntegrar": "No aplica",
+    "riesgos": [
+      "Repo joven (7 días)",
+      "Un único contribuidor",
+      "Dependencias pesadas de R y librerías científicas"
+    ],
+    "usoBrowser": false
+  },
+  {
+    "candidateId": "github:xjli360/sealeap-ecommerce-skills",
+    "week": "2026-W40",
+    "agent": "antigravity",
+    "score": 3,
+    "categoria": "agent-skills",
+    "proyectosAfectados": [],
+    "porQue": "Recopilación de casi doscientos flujos para vender en plataformas de e-commerce como Amazon, TikTok Shop o Mercado Libre. Aunque CRMDecoversia gestiona procesos comerciales, su modelo no opera sobre marketplaces minoristas globales.",
+    "comoIntegrar": "No aplica",
+    "riesgos": [
+      "Repo joven (6 días)",
+      "Un único contribuidor",
+      "Volumen excesivo de ficheros (194 skills) de calidad heterogénea"
+    ],
+    "usoBrowser": false
+  },
+  {
+    "candidateId": "github:changroro/code-video",
+    "week": "2026-W40",
+    "agent": "antigravity",
+    "score": 3,
+    "categoria": "agent-skills",
+    "proyectosAfectados": [],
+    "porQue": "Skill diseñado para investigar un tema y renderizar vídeos promocionales en estilo pixel art o dibujo mediante canvas y ffmpeg. Fuera de los objetivos y requisitos técnicos de los proyectos en desarrollo.",
+    "comoIntegrar": "No aplica",
+    "riesgos": [
+      "Repo joven (7 días)",
+      "Un único contribuidor"
+    ],
+    "usoBrowser": false
+  },
+  {
+    "candidateId": "github:agihunt/blurt",
+    "week": "2026-W40",
+    "agent": "antigravity",
+    "score": 5,
+    "categoria": "agent-skills",
+    "proyectosAfectados": [
+      "CRMDecoversia"
+    ],
+    "porQue": "Permite grabar la pantalla y narrar errores para que el agente extraiga capturas, pasos de reproducción y referencias de código. Sería muy práctico para el testeo funcional de CRMDecoversia, pero requiere una app de barra de menús nativa para macOS que no se adapta al entorno Windows actual.",
+    "comoIntegrar": "Si se dispone de Mac, compilar la app de blurt y conectar la carpeta de grabaciones compartida con Claude Code.",
+    "riesgos": [
+      "Repo muy joven (5 días)",
+      "Aplicación de captura exclusiva de macOS",
+      "Requiere modelos de visión y transcripción"
+    ],
+    "usoBrowser": false
+  },
+  {
+    "candidateId": "github:metamask/metamask-mobile",
+    "week": "2026-W40",
+    "agent": "antigravity",
+    "score": 2,
+    "categoria": "solana",
+    "proyectosAfectados": [],
+    "porQue": "Es el código de la billetera móvil de MetaMask, centrada en el ecosistema Ethereum y redes compatibles con EVM. No tiene relación con la blockchain Solana utilizada en SonarTrench, además de ser una aplicación cliente completa y no una librería integrable.",
+    "comoIntegrar": "No aplica",
+    "riesgos": [
+      "Categoría sugerida incorrecta (es Ethereum, no Solana)",
+      "Scripts postinstall en package.json",
+      "Licencia no reconocida"
+    ],
+    "usoBrowser": false
+  },
+  {
+    "candidateId": "github:solana-foundation/solana-web3.js",
+    "week": "2026-W40",
+    "agent": "antigravity",
+    "score": 9,
+    "categoria": "solana",
+    "proyectosAfectados": [
+      "SonarTrench"
+    ],
+    "porQue": "Es el repositorio oficial del nuevo SDK de Solana (@solana/web3.js v2+), modular y diseñado para tree-shaking junto con los adaptadores de wallet. Encaja de forma directa en el frontend Next.js 15 de SonarTrench para gestionar la conexión y firma de transacciones con billeteras Solana.",
+    "comoIntegrar": "Comprobar si las dependencias de SonarTrench usan la versión legacy v1 y planificar la migración a los paquetes modulares @solana/web3.js v2.",
+    "riesgos": [
+      "Cambios sustanciales de arquitectura entre v1 y v2 (API funcional sin clases monolíticas Connection)"
+    ],
+    "usoBrowser": false
+  },
+  {
+    "candidateId": "github:cake-tech/cake_wallet",
+    "week": "2026-W40",
+    "agent": "antigravity",
+    "score": 4,
+    "categoria": "solana",
+    "proyectosAfectados": [],
+    "porQue": "Billetera multidivisa de código abierto desarrollada en Flutter. Aunque utiliza el mismo framework que Reproductor IPTV Multiplataforma, la lógica de custodia y transacción blockchain no es extrapolable a la reproducción multimedia ni a los servicios de Stones.",
+    "comoIntegrar": "Consultar sus patrones de arquitectura de estado y almacenamiento seguro en Flutter si hiciera falta.",
+    "riesgos": [
+      "Base de código masiva con dependencias nativas de C++ y múltiples blockchains",
+      "No es una librería"
+    ],
+    "usoBrowser": false
+  },
+  {
+    "candidateId": "github:kairos-io/kairos",
+    "week": "2026-W40",
+    "agent": "antigravity",
+    "score": 2,
+    "categoria": "solana",
+    "proyectosAfectados": [],
+    "porQue": "Sistema operativo inmutable para clústeres de Kubernetes en dispositivos edge. No tiene ninguna relación con la blockchain Solana ni con las necesidades de despliegue de las aplicaciones de Stones.",
+    "comoIntegrar": "No aplica",
+    "riesgos": [
+      "Categoría sugerida errónea",
+      "Complejidad de infraestructura a nivel de kernel y sistema operativo"
+    ],
+    "usoBrowser": false
+  },
+  {
+    "candidateId": "github:firedancer-io/firedancer",
+    "week": "2026-W40",
+    "agent": "antigravity",
+    "score": 4,
+    "categoria": "solana",
+    "proyectosAfectados": [
+      "SonarTrench"
+    ],
+    "porQue": "Cliente validador de ultra bajo retardo desarrollado en C por Jump Crypto para operadores de nodos en la red Solana. SonarTrench es un bot consumidor de eventos gRPC (Yellowstone), por lo que operar o compilar un validador completo queda fuera de su alcance.",
+    "comoIntegrar": "Revisar su documentación técnica sobre serialización de transacciones si se optimizan parsers de bajo nivel en Rust.",
+    "riesgos": [
+      "Requiere Linux con kernels recientes y hardware específico de servidor de validación",
+      "Licencia no reconocida"
+    ],
+    "usoBrowser": false
+  },
+  {
+    "candidateId": "github:kuest/prediction-market",
+    "week": "2026-W40",
+    "agent": "antigravity",
+    "score": 2,
+    "categoria": "solana",
+    "proyectosAfectados": [],
+    "porQue": "Infraestructura de mercados de predicción basada en Polygon y contratos derivados de Polymarket. Además de estar erróneamente clasificada en Solana, la operativa de apuestas descentralizadas no guarda relación con el seguimiento de memecoins en SonarTrench.",
+    "comoIntegrar": "No aplica",
+    "riesgos": [
+      "Categoría sugerida incorrecta (Polygon/Ethereum, no Solana)",
+      "Scripts postinstall en package.json",
+      "Licencia no reconocida"
+    ],
+    "usoBrowser": false
+  },
+  {
+    "candidateId": "github:solana-playground/solana-playground",
+    "week": "2026-W40",
+    "agent": "antigravity",
+    "score": 5,
+    "categoria": "solana",
+    "proyectosAfectados": [
+      "SonarTrench"
+    ],
+    "porQue": "Excelente herramienta para compilar y probar contratos inteligentes de Solana en WebAssembly directamente en el navegador. Dado que SonarTrench se centra en la monitorización y lectura rápida de bloques mediante gRPC y clientes en local, el playground web resulta tangencial.",
+    "comoIntegrar": "Utilizar el entorno beta.solpg.io para testear rápidamente la deserialización de cuentas de nuevos protocolos antes de implementarlas en el bot.",
+    "riesgos": [
+      "Enfocado en desarrollo en navegador con crates limitados"
+    ],
+    "usoBrowser": false
+  },
+  {
+    "candidateId": "github:solanabr/ai-kit",
+    "week": "2026-W40",
+    "agent": "antigravity",
+    "score": 8,
+    "categoria": "solana",
+    "proyectosAfectados": [
+      "SonarTrench"
+    ],
+    "porQue": "Conjunto de agentes, comandos y reglas de Claude Code diseñado específicamente para ingenieros de Solana, abarcando desde clientes web hasta seguridad y deserialización de cuentas. Es directamente aplicable para potenciar el mantenimiento y nuevas funcionalidades de SonarTrench con Claude Code.",
+    "comoIntegrar": "Copiar los comandos y directrices relevantes de CLAUDE-solana.md en la configuración local de Claude Code del repositorio SonarTrench.",
+    "riesgos": [
+      "Requiere seleccionar los comandos pertinentes para no sobrecargar el contexto con agentes de Unity o mobile no utilizados"
+    ],
+    "usoBrowser": false
+  },
+  {
+    "candidateId": "github:compiler-explorer/compiler-explorer",
+    "week": "2026-W40",
+    "agent": "antigravity",
+    "score": 3,
+    "categoria": "rust",
+    "proyectosAfectados": [],
+    "porQue": "Plataforma pública indispensable para inspeccionar la salida de ensamblador de múltiples compiladores en línea. No constituye una librería ni crate de Rust que se pueda incorporar en los desarrollos de Stones, sino un servicio de consulta externa.",
+    "comoIntegrar": "No aplica",
+    "riesgos": [
+      "Repositorio enorme de servicio web, no concebido como librería reutilizable"
+    ],
+    "usoBrowser": false
+  },
+  {
+    "candidateId": "github:fyroxengine/fyrox",
+    "week": "2026-W40",
+    "agent": "antigravity",
+    "score": 3,
+    "categoria": "rust",
+    "proyectosAfectados": [],
+    "porQue": "Motor completo de videojuegos en Rust con editor de escenas propio. Stones emplea Rust en SonarTrench exclusivamente para procesamiento reactivo de transacciones a alta velocidad, por lo que un motor gráfico carece de aplicabilidad.",
+    "comoIntegrar": "No aplica",
+    "riesgos": [
+      "Enorme base de código específica de gamedev y rendering"
+    ],
+    "usoBrowser": false
+  },
+  {
+    "candidateId": "github:firezone/firezone",
+    "week": "2026-W40",
+    "agent": "antigravity",
+    "score": 3,
+    "categoria": "rust",
+    "proyectosAfectados": [],
+    "porQue": "Plataforma de red privada para control de accesos zero-trust basada en WireGuard. Aunque su cliente implementa Rust, el software está concebido para administración de redes corporativas y no resuelve ninguna necesidad de las aplicaciones de Stones.",
+    "comoIntegrar": "No aplica",
+    "riesgos": [
+      "Complejidad de infraestructura distribuida orientada a producto final SaaS"
+    ],
+    "usoBrowser": false
+  },
+  {
+    "candidateId": "github:microsoft/aspire",
+    "week": "2026-W40",
+    "agent": "antigravity",
+    "score": 5,
+    "categoria": "dotnet",
+    "proyectosAfectados": [
+      "UpdateTrackingEkipman"
+    ],
+    "porQue": "Orquestador de Microsoft para desarrollo y despliegue distribuido de servicios en .NET con OpenTelemetry de serie. Aunque UpdateTrackingEkipman está desarrollado en .NET, se trata de una API individual sobre SQL Server que no requiere la complejidad de un stack distribuido con Aspire.",
+    "comoIntegrar": "Evaluar Aspire en UpdateTrackingEkipman si en el futuro se descompone la integración con Sage 200 en múltiples microservicios.",
+    "riesgos": [
+      "Categoría sugerida incorrecta en el batch (es .NET, no Rust)",
+      "Orientado a .NET 8/9 mientras UpdateTrackingEkipman está en .NET 7"
+    ],
+    "usoBrowser": false
+  },
+  {
+    "candidateId": "github:lmnr-ai/lmnr",
+    "week": "2026-W40",
+    "agent": "antigravity",
+    "score": 7,
+    "categoria": "rust",
+    "proyectosAfectados": [
+      "AgentJobFinder"
+    ],
+    "porQue": "Plataforma de telemetría y evaluación específica para agentes de IA que permite rastrear llamadas a LLMs, herramientas y consumo de tokens con baja sobrecarga gracias a su motor en Rust. Encaja para diagnosticar y evaluar el rendimiento del agente de redacción en AgentJobFinder.",
+    "comoIntegrar": "Levantar el contenedor local de Laminar mediante Docker y añadir el SDK de trazado en las funciones de llamada a LLM de AgentJobFinder.",
+    "riesgos": [
+      "Requiere infraestructura de base de datos para autoalojamiento (Postgres/Clickhouse)",
+      "Foco comercial respaldado por YC"
+    ],
+    "usoBrowser": false
+  },
+  {
+    "candidateId": "github:defguard/wireguard-rs",
+    "week": "2026-W40",
+    "agent": "antigravity",
+    "score": 3,
+    "categoria": "rust",
+    "proyectosAfectados": [],
+    "porQue": "Crate de Rust concebido para configurar túneles e interfaces de red WireGuard en múltiples sistemas operativos. No guarda relación con la lógica de bots de SonarTrench ni con ninguna de las aplicaciones del portfolio.",
+    "comoIntegrar": "No aplica",
+    "riesgos": [
+      "Licencia no reconocida",
+      "Requiere privilegios de red a nivel de kernel"
+    ],
+    "usoBrowser": false
+  },
+  {
+    "candidateId": "github:liquibase/liquibase",
+    "week": "2026-W40",
+    "agent": "antigravity",
+    "score": 4,
+    "categoria": "sage200",
+    "proyectosAfectados": [
+      "Sage 200 MCP"
+    ],
+    "porQue": "Herramienta corporativa en Java para versionar y aplicar cambios en esquemas de bases de datos. En el ecosistema de Sage 200 sobre SQL Server, las tablas son mantenidas exclusivamente por las actualizaciones del propio fabricante y no mediante scripts de migración externos.",
+    "comoIntegrar": "Utilizar sus funciones de diff de esquemas para comparar cambios entre versiones de la base de datos de Sage 200.",
+    "riesgos": [
+      "Dependencia de la JVM de Java",
+      "Licencia no reconocida",
+      "Riesgo de corrupción si se modifican tablas protegidas del ERP"
+    ],
+    "usoBrowser": false
+  },
+  {
+    "candidateId": "github:limesurvey/limesurvey",
+    "week": "2026-W40",
+    "agent": "antigravity",
+    "score": 2,
+    "categoria": "sage200",
+    "proyectosAfectados": [],
+    "porQue": "Sistema clásico de gestión de encuestas desarrollado en PHP. Ha sido catalogado en sage200 por coincidencia de la etiqueta de SQL Server, pero no aporta ningún componente ni conocimiento aplicable a la integración con el ERP.",
+    "comoIntegrar": "No aplica",
+    "riesgos": [
+      "Categoría sugerida totalmente inadecuada",
+      "Licencia no reconocida",
+      "Aplicación monolítica pesada"
+    ],
+    "usoBrowser": false
+  },
+  {
+    "candidateId": "github:linq2db/linq2db",
+    "week": "2026-W40",
+    "agent": "antigravity",
+    "score": 8,
+    "categoria": "sage200",
+    "proyectosAfectados": [
+      "UpdateTrackingEkipman",
+      "Sage 200 MCP"
+    ],
+    "porQue": "Proporciona una capa de acceso a datos ligera, tipada y de alto rendimiento sobre SQL Server que evita los problemas de tracking de Entity Framework en bases de datos legadas. Resulta ideal para optimizar las consultas de lectura y sincronización en UpdateTrackingEkipman y como driver de referencia para Sage 200 MCP.",
+    "comoIntegrar": "Instalar el paquete NuGet linq2db.SqlServer en UpdateTrackingEkipman y sustituir una consulta compleja de albaranes para comparar latencia y legibilidad.",
+    "riesgos": [
+      "Requiere definir mapeos POCO de las tablas de Sage 200 que se deseen consultar"
+    ],
+    "usoBrowser": false
+  },
+  {
+    "candidateId": "github:dataplat/dbatools",
+    "week": "2026-W40",
+    "agent": "antigravity",
+    "score": 7,
+    "categoria": "sage200",
+    "proyectosAfectados": [
+      "Sage 200 MCP",
+      "UpdateTrackingEkipman"
+    ],
+    "porQue": "Módulo indispensable de PowerShell con cientos de utilidades para administrar, auditar e inspeccionar servidores SQL Server de forma segura y automatizada. Facilita las tareas operativas de diagnóstico, comprobación de esquemas y backups en las bases de datos de Sage 200 de los proyectos Ekipman.",
+    "comoIntegrar": "Instalar dbatools en la máquina de desarrollo Windows mediante Install-Module dbatools y probar Get-DbaDatabase para auditar las bases de Sage 200.",
+    "riesgos": [
+      "Módulo extenso que requiere permisos de administración en SQL Server"
+    ],
+    "usoBrowser": false
+  },
+  {
+    "candidateId": "github:crbnos/carbon",
+    "week": "2026-W40",
+    "agent": "antigravity",
+    "score": 8,
+    "categoria": "sage200",
+    "proyectosAfectados": [
+      "Sage 200 MCP"
+    ],
+    "porQue": "Implementa un servidor MCP nativo para exponer operaciones de un ERP (pedidos, inventario, facturación) a agentes de IA, construido en TypeScript. Sirve de inspiración directa y fuente de patrones arquitectónicos para diseñar las herramientas y recursos de la idea Sage 200 MCP.",
+    "comoIntegrar": "Analizar el directorio de herramientas MCP en el repositorio de Carbon para replicar su diseño de esquemas y llamadas seguras en Sage 200 MCP.",
+    "riesgos": [
+      "Scripts postinstall en package.json",
+      "Licencia no reconocida en los metadatos",
+      "Diseñado sobre Postgres mientras Sage 200 opera sobre SQL Server"
+    ],
+    "usoBrowser": false
+  },
+  {
+    "candidateId": "github:squidex/squidex",
+    "week": "2026-W40",
+    "agent": "antigravity",
+    "score": 4,
+    "categoria": "sage200",
+    "proyectosAfectados": [],
+    "porQue": "Gestor de contenidos headless desarrollado en ASP.NET Core con arquitectura CQRS y compatibilidad con SQL Server. Aunque su diseño técnico en C# es sólido, como producto es un CMS y no guarda relación con la lógica contable o logística de Sage 200.",
+    "comoIntegrar": "Examinar su capa de acceso a SQL Server con CQRS si se rediseña la arquitectura de UpdateTrackingEkipman.",
+    "riesgos": [
+      "Monorepo complejo enfocado exclusivamente a contenidos editoriales"
+    ],
+    "usoBrowser": false
+  },
+  {
+    "candidateId": "github:lefayjey/linwinpwn",
+    "week": "2026-W40",
+    "agent": "antigravity",
+    "score": 2,
+    "categoria": "sage200",
+    "proyectosAfectados": [],
+    "porQue": "Script en bash para auditoría ofensiva y explotación de vulnerabilidades en entornos de Active Directory y SQL Server. No es una herramienta de desarrollo ni integración ERP, y su uso entraña riesgos de seguridad.",
+    "comoIntegrar": "No aplica",
+    "riesgos": [
+      "Herramienta de hacking y pentesting ofensivo",
+      "Riesgo de bloqueo o alerta de seguridad por antivirus"
+    ],
+    "usoBrowser": false
+  },
+  {
+    "candidateId": "github:open-mercato/open-mercato",
+    "week": "2026-W40",
+    "agent": "antigravity",
+    "score": 8,
+    "categoria": "sage200",
+    "proyectosAfectados": [
+      "CRMDecoversia",
+      "Sage 200 MCP"
+    ],
+    "porQue": "Propone una base arquitectónica en TypeScript para construir aplicaciones de CRM y ERP pensadas para ser extendidas mediante agentes de codificación (Claude Code, Cursor). Proporciona especificaciones y convenciones modulares que aportan gran inspiración para estructurar la evolución de CRMDecoversia y el diseño conceptual de Sage 200 MCP.",
+    "comoIntegrar": "Revisar los módulos de dominio de ventas y clientes de Open Mercato para extraer patrones de especificación aplicables al backend de CRMDecoversia.",
+    "riesgos": [
+      "Scripts postinstall en package.json",
+      "Ecosistema relativamente nuevo (1 año) con convenciones propias"
+    ],
+    "usoBrowser": false
+  },
+  {
+    "candidateId": "github:abap2ui5/samples",
+    "week": "2026-W40",
+    "agent": "antigravity",
+    "score": 2,
+    "categoria": "sage200",
+    "proyectosAfectados": [],
+    "porQue": "Muestra ejemplos de desarrollo de interfaces modernas para SAP en lenguaje ABAP. Sage 200 utiliza una arquitectura técnica totalmente distinta sobre SQL Server en Windows, por lo que las muestras de código en ABAP no tienen ninguna utilidad.",
+    "comoIntegrar": "No aplica",
+    "riesgos": [
+      "Específico del entorno SAP/ABAP, incompatible con el stack de Sage 200"
+    ],
+    "usoBrowser": false
+  },
+  {
+    "candidateId": "github:muhammad-abdullah333/sap-mcp-bridge",
+    "week": "2026-W40",
+    "agent": "antigravity",
+    "score": 5,
+    "categoria": "sage200",
+    "proyectosAfectados": [
+      "Sage 200 MCP"
+    ],
+    "porQue": "Plantea un puente de escritorio en Windows para que clientes MCP como Claude Desktop interactúen con un ERP (en este caso SAP). Aunque la idea de una app local de conexión resuena con la problemática de acceder a Sage 200 en local, el proyecto está en fase muy inicial y acoplado a las APIs de Eclipse ADT de SAP.",
+    "comoIntegrar": "Examinar el código de su servidor MCP en Node.js para analizar cómo gestiona la pasarela entre las llamadas de herramientas y el ERP.",
+    "riesgos": [
+      "Repo muy joven (10 días)",
+      "Un único contribuidor",
+      "Baja tracción (14 estrellas)",
+      "Distribuye ejecutables precompilados"
+    ],
+    "usoBrowser": false
+  },
+  {
+    "candidateId": "github:dotnet/runtime",
+    "week": "2026-W40",
+    "agent": "antigravity",
+    "score": 3,
+    "categoria": "dotnet",
+    "proyectosAfectados": [],
+    "porQue": "Es el código fuente del propio runtime de .NET y las librerías base de Microsoft. Aunque UpdateTrackingEkipman se ejecuta sobre .NET, el repositorio del runtime no es una dependencia ni una herramienta a adoptar a nivel de proyecto.",
+    "comoIntegrar": "No aplica",
+    "riesgos": [
+      "Monorepo fundacional de Microsoft, no aplicable como librería de proyecto"
+    ],
+    "usoBrowser": false
+  },
+  {
+    "candidateId": "github:monogame/monogame",
+    "week": "2026-W40",
+    "agent": "antigravity",
+    "score": 2,
+    "categoria": "dotnet",
+    "proyectosAfectados": [],
+    "porQue": "Framework veterano para creación de videojuegos 2D/3D en .NET sucesor de XNA. No tiene ninguna relevancia para las APIs de integración con ERP ni para los desarrollos web de Stones.",
+    "comoIntegrar": "No aplica",
+    "riesgos": [
+      "Base de código especializada exclusivamente en motores de juegos",
+      "Licencia no reconocida"
+    ],
+    "usoBrowser": false
+  },
+  {
+    "candidateId": "github:microsoft/agent-framework",
+    "week": "2026-W40",
+    "agent": "antigravity",
+    "score": 8,
+    "categoria": "dotnet",
+    "proyectosAfectados": [
+      "AgentJobFinder",
+      "Sage 200 MCP"
+    ],
+    "porQue": "Marco oficial de Microsoft para orquestar agentes de IA y grafos de tareas con paridad completa entre Python y .NET. Encaja de forma directa en la evolución de AgentJobFinder para flujos de análisis de ofertas y abre la puerta a agentes nativos en C# para interactuar con Sage 200.",
+    "comoIntegrar": "Revisar los paquetes de Python de Microsoft Agent Framework e implementar un prototipo de flujo secuencial en AgentJobFinder para sustituir lógica ad hoc de llamadas.",
+    "riesgos": [
+      "Framework en evolución activa con cambios periódicos en las APIs de integración"
+    ],
+    "usoBrowser": false
+  },
+  {
+    "candidateId": "github:dotnet/benchmarkdotnet",
+    "week": "2026-W40",
+    "agent": "antigravity",
+    "score": 7,
+    "categoria": "dotnet",
+    "proyectosAfectados": [
+      "UpdateTrackingEkipman"
+    ],
+    "porQue": "Es la herramienta de referencia absoluta para medir con precisión estadística el rendimiento, tiempo de ejecución y consumo de memoria de métodos en .NET. Resulta muy útil para aislar y optimizar los cuellos de botella en la deserialización y consultas contra SQL Server en UpdateTrackingEkipman.",
+    "comoIntegrar": "Crear un proyecto de consola de benchmarks en la solución de UpdateTrackingEkipman referenciando BenchmarkDotNet para medir las transformaciones de datos críticas.",
+    "riesgos": [
+      "Requiere ejecutar en configuración Release y sin debugger adjunto para mediciones válidas"
+    ],
+    "usoBrowser": false
+  },
+  {
+    "candidateId": "github:dotnet/orleans",
+    "week": "2026-W40",
+    "agent": "antigravity",
+    "score": 4,
+    "categoria": "dotnet",
+    "proyectosAfectados": [
+      "UpdateTrackingEkipman"
+    ],
+    "porQue": "Framework de referencia para computación distribuida basada en actores virtuales en el ecosistema .NET. La integración de Sage 200 en UpdateTrackingEkipman es una API de gestión empresarial tradicional que no justifica la complejidad de una malla de granos y particionado de estado distribuido.",
+    "comoIntegrar": "Consultar sus patrones de concurrencia y persistencia si en el futuro se requiriese sincronización masiva de eventos en tiempo real.",
+    "riesgos": [
+      "Curva de aprendizaje pronunciada",
+      "Cambio total del modelo de programación hacia actores"
+    ],
+    "usoBrowser": false
+  },
+  {
+    "candidateId": "github:meysamhadeli/booking-microservices",
+    "week": "2026-W40",
+    "agent": "antigravity",
+    "score": 4,
+    "categoria": "dotnet",
+    "proyectosAfectados": [
+      "UpdateTrackingEkipman"
+    ],
+    "porQue": "Plantilla demostrativa muy completa que reúne las tendencias modernas de arquitectura en .NET (Vertical Slice, Wolverine, CQRS, Aspire). Aunque sirve como catálogo de buenas prácticas para consultar patrones en UpdateTrackingEkipman, no es una librería de producción integrable.",
+    "comoIntegrar": "Inspeccionar cómo implementa los handlers de MediatR y validaciones en sus slices verticales como referencia de refactorización.",
+    "riesgos": [
+      "Es una plantilla orientada a demostración, no una librería empaquetada",
+      "Enfocada en .NET 10 preview"
+    ],
+    "usoBrowser": false
+  },
+  {
+    "candidateId": "github:bitfoundation/bitplatform",
+    "week": "2026-W40",
+    "agent": "antigravity",
+    "score": 3,
+    "categoria": "dotnet",
+    "proyectosAfectados": [],
+    "porQue": "Colección extensa de componentes de interfaz y utilidades centradas específicamente en aplicaciones web desarrolladas con Blazor y WebAssembly en C#. Puesto que Stones utiliza React y Next.js para todos sus frontends, carece de aplicabilidad.",
+    "comoIntegrar": "No aplica",
+    "riesgos": [
+      "Ecosistema restringido a Blazor, incompatible con las interfaces en React"
+    ],
+    "usoBrowser": false
+  }
+]
