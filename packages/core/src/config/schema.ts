@@ -64,10 +64,24 @@ export const interestsSchema = z
         z.string().min(1),
       )
       .default({}),
+    /**
+     * Categoría de los repos de los plugins nuevos del marketplace oficial de Claude
+     * Code (colector `anthropic-skills`). Sin ella el colector solo lleva el changelog
+     * y no propone candidatos.
+     */
+    anthropic_categoria: z.string().min(1).optional(),
     proyectos: z.array(z.string().min(1)).default([]),
   })
   .strict()
   .superRefine((interests, ctx) => {
+    const anthropic = interests.anthropic_categoria;
+    if (anthropic !== undefined && !(anthropic in interests.categorias)) {
+      ctx.addIssue({
+        code: z.ZodIssueCode.custom,
+        path: ['anthropic_categoria'],
+        message: `la categoría "${anthropic}" no existe en categorias`,
+      });
+    }
     for (const [lista, categoria] of Object.entries(interests.awesome_listas)) {
       if (!(categoria in interests.categorias)) {
         ctx.addIssue({

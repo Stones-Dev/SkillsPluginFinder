@@ -2,6 +2,15 @@ import crypto from 'node:crypto';
 import path from 'node:path';
 import pLimit from 'p-limit';
 import {
+  ANTHROPIC_SOURCE_ID,
+  type AnthropicResult,
+  type AnthropicSourceReport,
+  type OfficialEntry,
+  collectFromAnthropic,
+  finalizeAnthropicSnapshots,
+  writeAnthropicSnapshots,
+} from '../collectors/anthropic.js';
+import {
   AWESOME_SOURCE_ID,
   type AwesomeListReport,
   type AwesomeResult,
@@ -43,12 +52,19 @@ import { isoWeek } from './week.js';
 
 const ENRICH_CONCURRENCY = 4;
 /** Fuentes que entiende `--source`; sin él se recogen todas. */
-export const COLLECT_SOURCES = [SOURCE_ID, AWESOME_SOURCE_ID] as const;
+export const COLLECT_SOURCES = [
+  SOURCE_ID,
+  AWESOME_SOURCE_ID,
+  ANTHROPIC_SOURCE_ID,
+] as const;
 
 export type CollectOptions = {
   repoDir: string;
   token: string | undefined;
+  /** Una sola fuente (`--source`). Tiene prioridad sobre `sources`. */
   source?: string;
+  /** Restringe las fuentes (programático, p. ej. en tests); sin `source` ni `sources`, todas. */
+  sources?: readonly string[];
   now?: Date;
   /** `schedule` | `workflow_dispatch` (Actions) o `manual`. */
   trigger?: string;
@@ -59,7 +75,7 @@ export type CollectOptions = {
    * **sin escribir nada**: ni `data/candidates/`, ni `seen.sqlite`, ni `runs`, ni la
    * caché HTTP de `data/cache/`. Tampoco enriquece (gastaría ~3 peticiones `core`
    * por repo). Sí gasta las peticiones de búsqueda. Única excepción: crea las
-   * instantáneas de `data/awesome/` que falten (nunca sobrescribe una existente).
+   * instantáneas de `data/awesome/` y `data/anthropic/` que falten (nunca sobrescribe una existente).
    */
   dryRun?: boolean;
   /** Solo tests. */
@@ -109,6 +125,18 @@ export type DryRunSummary = {
     /** Instantáneas de `data/awesome/` que no existían y se han creado. */
     snapshotsCreadas: number;
   };
+  /** Colector `anthropic-skills`; ausente si no se ejecutó. */
+  anthropic?: {
+    repos: AnthropicSourceReport[];
+    /** Changelog oficial desde la última ejecución (lo que iría al informe). */
+    oficiales: OfficialEntry[];
+    /** Peticiones `core` gastadas (commits, ficheros y `GET /repos`). */
+    requests: number;
+    /** Listados de commits que contestaron 304 gracias a la ETag. */
+    notModified: number;
+    /** Instantáneas de `data/anthropic/` que no existían y se han creado. */
+    snapshotsCreadas: number;
+  };
 };
 
 export type CollectSummary = {
@@ -136,16 +164,17 @@ export async function collectWeek(
   options: CollectOptions,
 ): Promise<CollectSummary | DryRunSummary> {
   const { repoDir, logger } = options;
-  if (
-    options.source &&
-    !(COLLECT_SOURCES as readonly string[]).includes(options.source)
-  ) {
-    throw new Error(
-      `Fuente no soportada: ${options.source} (solo ${COLLECT_SOURCES.join(', ')})`,
-    );
+  const requested: readonly string[] = options.source
+    ? [options.source]
+    : (options.sources ?? COLLECT_SOURCES);
+  for (const source of requested) {
+    if (!(COLLECT_SOURCES as readonly string[]).includes(source)) {
+      throw new Error(
+        `Fuente no soportada: ${source} (solo ${COLLECT_SOURCES.join(', ')})`,
+      );
+    }
   }
-  const wants = (source: string) =>
-    !options.source || options.source === source;
+  const wants = (source: string) => requested.includes(source);
   // Antes de leer o escribir nada: sin token no se hace ningún trabajo a medias.
   const token = requireToken(options.token);
 
@@ -170,7 +199,7 @@ export async function collectWeek(
   };
 
   const hasAwesome = Object.keys(interests.awesome_listas).length > 0;
-  if (options.source === AWESOME_SOURCE_ID && !hasAwesome) {
+  if (requested.length === 1 && wants(AWESOME_SOURCE_ID) && !hasAwesome) {
     throw new Error(
       'Sin listas que recoger: añade el bloque awesome_listas a Intereses.md y ejecuta "pnpm spf interests sync".',
     );
@@ -218,6 +247,28 @@ export async function collectWeek(
     }
   }
 
+  let anthropic: AnthropicResult | undefined;
+  if (wants(ANTHROPIC_SOURCE_ID)) {
+    anthropic = await collectFromAnthropic({
+      token,
+      now,
+      snapshotDir: path.join(repoDir, 'data', 'anthropic'),
+      categoria: interests.anthropic_categoria,
+      logger,
+      throttle: options.throttle,
+      retryBaseMs: options.retryBaseMs,
+    });
+    fuentes.push(ANTHROPIC_SOURCE_ID);
+    if (
+      !wants(SOURCE_ID) &&
+      anthropic.sources.every((s) => s.estado === 'error')
+    ) {
+      throw new Error(
+        `Todos los repos de ${ANTHROPIC_SOURCE_ID} fallaron (${anthropic.errors[0].message}); no se escribe nada.`,
+      );
+    }
+  }
+
   // Un repo que sale de varias fuentes es un solo candidato con todos sus orígenes.
   const found = new Map<
     string,
@@ -231,6 +282,12 @@ export async function collectWeek(
     const existing = found.get(key);
     if (existing) existing.origins.push(...r.origins);
     else found.set(key, { ...r, source: AWESOME_SOURCE_ID });
+  }
+  for (const r of anthropic?.repos ?? []) {
+    const key = r.repo.full_name.toLowerCase();
+    const existing = found.get(key);
+    if (existing) existing.origins.push(...r.origins);
+    else found.set(key, { ...r, source: ANTHROPIC_SOURCE_ID });
   }
   const normalized = [...found.values()].map((r) =>
     normalizeGithubRepo(r, { interests, now }),
@@ -269,6 +326,14 @@ export async function collectWeek(
           )
         ).length
       : 0;
+    const anthropicCreadas = anthropic
+      ? (
+          await writeAnthropicSnapshots(
+            finalizeAnthropicSnapshots(anthropic, deferredNames),
+            { onlyMissing: true },
+          )
+        ).length
+      : 0;
     const byRule: DryRunSummary['descartadosPorRegla'] = {};
     for (const d of descartados) byRule[d.regla] = (byRule[d.regla] ?? 0) + 1;
     const categories = new Map<
@@ -291,7 +356,10 @@ export async function collectWeek(
       stats: {
         queries: search.stats.queries,
         requests: search.stats.requests,
-        rawItems: search.stats.rawItems + (awesome?.stats.resueltos ?? 0),
+        rawItems:
+          search.stats.rawItems +
+          (awesome?.stats.resueltos ?? 0) +
+          (anthropic?.stats.resueltos ?? 0),
         uniqueRepos: found.size,
         afterDedupe: fresh.length,
         afterRules: kept.length,
@@ -305,7 +373,18 @@ export async function collectWeek(
         notModified: awesome.stats.notModified,
         snapshotsCreadas,
       },
-      errorsBySource: [...search.errors, ...(awesome?.errors ?? [])],
+      anthropic: anthropic && {
+        repos: anthropic.sources,
+        oficiales: anthropic.oficiales,
+        requests: anthropic.stats.requests,
+        notModified: anthropic.stats.notModified,
+        snapshotsCreadas: anthropicCreadas,
+      },
+      errorsBySource: [
+        ...search.errors,
+        ...(awesome?.errors ?? []),
+        ...(anthropic?.errors ?? []),
+      ],
       descartadosPorRegla: byRule,
       categorias: [...categories.entries()]
         .map(([categoria, n]) => ({ categoria, ...n }))
@@ -347,7 +426,10 @@ export async function collectWeek(
     cacheHits: search.stats.cacheHits,
     enrichRequests: enrichStats.requests,
     enrichCacheHits: enrichStats.cacheHits,
-    rawItems: search.stats.rawItems + (awesome?.stats.resueltos ?? 0),
+    rawItems:
+      search.stats.rawItems +
+      (awesome?.stats.resueltos ?? 0) +
+      (anthropic?.stats.resueltos ?? 0),
     uniqueRepos: found.size,
     afterDedupe: fresh.length,
     afterRules: kept.length,
@@ -362,12 +444,23 @@ export async function collectWeek(
       awesomeResueltos: awesome.stats.resueltos,
       awesomePendientes: awesome.stats.pendientes,
     }),
+    ...(anthropic && {
+      anthropicRequests: anthropic.stats.requests,
+      anthropicNotModified: anthropic.stats.notModified,
+      anthropicCambios: anthropic.stats.cambios,
+      anthropicResueltos: anthropic.stats.resueltos,
+      anthropicPendientes: anthropic.stats.pendientes,
+    }),
   };
   const run: RunRecord = {
     at: now.toISOString(),
     trigger: options.trigger ?? 'manual',
     stats,
-    errorsBySource: [...search.errors, ...(awesome?.errors ?? [])],
+    errorsBySource: [
+      ...search.errors,
+      ...(awesome?.errors ?? []),
+      ...(anthropic?.errors ?? []),
+    ],
   };
 
   const merged = mergeCandidatesFile(await readCandidatesFile(repoDir, week), {
@@ -383,6 +476,7 @@ export async function collectWeek(
       motivo: d.motivo,
     })),
     diferidos: deferred,
+    oficiales: anthropic?.oficiales,
   });
   const file = await writeCandidatesFile(repoDir, merged);
 
@@ -406,6 +500,11 @@ export async function collectWeek(
   if (awesome) {
     await writeAwesomeSnapshots(finalizeSnapshots(awesome, deferredNames));
   }
+  if (anthropic) {
+    await writeAnthropicSnapshots(
+      finalizeAnthropicSnapshots(anthropic, deferredNames),
+    );
+  }
 
   return { week, file, run, totalCandidates: merged.candidates.length };
 }
@@ -419,7 +518,7 @@ export function formatDryRun(r: DryRunSummary): string[] {
       .map(([rule, n]) => `${rule} ${n}`)
       .join(' · ') || 'ninguno';
   const lines = [
-    `DRY-RUN · semana ${r.week} · ${r.fuentes.join(' + ')} — no se escribe nada (ni data/candidates, ni seen.sqlite, ni runs, ni caché${r.awesome ? ', salvo las instantáneas de data/awesome que falten' : ''}) y no se enriquece`,
+    `DRY-RUN · semana ${r.week} · ${r.fuentes.join(' + ')} — no se escribe nada (ni data/candidates, ni seen.sqlite, ni runs, ni caché${r.awesome || r.anthropic ? `, salvo las instantáneas de ${[r.awesome && 'data/awesome', r.anthropic && 'data/anthropic'].filter(Boolean).join(' y ')} que falten` : ''}) y no se enriquece`,
     `  ${s.queries} consultas → ${s.requests} peticiones de búsqueda → ${s.rawItems} resultados → ${s.uniqueRepos} repos únicos`,
     `  dedupe (${r.seenLeida ? 'seen.sqlite en solo lectura' : 'sin seen.sqlite: nada visto'}): ${s.afterDedupe} · tras reglas: ${s.afterRules} (${s.afterDedupe - s.afterRules} descartados: ${rules})`,
     `  entrarían al batch: ${s.selected} · diferidos por el tope: ${s.deferred} · el enrich gastaría ~${r.enrichRequestsEstimadas} peticiones core`,
@@ -434,6 +533,7 @@ export function formatDryRun(r: DryRunSummary): string[] {
     lines.push(`    error: ${e.query ?? e.source}: ${e.message}`);
   }
   if (r.awesome) lines.push(...formatAwesome(r.awesome));
+  if (r.anthropic) lines.push(...formatAnthropic(r.anthropic));
   if (r.muestra.length > 0) {
     lines.push(
       '  primeros del batch:',
@@ -457,4 +557,32 @@ function formatAwesome(a: NonNullable<DryRunSummary['awesome']>): string[] {
         `    ${l.repo.padEnd(38)} ${state[l.estado]}${l.enlaces === null ? '' : ` · ${l.enlaces} enlaces`}${l.estado === 'con-cambios' ? ` · +${l.nuevos} -${l.quitados} (resueltos ${l.resueltos}, desaparecidos ${l.desaparecidos}, pendientes ${l.pendientes})` : ''} → ${l.categoria}`,
     ),
   ];
+}
+
+function formatAnthropic(a: NonNullable<DryRunSummary['anthropic']>): string[] {
+  const state: Record<AnthropicSourceReport['estado'], string> = {
+    'primera-pasada': 'primera pasada (instantánea, sin changelog)',
+    'sin-cambios': 'sin cambios',
+    'con-cambios': 'con cambios',
+    error: 'ERROR',
+  };
+  const lines = [
+    `  anthropic-skills: ${a.repos.length} repos · ${a.requests} peticiones core (${a.notModified} listados de commits con 304) · instantáneas creadas: ${a.snapshotsCreadas}`,
+    ...a.repos.map(
+      (s) =>
+        `    ${s.repo.padEnd(38)} ${state[s.estado]}${s.items === null ? '' : ` · ${s.items} elementos`}${s.estado === 'con-cambios' ? ` · +${s.nuevos} ~${s.actualizados} -${s.eliminados} (candidatos resueltos ${s.resueltos}, desaparecidos ${s.desaparecidos}, pendientes ${s.pendientes})` : ''}`,
+    ),
+  ];
+  for (const entry of a.oficiales) {
+    lines.push(
+      `    changelog ${entry.fuente} (${entry.desde}…${entry.hasta}): ${entry.cambios.length} cambios, ${entry.commits.length}${entry.masCommits ? '+' : ''} commits`,
+    );
+    for (const c of entry.cambios.slice(0, 12)) {
+      lines.push(`      ${c.cambio.padEnd(11)} ${c.tipo} ${c.nombre}`);
+    }
+    if (entry.cambios.length > 12) {
+      lines.push(`      … y ${entry.cambios.length - 12} más`);
+    }
+  }
+  return lines;
 }

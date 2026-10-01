@@ -1,0 +1,1656 @@
+{
+  "status": 200,
+  "etag": "W/\"7949e68c1491de23c7fab1ada97018f688a88f659ad2a16d37ffdeccf0a410ef\"",
+  "body": [
+    {
+      "sha": "ab024cdcfa7ca80be204acd4907656ba5a968589",
+      "node_id": "C_kwDOQZyFQNoAKGFiMDI0Y2RjZmE3Y2E4MGJlMjA0YWNkNDkwNzY1NmJhNWE5Njg1ODk",
+      "commit": {
+        "author": {
+          "name": "Tobin South",
+          "email": "tobin.south@gmail.com",
+          "date": "2026-09-30T20:11:48Z"
+        },
+        "committer": {
+          "name": "GitHub",
+          "email": "noreply@github.com",
+          "date": "2026-09-30T20:11:48Z"
+        },
+        "message": "Fix Context7 OAuth fallback (#6333)\n\nRemote-Dev: homespace\n\nCo-authored-by: Fahreddin Özcan <ozcanfahrettinn@gmail.com>",
+        "tree": {
+          "sha": "66b78734617b322b5afde806d26f6ad0d745df49",
+          "url": "https://api.github.com/repos/anthropics/claude-plugins-official/git/trees/66b78734617b322b5afde806d26f6ad0d745df49"
+        },
+        "url": "https://api.github.com/repos/anthropics/claude-plugins-official/git/commits/ab024cdcfa7ca80be204acd4907656ba5a968589",
+        "comment_count": 0,
+        "verification": {
+          "verified": true,
+          "reason": "valid",
+          "signature": "-----BEGIN PGP SIGNATURE-----\n\nwsFcBAABCAAQBQJqvW0ECRC1aQ7uu5UhlAAA7QoQAH0hY7YV+jUPN2caGbipaRCP\na+7y0yx25ko/3w050kYzDYatEe2ktSDxhOtmSukJR2KI964sGx2Q6z9O4X3ORv77\n9Da7AhZ/5txuqY3Rl4Hs4dokBd1eK0cap3VwJdFiJj895Cs+HJRwZXjkkIFipmQJ\n2qNngZ4wAhmfzGSl73wjK90rQFOk1Z/grSYgttMzjsemkLum4W3+LRF0WmzP0taU\n/seWua++CAsnmc9+zcm904v57wOQQLM0d7vIqid2+TZlQrQZU5XJCEvlulZCTnFU\n+oW7t0uZEkfZxgnfVKJ1wOgSMhyICSqPMaTsxKGp90aTVAeHSkMlnQfE91QjC5NT\n/J5M0jxBv1G1f1vntAIMLnoOnSxl+9iXrIkzjVHQe7QwpFfWnUhTwIpxPPA/pQC3\nSFlRmE1kq7nD/9Y4zZ/uAOlBn4udHpZMEwumBRZcLIu3cr8cfDL12dW/KBTL4Tng\niLyy7Ccqnl3ahnjZssOTnWAYLieLUepAmhRz9+y07djRtOJIXMTp6YTxtEZumT0V\nuJPlllw+NbM2PYEmiKaQAtMXNwQOsS4pgfandWzBFcQQWM5we7RR/1FjnCvpGknK\nGXS4gn8HNBbOdamNEkJQqELx1lGKqEAVEw65ey3iC9wx5CetN+q7HlAXjy+q8KmG\nkvK5fIwsVCRxkqV6Lnqp\n=TLIG\n-----END PGP SIGNATURE-----\n",
+          "payload": "tree 66b78734617b322b5afde806d26f6ad0d745df49\nparent 72399850766aef9b8652fdd26fda2dc030b8541a\nauthor Tobin South <tobin.south@gmail.com> 1790799108 -0700\ncommitter GitHub <noreply@github.com> 1790799108 -0400\n\nFix Context7 OAuth fallback (#6333)\n\nRemote-Dev: homespace\n\nCo-authored-by: Fahreddin Özcan <ozcanfahrettinn@gmail.com>",
+          "verified_at": "2026-09-30T20:11:48Z"
+        }
+      },
+      "url": "https://api.github.com/repos/anthropics/claude-plugins-official/commits/ab024cdcfa7ca80be204acd4907656ba5a968589",
+      "html_url": "https://github.com/anthropics/claude-plugins-official/commit/ab024cdcfa7ca80be204acd4907656ba5a968589",
+      "comments_url": "https://api.github.com/repos/anthropics/claude-plugins-official/commits/ab024cdcfa7ca80be204acd4907656ba5a968589/comments",
+      "author": {
+        "login": "tobinsouth",
+        "id": 32489862,
+        "node_id": "MDQ6VXNlcjMyNDg5ODYy",
+        "avatar_url": "https://avatars.githubusercontent.com/u/32489862?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/tobinsouth",
+        "html_url": "https://github.com/tobinsouth",
+        "followers_url": "https://api.github.com/users/tobinsouth/followers",
+        "following_url": "https://api.github.com/users/tobinsouth/following{/other_user}",
+        "gists_url": "https://api.github.com/users/tobinsouth/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/tobinsouth/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/tobinsouth/subscriptions",
+        "organizations_url": "https://api.github.com/users/tobinsouth/orgs",
+        "repos_url": "https://api.github.com/users/tobinsouth/repos",
+        "events_url": "https://api.github.com/users/tobinsouth/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/tobinsouth/received_events",
+        "type": "User",
+        "user_view_type": "public",
+        "site_admin": false
+      },
+      "committer": {
+        "login": "web-flow",
+        "id": 19864447,
+        "node_id": "MDQ6VXNlcjE5ODY0NDQ3",
+        "avatar_url": "https://avatars.githubusercontent.com/u/19864447?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/web-flow",
+        "html_url": "https://github.com/web-flow",
+        "followers_url": "https://api.github.com/users/web-flow/followers",
+        "following_url": "https://api.github.com/users/web-flow/following{/other_user}",
+        "gists_url": "https://api.github.com/users/web-flow/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/web-flow/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/web-flow/subscriptions",
+        "organizations_url": "https://api.github.com/users/web-flow/orgs",
+        "repos_url": "https://api.github.com/users/web-flow/repos",
+        "events_url": "https://api.github.com/users/web-flow/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/web-flow/received_events",
+        "type": "User",
+        "user_view_type": "public",
+        "site_admin": false
+      },
+      "parents": [
+        {
+          "sha": "72399850766aef9b8652fdd26fda2dc030b8541a",
+          "url": "https://api.github.com/repos/anthropics/claude-plugins-official/commits/72399850766aef9b8652fdd26fda2dc030b8541a",
+          "html_url": "https://github.com/anthropics/claude-plugins-official/commit/72399850766aef9b8652fdd26fda2dc030b8541a"
+        }
+      ]
+    },
+    {
+      "sha": "72399850766aef9b8652fdd26fda2dc030b8541a",
+      "node_id": "C_kwDOQZyFQNoAKDcyMzk5ODUwNzY2YWVmOWI4NjUyZmRkMjZmZGEyZGMwMzBiODU0MWE",
+      "commit": {
+        "author": {
+          "name": "Dalton Flanagan",
+          "email": "6599399+dltn@users.noreply.github.com",
+          "date": "2026-09-30T19:56:17Z"
+        },
+        "committer": {
+          "name": "GitHub",
+          "email": "noreply@github.com",
+          "date": "2026-09-30T19:56:17Z"
+        },
+        "message": "Merge pull request #6334 from anthropics/dltn/imessage-multi-image\n\nimessage: surface every inbound image, not just the first",
+        "tree": {
+          "sha": "00c7a8d0aacde02c692aa203b0ec498a362c7ef1",
+          "url": "https://api.github.com/repos/anthropics/claude-plugins-official/git/trees/00c7a8d0aacde02c692aa203b0ec498a362c7ef1"
+        },
+        "url": "https://api.github.com/repos/anthropics/claude-plugins-official/git/commits/72399850766aef9b8652fdd26fda2dc030b8541a",
+        "comment_count": 0,
+        "verification": {
+          "verified": true,
+          "reason": "valid",
+          "signature": "-----BEGIN PGP SIGNATURE-----\n\nwsFcBAABCAAQBQJqvWlhCRC1aQ7uu5UhlAAArUcQAJXxHNu7kkRB/UL31MNTxgvh\n5sC9pT8ZaSjfUcF9Ok4VQ0tzXKd3zzXe0T3dZDQW9kCPY6AOSoKBbt98tRYs9sJ/\nllLmt8CbKGndA7+yOB00xNzaYg1LVxfgZzFCEgAMNyErAu7+LDPTkdnVwdekdTVE\ni/b8OUlsQt7qaWds9+RuxBDEGu5UtPyM0CflHhfQgATr/wKJJo1dCq2QuiBXRGqm\n4394EzWmssKqpZCFS/QDYpIcsNWYIUTxWA+XZbiol30kpE1uiKyoCwHVr+jyz577\nmXEg4qv/kaKBRMrsj1OifIUM6FIEv7XHfkglvQhh6Ab+cgkSMyyvY2eJyKzcm8Hl\nSZYP2lBk76d0iaB3NiHIFXF5WjlOYdNlXc0KOsV30ziUILsXv89bbpX8s+AKzQ86\npC9hokgV6vpb/hDqqmNbowGmo1mwU+iSCHEm+JuiHWG3DRgzPYdh1o8igNWq1Aca\nQLmc96+XU1cC+tV2x5K7liQlHGcUYMMiAoEJI0IGXPLdV7JSqFxEDE3DOrM9i7MW\nx0iWP20rTqI0U8Dh3se3DB5kSUgolIYg15+3tOEFhQVDrdJn4aH8jLHpTcECjaIN\nP4Ea1YTls0FN8hCy7TOdOjD3Bzn9fauukr3fGJpNC6hwc1fuJNjUCC5VFgUNjj2w\nc+dRypKpbfvRklOWXuL3\n=cuVl\n-----END PGP SIGNATURE-----\n",
+          "payload": "tree 00c7a8d0aacde02c692aa203b0ec498a362c7ef1\nparent aa5654b7acb7d3096b5db44381bcfceaf4a71dfb\nparent b6041c772138cdb3408fb4d93accd770f0ec56a1\nauthor Dalton Flanagan <6599399+dltn@users.noreply.github.com> 1790798177 -0400\ncommitter GitHub <noreply@github.com> 1790798177 -0400\n\nMerge pull request #6334 from anthropics/dltn/imessage-multi-image\n\nimessage: surface every inbound image, not just the first",
+          "verified_at": "2026-09-30T19:56:18Z"
+        }
+      },
+      "url": "https://api.github.com/repos/anthropics/claude-plugins-official/commits/72399850766aef9b8652fdd26fda2dc030b8541a",
+      "html_url": "https://github.com/anthropics/claude-plugins-official/commit/72399850766aef9b8652fdd26fda2dc030b8541a",
+      "comments_url": "https://api.github.com/repos/anthropics/claude-plugins-official/commits/72399850766aef9b8652fdd26fda2dc030b8541a/comments",
+      "author": {
+        "login": "dltn",
+        "id": 6599399,
+        "node_id": "MDQ6VXNlcjY1OTkzOTk=",
+        "avatar_url": "https://avatars.githubusercontent.com/u/6599399?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/dltn",
+        "html_url": "https://github.com/dltn",
+        "followers_url": "https://api.github.com/users/dltn/followers",
+        "following_url": "https://api.github.com/users/dltn/following{/other_user}",
+        "gists_url": "https://api.github.com/users/dltn/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/dltn/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/dltn/subscriptions",
+        "organizations_url": "https://api.github.com/users/dltn/orgs",
+        "repos_url": "https://api.github.com/users/dltn/repos",
+        "events_url": "https://api.github.com/users/dltn/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/dltn/received_events",
+        "type": "User",
+        "user_view_type": "public",
+        "site_admin": false
+      },
+      "committer": {
+        "login": "web-flow",
+        "id": 19864447,
+        "node_id": "MDQ6VXNlcjE5ODY0NDQ3",
+        "avatar_url": "https://avatars.githubusercontent.com/u/19864447?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/web-flow",
+        "html_url": "https://github.com/web-flow",
+        "followers_url": "https://api.github.com/users/web-flow/followers",
+        "following_url": "https://api.github.com/users/web-flow/following{/other_user}",
+        "gists_url": "https://api.github.com/users/web-flow/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/web-flow/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/web-flow/subscriptions",
+        "organizations_url": "https://api.github.com/users/web-flow/orgs",
+        "repos_url": "https://api.github.com/users/web-flow/repos",
+        "events_url": "https://api.github.com/users/web-flow/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/web-flow/received_events",
+        "type": "User",
+        "user_view_type": "public",
+        "site_admin": false
+      },
+      "parents": [
+        {
+          "sha": "aa5654b7acb7d3096b5db44381bcfceaf4a71dfb",
+          "url": "https://api.github.com/repos/anthropics/claude-plugins-official/commits/aa5654b7acb7d3096b5db44381bcfceaf4a71dfb",
+          "html_url": "https://github.com/anthropics/claude-plugins-official/commit/aa5654b7acb7d3096b5db44381bcfceaf4a71dfb"
+        },
+        {
+          "sha": "b6041c772138cdb3408fb4d93accd770f0ec56a1",
+          "url": "https://api.github.com/repos/anthropics/claude-plugins-official/commits/b6041c772138cdb3408fb4d93accd770f0ec56a1",
+          "html_url": "https://github.com/anthropics/claude-plugins-official/commit/b6041c772138cdb3408fb4d93accd770f0ec56a1"
+        }
+      ]
+    },
+    {
+      "sha": "b6041c772138cdb3408fb4d93accd770f0ec56a1",
+      "node_id": "C_kwDOQZyFQNoAKGI2MDQxYzc3MjEzOGNkYjM0MDhmYjRkOTNhY2NkNzcwZjBlYzU2YTE",
+      "commit": {
+        "author": {
+          "name": "dltn",
+          "email": "6599399+dltn@users.noreply.github.com",
+          "date": "2026-09-30T19:34:53Z"
+        },
+        "committer": {
+          "name": "dltn",
+          "email": "6599399+dltn@users.noreply.github.com",
+          "date": "2026-09-30T19:34:53Z"
+        },
+        "message": "imessage: surface every inbound image, not just the first\n\nAn iMessage with several photos arrived with only the first one in the\nchannel tag: handleInbound took the first image attachment and stopped.\nCollect every image attachment instead (same filters as before) and pass\neach path in the notification meta as image_path, image_path_2,\nimage_path_3, ... so the model can Read all of them. A single image still\nproduces exactly image_path, so existing behaviour is unchanged.\n\nNumbered keys rather than an array or a joined list: Claude Code accepts\nonly string values in channel meta and renders each key as an attribute\non the <channel> tag, so keys must be plain identifiers; one key per path\nalso avoids inventing a delimiter for sender-controlled filenames. The\nattachments query gains ORDER BY a.ROWID so the numbering follows\nattachment ROWID (creation) order. Instructions and README updated to\nmatch; version 0.1.0 -> 0.2.0 in plugin.json and package.json.\n\nKnown limits, unchanged by this patch: attachments still downloading\nwhen the message row is first polled (filename NULL) are skipped and,\nsince the poll watermark has already passed the message, never picked up\nlater; HEIC is passed through unconverted; attachments with a NULL\nmime_type still pass the image filter; no cap on images per message.",
+        "tree": {
+          "sha": "ca45474c5d719d35bcc0e97300481ea5d8e7ad20",
+          "url": "https://api.github.com/repos/anthropics/claude-plugins-official/git/trees/ca45474c5d719d35bcc0e97300481ea5d8e7ad20"
+        },
+        "url": "https://api.github.com/repos/anthropics/claude-plugins-official/git/commits/b6041c772138cdb3408fb4d93accd770f0ec56a1",
+        "comment_count": 0,
+        "verification": {
+          "verified": true,
+          "reason": "valid",
+          "signature": "-----BEGIN SSH SIGNATURE-----\nU1NIU0lHAAAAAQAAAGgAAAATZWNkc2Etc2hhMi1uaXN0cDI1NgAAAAhuaXN0cDI1NgAAAE\nEEyG+/TeEeSCfs6RjKiWUf9tAbbYnqBPZcim7pS/roLIadzjT/q8dSPIGyfkan3ohwHiqs\nMFWNga2j160byL6ctgAAAANnaXQAAAAAAAAABnNoYTUxMgAAAGUAAAATZWNkc2Etc2hhMi\n1uaXN0cDI1NgAAAEoAAAAhAM/qcYJndPvsEnmU1TWRZc5OK6xEBHNcRMTq7IFg4p+RAAAA\nIQDX4pd2pC18JYGwMsUSti/irvEjk2ijPM6/KPA8XhwOJQ==\n-----END SSH SIGNATURE-----",
+          "payload": "tree ca45474c5d719d35bcc0e97300481ea5d8e7ad20\nparent 2a8ad9f74633d10e3d9bb0660a03bfc6e50584b1\nauthor dltn <6599399+dltn@users.noreply.github.com> 1790796893 -0400\ncommitter dltn <6599399+dltn@users.noreply.github.com> 1790796893 -0400\n\nimessage: surface every inbound image, not just the first\n\nAn iMessage with several photos arrived with only the first one in the\nchannel tag: handleInbound took the first image attachment and stopped.\nCollect every image attachment instead (same filters as before) and pass\neach path in the notification meta as image_path, image_path_2,\nimage_path_3, ... so the model can Read all of them. A single image still\nproduces exactly image_path, so existing behaviour is unchanged.\n\nNumbered keys rather than an array or a joined list: Claude Code accepts\nonly string values in channel meta and renders each key as an attribute\non the <channel> tag, so keys must be plain identifiers; one key per path\nalso avoids inventing a delimiter for sender-controlled filenames. The\nattachments query gains ORDER BY a.ROWID so the numbering follows\nattachment ROWID (creation) order. Instructions and README updated to\nmatch; version 0.1.0 -> 0.2.0 in plugin.json and package.json.\n\nKnown limits, unchanged by this patch: attachments still downloading\nwhen the message row is first polled (filename NULL) are skipped and,\nsince the poll watermark has already passed the message, never picked up\nlater; HEIC is passed through unconverted; attachments with a NULL\nmime_type still pass the image filter; no cap on images per message.\n",
+          "verified_at": "2026-09-30T19:36:09Z"
+        }
+      },
+      "url": "https://api.github.com/repos/anthropics/claude-plugins-official/commits/b6041c772138cdb3408fb4d93accd770f0ec56a1",
+      "html_url": "https://github.com/anthropics/claude-plugins-official/commit/b6041c772138cdb3408fb4d93accd770f0ec56a1",
+      "comments_url": "https://api.github.com/repos/anthropics/claude-plugins-official/commits/b6041c772138cdb3408fb4d93accd770f0ec56a1/comments",
+      "author": {
+        "login": "dltn",
+        "id": 6599399,
+        "node_id": "MDQ6VXNlcjY1OTkzOTk=",
+        "avatar_url": "https://avatars.githubusercontent.com/u/6599399?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/dltn",
+        "html_url": "https://github.com/dltn",
+        "followers_url": "https://api.github.com/users/dltn/followers",
+        "following_url": "https://api.github.com/users/dltn/following{/other_user}",
+        "gists_url": "https://api.github.com/users/dltn/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/dltn/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/dltn/subscriptions",
+        "organizations_url": "https://api.github.com/users/dltn/orgs",
+        "repos_url": "https://api.github.com/users/dltn/repos",
+        "events_url": "https://api.github.com/users/dltn/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/dltn/received_events",
+        "type": "User",
+        "user_view_type": "public",
+        "site_admin": false
+      },
+      "committer": {
+        "login": "dltn",
+        "id": 6599399,
+        "node_id": "MDQ6VXNlcjY1OTkzOTk=",
+        "avatar_url": "https://avatars.githubusercontent.com/u/6599399?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/dltn",
+        "html_url": "https://github.com/dltn",
+        "followers_url": "https://api.github.com/users/dltn/followers",
+        "following_url": "https://api.github.com/users/dltn/following{/other_user}",
+        "gists_url": "https://api.github.com/users/dltn/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/dltn/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/dltn/subscriptions",
+        "organizations_url": "https://api.github.com/users/dltn/orgs",
+        "repos_url": "https://api.github.com/users/dltn/repos",
+        "events_url": "https://api.github.com/users/dltn/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/dltn/received_events",
+        "type": "User",
+        "user_view_type": "public",
+        "site_admin": false
+      },
+      "parents": [
+        {
+          "sha": "2a8ad9f74633d10e3d9bb0660a03bfc6e50584b1",
+          "url": "https://api.github.com/repos/anthropics/claude-plugins-official/commits/2a8ad9f74633d10e3d9bb0660a03bfc6e50584b1",
+          "html_url": "https://github.com/anthropics/claude-plugins-official/commit/2a8ad9f74633d10e3d9bb0660a03bfc6e50584b1"
+        }
+      ]
+    },
+    {
+      "sha": "aa5654b7acb7d3096b5db44381bcfceaf4a71dfb",
+      "node_id": "C_kwDOQZyFQNoAKGFhNTY1NGI3YWNiN2QzMDk2YjVkYjQ0MzgxYmNmY2VhZjRhNzFkZmI",
+      "commit": {
+        "author": {
+          "name": "ecprice-ant",
+          "email": "ecprice@anthropic.com",
+          "date": "2026-09-30T18:31:58Z"
+        },
+        "committer": {
+          "name": "GitHub",
+          "email": "noreply@github.com",
+          "date": "2026-09-30T18:31:58Z"
+        },
+        "message": "Add math-proof plugin: solo and siege (multi-agent) skills for hard mathematics problems (#6322)\n\nSquash merge of 2 commits",
+        "tree": {
+          "sha": "e00d5144091eb1451c05debe0da1cc36a76d451c",
+          "url": "https://api.github.com/repos/anthropics/claude-plugins-official/git/trees/e00d5144091eb1451c05debe0da1cc36a76d451c"
+        },
+        "url": "https://api.github.com/repos/anthropics/claude-plugins-official/git/commits/aa5654b7acb7d3096b5db44381bcfceaf4a71dfb",
+        "comment_count": 0,
+        "verification": {
+          "verified": true,
+          "reason": "valid",
+          "signature": "-----BEGIN PGP SIGNATURE-----\n\nwsFcBAABCAAQBQJqvVWeCRC1aQ7uu5UhlAAAVEcQAC7berahY1Mut7KIMVS0ukhA\njXA1WymvMv9oW3tLHtlXUJIlNpTtgxI/ZuAR8+SN2ZwbywCSXv7bEs6AfKA+c29J\n2l+DiRoCggH4u5PXVN6EfYBif9COpNL8KF6DSx4fsSUkjfH69Ct5qBo5JaT0z0xI\nTh+hxFbL+grVw0TmZ7osHO/HZjzm/EvxgEiu1eTXO6WViU2/EkWRZBM0/QylRaB8\ne6BURHfl2/2WMNBlyuU7ZhWDIfu/wXxFNP67j065ShX+5sRkASxhUjzZSYjzM4wE\nzYTa0mYfQZ16Iqvi/5weJrcV99h0tIAeiU0zjtcQdGj/hQaYzD1Fw09MWPXhtbZ/\nPoCmEevzCV1J8y8SqlyXs2wZ154bbs3BPOcXV/FwBfjlnX2xaR91JBNrRJ4/SdqL\ncrUHkuOvfC8GO5LLhS9PvnKSyn0fyYhqyhybgAfY3XuF857O7BJhph55TaiKai/8\nr6yTY3Kr7JNVXmj/PKGe9byffgJrdsazVlu2RYyzhF9pXzcvSiMghlG4mCRjkN0P\nADsZ+Hku0R/TapHMFN+B4gBYtAkUE+EyOmXYzLwl0JmpmbXtBvYjCmABh1eMz1bd\nHigJLI/nl/Uh1KMupcXAzErGvslotmXI0xVrCqX6UUrq4/mf0wxEOVc/EDVDUe+P\nFf5HQybliFKtmzGdOA5z\n=O8xK\n-----END PGP SIGNATURE-----\n",
+          "payload": "tree e00d5144091eb1451c05debe0da1cc36a76d451c\nparent 2a8ad9f74633d10e3d9bb0660a03bfc6e50584b1\nauthor ecprice-ant <ecprice@anthropic.com> 1790793118 -0500\ncommitter GitHub <noreply@github.com> 1790793118 -0700\n\nAdd math-proof plugin: solo and siege (multi-agent) skills for hard mathematics problems (#6322)\n\nSquash merge of 2 commits",
+          "verified_at": "2026-09-30T18:31:59Z"
+        }
+      },
+      "url": "https://api.github.com/repos/anthropics/claude-plugins-official/commits/aa5654b7acb7d3096b5db44381bcfceaf4a71dfb",
+      "html_url": "https://github.com/anthropics/claude-plugins-official/commit/aa5654b7acb7d3096b5db44381bcfceaf4a71dfb",
+      "comments_url": "https://api.github.com/repos/anthropics/claude-plugins-official/commits/aa5654b7acb7d3096b5db44381bcfceaf4a71dfb/comments",
+      "author": {
+        "login": "ecprice-ant",
+        "id": 267175574,
+        "node_id": "U_kgDOD-zGlg",
+        "avatar_url": "https://avatars.githubusercontent.com/u/267175574?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/ecprice-ant",
+        "html_url": "https://github.com/ecprice-ant",
+        "followers_url": "https://api.github.com/users/ecprice-ant/followers",
+        "following_url": "https://api.github.com/users/ecprice-ant/following{/other_user}",
+        "gists_url": "https://api.github.com/users/ecprice-ant/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/ecprice-ant/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/ecprice-ant/subscriptions",
+        "organizations_url": "https://api.github.com/users/ecprice-ant/orgs",
+        "repos_url": "https://api.github.com/users/ecprice-ant/repos",
+        "events_url": "https://api.github.com/users/ecprice-ant/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/ecprice-ant/received_events",
+        "type": "User",
+        "user_view_type": "public",
+        "site_admin": false
+      },
+      "committer": {
+        "login": "web-flow",
+        "id": 19864447,
+        "node_id": "MDQ6VXNlcjE5ODY0NDQ3",
+        "avatar_url": "https://avatars.githubusercontent.com/u/19864447?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/web-flow",
+        "html_url": "https://github.com/web-flow",
+        "followers_url": "https://api.github.com/users/web-flow/followers",
+        "following_url": "https://api.github.com/users/web-flow/following{/other_user}",
+        "gists_url": "https://api.github.com/users/web-flow/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/web-flow/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/web-flow/subscriptions",
+        "organizations_url": "https://api.github.com/users/web-flow/orgs",
+        "repos_url": "https://api.github.com/users/web-flow/repos",
+        "events_url": "https://api.github.com/users/web-flow/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/web-flow/received_events",
+        "type": "User",
+        "user_view_type": "public",
+        "site_admin": false
+      },
+      "parents": [
+        {
+          "sha": "2a8ad9f74633d10e3d9bb0660a03bfc6e50584b1",
+          "url": "https://api.github.com/repos/anthropics/claude-plugins-official/commits/2a8ad9f74633d10e3d9bb0660a03bfc6e50584b1",
+          "html_url": "https://github.com/anthropics/claude-plugins-official/commit/2a8ad9f74633d10e3d9bb0660a03bfc6e50584b1"
+        }
+      ]
+    },
+    {
+      "sha": "2a8ad9f74633d10e3d9bb0660a03bfc6e50584b1",
+      "node_id": "C_kwDOQZyFQNoAKDJhOGFkOWY3NDYzM2QxMGUzZDliYjA2NjBhMDNiZmM2ZTUwNTg0YjE",
+      "commit": {
+        "author": {
+          "name": "jordanecker-ant",
+          "email": "jordanecker@anthropic.com",
+          "date": "2026-09-29T21:28:19Z"
+        },
+        "committer": {
+          "name": "GitHub",
+          "email": "noreply@github.com",
+          "date": "2026-09-29T21:28:19Z"
+        },
+        "message": "postman: repoint to postmanlabs/postman-plugin (#6326)\n\nSquash merge of 1 commit",
+        "tree": {
+          "sha": "68063b2f2f9ead50d2e82a31b2d2732b1617fefc",
+          "url": "https://api.github.com/repos/anthropics/claude-plugins-official/git/trees/68063b2f2f9ead50d2e82a31b2d2732b1617fefc"
+        },
+        "url": "https://api.github.com/repos/anthropics/claude-plugins-official/git/commits/2a8ad9f74633d10e3d9bb0660a03bfc6e50584b1",
+        "comment_count": 0,
+        "verification": {
+          "verified": true,
+          "reason": "valid",
+          "signature": "-----BEGIN PGP SIGNATURE-----\n\nwsFcBAABCAAQBQJqvC1zCRC1aQ7uu5UhlAAAq8MQAB9+yX6xszObch7CpUjmSCuj\nZNlBCntSYFmaQVQGSeDcJwptaTtdZCNJ8jQdcVzPyne59wJsg4BbSXvPAuDvw08h\nltIDKGI9cKQArl1rDmuG6RO/+sPdtXIlZYEc3prNzHq9alAu+ok7iJ4C+cMdBSdk\nNF/csQ28e9z2u3rZMjKfYl6cAKttCSkv02ebvELU3ED1zInDFEu6buACI8e5sKk5\nldU1Ic9BXamwt6pdw/EMbuSIbRSWCEeYiLPgk3kqcXFNEOm4nLoC4aBT/wxmoodD\nE51QlibOksOzKtQFuCuBdDrMYXUNDEMjEyWaWp8mbd4/5hEYyk6sqvkvZ5HJEsCn\nA6kQ4X2LZnyNodDKnzqT+ltodhShmSoZ57GlflFq1pd6LnHgIBAHUZBpfLLd8jT8\nKF1dR96NOEToqWSAj2Cqpp/56ScgFxRoO/QYz1HmZ9enaHDB9YZqu45Qo385SR0L\ntKnnnEhcI+DCXSRiVpeITUAor604oAL7l3D8z0/+b9326RwWP5oSr0vnEzZAcYh7\ncuqssHuMnUSbpt1rAgJneb85ee9GnF0xa4ySPK0G9L/SCtpYJt5b9KT3jma2XhNf\nGqNFuWUsIVxM6CvKME3cXuyj0Cy5pXoI0s/Dh5x3MSC3vfmMcq8Pdgrf9jGz6hUF\n4UUkZSz2Nm6Y8PShbphe\n=m38S\n-----END PGP SIGNATURE-----\n",
+          "payload": "tree 68063b2f2f9ead50d2e82a31b2d2732b1617fefc\nparent 751e8d02bf56522f9e5a1250e35754cea5ab255a\nauthor jordanecker-ant <jordanecker@anthropic.com> 1790717299 -0400\ncommitter GitHub <noreply@github.com> 1790717299 -0700\n\npostman: repoint to postmanlabs/postman-plugin (#6326)\n\nSquash merge of 1 commit",
+          "verified_at": "2026-09-29T21:28:19Z"
+        }
+      },
+      "url": "https://api.github.com/repos/anthropics/claude-plugins-official/commits/2a8ad9f74633d10e3d9bb0660a03bfc6e50584b1",
+      "html_url": "https://github.com/anthropics/claude-plugins-official/commit/2a8ad9f74633d10e3d9bb0660a03bfc6e50584b1",
+      "comments_url": "https://api.github.com/repos/anthropics/claude-plugins-official/commits/2a8ad9f74633d10e3d9bb0660a03bfc6e50584b1/comments",
+      "author": {
+        "login": "jordanecker-ant",
+        "id": 305637556,
+        "node_id": "U_kgDOEjeotA",
+        "avatar_url": "https://avatars.githubusercontent.com/u/305637556?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/jordanecker-ant",
+        "html_url": "https://github.com/jordanecker-ant",
+        "followers_url": "https://api.github.com/users/jordanecker-ant/followers",
+        "following_url": "https://api.github.com/users/jordanecker-ant/following{/other_user}",
+        "gists_url": "https://api.github.com/users/jordanecker-ant/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/jordanecker-ant/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/jordanecker-ant/subscriptions",
+        "organizations_url": "https://api.github.com/users/jordanecker-ant/orgs",
+        "repos_url": "https://api.github.com/users/jordanecker-ant/repos",
+        "events_url": "https://api.github.com/users/jordanecker-ant/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/jordanecker-ant/received_events",
+        "type": "User",
+        "user_view_type": "public",
+        "site_admin": false
+      },
+      "committer": {
+        "login": "web-flow",
+        "id": 19864447,
+        "node_id": "MDQ6VXNlcjE5ODY0NDQ3",
+        "avatar_url": "https://avatars.githubusercontent.com/u/19864447?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/web-flow",
+        "html_url": "https://github.com/web-flow",
+        "followers_url": "https://api.github.com/users/web-flow/followers",
+        "following_url": "https://api.github.com/users/web-flow/following{/other_user}",
+        "gists_url": "https://api.github.com/users/web-flow/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/web-flow/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/web-flow/subscriptions",
+        "organizations_url": "https://api.github.com/users/web-flow/orgs",
+        "repos_url": "https://api.github.com/users/web-flow/repos",
+        "events_url": "https://api.github.com/users/web-flow/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/web-flow/received_events",
+        "type": "User",
+        "user_view_type": "public",
+        "site_admin": false
+      },
+      "parents": [
+        {
+          "sha": "751e8d02bf56522f9e5a1250e35754cea5ab255a",
+          "url": "https://api.github.com/repos/anthropics/claude-plugins-official/commits/751e8d02bf56522f9e5a1250e35754cea5ab255a",
+          "html_url": "https://github.com/anthropics/claude-plugins-official/commit/751e8d02bf56522f9e5a1250e35754cea5ab255a"
+        }
+      ]
+    },
+    {
+      "sha": "751e8d02bf56522f9e5a1250e35754cea5ab255a",
+      "node_id": "C_kwDOQZyFQNoAKDc1MWU4ZDAyYmY1NjUyMmY5ZTVhMTI1MGUzNTc1NGNlYTVhYjI1NWE",
+      "commit": {
+        "author": {
+          "name": "jordanecker-ant",
+          "email": "jordanecker@anthropic.com",
+          "date": "2026-09-29T21:00:21Z"
+        },
+        "committer": {
+          "name": "GitHub",
+          "email": "noreply@github.com",
+          "date": "2026-09-29T21:00:21Z"
+        },
+        "message": "aws-startup-advisor: repoint to aws/agent-toolkit-for-aws (#6312)\n\nSquash merge of 2 commits",
+        "tree": {
+          "sha": "7c298304b3b98c1cc24fbdd63055e765bd2203c4",
+          "url": "https://api.github.com/repos/anthropics/claude-plugins-official/git/trees/7c298304b3b98c1cc24fbdd63055e765bd2203c4"
+        },
+        "url": "https://api.github.com/repos/anthropics/claude-plugins-official/git/commits/751e8d02bf56522f9e5a1250e35754cea5ab255a",
+        "comment_count": 0,
+        "verification": {
+          "verified": true,
+          "reason": "valid",
+          "signature": "-----BEGIN PGP SIGNATURE-----\n\nwsFcBAABCAAQBQJqvCblCRC1aQ7uu5UhlAAADfYQAKA55qzTVLM7UGerF0rx8L+P\nneHAOM0fctszocSBAVmpEIa23KoCgDskOFCWlxhomyQkTeBE6E/jhulWBVczSLTd\ndlH7teLsI8nCSv2k6XgwrxicyVQw8Vubz6B5KtTmXSI6d621mxOGQKVGnaddXMV7\nxO/AcVCmNzdiBc3K0snJhBAZSXbeerzKGGTCoVPlaKM/oszJQTFO7659nNsOFvXS\n9Zo1d7pQIM4iEGeF5grS7tbb1Lb+TTq2yLuTBIoSTxCjjb/wNJDlzDArs9l1b37f\ngsdqFZLqbs337J1YCFSHJN4hNgorpWUo3xsIgm5HHoba85bEXOJbprdmmS8Rr+1S\n/760Khw6ghs1tdJ+LE4T0GDxj4KBH2aMxNO0yC+Mm2gkO2nS5WoMIsQS1egueZPV\ncqXzOZdIlV9JtwCoBgIIdkail3C6smgGYacbKNDE1IwdvYg48yctHW34oVfPSMMZ\nfyENeLCSGbpLOBvXRESoB3dUM8gp8Dkgq3F6ILanmUhU9CC82nyj4lC+UL6skk8c\nt6JBw2KJm9+G7HJXBzkwjTkogH024PD40YJwzVPypbKTgV0ZJ8nfcOd6NkhbVJsX\nzprVp3Ff2jkVyvocgQl8DsGD6TG+5S3VpvOIXuPxs+SwVRQ0/bWZmsuzNneONTOD\nh1h/yzBd6cZSAXGco5mO\n=aeOO\n-----END PGP SIGNATURE-----\n",
+          "payload": "tree 7c298304b3b98c1cc24fbdd63055e765bd2203c4\nparent fbe07fb6ce7d51d8e86ca6efdf050059894cdb80\nauthor jordanecker-ant <jordanecker@anthropic.com> 1790715621 -0400\ncommitter GitHub <noreply@github.com> 1790715621 -0700\n\naws-startup-advisor: repoint to aws/agent-toolkit-for-aws (#6312)\n\nSquash merge of 2 commits",
+          "verified_at": "2026-09-29T21:00:21Z"
+        }
+      },
+      "url": "https://api.github.com/repos/anthropics/claude-plugins-official/commits/751e8d02bf56522f9e5a1250e35754cea5ab255a",
+      "html_url": "https://github.com/anthropics/claude-plugins-official/commit/751e8d02bf56522f9e5a1250e35754cea5ab255a",
+      "comments_url": "https://api.github.com/repos/anthropics/claude-plugins-official/commits/751e8d02bf56522f9e5a1250e35754cea5ab255a/comments",
+      "author": {
+        "login": "jordanecker-ant",
+        "id": 305637556,
+        "node_id": "U_kgDOEjeotA",
+        "avatar_url": "https://avatars.githubusercontent.com/u/305637556?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/jordanecker-ant",
+        "html_url": "https://github.com/jordanecker-ant",
+        "followers_url": "https://api.github.com/users/jordanecker-ant/followers",
+        "following_url": "https://api.github.com/users/jordanecker-ant/following{/other_user}",
+        "gists_url": "https://api.github.com/users/jordanecker-ant/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/jordanecker-ant/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/jordanecker-ant/subscriptions",
+        "organizations_url": "https://api.github.com/users/jordanecker-ant/orgs",
+        "repos_url": "https://api.github.com/users/jordanecker-ant/repos",
+        "events_url": "https://api.github.com/users/jordanecker-ant/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/jordanecker-ant/received_events",
+        "type": "User",
+        "user_view_type": "public",
+        "site_admin": false
+      },
+      "committer": {
+        "login": "web-flow",
+        "id": 19864447,
+        "node_id": "MDQ6VXNlcjE5ODY0NDQ3",
+        "avatar_url": "https://avatars.githubusercontent.com/u/19864447?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/web-flow",
+        "html_url": "https://github.com/web-flow",
+        "followers_url": "https://api.github.com/users/web-flow/followers",
+        "following_url": "https://api.github.com/users/web-flow/following{/other_user}",
+        "gists_url": "https://api.github.com/users/web-flow/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/web-flow/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/web-flow/subscriptions",
+        "organizations_url": "https://api.github.com/users/web-flow/orgs",
+        "repos_url": "https://api.github.com/users/web-flow/repos",
+        "events_url": "https://api.github.com/users/web-flow/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/web-flow/received_events",
+        "type": "User",
+        "user_view_type": "public",
+        "site_admin": false
+      },
+      "parents": [
+        {
+          "sha": "fbe07fb6ce7d51d8e86ca6efdf050059894cdb80",
+          "url": "https://api.github.com/repos/anthropics/claude-plugins-official/commits/fbe07fb6ce7d51d8e86ca6efdf050059894cdb80",
+          "html_url": "https://github.com/anthropics/claude-plugins-official/commit/fbe07fb6ce7d51d8e86ca6efdf050059894cdb80"
+        }
+      ]
+    },
+    {
+      "sha": "fbe07fb6ce7d51d8e86ca6efdf050059894cdb80",
+      "node_id": "C_kwDOQZyFQNoAKGZiZTA3ZmI2Y2U3ZDUxZDhlODZjYTZlZmRmMDUwMDU5ODk0Y2RiODA",
+      "commit": {
+        "author": {
+          "name": "Tobin South",
+          "email": "tobin.south@gmail.com",
+          "date": "2026-09-28T13:14:38Z"
+        },
+        "committer": {
+          "name": "GitHub",
+          "email": "noreply@github.com",
+          "date": "2026-09-28T13:14:38Z"
+        },
+        "message": "Exempt command sources from scope guard source.url check (#6296)\n\n* Exempt command sources from scope guard source.url check\n\nCommand sources have no repo URL to validate, so the guard no longer fails a non-member PR that adds one.\n\nRemote-Dev: homespace\n\n* Flag unvalidated command sources in scope guard output\n\nReport command-source entries the guard skipped and stop the pass message from claiming every added entry came from a live repo.\n\nRemote-Dev: homespace",
+        "tree": {
+          "sha": "c30a3af14604a746423761977219f5fe0d9e65dc",
+          "url": "https://api.github.com/repos/anthropics/claude-plugins-official/git/trees/c30a3af14604a746423761977219f5fe0d9e65dc"
+        },
+        "url": "https://api.github.com/repos/anthropics/claude-plugins-official/git/commits/fbe07fb6ce7d51d8e86ca6efdf050059894cdb80",
+        "comment_count": 0,
+        "verification": {
+          "verified": true,
+          "reason": "valid",
+          "signature": "-----BEGIN PGP SIGNATURE-----\n\nwsFcBAABCAAQBQJqumg+CRC1aQ7uu5UhlAAAYnAQAIIgSlsHLLsSb2eluTSOU6q2\nVRhmRJoZags/w2pT/FTLJeSMDZHVgWcl5UkKywO2A33tN99Bpw+TC0BT0IF6RVsy\nO5FKcibzx+bmrMvAdiW2u4FgdWRMN0+tcdcmkgm2f2jHgfKEYzD2hFGrNlEhvfA0\nBR6UzyAB2M39RBEu1s9nPOe1tWm0qa6dfkAP3oz16ZjVvdkatPpFGaL2EcsV9Uwm\n5Ds5lnC1XAyv/MHb/KbeP7Ri6iXGLwJ1hv3oLYTLVrzUwimW0T5UrytZYKE6gKmH\nUvuyu0c2ctzihFqKLOwdEmigffZmm/JqRipEbV1vTQeAKuSsck9H0e4uhRva3r0l\nlgEN+TMRONoSYXUtLiXAAx7x0bExW0xSQd4FEVdVR0W/b8fv446FcBzuqUTw2qWL\n8ArIfMcVryy8yg4JYrPb/gRTlBgj5/cJ9Bl/3hycaaiBVo3HYSidqrn/2pfg8/Hg\nW8mzmqE4ScNJ7p2FY1uZBBFK9P/0j6LLpQIjvHWYXo2KtaG+GOVSnJFqO1YEpRUe\ngS196td0I3Y6zvt3PTr/9s6Bs1cIvbISInWFxAaC+x6YEhPCMcDmYFMOYnLf7V/a\nOZlBlNW4npbylDJhVZKIZDZUaXVnS+NG4wca6PZfZWcmD/UpZFYLFmReM3lxyOGq\ntZYzskziXOd5G66E31lR\n=5oHX\n-----END PGP SIGNATURE-----\n",
+          "payload": "tree c30a3af14604a746423761977219f5fe0d9e65dc\nparent fa59bc9037741ecfa131aa27938272605710d7b2\nauthor Tobin South <tobin.south@gmail.com> 1790601278 -0700\ncommitter GitHub <noreply@github.com> 1790601278 -0700\n\nExempt command sources from scope guard source.url check (#6296)\n\n* Exempt command sources from scope guard source.url check\n\nCommand sources have no repo URL to validate, so the guard no longer fails a non-member PR that adds one.\n\nRemote-Dev: homespace\n\n* Flag unvalidated command sources in scope guard output\n\nReport command-source entries the guard skipped and stop the pass message from claiming every added entry came from a live repo.\n\nRemote-Dev: homespace",
+          "verified_at": "2026-09-28T13:14:39Z"
+        }
+      },
+      "url": "https://api.github.com/repos/anthropics/claude-plugins-official/commits/fbe07fb6ce7d51d8e86ca6efdf050059894cdb80",
+      "html_url": "https://github.com/anthropics/claude-plugins-official/commit/fbe07fb6ce7d51d8e86ca6efdf050059894cdb80",
+      "comments_url": "https://api.github.com/repos/anthropics/claude-plugins-official/commits/fbe07fb6ce7d51d8e86ca6efdf050059894cdb80/comments",
+      "author": {
+        "login": "tobinsouth",
+        "id": 32489862,
+        "node_id": "MDQ6VXNlcjMyNDg5ODYy",
+        "avatar_url": "https://avatars.githubusercontent.com/u/32489862?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/tobinsouth",
+        "html_url": "https://github.com/tobinsouth",
+        "followers_url": "https://api.github.com/users/tobinsouth/followers",
+        "following_url": "https://api.github.com/users/tobinsouth/following{/other_user}",
+        "gists_url": "https://api.github.com/users/tobinsouth/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/tobinsouth/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/tobinsouth/subscriptions",
+        "organizations_url": "https://api.github.com/users/tobinsouth/orgs",
+        "repos_url": "https://api.github.com/users/tobinsouth/repos",
+        "events_url": "https://api.github.com/users/tobinsouth/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/tobinsouth/received_events",
+        "type": "User",
+        "user_view_type": "public",
+        "site_admin": false
+      },
+      "committer": {
+        "login": "web-flow",
+        "id": 19864447,
+        "node_id": "MDQ6VXNlcjE5ODY0NDQ3",
+        "avatar_url": "https://avatars.githubusercontent.com/u/19864447?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/web-flow",
+        "html_url": "https://github.com/web-flow",
+        "followers_url": "https://api.github.com/users/web-flow/followers",
+        "following_url": "https://api.github.com/users/web-flow/following{/other_user}",
+        "gists_url": "https://api.github.com/users/web-flow/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/web-flow/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/web-flow/subscriptions",
+        "organizations_url": "https://api.github.com/users/web-flow/orgs",
+        "repos_url": "https://api.github.com/users/web-flow/repos",
+        "events_url": "https://api.github.com/users/web-flow/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/web-flow/received_events",
+        "type": "User",
+        "user_view_type": "public",
+        "site_admin": false
+      },
+      "parents": [
+        {
+          "sha": "fa59bc9037741ecfa131aa27938272605710d7b2",
+          "url": "https://api.github.com/repos/anthropics/claude-plugins-official/commits/fa59bc9037741ecfa131aa27938272605710d7b2",
+          "html_url": "https://github.com/anthropics/claude-plugins-official/commit/fa59bc9037741ecfa131aa27938272605710d7b2"
+        }
+      ]
+    },
+    {
+      "sha": "fa59bc9037741ecfa131aa27938272605710d7b2",
+      "node_id": "C_kwDOQZyFQNoAKGZhNTliYzkwMzc3NDFlY2ZhMTMxYWEyNzkzODI3MjYwNTcxMGQ3YjI",
+      "commit": {
+        "author": {
+          "name": "Morgan Lunt",
+          "email": "morganl@anthropic.com",
+          "date": "2026-09-25T23:12:23Z"
+        },
+        "committer": {
+          "name": "GitHub",
+          "email": "noreply@github.com",
+          "date": "2026-09-25T23:12:23Z"
+        },
+        "message": "Merge pull request #6309 from anthropics/morganl/code-modernization-consolidated\n\ncode-modernization: guided workflow with independent proof",
+        "tree": {
+          "sha": "068d2fe6cb3f530c305d1e21bc129ab2c9b49dc6",
+          "url": "https://api.github.com/repos/anthropics/claude-plugins-official/git/trees/068d2fe6cb3f530c305d1e21bc129ab2c9b49dc6"
+        },
+        "url": "https://api.github.com/repos/anthropics/claude-plugins-official/git/commits/fa59bc9037741ecfa131aa27938272605710d7b2",
+        "comment_count": 0,
+        "verification": {
+          "verified": true,
+          "reason": "valid",
+          "signature": "-----BEGIN PGP SIGNATURE-----\n\nwsFcBAABCAAQBQJqtv/XCRC1aQ7uu5UhlAAAqsAQAF7F64N1xfCvI/F+gGxPOSrG\n7GJbnpXsm6oG374iKlsBBYjedSJfDnD96P6zQLVQ0KS0EEmNtTBypqwncm5808sV\nqNQ+bsSoBivdvc4dwWWP1StF/Q37NAFKcnY3/SAoZs4m6zQgMNbnSPRvvfblYVXo\nMATVodZjOtsdf+WZTQPSoLfotaY6f3NUPf+SmIcYUB+IdLxnVJWuLNzmWKs3IROd\nNL0Smj0d/5Fye2gtVtYS+s8JAncbUmljwr7u20wmfkByVAuSdxUtgxwBX24LWxaW\ncALtr8AWR2KInceXpVqCNPQeM6PvZYUVe/jnXcDM6Z0UGB07rUt4OR5NdyVMXtvS\nGeJd3WdRjSoTI03t02JkUArAi46mJzSKLMUMAj5RWf1d5RN+sis/8vqtH6tcLiiR\nijicrP/3kJNJWBf2g2l7/iEtH2zDqGTm35FRiyLcVLSrhK42YFaIc9QbICbA0LYN\nGf5Gcu3WdF7NNQod9bTDXTF2WN7CoEHkENkPc+XKAZPKJbOJ4cUouPe1WgxG9FO5\n51Y1Jw/rLttJjCnLFPh/ux+U3VV6Ym3UUFFgPDxSmmL9rgzp7j3t04/VhZxdKMEb\n4ae5jT9oe5AOf4MP+DF0XZVEC5QAajeLDi4jviQDAuHluwIS7A3f5Q6WiLAB43JI\nkgS9s9AnIUT0QmCRuehV\n=xAsN\n-----END PGP SIGNATURE-----\n",
+          "payload": "tree 068d2fe6cb3f530c305d1e21bc129ab2c9b49dc6\nparent ca08d5e47d6402db586d37780c559a0c4c7ded9a\nparent c8874f5ad883e26428f483ffa4d537cc81489e64\nauthor Morgan Lunt <morganl@anthropic.com> 1790377943 -0700\ncommitter GitHub <noreply@github.com> 1790377943 -0700\n\nMerge pull request #6309 from anthropics/morganl/code-modernization-consolidated\n\ncode-modernization: guided workflow with independent proof",
+          "verified_at": "2026-09-25T23:12:24Z"
+        }
+      },
+      "url": "https://api.github.com/repos/anthropics/claude-plugins-official/commits/fa59bc9037741ecfa131aa27938272605710d7b2",
+      "html_url": "https://github.com/anthropics/claude-plugins-official/commit/fa59bc9037741ecfa131aa27938272605710d7b2",
+      "comments_url": "https://api.github.com/repos/anthropics/claude-plugins-official/commits/fa59bc9037741ecfa131aa27938272605710d7b2/comments",
+      "author": {
+        "login": "morganl-ant",
+        "id": 271035627,
+        "node_id": "U_kgDOECes6w",
+        "avatar_url": "https://avatars.githubusercontent.com/u/271035627?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/morganl-ant",
+        "html_url": "https://github.com/morganl-ant",
+        "followers_url": "https://api.github.com/users/morganl-ant/followers",
+        "following_url": "https://api.github.com/users/morganl-ant/following{/other_user}",
+        "gists_url": "https://api.github.com/users/morganl-ant/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/morganl-ant/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/morganl-ant/subscriptions",
+        "organizations_url": "https://api.github.com/users/morganl-ant/orgs",
+        "repos_url": "https://api.github.com/users/morganl-ant/repos",
+        "events_url": "https://api.github.com/users/morganl-ant/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/morganl-ant/received_events",
+        "type": "User",
+        "user_view_type": "public",
+        "site_admin": false
+      },
+      "committer": {
+        "login": "web-flow",
+        "id": 19864447,
+        "node_id": "MDQ6VXNlcjE5ODY0NDQ3",
+        "avatar_url": "https://avatars.githubusercontent.com/u/19864447?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/web-flow",
+        "html_url": "https://github.com/web-flow",
+        "followers_url": "https://api.github.com/users/web-flow/followers",
+        "following_url": "https://api.github.com/users/web-flow/following{/other_user}",
+        "gists_url": "https://api.github.com/users/web-flow/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/web-flow/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/web-flow/subscriptions",
+        "organizations_url": "https://api.github.com/users/web-flow/orgs",
+        "repos_url": "https://api.github.com/users/web-flow/repos",
+        "events_url": "https://api.github.com/users/web-flow/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/web-flow/received_events",
+        "type": "User",
+        "user_view_type": "public",
+        "site_admin": false
+      },
+      "parents": [
+        {
+          "sha": "ca08d5e47d6402db586d37780c559a0c4c7ded9a",
+          "url": "https://api.github.com/repos/anthropics/claude-plugins-official/commits/ca08d5e47d6402db586d37780c559a0c4c7ded9a",
+          "html_url": "https://github.com/anthropics/claude-plugins-official/commit/ca08d5e47d6402db586d37780c559a0c4c7ded9a"
+        },
+        {
+          "sha": "c8874f5ad883e26428f483ffa4d537cc81489e64",
+          "url": "https://api.github.com/repos/anthropics/claude-plugins-official/commits/c8874f5ad883e26428f483ffa4d537cc81489e64",
+          "html_url": "https://github.com/anthropics/claude-plugins-official/commit/c8874f5ad883e26428f483ffa4d537cc81489e64"
+        }
+      ]
+    },
+    {
+      "sha": "ca08d5e47d6402db586d37780c559a0c4c7ded9a",
+      "node_id": "C_kwDOQZyFQNoAKGNhMDhkNWU0N2Q2NDAyZGI1ODZkMzc3ODBjNTU5YTBjNGM3ZGVkOWE",
+      "commit": {
+        "author": {
+          "name": "Michael Moore",
+          "email": "1198206+imichaelmoore@users.noreply.github.com",
+          "date": "2026-09-25T19:33:24Z"
+        },
+        "committer": {
+          "name": "GitHub",
+          "email": "noreply@github.com",
+          "date": "2026-09-25T19:33:24Z"
+        },
+        "message": "Claude Security Plugin - v0.12.0 (#6310)\n\nSquash merge of 1 commit",
+        "tree": {
+          "sha": "0f25456ef90b9bd55bd9ce836ef73e61d1c7825d",
+          "url": "https://api.github.com/repos/anthropics/claude-plugins-official/git/trees/0f25456ef90b9bd55bd9ce836ef73e61d1c7825d"
+        },
+        "url": "https://api.github.com/repos/anthropics/claude-plugins-official/git/commits/ca08d5e47d6402db586d37780c559a0c4c7ded9a",
+        "comment_count": 0,
+        "verification": {
+          "verified": true,
+          "reason": "valid",
+          "signature": "-----BEGIN PGP SIGNATURE-----\n\nwsFcBAABCAAQBQJqtsyECRC1aQ7uu5UhlAAAifQQAK9fDfhzXmgya2cuCIxcqbuA\n2+OZkIOiZqCY5r3lSDd3jfiwwXgHuV7v7UtnyJ81AkZ4mluNAhXqpYpyy/eFd2jg\nw9KSM0H9PfidKwzV/XQByyFRfCRW5FAecvMcUnMFUDYr8yGHbWbsFkUa7n+QWVRc\nk7DgpE5gThwOJFF3sNZBqsPZecOcX6WIqDja1y5GpwAl66qoYckBcj/tTxiDBBH4\ndFkcUh/L2HU6shtwV7e5EM1z4R520bE7Ab2BgEOI7eJQ4tITHI3Kzsnn/9nIGYB3\nTsjFCHpz9Nb/Pqiw29Kid72hSa6W8nCfu3NUuZZSSe9HAxyeToBGPZmQkoMLpSiP\nfrWj0Sn6pLCywgHKd+Av93V64ineSLICW6o5vCJJi+5Z5h9Zthqkmx2tfGA5oWfp\n9rlTAAzW3ownH/+ZPyFhsNHM+Wuaft4tqie47uisC0SFFyOqKV+iyBpfQ2jhWg3F\ndWpTDOSNDnj6J8G4ZN/Bvigjt0zwz/ZY173DcBcpWV6ljnL888u+E6VM4gQ1vibp\nvdPRteAmNqmhDShGRHBPhfQC6B/EJChGb6HpM7mxj2+Xlry5z7Tj5khdymAvyZpU\nHu7wp5zlSQd20jk+Nh/HQtyvRTjaNrbqzZRu3AsXA0VmIQjVL67848cP0ZRhZeyq\nOAQwuqd9WGLlEER2noet\n=5xZP\n-----END PGP SIGNATURE-----\n",
+          "payload": "tree 0f25456ef90b9bd55bd9ce836ef73e61d1c7825d\nparent ad30d62cd52ad0d0af1beda1eab7f61c601045d0\nauthor Michael Moore <1198206+imichaelmoore@users.noreply.github.com> 1790364804 -0700\ncommitter GitHub <noreply@github.com> 1790364804 -0700\n\nClaude Security Plugin - v0.12.0 (#6310)\n\nSquash merge of 1 commit",
+          "verified_at": "2026-09-25T19:33:25Z"
+        }
+      },
+      "url": "https://api.github.com/repos/anthropics/claude-plugins-official/commits/ca08d5e47d6402db586d37780c559a0c4c7ded9a",
+      "html_url": "https://github.com/anthropics/claude-plugins-official/commit/ca08d5e47d6402db586d37780c559a0c4c7ded9a",
+      "comments_url": "https://api.github.com/repos/anthropics/claude-plugins-official/commits/ca08d5e47d6402db586d37780c559a0c4c7ded9a/comments",
+      "author": {
+        "login": "imichaelmoore",
+        "id": 1198206,
+        "node_id": "MDQ6VXNlcjExOTgyMDY=",
+        "avatar_url": "https://avatars.githubusercontent.com/u/1198206?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/imichaelmoore",
+        "html_url": "https://github.com/imichaelmoore",
+        "followers_url": "https://api.github.com/users/imichaelmoore/followers",
+        "following_url": "https://api.github.com/users/imichaelmoore/following{/other_user}",
+        "gists_url": "https://api.github.com/users/imichaelmoore/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/imichaelmoore/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/imichaelmoore/subscriptions",
+        "organizations_url": "https://api.github.com/users/imichaelmoore/orgs",
+        "repos_url": "https://api.github.com/users/imichaelmoore/repos",
+        "events_url": "https://api.github.com/users/imichaelmoore/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/imichaelmoore/received_events",
+        "type": "User",
+        "user_view_type": "public",
+        "site_admin": false
+      },
+      "committer": {
+        "login": "web-flow",
+        "id": 19864447,
+        "node_id": "MDQ6VXNlcjE5ODY0NDQ3",
+        "avatar_url": "https://avatars.githubusercontent.com/u/19864447?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/web-flow",
+        "html_url": "https://github.com/web-flow",
+        "followers_url": "https://api.github.com/users/web-flow/followers",
+        "following_url": "https://api.github.com/users/web-flow/following{/other_user}",
+        "gists_url": "https://api.github.com/users/web-flow/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/web-flow/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/web-flow/subscriptions",
+        "organizations_url": "https://api.github.com/users/web-flow/orgs",
+        "repos_url": "https://api.github.com/users/web-flow/repos",
+        "events_url": "https://api.github.com/users/web-flow/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/web-flow/received_events",
+        "type": "User",
+        "user_view_type": "public",
+        "site_admin": false
+      },
+      "parents": [
+        {
+          "sha": "ad30d62cd52ad0d0af1beda1eab7f61c601045d0",
+          "url": "https://api.github.com/repos/anthropics/claude-plugins-official/commits/ad30d62cd52ad0d0af1beda1eab7f61c601045d0",
+          "html_url": "https://github.com/anthropics/claude-plugins-official/commit/ad30d62cd52ad0d0af1beda1eab7f61c601045d0"
+        }
+      ]
+    },
+    {
+      "sha": "c8874f5ad883e26428f483ffa4d537cc81489e64",
+      "node_id": "C_kwDOQZyFQNoAKGM4ODc0ZjVhZDg4M2UyNjQyOGY0ODNmZmE0ZDUzN2NjODE0ODllNjQ",
+      "commit": {
+        "author": {
+          "name": "Morgan Lunt",
+          "email": "morganl@anthropic.com",
+          "date": "2026-09-25T19:06:43Z"
+        },
+        "committer": {
+          "name": "Morgan Lunt",
+          "email": "morganl@anthropic.com",
+          "date": "2026-09-25T19:06:43Z"
+        },
+        "message": "code-modernization: count failures and the machine's python, once per version\n\nUsage counts now say what the plugin runs on (system, python status and version, path problems) and which kind of failure happens: a missing or placeholder python, a permission block, a model error, or an error in the plugin's own script. Failures are classified on the machine into a fixed list and only the code is sent, once per kind per session. A session-start ping, once per plugin version, counts machines where nobody gets as far as typing a command. When python cannot run, the shell wrapper reports that itself, and on Windows it falls back to python or the py launcher.",
+        "tree": {
+          "sha": "191df20989c34e9808757726f4b75740ce523c5f",
+          "url": "https://api.github.com/repos/anthropics/claude-plugins-official/git/trees/191df20989c34e9808757726f4b75740ce523c5f"
+        },
+        "url": "https://api.github.com/repos/anthropics/claude-plugins-official/git/commits/c8874f5ad883e26428f483ffa4d537cc81489e64",
+        "comment_count": 0,
+        "verification": {
+          "verified": true,
+          "reason": "valid",
+          "signature": "-----BEGIN SSH SIGNATURE-----\nU1NIU0lHAAAAAQAAAGgAAAATZWNkc2Etc2hhMi1uaXN0cDI1NgAAAAhuaXN0cDI1NgAAAE\nEE6B2ieJ3eTdVH1fokHbnPiCU1MbHFDUx0A9sGLfMoruZzgrdOGX2CV8QBHMcZZjGZw/ZN\n8/s5g1Ye3/PrHyvNWgAAAANnaXQAAAAAAAAABnNoYTUxMgAAAGUAAAATZWNkc2Etc2hhMi\n1uaXN0cDI1NgAAAEoAAAAhANPzlQ/z4X0M70yFfMuXGi7pS7toyu+nea2e5YVUQnGOAAAA\nIQCy6BaOdHZFWn2735QbpChL6fcQzdRekIpyn+i3NT1ZyQ==\n-----END SSH SIGNATURE-----",
+          "payload": "tree 191df20989c34e9808757726f4b75740ce523c5f\nparent 363af43603ecdb1bdbed7303764b6daeeec7c37f\nauthor Morgan Lunt <morganl@anthropic.com> 1790363203 -0700\ncommitter Morgan Lunt <morganl@anthropic.com> 1790363203 -0700\n\ncode-modernization: count failures and the machine's python, once per version\n\nUsage counts now say what the plugin runs on (system, python status and version, path problems) and which kind of failure happens: a missing or placeholder python, a permission block, a model error, or an error in the plugin's own script. Failures are classified on the machine into a fixed list and only the code is sent, once per kind per session. A session-start ping, once per plugin version, counts machines where nobody gets as far as typing a command. When python cannot run, the shell wrapper reports that itself, and on Windows it falls back to python or the py launcher.\n",
+          "verified_at": "2026-09-25T19:06:57Z"
+        }
+      },
+      "url": "https://api.github.com/repos/anthropics/claude-plugins-official/commits/c8874f5ad883e26428f483ffa4d537cc81489e64",
+      "html_url": "https://github.com/anthropics/claude-plugins-official/commit/c8874f5ad883e26428f483ffa4d537cc81489e64",
+      "comments_url": "https://api.github.com/repos/anthropics/claude-plugins-official/commits/c8874f5ad883e26428f483ffa4d537cc81489e64/comments",
+      "author": {
+        "login": "morganl-ant",
+        "id": 271035627,
+        "node_id": "U_kgDOECes6w",
+        "avatar_url": "https://avatars.githubusercontent.com/u/271035627?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/morganl-ant",
+        "html_url": "https://github.com/morganl-ant",
+        "followers_url": "https://api.github.com/users/morganl-ant/followers",
+        "following_url": "https://api.github.com/users/morganl-ant/following{/other_user}",
+        "gists_url": "https://api.github.com/users/morganl-ant/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/morganl-ant/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/morganl-ant/subscriptions",
+        "organizations_url": "https://api.github.com/users/morganl-ant/orgs",
+        "repos_url": "https://api.github.com/users/morganl-ant/repos",
+        "events_url": "https://api.github.com/users/morganl-ant/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/morganl-ant/received_events",
+        "type": "User",
+        "user_view_type": "public",
+        "site_admin": false
+      },
+      "committer": {
+        "login": "morganl-ant",
+        "id": 271035627,
+        "node_id": "U_kgDOECes6w",
+        "avatar_url": "https://avatars.githubusercontent.com/u/271035627?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/morganl-ant",
+        "html_url": "https://github.com/morganl-ant",
+        "followers_url": "https://api.github.com/users/morganl-ant/followers",
+        "following_url": "https://api.github.com/users/morganl-ant/following{/other_user}",
+        "gists_url": "https://api.github.com/users/morganl-ant/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/morganl-ant/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/morganl-ant/subscriptions",
+        "organizations_url": "https://api.github.com/users/morganl-ant/orgs",
+        "repos_url": "https://api.github.com/users/morganl-ant/repos",
+        "events_url": "https://api.github.com/users/morganl-ant/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/morganl-ant/received_events",
+        "type": "User",
+        "user_view_type": "public",
+        "site_admin": false
+      },
+      "parents": [
+        {
+          "sha": "363af43603ecdb1bdbed7303764b6daeeec7c37f",
+          "url": "https://api.github.com/repos/anthropics/claude-plugins-official/commits/363af43603ecdb1bdbed7303764b6daeeec7c37f",
+          "html_url": "https://github.com/anthropics/claude-plugins-official/commit/363af43603ecdb1bdbed7303764b6daeeec7c37f"
+        }
+      ]
+    },
+    {
+      "sha": "363af43603ecdb1bdbed7303764b6daeeec7c37f",
+      "node_id": "C_kwDOQZyFQNoAKDM2M2FmNDM2MDNlY2RiMWJkYmVkNzMwMzc2NGI2ZGFlZWVjN2MzN2Y",
+      "commit": {
+        "author": {
+          "name": "Morgan Lunt",
+          "email": "morganl@anthropic.com",
+          "date": "2026-09-25T18:29:00Z"
+        },
+        "committer": {
+          "name": "Morgan Lunt",
+          "email": "morganl@anthropic.com",
+          "date": "2026-09-25T18:29:00Z"
+        },
+        "message": "code-modernization: version 1.0.0, usage counts and a README results table\n\nThe plugin now has a version and a changelog. Two hooks record whole-number usage counts (which command ran, how far a system got, how many rules and proofs) through the CLI's own telemetry: counts from 100 up are rounded, nothing is sent when the plugin is not in use, and any of three switches turns it off. The README documents every key and lists what the plugin was tried on, checked against the run files.",
+        "tree": {
+          "sha": "f4070c6df279ab2bdc320b5611a6cd7eb9b25703",
+          "url": "https://api.github.com/repos/anthropics/claude-plugins-official/git/trees/f4070c6df279ab2bdc320b5611a6cd7eb9b25703"
+        },
+        "url": "https://api.github.com/repos/anthropics/claude-plugins-official/git/commits/363af43603ecdb1bdbed7303764b6daeeec7c37f",
+        "comment_count": 0,
+        "verification": {
+          "verified": true,
+          "reason": "valid",
+          "signature": "-----BEGIN SSH SIGNATURE-----\nU1NIU0lHAAAAAQAAAGgAAAATZWNkc2Etc2hhMi1uaXN0cDI1NgAAAAhuaXN0cDI1NgAAAE\nEE6B2ieJ3eTdVH1fokHbnPiCU1MbHFDUx0A9sGLfMoruZzgrdOGX2CV8QBHMcZZjGZw/ZN\n8/s5g1Ye3/PrHyvNWgAAAANnaXQAAAAAAAAABnNoYTUxMgAAAGMAAAATZWNkc2Etc2hhMi\n1uaXN0cDI1NgAAAEgAAAAgH7vl6gUT28ihVcs5q9DQ7E1oB/Eya1pFdP+pKTQVKvUAAAAg\nU+l3SJOFjzVO6eyseM9NTkRADMjXIz6qNeDnxubmXSI=\n-----END SSH SIGNATURE-----",
+          "payload": "tree f4070c6df279ab2bdc320b5611a6cd7eb9b25703\nparent 28abd83ad92c24a4107803bd03e510387f2014c2\nauthor Morgan Lunt <morganl@anthropic.com> 1790360940 -0700\ncommitter Morgan Lunt <morganl@anthropic.com> 1790360940 -0700\n\ncode-modernization: version 1.0.0, usage counts and a README results table\n\nThe plugin now has a version and a changelog. Two hooks record whole-number usage counts (which command ran, how far a system got, how many rules and proofs) through the CLI's own telemetry: counts from 100 up are rounded, nothing is sent when the plugin is not in use, and any of three switches turns it off. The README documents every key and lists what the plugin was tried on, checked against the run files.\n",
+          "verified_at": "2026-09-25T18:29:37Z"
+        }
+      },
+      "url": "https://api.github.com/repos/anthropics/claude-plugins-official/commits/363af43603ecdb1bdbed7303764b6daeeec7c37f",
+      "html_url": "https://github.com/anthropics/claude-plugins-official/commit/363af43603ecdb1bdbed7303764b6daeeec7c37f",
+      "comments_url": "https://api.github.com/repos/anthropics/claude-plugins-official/commits/363af43603ecdb1bdbed7303764b6daeeec7c37f/comments",
+      "author": {
+        "login": "morganl-ant",
+        "id": 271035627,
+        "node_id": "U_kgDOECes6w",
+        "avatar_url": "https://avatars.githubusercontent.com/u/271035627?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/morganl-ant",
+        "html_url": "https://github.com/morganl-ant",
+        "followers_url": "https://api.github.com/users/morganl-ant/followers",
+        "following_url": "https://api.github.com/users/morganl-ant/following{/other_user}",
+        "gists_url": "https://api.github.com/users/morganl-ant/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/morganl-ant/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/morganl-ant/subscriptions",
+        "organizations_url": "https://api.github.com/users/morganl-ant/orgs",
+        "repos_url": "https://api.github.com/users/morganl-ant/repos",
+        "events_url": "https://api.github.com/users/morganl-ant/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/morganl-ant/received_events",
+        "type": "User",
+        "user_view_type": "public",
+        "site_admin": false
+      },
+      "committer": {
+        "login": "morganl-ant",
+        "id": 271035627,
+        "node_id": "U_kgDOECes6w",
+        "avatar_url": "https://avatars.githubusercontent.com/u/271035627?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/morganl-ant",
+        "html_url": "https://github.com/morganl-ant",
+        "followers_url": "https://api.github.com/users/morganl-ant/followers",
+        "following_url": "https://api.github.com/users/morganl-ant/following{/other_user}",
+        "gists_url": "https://api.github.com/users/morganl-ant/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/morganl-ant/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/morganl-ant/subscriptions",
+        "organizations_url": "https://api.github.com/users/morganl-ant/orgs",
+        "repos_url": "https://api.github.com/users/morganl-ant/repos",
+        "events_url": "https://api.github.com/users/morganl-ant/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/morganl-ant/received_events",
+        "type": "User",
+        "user_view_type": "public",
+        "site_admin": false
+      },
+      "parents": [
+        {
+          "sha": "28abd83ad92c24a4107803bd03e510387f2014c2",
+          "url": "https://api.github.com/repos/anthropics/claude-plugins-official/commits/28abd83ad92c24a4107803bd03e510387f2014c2",
+          "html_url": "https://github.com/anthropics/claude-plugins-official/commit/28abd83ad92c24a4107803bd03e510387f2014c2"
+        }
+      ]
+    },
+    {
+      "sha": "28abd83ad92c24a4107803bd03e510387f2014c2",
+      "node_id": "C_kwDOQZyFQNoAKDI4YWJkODNhZDkyYzI0YTQxMDc4MDNiZDAzZTUxMDM4N2YyMDE0YzI",
+      "commit": {
+        "author": {
+          "name": "Morgan Lunt",
+          "email": "morganl@anthropic.com",
+          "date": "2026-09-25T18:28:51Z"
+        },
+        "committer": {
+          "name": "Morgan Lunt",
+          "email": "morganl@anthropic.com",
+          "date": "2026-09-25T18:28:51Z"
+        },
+        "message": "code-modernization: rename the pane's rule review command to /modernize-review-pane\n\nThe pane's bare /modernize-review took the name of the plugin's own review command, so typing the short form in a pane-enabled session opened the pane's cards instead of the pop-up review. The pane's version is now /modernize-review-pane, and /modernize-review always runs the plugin command. Both still write the same review file.",
+        "tree": {
+          "sha": "fc6ae7d04d59751bdbe348f320f50e08eef77ff7",
+          "url": "https://api.github.com/repos/anthropics/claude-plugins-official/git/trees/fc6ae7d04d59751bdbe348f320f50e08eef77ff7"
+        },
+        "url": "https://api.github.com/repos/anthropics/claude-plugins-official/git/commits/28abd83ad92c24a4107803bd03e510387f2014c2",
+        "comment_count": 0,
+        "verification": {
+          "verified": true,
+          "reason": "valid",
+          "signature": "-----BEGIN SSH SIGNATURE-----\nU1NIU0lHAAAAAQAAAGgAAAATZWNkc2Etc2hhMi1uaXN0cDI1NgAAAAhuaXN0cDI1NgAAAE\nEE6B2ieJ3eTdVH1fokHbnPiCU1MbHFDUx0A9sGLfMoruZzgrdOGX2CV8QBHMcZZjGZw/ZN\n8/s5g1Ye3/PrHyvNWgAAAANnaXQAAAAAAAAABnNoYTUxMgAAAGUAAAATZWNkc2Etc2hhMi\n1uaXN0cDI1NgAAAEoAAAAhAOBk1wig+s5/4xGb8Ti4AtKShZUR6NQaaTcbtbeGaFZbAAAA\nIQD8KQHDMADms0qMCvyGxaO7G5B4wRV9omfhbWGaKFf4BA==\n-----END SSH SIGNATURE-----",
+          "payload": "tree fc6ae7d04d59751bdbe348f320f50e08eef77ff7\nparent d49ccb3844876e35262a32f145b7b717646da733\nauthor Morgan Lunt <morganl@anthropic.com> 1790360931 -0700\ncommitter Morgan Lunt <morganl@anthropic.com> 1790360931 -0700\n\ncode-modernization: rename the pane's rule review command to /modernize-review-pane\n\nThe pane's bare /modernize-review took the name of the plugin's own review command, so typing the short form in a pane-enabled session opened the pane's cards instead of the pop-up review. The pane's version is now /modernize-review-pane, and /modernize-review always runs the plugin command. Both still write the same review file.\n",
+          "verified_at": "2026-09-25T18:29:37Z"
+        }
+      },
+      "url": "https://api.github.com/repos/anthropics/claude-plugins-official/commits/28abd83ad92c24a4107803bd03e510387f2014c2",
+      "html_url": "https://github.com/anthropics/claude-plugins-official/commit/28abd83ad92c24a4107803bd03e510387f2014c2",
+      "comments_url": "https://api.github.com/repos/anthropics/claude-plugins-official/commits/28abd83ad92c24a4107803bd03e510387f2014c2/comments",
+      "author": {
+        "login": "morganl-ant",
+        "id": 271035627,
+        "node_id": "U_kgDOECes6w",
+        "avatar_url": "https://avatars.githubusercontent.com/u/271035627?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/morganl-ant",
+        "html_url": "https://github.com/morganl-ant",
+        "followers_url": "https://api.github.com/users/morganl-ant/followers",
+        "following_url": "https://api.github.com/users/morganl-ant/following{/other_user}",
+        "gists_url": "https://api.github.com/users/morganl-ant/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/morganl-ant/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/morganl-ant/subscriptions",
+        "organizations_url": "https://api.github.com/users/morganl-ant/orgs",
+        "repos_url": "https://api.github.com/users/morganl-ant/repos",
+        "events_url": "https://api.github.com/users/morganl-ant/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/morganl-ant/received_events",
+        "type": "User",
+        "user_view_type": "public",
+        "site_admin": false
+      },
+      "committer": {
+        "login": "morganl-ant",
+        "id": 271035627,
+        "node_id": "U_kgDOECes6w",
+        "avatar_url": "https://avatars.githubusercontent.com/u/271035627?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/morganl-ant",
+        "html_url": "https://github.com/morganl-ant",
+        "followers_url": "https://api.github.com/users/morganl-ant/followers",
+        "following_url": "https://api.github.com/users/morganl-ant/following{/other_user}",
+        "gists_url": "https://api.github.com/users/morganl-ant/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/morganl-ant/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/morganl-ant/subscriptions",
+        "organizations_url": "https://api.github.com/users/morganl-ant/orgs",
+        "repos_url": "https://api.github.com/users/morganl-ant/repos",
+        "events_url": "https://api.github.com/users/morganl-ant/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/morganl-ant/received_events",
+        "type": "User",
+        "user_view_type": "public",
+        "site_admin": false
+      },
+      "parents": [
+        {
+          "sha": "d49ccb3844876e35262a32f145b7b717646da733",
+          "url": "https://api.github.com/repos/anthropics/claude-plugins-official/commits/d49ccb3844876e35262a32f145b7b717646da733",
+          "html_url": "https://github.com/anthropics/claude-plugins-official/commit/d49ccb3844876e35262a32f145b7b717646da733"
+        }
+      ]
+    },
+    {
+      "sha": "d49ccb3844876e35262a32f145b7b717646da733",
+      "node_id": "C_kwDOQZyFQNoAKGQ0OWNjYjM4NDQ4NzZlMzUyNjJhMzJmMTQ1YjdiNzE3NjQ2ZGE3MzM",
+      "commit": {
+        "author": {
+          "name": "Morgan Lunt",
+          "email": "morganl@anthropic.com",
+          "date": "2026-09-25T18:28:44Z"
+        },
+        "committer": {
+          "name": "Morgan Lunt",
+          "email": "morganl@anthropic.com",
+          "date": "2026-09-25T18:28:44Z"
+        },
+        "message": "code-modernization: a rule is tested only if a test that ran backs it\n\nA rule named only by a skipped or pending test no longer counts as covered. It is listed as \"named, not run\" and fails the rules check. A test-only folder is listed as tooling and gets no verdict. The verify command tries malformed records only when the person asked for exact behavior, so a proof loop has an end. The report parses rule headings and fields in linear time, and the report and pane show the new status.",
+        "tree": {
+          "sha": "cbaefc469ac837a85ac154e797fff20dd1905d62",
+          "url": "https://api.github.com/repos/anthropics/claude-plugins-official/git/trees/cbaefc469ac837a85ac154e797fff20dd1905d62"
+        },
+        "url": "https://api.github.com/repos/anthropics/claude-plugins-official/git/commits/d49ccb3844876e35262a32f145b7b717646da733",
+        "comment_count": 0,
+        "verification": {
+          "verified": true,
+          "reason": "valid",
+          "signature": "-----BEGIN SSH SIGNATURE-----\nU1NIU0lHAAAAAQAAAGgAAAATZWNkc2Etc2hhMi1uaXN0cDI1NgAAAAhuaXN0cDI1NgAAAE\nEE6B2ieJ3eTdVH1fokHbnPiCU1MbHFDUx0A9sGLfMoruZzgrdOGX2CV8QBHMcZZjGZw/ZN\n8/s5g1Ye3/PrHyvNWgAAAANnaXQAAAAAAAAABnNoYTUxMgAAAGUAAAATZWNkc2Etc2hhMi\n1uaXN0cDI1NgAAAEoAAAAhALKMGnY6ANMh5JUTuL7Nl/n9jHnB6nosWLAm4/l03x16AAAA\nIQD6aoG6s7BJyaxLj4xmkJju2D2WgMf610zob0qPUuLkgg==\n-----END SSH SIGNATURE-----",
+          "payload": "tree cbaefc469ac837a85ac154e797fff20dd1905d62\nparent d3a40f72165764888f9a57a3e93db86e88f8e063\nauthor Morgan Lunt <morganl@anthropic.com> 1790360924 -0700\ncommitter Morgan Lunt <morganl@anthropic.com> 1790360924 -0700\n\ncode-modernization: a rule is tested only if a test that ran backs it\n\nA rule named only by a skipped or pending test no longer counts as covered. It is listed as \"named, not run\" and fails the rules check. A test-only folder is listed as tooling and gets no verdict. The verify command tries malformed records only when the person asked for exact behavior, so a proof loop has an end. The report parses rule headings and fields in linear time, and the report and pane show the new status.\n",
+          "verified_at": "2026-09-25T18:29:37Z"
+        }
+      },
+      "url": "https://api.github.com/repos/anthropics/claude-plugins-official/commits/d49ccb3844876e35262a32f145b7b717646da733",
+      "html_url": "https://github.com/anthropics/claude-plugins-official/commit/d49ccb3844876e35262a32f145b7b717646da733",
+      "comments_url": "https://api.github.com/repos/anthropics/claude-plugins-official/commits/d49ccb3844876e35262a32f145b7b717646da733/comments",
+      "author": {
+        "login": "morganl-ant",
+        "id": 271035627,
+        "node_id": "U_kgDOECes6w",
+        "avatar_url": "https://avatars.githubusercontent.com/u/271035627?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/morganl-ant",
+        "html_url": "https://github.com/morganl-ant",
+        "followers_url": "https://api.github.com/users/morganl-ant/followers",
+        "following_url": "https://api.github.com/users/morganl-ant/following{/other_user}",
+        "gists_url": "https://api.github.com/users/morganl-ant/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/morganl-ant/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/morganl-ant/subscriptions",
+        "organizations_url": "https://api.github.com/users/morganl-ant/orgs",
+        "repos_url": "https://api.github.com/users/morganl-ant/repos",
+        "events_url": "https://api.github.com/users/morganl-ant/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/morganl-ant/received_events",
+        "type": "User",
+        "user_view_type": "public",
+        "site_admin": false
+      },
+      "committer": {
+        "login": "morganl-ant",
+        "id": 271035627,
+        "node_id": "U_kgDOECes6w",
+        "avatar_url": "https://avatars.githubusercontent.com/u/271035627?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/morganl-ant",
+        "html_url": "https://github.com/morganl-ant",
+        "followers_url": "https://api.github.com/users/morganl-ant/followers",
+        "following_url": "https://api.github.com/users/morganl-ant/following{/other_user}",
+        "gists_url": "https://api.github.com/users/morganl-ant/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/morganl-ant/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/morganl-ant/subscriptions",
+        "organizations_url": "https://api.github.com/users/morganl-ant/orgs",
+        "repos_url": "https://api.github.com/users/morganl-ant/repos",
+        "events_url": "https://api.github.com/users/morganl-ant/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/morganl-ant/received_events",
+        "type": "User",
+        "user_view_type": "public",
+        "site_admin": false
+      },
+      "parents": [
+        {
+          "sha": "d3a40f72165764888f9a57a3e93db86e88f8e063",
+          "url": "https://api.github.com/repos/anthropics/claude-plugins-official/commits/d3a40f72165764888f9a57a3e93db86e88f8e063",
+          "html_url": "https://github.com/anthropics/claude-plugins-official/commit/d3a40f72165764888f9a57a3e93db86e88f8e063"
+        }
+      ]
+    },
+    {
+      "sha": "d3a40f72165764888f9a57a3e93db86e88f8e063",
+      "node_id": "C_kwDOQZyFQNoAKGQzYTQwZjcyMTY1NzY0ODg4ZjlhNTdhM2U5M2RiODZlODhmOGUwNjM",
+      "commit": {
+        "author": {
+          "name": "Morgan Lunt",
+          "email": "morganl@anthropic.com",
+          "date": "2026-09-25T04:27:42Z"
+        },
+        "committer": {
+          "name": "Morgan Lunt",
+          "email": "morganl@anthropic.com",
+          "date": "2026-09-25T04:27:42Z"
+        },
+        "message": "code-modernization: approve a difference once per input\n\nAn independent check of a rewritten batch job found differences on two new\ninputs of one family (a blank numeric field the rewrite rejects on purpose\nand the old program reads as zero). Each input has several output files, so\naccepting the deviation meant three or four hand-written entries per input.\n\nA top-level \"approvedInputs\": {\"F23\": \"reason\"} in a cases file now approves\nevery case that shares that input label. A reason is still required (blank\napproves nothing), a case's own reason wins, a missing file is never turned\ninto a pass, and the result still lists the difference as approved.",
+        "tree": {
+          "sha": "89f5fc7b623dfe09b6d994aa608c291fa35da01d",
+          "url": "https://api.github.com/repos/anthropics/claude-plugins-official/git/trees/89f5fc7b623dfe09b6d994aa608c291fa35da01d"
+        },
+        "url": "https://api.github.com/repos/anthropics/claude-plugins-official/git/commits/d3a40f72165764888f9a57a3e93db86e88f8e063",
+        "comment_count": 0,
+        "verification": {
+          "verified": true,
+          "reason": "valid",
+          "signature": "-----BEGIN SSH SIGNATURE-----\nU1NIU0lHAAAAAQAAAGgAAAATZWNkc2Etc2hhMi1uaXN0cDI1NgAAAAhuaXN0cDI1NgAAAE\nEE6B2ieJ3eTdVH1fokHbnPiCU1MbHFDUx0A9sGLfMoruZzgrdOGX2CV8QBHMcZZjGZw/ZN\n8/s5g1Ye3/PrHyvNWgAAAANnaXQAAAAAAAAABnNoYTUxMgAAAGQAAAATZWNkc2Etc2hhMi\n1uaXN0cDI1NgAAAEkAAAAhAO3HnmvgEjyDiEn9XQJAK9z47sQmKYzh7/7AuklUDwRrAAAA\nIBFRHxEyyCXWpkCFgZ5hTbZWPfV2pz+q/uuTKbGjF5b/\n-----END SSH SIGNATURE-----",
+          "payload": "tree 89f5fc7b623dfe09b6d994aa608c291fa35da01d\nparent ff833bd7231262a8521ab3728c5625dc6c4f4a1d\nauthor Morgan Lunt <morganl@anthropic.com> 1790310462 -0700\ncommitter Morgan Lunt <morganl@anthropic.com> 1790310462 -0700\n\ncode-modernization: approve a difference once per input\n\nAn independent check of a rewritten batch job found differences on two new\ninputs of one family (a blank numeric field the rewrite rejects on purpose\nand the old program reads as zero). Each input has several output files, so\naccepting the deviation meant three or four hand-written entries per input.\n\nA top-level \"approvedInputs\": {\"F23\": \"reason\"} in a cases file now approves\nevery case that shares that input label. A reason is still required (blank\napproves nothing), a case's own reason wins, a missing file is never turned\ninto a pass, and the result still lists the difference as approved.\n",
+          "verified_at": "2026-09-25T18:29:37Z"
+        }
+      },
+      "url": "https://api.github.com/repos/anthropics/claude-plugins-official/commits/d3a40f72165764888f9a57a3e93db86e88f8e063",
+      "html_url": "https://github.com/anthropics/claude-plugins-official/commit/d3a40f72165764888f9a57a3e93db86e88f8e063",
+      "comments_url": "https://api.github.com/repos/anthropics/claude-plugins-official/commits/d3a40f72165764888f9a57a3e93db86e88f8e063/comments",
+      "author": {
+        "login": "morganl-ant",
+        "id": 271035627,
+        "node_id": "U_kgDOECes6w",
+        "avatar_url": "https://avatars.githubusercontent.com/u/271035627?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/morganl-ant",
+        "html_url": "https://github.com/morganl-ant",
+        "followers_url": "https://api.github.com/users/morganl-ant/followers",
+        "following_url": "https://api.github.com/users/morganl-ant/following{/other_user}",
+        "gists_url": "https://api.github.com/users/morganl-ant/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/morganl-ant/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/morganl-ant/subscriptions",
+        "organizations_url": "https://api.github.com/users/morganl-ant/orgs",
+        "repos_url": "https://api.github.com/users/morganl-ant/repos",
+        "events_url": "https://api.github.com/users/morganl-ant/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/morganl-ant/received_events",
+        "type": "User",
+        "user_view_type": "public",
+        "site_admin": false
+      },
+      "committer": {
+        "login": "morganl-ant",
+        "id": 271035627,
+        "node_id": "U_kgDOECes6w",
+        "avatar_url": "https://avatars.githubusercontent.com/u/271035627?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/morganl-ant",
+        "html_url": "https://github.com/morganl-ant",
+        "followers_url": "https://api.github.com/users/morganl-ant/followers",
+        "following_url": "https://api.github.com/users/morganl-ant/following{/other_user}",
+        "gists_url": "https://api.github.com/users/morganl-ant/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/morganl-ant/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/morganl-ant/subscriptions",
+        "organizations_url": "https://api.github.com/users/morganl-ant/orgs",
+        "repos_url": "https://api.github.com/users/morganl-ant/repos",
+        "events_url": "https://api.github.com/users/morganl-ant/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/morganl-ant/received_events",
+        "type": "User",
+        "user_view_type": "public",
+        "site_admin": false
+      },
+      "parents": [
+        {
+          "sha": "ff833bd7231262a8521ab3728c5625dc6c4f4a1d",
+          "url": "https://api.github.com/repos/anthropics/claude-plugins-official/commits/ff833bd7231262a8521ab3728c5625dc6c4f4a1d",
+          "html_url": "https://github.com/anthropics/claude-plugins-official/commit/ff833bd7231262a8521ab3728c5625dc6c4f4a1d"
+        }
+      ]
+    },
+    {
+      "sha": "ff833bd7231262a8521ab3728c5625dc6c4f4a1d",
+      "node_id": "C_kwDOQZyFQNoAKGZmODMzYmQ3MjMxMjYyYTg1MjFhYjM3MjhjNTYyNWRjNmM0ZjRhMWQ",
+      "commit": {
+        "author": {
+          "name": "Morgan Lunt",
+          "email": "morganl@anthropic.com",
+          "date": "2026-09-25T04:22:06Z"
+        },
+        "committer": {
+          "name": "Morgan Lunt",
+          "email": "morganl@anthropic.com",
+          "date": "2026-09-25T04:22:06Z"
+        },
+        "message": "code-modernization: make rule consolidation auditable and injection-safe\n\nFollow-ups from review of the consolidation pass:\n\n- The agent is a restricted type with the same read-only wording as its\n  siblings, and every field on its numbered list is a single bounded line, so\n  a rule name containing a newline cannot fake another entry.\n- A group with any number out of range or not an integer is rejected whole\n  instead of being coerced into a different merge.\n- A merge keeps the most conservative review state: the highest priority, the\n  lowest confidence, and every suspected defect and SME question of the folded\n  rules.\n- Every folded rule is returned with the rule it went into, and the rules\n  document lists them under \"Rules folded into another\", so nothing disappears\n  untraceably. Extra citations show as \"Also cited\" without the joining word.",
+        "tree": {
+          "sha": "d12e70b6407f666e787fae7217362011f892f459",
+          "url": "https://api.github.com/repos/anthropics/claude-plugins-official/git/trees/d12e70b6407f666e787fae7217362011f892f459"
+        },
+        "url": "https://api.github.com/repos/anthropics/claude-plugins-official/git/commits/ff833bd7231262a8521ab3728c5625dc6c4f4a1d",
+        "comment_count": 0,
+        "verification": {
+          "verified": true,
+          "reason": "valid",
+          "signature": "-----BEGIN SSH SIGNATURE-----\nU1NIU0lHAAAAAQAAAGgAAAATZWNkc2Etc2hhMi1uaXN0cDI1NgAAAAhuaXN0cDI1NgAAAE\nEE6B2ieJ3eTdVH1fokHbnPiCU1MbHFDUx0A9sGLfMoruZzgrdOGX2CV8QBHMcZZjGZw/ZN\n8/s5g1Ye3/PrHyvNWgAAAANnaXQAAAAAAAAABnNoYTUxMgAAAGQAAAATZWNkc2Etc2hhMi\n1uaXN0cDI1NgAAAEkAAAAgUY8/+dc6bF+h9t1NnFcgja/X6/C7QqgQBPPNu6LV6WIAAAAh\nAK6FswATI0pdwz2cAyk2FxouiUThyhjLF2a/ijDEziHB\n-----END SSH SIGNATURE-----",
+          "payload": "tree d12e70b6407f666e787fae7217362011f892f459\nparent f45794fa4831636e7ae55f8081769c8ebf3f58c6\nauthor Morgan Lunt <morganl@anthropic.com> 1790310126 -0700\ncommitter Morgan Lunt <morganl@anthropic.com> 1790310126 -0700\n\ncode-modernization: make rule consolidation auditable and injection-safe\n\nFollow-ups from review of the consolidation pass:\n\n- The agent is a restricted type with the same read-only wording as its\n  siblings, and every field on its numbered list is a single bounded line, so\n  a rule name containing a newline cannot fake another entry.\n- A group with any number out of range or not an integer is rejected whole\n  instead of being coerced into a different merge.\n- A merge keeps the most conservative review state: the highest priority, the\n  lowest confidence, and every suspected defect and SME question of the folded\n  rules.\n- Every folded rule is returned with the rule it went into, and the rules\n  document lists them under \"Rules folded into another\", so nothing disappears\n  untraceably. Extra citations show as \"Also cited\" without the joining word.\n",
+          "verified_at": "2026-09-25T18:29:37Z"
+        }
+      },
+      "url": "https://api.github.com/repos/anthropics/claude-plugins-official/commits/ff833bd7231262a8521ab3728c5625dc6c4f4a1d",
+      "html_url": "https://github.com/anthropics/claude-plugins-official/commit/ff833bd7231262a8521ab3728c5625dc6c4f4a1d",
+      "comments_url": "https://api.github.com/repos/anthropics/claude-plugins-official/commits/ff833bd7231262a8521ab3728c5625dc6c4f4a1d/comments",
+      "author": {
+        "login": "morganl-ant",
+        "id": 271035627,
+        "node_id": "U_kgDOECes6w",
+        "avatar_url": "https://avatars.githubusercontent.com/u/271035627?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/morganl-ant",
+        "html_url": "https://github.com/morganl-ant",
+        "followers_url": "https://api.github.com/users/morganl-ant/followers",
+        "following_url": "https://api.github.com/users/morganl-ant/following{/other_user}",
+        "gists_url": "https://api.github.com/users/morganl-ant/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/morganl-ant/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/morganl-ant/subscriptions",
+        "organizations_url": "https://api.github.com/users/morganl-ant/orgs",
+        "repos_url": "https://api.github.com/users/morganl-ant/repos",
+        "events_url": "https://api.github.com/users/morganl-ant/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/morganl-ant/received_events",
+        "type": "User",
+        "user_view_type": "public",
+        "site_admin": false
+      },
+      "committer": {
+        "login": "morganl-ant",
+        "id": 271035627,
+        "node_id": "U_kgDOECes6w",
+        "avatar_url": "https://avatars.githubusercontent.com/u/271035627?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/morganl-ant",
+        "html_url": "https://github.com/morganl-ant",
+        "followers_url": "https://api.github.com/users/morganl-ant/followers",
+        "following_url": "https://api.github.com/users/morganl-ant/following{/other_user}",
+        "gists_url": "https://api.github.com/users/morganl-ant/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/morganl-ant/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/morganl-ant/subscriptions",
+        "organizations_url": "https://api.github.com/users/morganl-ant/orgs",
+        "repos_url": "https://api.github.com/users/morganl-ant/repos",
+        "events_url": "https://api.github.com/users/morganl-ant/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/morganl-ant/received_events",
+        "type": "User",
+        "user_view_type": "public",
+        "site_admin": false
+      },
+      "parents": [
+        {
+          "sha": "f45794fa4831636e7ae55f8081769c8ebf3f58c6",
+          "url": "https://api.github.com/repos/anthropics/claude-plugins-official/commits/f45794fa4831636e7ae55f8081769c8ebf3f58c6",
+          "html_url": "https://github.com/anthropics/claude-plugins-official/commit/f45794fa4831636e7ae55f8081769c8ebf3f58c6"
+        }
+      ]
+    },
+    {
+      "sha": "f45794fa4831636e7ae55f8081769c8ebf3f58c6",
+      "node_id": "C_kwDOQZyFQNoAKGY0NTc5NGZhNDgzMTYzNmU3YWU1NWY4MDgxNzY5YzhlYmYzZjU4YzY",
+      "commit": {
+        "author": {
+          "name": "Morgan Lunt",
+          "email": "morganl@anthropic.com",
+          "date": "2026-09-25T04:18:46Z"
+        },
+        "committer": {
+          "name": "Morgan Lunt",
+          "email": "morganl@anthropic.com",
+          "date": "2026-09-25T04:18:46Z"
+        },
+        "message": "code-modernization: an uplift is not proven by a typed baseline or edited tests\n\nThree ways a same-technology uplift could come out PROVEN too easily:\n\n- The baseline came from a table someone typed. It now counts as measured\n  only when the script can read per-test results (JUnit or TRX XML, a runner\n  log with a summary line, or per-test JSON) from analysis/<system>/baseline/\n  or a \"Recorded:\" line of BASELINE.md; a counts-only file is ignored, two\n  measured sources that disagree are a gap, and the typed table must match\n  what was measured.\n- Tests edited during the uplift passed unnoticed. The pack now compares the\n  legacy and working-copy test files (by walking files only) and lists what\n  was added, removed or changed; a removed file, more than a quarter of the\n  files changed, or no legacy tests to compare with is a gap, and it says\n  plainly that weakened assertions cannot be detected.\n- A silent behavioral change with no test at its site. Each Behavioral-silent\n  delta in the catalog must have a test file naming its site file, or the\n  module is at most PARTLY PROVEN.\n\nThe report's Proof section shows the three new checks, and an uplift pack that\nlacks any of them reads as PARTLY PROVEN. 214 script tests pass.",
+        "tree": {
+          "sha": "c8f103c571fb7d52c5fcf111f0a09e5c51d624b6",
+          "url": "https://api.github.com/repos/anthropics/claude-plugins-official/git/trees/c8f103c571fb7d52c5fcf111f0a09e5c51d624b6"
+        },
+        "url": "https://api.github.com/repos/anthropics/claude-plugins-official/git/commits/f45794fa4831636e7ae55f8081769c8ebf3f58c6",
+        "comment_count": 0,
+        "verification": {
+          "verified": true,
+          "reason": "valid",
+          "signature": "-----BEGIN SSH SIGNATURE-----\nU1NIU0lHAAAAAQAAAGgAAAATZWNkc2Etc2hhMi1uaXN0cDI1NgAAAAhuaXN0cDI1NgAAAE\nEE6B2ieJ3eTdVH1fokHbnPiCU1MbHFDUx0A9sGLfMoruZzgrdOGX2CV8QBHMcZZjGZw/ZN\n8/s5g1Ye3/PrHyvNWgAAAANnaXQAAAAAAAAABnNoYTUxMgAAAGUAAAATZWNkc2Etc2hhMi\n1uaXN0cDI1NgAAAEoAAAAhAPyudEfUby6luThBvkBv0UYWxGo7fyB50cd8+RAEAjDrAAAA\nIQDZV2Bg1jMkPOy6dOSfXa1uUJWS6yViuJr6odhVCct6Lg==\n-----END SSH SIGNATURE-----",
+          "payload": "tree c8f103c571fb7d52c5fcf111f0a09e5c51d624b6\nparent fc8adcf13fab336a810a622e8cf7be86be3a183b\nauthor Morgan Lunt <morganl@anthropic.com> 1790309926 -0700\ncommitter Morgan Lunt <morganl@anthropic.com> 1790309926 -0700\n\ncode-modernization: an uplift is not proven by a typed baseline or edited tests\n\nThree ways a same-technology uplift could come out PROVEN too easily:\n\n- The baseline came from a table someone typed. It now counts as measured\n  only when the script can read per-test results (JUnit or TRX XML, a runner\n  log with a summary line, or per-test JSON) from analysis/<system>/baseline/\n  or a \"Recorded:\" line of BASELINE.md; a counts-only file is ignored, two\n  measured sources that disagree are a gap, and the typed table must match\n  what was measured.\n- Tests edited during the uplift passed unnoticed. The pack now compares the\n  legacy and working-copy test files (by walking files only) and lists what\n  was added, removed or changed; a removed file, more than a quarter of the\n  files changed, or no legacy tests to compare with is a gap, and it says\n  plainly that weakened assertions cannot be detected.\n- A silent behavioral change with no test at its site. Each Behavioral-silent\n  delta in the catalog must have a test file naming its site file, or the\n  module is at most PARTLY PROVEN.\n\nThe report's Proof section shows the three new checks, and an uplift pack that\nlacks any of them reads as PARTLY PROVEN. 214 script tests pass.\n",
+          "verified_at": "2026-09-25T18:29:37Z"
+        }
+      },
+      "url": "https://api.github.com/repos/anthropics/claude-plugins-official/commits/f45794fa4831636e7ae55f8081769c8ebf3f58c6",
+      "html_url": "https://github.com/anthropics/claude-plugins-official/commit/f45794fa4831636e7ae55f8081769c8ebf3f58c6",
+      "comments_url": "https://api.github.com/repos/anthropics/claude-plugins-official/commits/f45794fa4831636e7ae55f8081769c8ebf3f58c6/comments",
+      "author": {
+        "login": "morganl-ant",
+        "id": 271035627,
+        "node_id": "U_kgDOECes6w",
+        "avatar_url": "https://avatars.githubusercontent.com/u/271035627?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/morganl-ant",
+        "html_url": "https://github.com/morganl-ant",
+        "followers_url": "https://api.github.com/users/morganl-ant/followers",
+        "following_url": "https://api.github.com/users/morganl-ant/following{/other_user}",
+        "gists_url": "https://api.github.com/users/morganl-ant/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/morganl-ant/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/morganl-ant/subscriptions",
+        "organizations_url": "https://api.github.com/users/morganl-ant/orgs",
+        "repos_url": "https://api.github.com/users/morganl-ant/repos",
+        "events_url": "https://api.github.com/users/morganl-ant/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/morganl-ant/received_events",
+        "type": "User",
+        "user_view_type": "public",
+        "site_admin": false
+      },
+      "committer": {
+        "login": "morganl-ant",
+        "id": 271035627,
+        "node_id": "U_kgDOECes6w",
+        "avatar_url": "https://avatars.githubusercontent.com/u/271035627?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/morganl-ant",
+        "html_url": "https://github.com/morganl-ant",
+        "followers_url": "https://api.github.com/users/morganl-ant/followers",
+        "following_url": "https://api.github.com/users/morganl-ant/following{/other_user}",
+        "gists_url": "https://api.github.com/users/morganl-ant/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/morganl-ant/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/morganl-ant/subscriptions",
+        "organizations_url": "https://api.github.com/users/morganl-ant/orgs",
+        "repos_url": "https://api.github.com/users/morganl-ant/repos",
+        "events_url": "https://api.github.com/users/morganl-ant/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/morganl-ant/received_events",
+        "type": "User",
+        "user_view_type": "public",
+        "site_admin": false
+      },
+      "parents": [
+        {
+          "sha": "fc8adcf13fab336a810a622e8cf7be86be3a183b",
+          "url": "https://api.github.com/repos/anthropics/claude-plugins-official/commits/fc8adcf13fab336a810a622e8cf7be86be3a183b",
+          "html_url": "https://github.com/anthropics/claude-plugins-official/commit/fc8adcf13fab336a810a622e8cf7be86be3a183b"
+        }
+      ]
+    },
+    {
+      "sha": "fc8adcf13fab336a810a622e8cf7be86be3a183b",
+      "node_id": "C_kwDOQZyFQNoAKGZjOGFkY2YxM2ZhYjMzNmE4MTBhNjIyZThjZjdiZTg2YmUzYTE4M2I",
+      "commit": {
+        "author": {
+          "name": "Morgan Lunt",
+          "email": "morganl@anthropic.com",
+          "date": "2026-09-25T04:18:31Z"
+        },
+        "committer": {
+          "name": "Morgan Lunt",
+          "email": "morganl@anthropic.com",
+          "date": "2026-09-25T04:18:31Z"
+        },
+        "message": "code-modernization: fold the same rule found in several files into one\n\nA numeric library implemented in C, in a C++ header and in a fixed-point\nvariant produced three \"twiddle factor\" rules, two \"generic butterfly\" rules\nand two \"factorization\" rules, because the referee's duplicate key is the\nfile plus the rule's name. The plan and the review then carry noise.\n\nAfter verification, one small agent per 150 rules lists the groups that\ndescribe the same behavior implemented in more than one place, told to merge\nonly what would be implemented and tested as one thing. The kept rule cites\nevery place (the renderer shows them as \"Also cited\") and takes the highest\npriority of its group; overlapping, out-of-range or self-merging groups are\nignored, and the rule list is fenced as untrusted data. The count is\nreported as stats.consolidated.",
+        "tree": {
+          "sha": "da986773092b4bdc9cf2a2d5d18cca07ab9525f8",
+          "url": "https://api.github.com/repos/anthropics/claude-plugins-official/git/trees/da986773092b4bdc9cf2a2d5d18cca07ab9525f8"
+        },
+        "url": "https://api.github.com/repos/anthropics/claude-plugins-official/git/commits/fc8adcf13fab336a810a622e8cf7be86be3a183b",
+        "comment_count": 0,
+        "verification": {
+          "verified": true,
+          "reason": "valid",
+          "signature": "-----BEGIN SSH SIGNATURE-----\nU1NIU0lHAAAAAQAAAGgAAAATZWNkc2Etc2hhMi1uaXN0cDI1NgAAAAhuaXN0cDI1NgAAAE\nEE6B2ieJ3eTdVH1fokHbnPiCU1MbHFDUx0A9sGLfMoruZzgrdOGX2CV8QBHMcZZjGZw/ZN\n8/s5g1Ye3/PrHyvNWgAAAANnaXQAAAAAAAAABnNoYTUxMgAAAGQAAAATZWNkc2Etc2hhMi\n1uaXN0cDI1NgAAAEkAAAAhAPmwpuujNsEarS8OZViVGyNOKNlzw+WvbFBJ7yj6G/yHAAAA\nIG50bcv1RSifh/TlmD0SUUXJZ60eUY2mIlpt5f6m3aSs\n-----END SSH SIGNATURE-----",
+          "payload": "tree da986773092b4bdc9cf2a2d5d18cca07ab9525f8\nparent 6436c5a81d2b163fe5a1c971b96f211d910bd75a\nauthor Morgan Lunt <morganl@anthropic.com> 1790309911 -0700\ncommitter Morgan Lunt <morganl@anthropic.com> 1790309911 -0700\n\ncode-modernization: fold the same rule found in several files into one\n\nA numeric library implemented in C, in a C++ header and in a fixed-point\nvariant produced three \"twiddle factor\" rules, two \"generic butterfly\" rules\nand two \"factorization\" rules, because the referee's duplicate key is the\nfile plus the rule's name. The plan and the review then carry noise.\n\nAfter verification, one small agent per 150 rules lists the groups that\ndescribe the same behavior implemented in more than one place, told to merge\nonly what would be implemented and tested as one thing. The kept rule cites\nevery place (the renderer shows them as \"Also cited\") and takes the highest\npriority of its group; overlapping, out-of-range or self-merging groups are\nignored, and the rule list is fenced as untrusted data. The count is\nreported as stats.consolidated.\n",
+          "verified_at": "2026-09-25T18:29:37Z"
+        }
+      },
+      "url": "https://api.github.com/repos/anthropics/claude-plugins-official/commits/fc8adcf13fab336a810a622e8cf7be86be3a183b",
+      "html_url": "https://github.com/anthropics/claude-plugins-official/commit/fc8adcf13fab336a810a622e8cf7be86be3a183b",
+      "comments_url": "https://api.github.com/repos/anthropics/claude-plugins-official/commits/fc8adcf13fab336a810a622e8cf7be86be3a183b/comments",
+      "author": {
+        "login": "morganl-ant",
+        "id": 271035627,
+        "node_id": "U_kgDOECes6w",
+        "avatar_url": "https://avatars.githubusercontent.com/u/271035627?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/morganl-ant",
+        "html_url": "https://github.com/morganl-ant",
+        "followers_url": "https://api.github.com/users/morganl-ant/followers",
+        "following_url": "https://api.github.com/users/morganl-ant/following{/other_user}",
+        "gists_url": "https://api.github.com/users/morganl-ant/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/morganl-ant/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/morganl-ant/subscriptions",
+        "organizations_url": "https://api.github.com/users/morganl-ant/orgs",
+        "repos_url": "https://api.github.com/users/morganl-ant/repos",
+        "events_url": "https://api.github.com/users/morganl-ant/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/morganl-ant/received_events",
+        "type": "User",
+        "user_view_type": "public",
+        "site_admin": false
+      },
+      "committer": {
+        "login": "morganl-ant",
+        "id": 271035627,
+        "node_id": "U_kgDOECes6w",
+        "avatar_url": "https://avatars.githubusercontent.com/u/271035627?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/morganl-ant",
+        "html_url": "https://github.com/morganl-ant",
+        "followers_url": "https://api.github.com/users/morganl-ant/followers",
+        "following_url": "https://api.github.com/users/morganl-ant/following{/other_user}",
+        "gists_url": "https://api.github.com/users/morganl-ant/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/morganl-ant/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/morganl-ant/subscriptions",
+        "organizations_url": "https://api.github.com/users/morganl-ant/orgs",
+        "repos_url": "https://api.github.com/users/morganl-ant/repos",
+        "events_url": "https://api.github.com/users/morganl-ant/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/morganl-ant/received_events",
+        "type": "User",
+        "user_view_type": "public",
+        "site_admin": false
+      },
+      "parents": [
+        {
+          "sha": "6436c5a81d2b163fe5a1c971b96f211d910bd75a",
+          "url": "https://api.github.com/repos/anthropics/claude-plugins-official/commits/6436c5a81d2b163fe5a1c971b96f211d910bd75a",
+          "html_url": "https://github.com/anthropics/claude-plugins-official/commit/6436c5a81d2b163fe5a1c971b96f211d910bd75a"
+        }
+      ]
+    },
+    {
+      "sha": "6436c5a81d2b163fe5a1c971b96f211d910bd75a",
+      "node_id": "C_kwDOQZyFQNoAKDY0MzZjNWE4MWQyYjE2M2ZlNWExYzk3MWI5NmYyMTFkOTEwYmQ3NWE",
+      "commit": {
+        "author": {
+          "name": "Morgan Lunt",
+          "email": "morganl@anthropic.com",
+          "date": "2026-09-25T04:10:47Z"
+        },
+        "committer": {
+          "name": "Morgan Lunt",
+          "email": "morganl@anthropic.com",
+          "date": "2026-09-25T04:10:47Z"
+        },
+        "message": "code-modernization: safer, more general version uplifts\n\nFound by reading the commands as an engineer with a large Java 8 system:\n\n- The baseline suite was run \"on legacy/<system>\", which writes build output\n  into the source. It now runs on a scratch copy, its result files or log are\n  kept under analysis/<system>/baseline/ and named in BASELINE.md, and a\n  typed table alone no longer counts as a measured baseline.\n- The working copy no longer carries the source repository's history, keeps\n  files that look like credentials or production settings out of its first\n  commit and lists them for a person, and moves that history to its own new\n  local repository.\n- Migration tools (OpenRewrite and the like) run on a scratch copy, never in\n  the source, since a dry run still builds and downloads.\n- A move spanning several versions or two things at once (a JDK and a\n  framework) is split into hops that each build and test green.\n- Tests are not run against a database or service the configuration names\n  until the person says it is a local or throwaway instance.\n- The silent-behavior hunt now names the usual traps for Java, Python, Node\n  and PHP as well as .NET (locale data, default charset, ORM mappings,\n  property binding, str/bytes).\n- The brief no longer requires business rules for a same-technology uplift:\n  the recorded baseline is its behavior contract, so extract-rules can wait.",
+        "tree": {
+          "sha": "ca25b3b10c30d4ca04f871f8e53bf4c9b1047c0f",
+          "url": "https://api.github.com/repos/anthropics/claude-plugins-official/git/trees/ca25b3b10c30d4ca04f871f8e53bf4c9b1047c0f"
+        },
+        "url": "https://api.github.com/repos/anthropics/claude-plugins-official/git/commits/6436c5a81d2b163fe5a1c971b96f211d910bd75a",
+        "comment_count": 0,
+        "verification": {
+          "verified": true,
+          "reason": "valid",
+          "signature": "-----BEGIN SSH SIGNATURE-----\nU1NIU0lHAAAAAQAAAGgAAAATZWNkc2Etc2hhMi1uaXN0cDI1NgAAAAhuaXN0cDI1NgAAAE\nEE6B2ieJ3eTdVH1fokHbnPiCU1MbHFDUx0A9sGLfMoruZzgrdOGX2CV8QBHMcZZjGZw/ZN\n8/s5g1Ye3/PrHyvNWgAAAANnaXQAAAAAAAAABnNoYTUxMgAAAGUAAAATZWNkc2Etc2hhMi\n1uaXN0cDI1NgAAAEoAAAAhAPP1v5KpbEBWWqPUlAnIm0/7SdNkr90ojmKP6anm/uIDAAAA\nIQCWMup/TAD+n9LFDXTka1A8eqAWF2nT+xKmjENVF8pHeg==\n-----END SSH SIGNATURE-----",
+          "payload": "tree ca25b3b10c30d4ca04f871f8e53bf4c9b1047c0f\nparent 29c1c6a0d16453427b488e3eca1ad6e8beac0c10\nauthor Morgan Lunt <morganl@anthropic.com> 1790309447 -0700\ncommitter Morgan Lunt <morganl@anthropic.com> 1790309447 -0700\n\ncode-modernization: safer, more general version uplifts\n\nFound by reading the commands as an engineer with a large Java 8 system:\n\n- The baseline suite was run \"on legacy/<system>\", which writes build output\n  into the source. It now runs on a scratch copy, its result files or log are\n  kept under analysis/<system>/baseline/ and named in BASELINE.md, and a\n  typed table alone no longer counts as a measured baseline.\n- The working copy no longer carries the source repository's history, keeps\n  files that look like credentials or production settings out of its first\n  commit and lists them for a person, and moves that history to its own new\n  local repository.\n- Migration tools (OpenRewrite and the like) run on a scratch copy, never in\n  the source, since a dry run still builds and downloads.\n- A move spanning several versions or two things at once (a JDK and a\n  framework) is split into hops that each build and test green.\n- Tests are not run against a database or service the configuration names\n  until the person says it is a local or throwaway instance.\n- The silent-behavior hunt now names the usual traps for Java, Python, Node\n  and PHP as well as .NET (locale data, default charset, ORM mappings,\n  property binding, str/bytes).\n- The brief no longer requires business rules for a same-technology uplift:\n  the recorded baseline is its behavior contract, so extract-rules can wait.\n",
+          "verified_at": "2026-09-25T18:29:37Z"
+        }
+      },
+      "url": "https://api.github.com/repos/anthropics/claude-plugins-official/commits/6436c5a81d2b163fe5a1c971b96f211d910bd75a",
+      "html_url": "https://github.com/anthropics/claude-plugins-official/commit/6436c5a81d2b163fe5a1c971b96f211d910bd75a",
+      "comments_url": "https://api.github.com/repos/anthropics/claude-plugins-official/commits/6436c5a81d2b163fe5a1c971b96f211d910bd75a/comments",
+      "author": {
+        "login": "morganl-ant",
+        "id": 271035627,
+        "node_id": "U_kgDOECes6w",
+        "avatar_url": "https://avatars.githubusercontent.com/u/271035627?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/morganl-ant",
+        "html_url": "https://github.com/morganl-ant",
+        "followers_url": "https://api.github.com/users/morganl-ant/followers",
+        "following_url": "https://api.github.com/users/morganl-ant/following{/other_user}",
+        "gists_url": "https://api.github.com/users/morganl-ant/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/morganl-ant/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/morganl-ant/subscriptions",
+        "organizations_url": "https://api.github.com/users/morganl-ant/orgs",
+        "repos_url": "https://api.github.com/users/morganl-ant/repos",
+        "events_url": "https://api.github.com/users/morganl-ant/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/morganl-ant/received_events",
+        "type": "User",
+        "user_view_type": "public",
+        "site_admin": false
+      },
+      "committer": {
+        "login": "morganl-ant",
+        "id": 271035627,
+        "node_id": "U_kgDOECes6w",
+        "avatar_url": "https://avatars.githubusercontent.com/u/271035627?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/morganl-ant",
+        "html_url": "https://github.com/morganl-ant",
+        "followers_url": "https://api.github.com/users/morganl-ant/followers",
+        "following_url": "https://api.github.com/users/morganl-ant/following{/other_user}",
+        "gists_url": "https://api.github.com/users/morganl-ant/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/morganl-ant/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/morganl-ant/subscriptions",
+        "organizations_url": "https://api.github.com/users/morganl-ant/orgs",
+        "repos_url": "https://api.github.com/users/morganl-ant/repos",
+        "events_url": "https://api.github.com/users/morganl-ant/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/morganl-ant/received_events",
+        "type": "User",
+        "user_view_type": "public",
+        "site_admin": false
+      },
+      "parents": [
+        {
+          "sha": "29c1c6a0d16453427b488e3eca1ad6e8beac0c10",
+          "url": "https://api.github.com/repos/anthropics/claude-plugins-official/commits/29c1c6a0d16453427b488e3eca1ad6e8beac0c10",
+          "html_url": "https://github.com/anthropics/claude-plugins-official/commit/29c1c6a0d16453427b488e3eca1ad6e8beac0c10"
+        }
+      ]
+    },
+    {
+      "sha": "29c1c6a0d16453427b488e3eca1ad6e8beac0c10",
+      "node_id": "C_kwDOQZyFQNoAKDI5YzFjNmEwZDE2NDUzNDI3YjQ4OGUzZWNhMWFkNmU4YmVhYzBjMTA",
+      "commit": {
+        "author": {
+          "name": "Morgan Lunt",
+          "email": "morganl@anthropic.com",
+          "date": "2026-09-25T04:07:42Z"
+        },
+        "committer": {
+          "name": "Morgan Lunt",
+          "email": "morganl@anthropic.com",
+          "date": "2026-09-25T04:07:42Z"
+        },
+        "message": "code-modernization: screenshots for the README, and where a person decides\n\nAdds the pictures the README and the pane docs use: three of the report (the\nat-a-glance view when the proof passes, the same view when an independent\ncheck finds a difference the development cases missed, and the proof tab) and\nten of the live pane, drawn by the pane's own code from finished runs. The\nreport pictures come from real runs; the pane's fleet and x-ray views and its\nGIF use scripted agent activity, and the review and sign-off pictures use\nsample text, all said so in the pane's README.\n\nThe front door names every place a person decides and moves the security scan\nfirst when the person asked for it, and status points a new user to the front\ndoor instead of straight to preflight.",
+        "tree": {
+          "sha": "c65979d1865ab38b0cd923f1c4a1752facfdb9f6",
+          "url": "https://api.github.com/repos/anthropics/claude-plugins-official/git/trees/c65979d1865ab38b0cd923f1c4a1752facfdb9f6"
+        },
+        "url": "https://api.github.com/repos/anthropics/claude-plugins-official/git/commits/29c1c6a0d16453427b488e3eca1ad6e8beac0c10",
+        "comment_count": 0,
+        "verification": {
+          "verified": true,
+          "reason": "valid",
+          "signature": "-----BEGIN SSH SIGNATURE-----\nU1NIU0lHAAAAAQAAAGgAAAATZWNkc2Etc2hhMi1uaXN0cDI1NgAAAAhuaXN0cDI1NgAAAE\nEE6B2ieJ3eTdVH1fokHbnPiCU1MbHFDUx0A9sGLfMoruZzgrdOGX2CV8QBHMcZZjGZw/ZN\n8/s5g1Ye3/PrHyvNWgAAAANnaXQAAAAAAAAABnNoYTUxMgAAAGUAAAATZWNkc2Etc2hhMi\n1uaXN0cDI1NgAAAEoAAAAhANi6aKUwvKn3823p0ZyB4hcmgGawO1Em/3C8HKrQOukzAAAA\nIQDm19gFhDuWLLNKiM8ehNxzXdORW/dDIb3y7zMPll6g/A==\n-----END SSH SIGNATURE-----",
+          "payload": "tree c65979d1865ab38b0cd923f1c4a1752facfdb9f6\nparent caac6735d95bddeb8c8bbe3ddc9d6c01787fc8e1\nauthor Morgan Lunt <morganl@anthropic.com> 1790309262 -0700\ncommitter Morgan Lunt <morganl@anthropic.com> 1790309262 -0700\n\ncode-modernization: screenshots for the README, and where a person decides\n\nAdds the pictures the README and the pane docs use: three of the report (the\nat-a-glance view when the proof passes, the same view when an independent\ncheck finds a difference the development cases missed, and the proof tab) and\nten of the live pane, drawn by the pane's own code from finished runs. The\nreport pictures come from real runs; the pane's fleet and x-ray views and its\nGIF use scripted agent activity, and the review and sign-off pictures use\nsample text, all said so in the pane's README.\n\nThe front door names every place a person decides and moves the security scan\nfirst when the person asked for it, and status points a new user to the front\ndoor instead of straight to preflight.\n",
+          "verified_at": "2026-09-25T18:29:37Z"
+        }
+      },
+      "url": "https://api.github.com/repos/anthropics/claude-plugins-official/commits/29c1c6a0d16453427b488e3eca1ad6e8beac0c10",
+      "html_url": "https://github.com/anthropics/claude-plugins-official/commit/29c1c6a0d16453427b488e3eca1ad6e8beac0c10",
+      "comments_url": "https://api.github.com/repos/anthropics/claude-plugins-official/commits/29c1c6a0d16453427b488e3eca1ad6e8beac0c10/comments",
+      "author": {
+        "login": "morganl-ant",
+        "id": 271035627,
+        "node_id": "U_kgDOECes6w",
+        "avatar_url": "https://avatars.githubusercontent.com/u/271035627?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/morganl-ant",
+        "html_url": "https://github.com/morganl-ant",
+        "followers_url": "https://api.github.com/users/morganl-ant/followers",
+        "following_url": "https://api.github.com/users/morganl-ant/following{/other_user}",
+        "gists_url": "https://api.github.com/users/morganl-ant/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/morganl-ant/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/morganl-ant/subscriptions",
+        "organizations_url": "https://api.github.com/users/morganl-ant/orgs",
+        "repos_url": "https://api.github.com/users/morganl-ant/repos",
+        "events_url": "https://api.github.com/users/morganl-ant/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/morganl-ant/received_events",
+        "type": "User",
+        "user_view_type": "public",
+        "site_admin": false
+      },
+      "committer": {
+        "login": "morganl-ant",
+        "id": 271035627,
+        "node_id": "U_kgDOECes6w",
+        "avatar_url": "https://avatars.githubusercontent.com/u/271035627?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/morganl-ant",
+        "html_url": "https://github.com/morganl-ant",
+        "followers_url": "https://api.github.com/users/morganl-ant/followers",
+        "following_url": "https://api.github.com/users/morganl-ant/following{/other_user}",
+        "gists_url": "https://api.github.com/users/morganl-ant/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/morganl-ant/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/morganl-ant/subscriptions",
+        "organizations_url": "https://api.github.com/users/morganl-ant/orgs",
+        "repos_url": "https://api.github.com/users/morganl-ant/repos",
+        "events_url": "https://api.github.com/users/morganl-ant/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/morganl-ant/received_events",
+        "type": "User",
+        "user_view_type": "public",
+        "site_admin": false
+      },
+      "parents": [
+        {
+          "sha": "caac6735d95bddeb8c8bbe3ddc9d6c01787fc8e1",
+          "url": "https://api.github.com/repos/anthropics/claude-plugins-official/commits/caac6735d95bddeb8c8bbe3ddc9d6c01787fc8e1",
+          "html_url": "https://github.com/anthropics/claude-plugins-official/commit/caac6735d95bddeb8c8bbe3ddc9d6c01787fc8e1"
+        }
+      ]
+    },
+    {
+      "sha": "caac6735d95bddeb8c8bbe3ddc9d6c01787fc8e1",
+      "node_id": "C_kwDOQZyFQNoAKGNhYWM2NzM1ZDk1YmRkZWI4YzhiYmUzZGRjOWQ2YzAxNzg3ZmM4ZTE",
+      "commit": {
+        "author": {
+          "name": "Morgan Lunt",
+          "email": "morganl@anthropic.com",
+          "date": "2026-09-25T04:07:24Z"
+        },
+        "committer": {
+          "name": "Morgan Lunt",
+          "email": "morganl@anthropic.com",
+          "date": "2026-09-25T04:07:24Z"
+        },
+        "message": "code-modernization: pane wording, attention items and docs that match the code\n\nThe pane's button reads \"put in prompt\" (it never runs the command), the\nrefresh button is gone (the pane already refreshes after writes, at turn end\nand every 20 seconds while idle), the summary line fits a 120-column bar, and\nthe next-step reasons are short enough to read. A P0 rule under discussion is\nlisted under Attention (\"the build waits\"), and a module that is not proven\nshows its first reason there. In an uplift, finished modules list before\nmerely edited ones.\n\nhooks/README.md now names every button and label as the code does, documents\nthe plugin's /code-modernization:modernize-review command (which writes the\nsame ledger for people without the pane) and how it differs from the pane's\nown /modernize-review, and says which pictures use sample text. 141 engine\ntests pass and the type check is clean.",
+        "tree": {
+          "sha": "132ff3f8b1404f56f5dd2051ff1c2761064b746c",
+          "url": "https://api.github.com/repos/anthropics/claude-plugins-official/git/trees/132ff3f8b1404f56f5dd2051ff1c2761064b746c"
+        },
+        "url": "https://api.github.com/repos/anthropics/claude-plugins-official/git/commits/caac6735d95bddeb8c8bbe3ddc9d6c01787fc8e1",
+        "comment_count": 0,
+        "verification": {
+          "verified": true,
+          "reason": "valid",
+          "signature": "-----BEGIN SSH SIGNATURE-----\nU1NIU0lHAAAAAQAAAGgAAAATZWNkc2Etc2hhMi1uaXN0cDI1NgAAAAhuaXN0cDI1NgAAAE\nEE6B2ieJ3eTdVH1fokHbnPiCU1MbHFDUx0A9sGLfMoruZzgrdOGX2CV8QBHMcZZjGZw/ZN\n8/s5g1Ye3/PrHyvNWgAAAANnaXQAAAAAAAAABnNoYTUxMgAAAGQAAAATZWNkc2Etc2hhMi\n1uaXN0cDI1NgAAAEkAAAAhAJXyVBw+CGVAD8s5vK2SkaHT9KQE5UOvN9/moz8e+4tsAAAA\nIAJLIj6f+c+kMCCPn1o+PfwQ8IM2Zz0rn3A0PawC+6ur\n-----END SSH SIGNATURE-----",
+          "payload": "tree 132ff3f8b1404f56f5dd2051ff1c2761064b746c\nparent d6af0c04d89ad7b0c75e21b8ae7f15585e805b08\nauthor Morgan Lunt <morganl@anthropic.com> 1790309244 -0700\ncommitter Morgan Lunt <morganl@anthropic.com> 1790309244 -0700\n\ncode-modernization: pane wording, attention items and docs that match the code\n\nThe pane's button reads \"put in prompt\" (it never runs the command), the\nrefresh button is gone (the pane already refreshes after writes, at turn end\nand every 20 seconds while idle), the summary line fits a 120-column bar, and\nthe next-step reasons are short enough to read. A P0 rule under discussion is\nlisted under Attention (\"the build waits\"), and a module that is not proven\nshows its first reason there. In an uplift, finished modules list before\nmerely edited ones.\n\nhooks/README.md now names every button and label as the code does, documents\nthe plugin's /code-modernization:modernize-review command (which writes the\nsame ledger for people without the pane) and how it differs from the pane's\nown /modernize-review, and says which pictures use sample text. 141 engine\ntests pass and the type check is clean.\n",
+          "verified_at": "2026-09-25T18:29:37Z"
+        }
+      },
+      "url": "https://api.github.com/repos/anthropics/claude-plugins-official/commits/caac6735d95bddeb8c8bbe3ddc9d6c01787fc8e1",
+      "html_url": "https://github.com/anthropics/claude-plugins-official/commit/caac6735d95bddeb8c8bbe3ddc9d6c01787fc8e1",
+      "comments_url": "https://api.github.com/repos/anthropics/claude-plugins-official/commits/caac6735d95bddeb8c8bbe3ddc9d6c01787fc8e1/comments",
+      "author": {
+        "login": "morganl-ant",
+        "id": 271035627,
+        "node_id": "U_kgDOECes6w",
+        "avatar_url": "https://avatars.githubusercontent.com/u/271035627?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/morganl-ant",
+        "html_url": "https://github.com/morganl-ant",
+        "followers_url": "https://api.github.com/users/morganl-ant/followers",
+        "following_url": "https://api.github.com/users/morganl-ant/following{/other_user}",
+        "gists_url": "https://api.github.com/users/morganl-ant/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/morganl-ant/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/morganl-ant/subscriptions",
+        "organizations_url": "https://api.github.com/users/morganl-ant/orgs",
+        "repos_url": "https://api.github.com/users/morganl-ant/repos",
+        "events_url": "https://api.github.com/users/morganl-ant/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/morganl-ant/received_events",
+        "type": "User",
+        "user_view_type": "public",
+        "site_admin": false
+      },
+      "committer": {
+        "login": "morganl-ant",
+        "id": 271035627,
+        "node_id": "U_kgDOECes6w",
+        "avatar_url": "https://avatars.githubusercontent.com/u/271035627?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/morganl-ant",
+        "html_url": "https://github.com/morganl-ant",
+        "followers_url": "https://api.github.com/users/morganl-ant/followers",
+        "following_url": "https://api.github.com/users/morganl-ant/following{/other_user}",
+        "gists_url": "https://api.github.com/users/morganl-ant/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/morganl-ant/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/morganl-ant/subscriptions",
+        "organizations_url": "https://api.github.com/users/morganl-ant/orgs",
+        "repos_url": "https://api.github.com/users/morganl-ant/repos",
+        "events_url": "https://api.github.com/users/morganl-ant/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/morganl-ant/received_events",
+        "type": "User",
+        "user_view_type": "public",
+        "site_admin": false
+      },
+      "parents": [
+        {
+          "sha": "d6af0c04d89ad7b0c75e21b8ae7f15585e805b08",
+          "url": "https://api.github.com/repos/anthropics/claude-plugins-official/commits/d6af0c04d89ad7b0c75e21b8ae7f15585e805b08",
+          "html_url": "https://github.com/anthropics/claude-plugins-official/commit/d6af0c04d89ad7b0c75e21b8ae7f15585e805b08"
+        }
+      ]
+    }
+  ]
+}

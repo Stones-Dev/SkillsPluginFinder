@@ -4,7 +4,7 @@ Sistema semanal que rastrea GitHub en busca de skills, plugins, servidores MCP, 
 
 Funciona en tres tramos (detalle en `Plan.md` del vault):
 
-- **Recogida** (`spf collect`): determinista, sin IA y sin acceso al vault. Busca en GitHub (`github-search`) y compara cada semana los README de las listas `awesome-*` (`awesome-list`), filtra por reglas, enriquece lo que entra en el tope y escribe `data/candidates/YYYY-Www.json`. Puede correr en GitHub Actions.
+- **Recogida** (`spf collect`): determinista, sin IA y sin acceso al vault. Busca en GitHub (`github-search`), compara cada semana los README de las listas `awesome-*` (`awesome-list`), sigue los cambios de `anthropics/skills` y del marketplace oficial de plugins (`anthropic-skills`), filtra por reglas, enriquece lo que entra en el tope y escribe `data/candidates/YYYY-Www.json`. Puede correr en GitHub Actions.
 - **Evaluación** (`spf prepare`, `collect-batch`, `cross`, `publish`): en local, la hacen **dos agentes** sobre el mismo `data/batches/<semana>/batch.md`: Claude Code (`scoring.json`) y Antigravity por su CLI `agy` (`scoring-antigravity.json`). `spf cross` los cruza (media; disputa si difieren en 3 o más; confianza alta si los dos llegan a 7) y `publish` escribe el informe y las filas de `Catalogo.md` en el vault.
 - **Revisión** (`spf review`): por cada hallazgo en `candidato`, inventario automático del clon y veredicto `probado`, `descartado` o `adoptado`. El agente puede adoptar sin confirmación, **salvo** que haya una señal de supply-chain (scripts de instalación, registro propio, MCP remoto, repo de menos de 30 días con un solo mantenedor, privilegios, o una disputa entre los dos evaluadores): entonces queda en `probado` y se avisa en la nota diaria. Lo adoptado va a `03-Conocimiento/` y a `## Mejoras propuestas` de la nota del proyecto afectado.
 
@@ -30,7 +30,7 @@ Se ejecutan con `pnpm spf <comando>` (compila antes).
 | Comando | Qué hace |
 |---|---|
 | `week` | Imprime la semana ISO de hoy (`YYYY-Www`, Europe/Madrid). |
-| `collect [--source github-search|awesome-list] [--dry-run]` | Mitad nube: recoge, filtra y enriquece; sin `--source`, todas las fuentes. Con `--dry-run` hace el ensayo —colectores, dedupe (`seen.sqlite` en solo lectura), reglas y tope— y cuenta lo que pasaría **sin escribir nada** (ni `data/candidates/`, ni `seen.sqlite`, ni `runs`, ni la caché de `data/cache/`) y sin enriquecer; sí gasta las ~109 búsquedas (≈ 4 min). **Única excepción:** crea las instantáneas de `data/awesome/` que falten (nunca sobrescribe una existente; ver abajo). Es la forma segura de probar un colector o un cambio de `Intereses.md` antes del lunes. |
+| `collect [--source github-search\|awesome-list\|anthropic-skills] [--dry-run]` | Mitad nube: recoge, filtra y enriquece; sin `--source`, todas las fuentes. Con `--dry-run` hace el ensayo —colectores, dedupe (`seen.sqlite` en solo lectura), reglas y tope— y cuenta lo que pasaría **sin escribir nada** (ni `data/candidates/`, ni `seen.sqlite`, ni `runs`, ni la caché de `data/cache/`) y sin enriquecer; sí gasta las ~109 búsquedas (≈ 4 min). **Única excepción:** crea las instantáneas de `data/awesome/` y `data/anthropic/` que falten (nunca sobrescribe una existente; ver abajo). Es la forma segura de probar un colector o un cambio de `Intereses.md` antes del lunes. |
 | `rate-limit [--min-core N] [--min-search N]` | Consulta los límites de la API de GitHub del token (`GET /rate_limit`, no gasta cuota). Con los mínimos, sale con error si no alcanzan. |
 | `prepare --week <semana>` | Genera `data/batches/<semana>/batch.md`. |
 | `collect-batch --week <semana> [--agent antigravity] [--reason <texto>]` | Valida el scoring del evaluador y guarda los scorings. Con `--agent antigravity` valida `scoring-antigravity.json` y un fallo **no es fatal**: se anota en `runs` (con `--reason`, la causa del wrapper de `agy`) y la semana sigue solo con Claude Code. |
@@ -76,9 +76,21 @@ Las listas que sigue el colector van en el bloque opcional `awesome_listas` de `
 - Una instantánea corrupta, o de otra lista con el mismo nombre de fichero, no se sobrescribe: la lista da error y las demás siguen.
 - Las instantáneas van al repo (`data/awesome/`): sin ellas, la recogida de Actions sería siempre una primera pasada.
 
+## Skills y plugins oficiales de Anthropic (`anthropic-skills`)
+
+Sigue dos repos, sin releases ni tags (verificado): `anthropics/skills` y el marketplace oficial de plugins de Claude Code, `anthropics/claude-plugins-official`. Por repo y semana:
+
+1. `GET /repos/{owner}/{repo}/commits` con `If-None-Match`: un `304` (HEAD no se movió) cuesta **0** peticiones y no se pide nada más.
+2. Si cambió, el estado en HEAD: en `anthropics/skills` el listado de `skills/` (cada directorio trae el sha de su árbol); en el marketplace su `.claude-plugin/marketplace.json`, comparado por una huella de cada entrada **sin `source.sha` ni `source.ref`** (los pines se mueven en bloque y serían ruido).
+3. Se compara con la instantánea `data/anthropic/<owner>-<repo>.json` y el resultado son dos cosas:
+   - **Changelog oficial** (skills y plugins nuevos, actualizados y eliminados, más los commits de `anthropics/skills` desde la última vez): va al fichero de la semana (`oficiales`) y al informe, en «Novedades oficiales de Anthropic». Es informativo: no puntúa ni entra en el catálogo. Por eso `anthropics/skills` sigue en `excluir`.
+   - **Candidatos**: los plugins **nuevos** del marketplace que viven en su propio repo de GitHub (262 de 315) se resuelven con `GET /repos/{owner}/{repo}` y pasan por el mismo normalize, dedupe, reglas y tope. Su categoría es `anthropic_categoria` de `Intereses.md`; sin ella no hay candidatos, solo changelog. Como máximo 50 por recogida; el resto vuelve la semana siguiente.
+
+Igual que `awesome-list`: primera pasada = solo instantánea; las instantáneas se escriben al final de la recogida; lo que difiere `enrich_max` o falla de forma transitoria no se da por visto; `--dry-run` crea la instantánea que falta y nunca sobrescribe una existente.
+
 ## GitHub Actions (`collect.yml`)
 
-El workflow `collect` ejecuta solo la mitad nube: el cron corre los lunes a las 05:00 UTC y también se puede lanzar a mano (*Actions → collect → Run workflow*), con un input opcional `source` (`github-search` o `awesome-list`; vacío recoge todo). Al terminar hace commit de `data/` con el usuario `spf-bot`.
+El workflow `collect` ejecuta solo la mitad nube: el cron corre los lunes a las 05:00 UTC y también se puede lanzar a mano (*Actions → collect → Run workflow*), con un input opcional `source` (`github-search`, `awesome-list` o `anthropic-skills`; vacío recoge todo). Al terminar hace commit de `data/` con el usuario `spf-bot`.
 
 **Estado: escrito y validado con `actionlint`, pero sin ejecutar todavía en GitHub.**
 

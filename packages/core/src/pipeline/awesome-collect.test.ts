@@ -150,6 +150,7 @@ const base = (now: Date) => ({
   repoDir,
   token: 'test-token',
   now,
+  sources: ['github-search', 'awesome-list'],
   throttle: false,
   retryBaseMs: 1,
 });

@@ -1,0 +1,1646 @@
+{
+  "status": 200,
+  "etag": "W/\"256043e8ce4ce9b26859dfd7b5560969fa132a598946b1f7ee8caf7c82a667da\"",
+  "body": [
+    {
+      "sha": "8a1541c4a3ffa5a20a5a91de0dcf3f0bab1d1ef4",
+      "node_id": "C_kwDOP0wfhtoAKDhhMTU0MWM0YTNmZmE1YTIwYTVhOTFkZTBkY2YzZjBiYWIxZDFlZjQ",
+      "commit": {
+        "author": {
+          "name": "Lance Martin",
+          "email": "122662504+rlancemartin@users.noreply.github.com",
+          "date": "2026-09-29T02:20:03Z"
+        },
+        "committer": {
+          "name": "GitHub",
+          "email": "noreply@github.com",
+          "date": "2026-09-29T02:20:03Z"
+        },
+        "message": "Update claude-api skill: Claude Opus 5.5 default, Claude Sonnet 5.5, build-eval and hillclimb guides (#1930)\n\n* Update claude-api skill: Claude Opus 5.5 default, Claude Sonnet 5.5, build-eval and hillclimb guides\n\n- Make Claude Opus 5.5 (`claude-opus-5-5`) the default model across SKILL.md,\n  models.md, and every language's examples, with Claude Opus 5 as the previous\n  Opus; add \"Migrating to Claude Opus 5.5\" to shared/model-migration.md\n- Add Claude Sonnet 5.5 (`claude-sonnet-5-5`) as the current Sonnet, with\n  Claude Sonnet 5 as the previous one, and update pricing, model-support\n  callouts, and platform availability to match\n- Add the build-eval and hillclimb flows under shared/evals/ (build-eval,\n  eval-hillclimb, cost-hillclimb, eval-audit), the report schema, the lite HTML\n  report builder, and the runner scaffold\n- Add the preserved-thinking-migration subcommand with its cause reference and\n  probe scripts, and note that drop_block can raise token usage\n- Update cost-optimize for preserved thinking and per-model cache rates, and\n  point cache misses at cache diagnostics\n- Default streaming client tools to eager_input_streaming; document model\n  access as a 404 and beta gating as a 400, not a 403\n- Recommend `ant apply` for version-controlled Managed Agents resources; fix\n  the thinking-binding default, Bedrock/Vertex header, and Managed Agents beta\n  headers\n- Use current-generation model ids in the Go, Java, and C# samples, and repoint\n  dead live-sources URLs\n\n* Update claude-api skill: drop references to files not shipped with the skill\n\n- Remove the pointer to an examples directory that is not part of the skill\n  from build-eval.md\n- Remove the notes about a prebuilt report viewer's install source from\n  SKILL.md, build-eval.md, and eval-hillclimb.md; the lite report builder\n  remains the documented default\n- Trim pre-launch behavior history from the thinking-block replay note and\n  reword two \"early-access\" mentions in model-migration.md",
+        "tree": {
+          "sha": "d482eba557f7b2035c8a83589809628b96f6f40e",
+          "url": "https://api.github.com/repos/anthropics/skills/git/trees/d482eba557f7b2035c8a83589809628b96f6f40e"
+        },
+        "url": "https://api.github.com/repos/anthropics/skills/git/commits/8a1541c4a3ffa5a20a5a91de0dcf3f0bab1d1ef4",
+        "comment_count": 0,
+        "verification": {
+          "verified": true,
+          "reason": "valid",
+          "signature": "-----BEGIN PGP SIGNATURE-----\n\nwsFcBAABCAAQBQJquyBTCRC1aQ7uu5UhlAAAJiAQAJcMP4CaZRtwbfw+Gs2ZS684\nQp8Zarvj1AXWq5dZUy5in+otheJqaDrWWAVE0HkbeDTWoHHkWSEfR43d6SYxKUvE\npxgX/RH15vSn30KBa99IfdQDi+X3TPTDK7Rd1EnVYpnENBcXdbpamgLq7Vw9t5/U\nP0ErYJg/rHygTxDD/y1gAAUGtUxuxAnesxTwvZ8v5Vz0/KZ+yySejsJFT2T6m0zC\ndiD/5FBskMx7l9TDbCEAkuNtGui+KTYH0TqH93WUcNkLj5MjSLbJRPFgyreboMaT\nw5cl3HUP+SCBQOegRs6NlRDO1uPzV1sAAog0Gbb/YhFDqGpRm6NNGcijAh4HFBSW\nJt0rp6vItwD/Ux5VX+rEdgR4y9MXcaRVDcV4GEBvB91ilMe3ytTFlSxB1haevx7v\ncHlhUb2fA4sn8vwkylHhMsDqQTGv6cGb6x2XGo86fqGQU7Cq44pkN359nMvcdwd9\nZVXANL4TOmmI00PZ5kkXpBo3gP0t125yo9GO4ySfzT5w5bO8TMT0f9Jmj7Sw0F3b\nqo06JkloyiaPbTrSiPse7SfSl6hD9huqOfju0jQ6fAHVW/QvsnOKM0E4+0wYrMWo\nNvVIvA68djAh4m60xvr35P3NBo31A6FGv0lxWoY0BUAjH8YqHaMLkQ7Sn9NeISCO\nKeifaE4+VO9G8mNKvNIN\n=nqxK\n-----END PGP SIGNATURE-----\n",
+          "payload": "tree d482eba557f7b2035c8a83589809628b96f6f40e\nparent 33375500bcea98d610eb30ce10ac4e59b89c390d\nauthor Lance Martin <122662504+rlancemartin@users.noreply.github.com> 1790648403 -0700\ncommitter GitHub <noreply@github.com> 1790648403 -0700\n\nUpdate claude-api skill: Claude Opus 5.5 default, Claude Sonnet 5.5, build-eval and hillclimb guides (#1930)\n\n* Update claude-api skill: Claude Opus 5.5 default, Claude Sonnet 5.5, build-eval and hillclimb guides\n\n- Make Claude Opus 5.5 (`claude-opus-5-5`) the default model across SKILL.md,\n  models.md, and every language's examples, with Claude Opus 5 as the previous\n  Opus; add \"Migrating to Claude Opus 5.5\" to shared/model-migration.md\n- Add Claude Sonnet 5.5 (`claude-sonnet-5-5`) as the current Sonnet, with\n  Claude Sonnet 5 as the previous one, and update pricing, model-support\n  callouts, and platform availability to match\n- Add the build-eval and hillclimb flows under shared/evals/ (build-eval,\n  eval-hillclimb, cost-hillclimb, eval-audit), the report schema, the lite HTML\n  report builder, and the runner scaffold\n- Add the preserved-thinking-migration subcommand with its cause reference and\n  probe scripts, and note that drop_block can raise token usage\n- Update cost-optimize for preserved thinking and per-model cache rates, and\n  point cache misses at cache diagnostics\n- Default streaming client tools to eager_input_streaming; document model\n  access as a 404 and beta gating as a 400, not a 403\n- Recommend `ant apply` for version-controlled Managed Agents resources; fix\n  the thinking-binding default, Bedrock/Vertex header, and Managed Agents beta\n  headers\n- Use current-generation model ids in the Go, Java, and C# samples, and repoint\n  dead live-sources URLs\n\n* Update claude-api skill: drop references to files not shipped with the skill\n\n- Remove the pointer to an examples directory that is not part of the skill\n  from build-eval.md\n- Remove the notes about a prebuilt report viewer's install source from\n  SKILL.md, build-eval.md, and eval-hillclimb.md; the lite report builder\n  remains the documented default\n- Trim pre-launch behavior history from the thinking-block replay note and\n  reword two \"early-access\" mentions in model-migration.md",
+          "verified_at": "2026-09-29T02:20:03Z"
+        }
+      },
+      "url": "https://api.github.com/repos/anthropics/skills/commits/8a1541c4a3ffa5a20a5a91de0dcf3f0bab1d1ef4",
+      "html_url": "https://github.com/anthropics/skills/commit/8a1541c4a3ffa5a20a5a91de0dcf3f0bab1d1ef4",
+      "comments_url": "https://api.github.com/repos/anthropics/skills/commits/8a1541c4a3ffa5a20a5a91de0dcf3f0bab1d1ef4/comments",
+      "author": {
+        "login": "rlancemartin",
+        "id": 122662504,
+        "node_id": "U_kgDOB0-uaA",
+        "avatar_url": "https://avatars.githubusercontent.com/u/122662504?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/rlancemartin",
+        "html_url": "https://github.com/rlancemartin",
+        "followers_url": "https://api.github.com/users/rlancemartin/followers",
+        "following_url": "https://api.github.com/users/rlancemartin/following{/other_user}",
+        "gists_url": "https://api.github.com/users/rlancemartin/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/rlancemartin/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/rlancemartin/subscriptions",
+        "organizations_url": "https://api.github.com/users/rlancemartin/orgs",
+        "repos_url": "https://api.github.com/users/rlancemartin/repos",
+        "events_url": "https://api.github.com/users/rlancemartin/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/rlancemartin/received_events",
+        "type": "User",
+        "user_view_type": "public",
+        "site_admin": false
+      },
+      "committer": {
+        "login": "web-flow",
+        "id": 19864447,
+        "node_id": "MDQ6VXNlcjE5ODY0NDQ3",
+        "avatar_url": "https://avatars.githubusercontent.com/u/19864447?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/web-flow",
+        "html_url": "https://github.com/web-flow",
+        "followers_url": "https://api.github.com/users/web-flow/followers",
+        "following_url": "https://api.github.com/users/web-flow/following{/other_user}",
+        "gists_url": "https://api.github.com/users/web-flow/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/web-flow/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/web-flow/subscriptions",
+        "organizations_url": "https://api.github.com/users/web-flow/orgs",
+        "repos_url": "https://api.github.com/users/web-flow/repos",
+        "events_url": "https://api.github.com/users/web-flow/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/web-flow/received_events",
+        "type": "User",
+        "user_view_type": "public",
+        "site_admin": false
+      },
+      "parents": [
+        {
+          "sha": "33375500bcea98d610eb30ce10ac4e59b89c390d",
+          "url": "https://api.github.com/repos/anthropics/skills/commits/33375500bcea98d610eb30ce10ac4e59b89c390d",
+          "html_url": "https://github.com/anthropics/skills/commit/33375500bcea98d610eb30ce10ac4e59b89c390d"
+        }
+      ]
+    },
+    {
+      "sha": "33375500bcea98d610eb30ce10ac4e59b89c390d",
+      "node_id": "C_kwDOP0wfhtoAKDMzMzc1NTAwYmNlYTk4ZDYxMGViMzBjZTEwYWM0ZTU5Yjg5YzM5MGQ",
+      "commit": {
+        "author": {
+          "name": "CJ Avilla",
+          "email": "cj@anthropic.com",
+          "date": "2026-09-24T16:20:35Z"
+        },
+        "committer": {
+          "name": "GitHub",
+          "email": "noreply@github.com",
+          "date": "2026-09-24T16:20:35Z"
+        },
+        "message": "Update claude-api skill: link refusal billing to the docs (#1825)\n\nPoint each refusal billing sentence at the \"How refusals are billed\"\ndocs section instead of restating the rules in the skill.\n\nAlso correct two claims to match that section: a refusal before any\noutput counts against rate limits, and a mid-stream refusal bills\ninput tokens as well as the output already streamed.",
+        "tree": {
+          "sha": "50c0bb21e343ef9a3d27add929a2b1dda635fd43",
+          "url": "https://api.github.com/repos/anthropics/skills/git/trees/50c0bb21e343ef9a3d27add929a2b1dda635fd43"
+        },
+        "url": "https://api.github.com/repos/anthropics/skills/git/commits/33375500bcea98d610eb30ce10ac4e59b89c390d",
+        "comment_count": 0,
+        "verification": {
+          "verified": true,
+          "reason": "valid",
+          "signature": "-----BEGIN PGP SIGNATURE-----\n\nwsFcBAABCAAQBQJqtU3TCRC1aQ7uu5UhlAAAuwAQAGVVfbtkxmJAQ4XZwtfDOasB\nNJba4CWkGmVuvzumUH9Fq9P0yQUmLRQR+rgz2Gik1bvALxD0EeDU5XY8shfp7tK9\njs41LgkudOmtUKnWfw0dIJfrtQn3NtFFtnqmYYYluTo8nBb8sbjsIDlFHx2OmdVz\ntXfExzs4yLEKVwTh/BVrX2TJJPB+dkMHF1TC3EHlFnR2h2TidTC5bcyjUx96Sk6b\nH5sZ49VY0CBAdqv0VPx8/vbajzv6WT2UynceDBx/KVKT3I3O5mBQWlg9UOKFEHD2\nXuiG6znEv3HbbT81L8e808LB1bPh+ELzZ5fFNgGvStyWYDm2aLAMWN83N8dswpMO\nBBQ1nX0CdxR7lZ4XLNFwT3+GPun3buKDOyML4rHHMeK4Qv8p9U5gvLkkVoTwJ45L\nwbBcQlGeBfQPPTlaaHsBZoOHUyW9vmiWU+7yqAwoTvYOvnB16HrQc8iyVKMerxYr\nWGR2Xma5uO/8btFwXrCIGxqg3n9XDhYtV6As7KsS61coNCrYabBiwmZVl942kOPx\nS1x4xn+xsY25UBRELNlXUeo0E9bMZmxg6HRMrGdc2Qh8HYD9o3yzX7AHY7DpV6KT\nQgswkUCWI+eD6/HNBp9cn0LzwJq4ToC+g0XNJ2lqs/cO1hTp7aLY3YMrJZa89pAr\nxaSd5dLh3jyYqZe8dJL1\n=Yz5f\n-----END PGP SIGNATURE-----\n",
+          "payload": "tree 50c0bb21e343ef9a3d27add929a2b1dda635fd43\nparent 34040c9c568585f6929bedeaad110ad08f079624\nauthor CJ Avilla <cj@anthropic.com> 1790266835 -0400\ncommitter GitHub <noreply@github.com> 1790266835 -0400\n\nUpdate claude-api skill: link refusal billing to the docs (#1825)\n\nPoint each refusal billing sentence at the \"How refusals are billed\"\ndocs section instead of restating the rules in the skill.\n\nAlso correct two claims to match that section: a refusal before any\noutput counts against rate limits, and a mid-stream refusal bills\ninput tokens as well as the output already streamed.",
+          "verified_at": "2026-09-24T16:20:36Z"
+        }
+      },
+      "url": "https://api.github.com/repos/anthropics/skills/commits/33375500bcea98d610eb30ce10ac4e59b89c390d",
+      "html_url": "https://github.com/anthropics/skills/commit/33375500bcea98d610eb30ce10ac4e59b89c390d",
+      "comments_url": "https://api.github.com/repos/anthropics/skills/commits/33375500bcea98d610eb30ce10ac4e59b89c390d/comments",
+      "author": {
+        "login": "cj-ant",
+        "id": 286490957,
+        "node_id": "U_kgDOEROBTQ",
+        "avatar_url": "https://avatars.githubusercontent.com/u/286490957?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/cj-ant",
+        "html_url": "https://github.com/cj-ant",
+        "followers_url": "https://api.github.com/users/cj-ant/followers",
+        "following_url": "https://api.github.com/users/cj-ant/following{/other_user}",
+        "gists_url": "https://api.github.com/users/cj-ant/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/cj-ant/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/cj-ant/subscriptions",
+        "organizations_url": "https://api.github.com/users/cj-ant/orgs",
+        "repos_url": "https://api.github.com/users/cj-ant/repos",
+        "events_url": "https://api.github.com/users/cj-ant/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/cj-ant/received_events",
+        "type": "User",
+        "user_view_type": "public",
+        "site_admin": false
+      },
+      "committer": {
+        "login": "web-flow",
+        "id": 19864447,
+        "node_id": "MDQ6VXNlcjE5ODY0NDQ3",
+        "avatar_url": "https://avatars.githubusercontent.com/u/19864447?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/web-flow",
+        "html_url": "https://github.com/web-flow",
+        "followers_url": "https://api.github.com/users/web-flow/followers",
+        "following_url": "https://api.github.com/users/web-flow/following{/other_user}",
+        "gists_url": "https://api.github.com/users/web-flow/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/web-flow/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/web-flow/subscriptions",
+        "organizations_url": "https://api.github.com/users/web-flow/orgs",
+        "repos_url": "https://api.github.com/users/web-flow/repos",
+        "events_url": "https://api.github.com/users/web-flow/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/web-flow/received_events",
+        "type": "User",
+        "user_view_type": "public",
+        "site_admin": false
+      },
+      "parents": [
+        {
+          "sha": "34040c9c568585f6929bedeaad110ad08f079624",
+          "url": "https://api.github.com/repos/anthropics/skills/commits/34040c9c568585f6929bedeaad110ad08f079624",
+          "html_url": "https://github.com/anthropics/skills/commit/34040c9c568585f6929bedeaad110ad08f079624"
+        }
+      ]
+    },
+    {
+      "sha": "34040c9c568585f6929bedeaad110ad08f079624",
+      "node_id": "C_kwDOP0wfhtoAKDM0MDQwYzljNTY4NTg1ZjY5MjliZWRlYWFkMTEwYWQwOGYwNzk2MjQ",
+      "commit": {
+        "author": {
+          "name": "CJ Avilla",
+          "email": "cj@anthropic.com",
+          "date": "2026-09-10T19:44:08Z"
+        },
+        "committer": {
+          "name": "GitHub",
+          "email": "noreply@github.com",
+          "date": "2026-09-10T19:44:08Z"
+        },
+        "message": "Update claude-api skill: Managed Agents `auto` permission policy and `ant beta:sessions connect` (#1750)\n\nAdds the third Managed Agents permission policy, `auto`, alongside\n`always_allow` / `always_ask`: the three outcomes (runs, denied as\nhigh-risk with an error tool result while the session keeps running,\npauses for approval when indeterminate), a config example, what the\nevaluation trusts, and the \"not a human checkpoint\" warning. Documents\nthe `evaluated_permission` and `evaluation` fields on `agent.tool_use` /\n`agent.mcp_tool_use`, and updates the client-pattern and multiagent\nguides to gate on `evaluated_permission === 'ask'` rather than the\nconfigured policy.\n\nAdds `ant beta:sessions connect` to the CLI guide: terminal viewer\nkeybindings, the allow/deny prompt, and the `--web` local session viewer.\n\nFixes the deny example to use `deny_message` (the real field) instead of\n`message`.\n\n\nClaude-Session: https://claude.ai/code/session_01UkZpc4FqLFPLBJF2Zcuq3a\n\nCo-authored-by: Claude <noreply@anthropic.com>",
+        "tree": {
+          "sha": "60cb5b056141a1b24cfa2e1b1c2540bfb162850a",
+          "url": "https://api.github.com/repos/anthropics/skills/git/trees/60cb5b056141a1b24cfa2e1b1c2540bfb162850a"
+        },
+        "url": "https://api.github.com/repos/anthropics/skills/git/commits/34040c9c568585f6929bedeaad110ad08f079624",
+        "comment_count": 1,
+        "verification": {
+          "verified": true,
+          "reason": "valid",
+          "signature": "-----BEGIN PGP SIGNATURE-----\n\nwsFcBAABCAAQBQJqowiICRC1aQ7uu5UhlAAAS0YQAK+rb0x3JHnTy06r4fvPhYMR\nyhbdIGnNftNOqZsLwJoa2G0Bw59QGdoAWKoZfl445s6HQl0b7teKKTcEGlIPdIiN\nKcemFB27qzohaloXChvL26tLPUkMmx/dWz7ogoI2r9FdTxYnah0EbQjXjd9QBUtL\nR19Biki/Ii5lp6fUl3PNO2/CnfMPe/lMy5bDD2bryYbw8r//0x87FxdfIDFVdgmT\nyhIGkHN1zQK1q+Fi/WmC7wOOVmzA54dFDgJXYzmYEvVNuva+0STerppxHmjJC8GY\nHtgipeYVXBmIDcO1V13upqrXnrmgp08wwWQxPJSejCS2MUtKBsPwktyoxRIm7Why\n4LL0X+4Gm1MUCJ1p5rC2KJqBtvT8va9zVClYT90PCEM2Qi2i7OSuPd1Xl4gKCxDs\nboI03Bu/TMcxviLgGDLHNuV2xE2Bb2kTUqxQi5PMXt3yu6HQbysY8WVqKoliBwGM\nL+f49NS5keYMqALeclm7tIOFcz+BF+zOQY79ew0DszVYfg1Cg7m9U4jQNzrcS2+1\nS5/gnaUg7BWLuXdbSkgU6jBInkUdTdCXEpgZm/xiTGV5Xx2kSUeKmAoZMZzjTm/+\n5u5etUYszCeapdew5mt/xjJ/2Ym/tiSZSNTUnUUlkkUTgTOo5jvq2SU1RUHSpMXH\nw3AIjnDcQ1c3+X5THMlI\n=Ktmx\n-----END PGP SIGNATURE-----\n",
+          "payload": "tree 60cb5b056141a1b24cfa2e1b1c2540bfb162850a\nparent 41bbe19d1a1a7eaab5e7bb9050a417e5c6cffc8f\nauthor CJ Avilla <cj@anthropic.com> 1789069448 -0400\ncommitter GitHub <noreply@github.com> 1789069448 -0700\n\nUpdate claude-api skill: Managed Agents `auto` permission policy and `ant beta:sessions connect` (#1750)\n\nAdds the third Managed Agents permission policy, `auto`, alongside\n`always_allow` / `always_ask`: the three outcomes (runs, denied as\nhigh-risk with an error tool result while the session keeps running,\npauses for approval when indeterminate), a config example, what the\nevaluation trusts, and the \"not a human checkpoint\" warning. Documents\nthe `evaluated_permission` and `evaluation` fields on `agent.tool_use` /\n`agent.mcp_tool_use`, and updates the client-pattern and multiagent\nguides to gate on `evaluated_permission === 'ask'` rather than the\nconfigured policy.\n\nAdds `ant beta:sessions connect` to the CLI guide: terminal viewer\nkeybindings, the allow/deny prompt, and the `--web` local session viewer.\n\nFixes the deny example to use `deny_message` (the real field) instead of\n`message`.\n\n\nClaude-Session: https://claude.ai/code/session_01UkZpc4FqLFPLBJF2Zcuq3a\n\nCo-authored-by: Claude <noreply@anthropic.com>",
+          "verified_at": "2026-09-10T19:44:09Z"
+        }
+      },
+      "url": "https://api.github.com/repos/anthropics/skills/commits/34040c9c568585f6929bedeaad110ad08f079624",
+      "html_url": "https://github.com/anthropics/skills/commit/34040c9c568585f6929bedeaad110ad08f079624",
+      "comments_url": "https://api.github.com/repos/anthropics/skills/commits/34040c9c568585f6929bedeaad110ad08f079624/comments",
+      "author": {
+        "login": "cj-ant",
+        "id": 286490957,
+        "node_id": "U_kgDOEROBTQ",
+        "avatar_url": "https://avatars.githubusercontent.com/u/286490957?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/cj-ant",
+        "html_url": "https://github.com/cj-ant",
+        "followers_url": "https://api.github.com/users/cj-ant/followers",
+        "following_url": "https://api.github.com/users/cj-ant/following{/other_user}",
+        "gists_url": "https://api.github.com/users/cj-ant/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/cj-ant/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/cj-ant/subscriptions",
+        "organizations_url": "https://api.github.com/users/cj-ant/orgs",
+        "repos_url": "https://api.github.com/users/cj-ant/repos",
+        "events_url": "https://api.github.com/users/cj-ant/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/cj-ant/received_events",
+        "type": "User",
+        "user_view_type": "public",
+        "site_admin": false
+      },
+      "committer": {
+        "login": "web-flow",
+        "id": 19864447,
+        "node_id": "MDQ6VXNlcjE5ODY0NDQ3",
+        "avatar_url": "https://avatars.githubusercontent.com/u/19864447?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/web-flow",
+        "html_url": "https://github.com/web-flow",
+        "followers_url": "https://api.github.com/users/web-flow/followers",
+        "following_url": "https://api.github.com/users/web-flow/following{/other_user}",
+        "gists_url": "https://api.github.com/users/web-flow/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/web-flow/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/web-flow/subscriptions",
+        "organizations_url": "https://api.github.com/users/web-flow/orgs",
+        "repos_url": "https://api.github.com/users/web-flow/repos",
+        "events_url": "https://api.github.com/users/web-flow/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/web-flow/received_events",
+        "type": "User",
+        "user_view_type": "public",
+        "site_admin": false
+      },
+      "parents": [
+        {
+          "sha": "41bbe19d1a1a7eaab5e7bb9050a417e5c6cffc8f",
+          "url": "https://api.github.com/repos/anthropics/skills/commits/41bbe19d1a1a7eaab5e7bb9050a417e5c6cffc8f",
+          "html_url": "https://github.com/anthropics/skills/commit/41bbe19d1a1a7eaab5e7bb9050a417e5c6cffc8f"
+        }
+      ]
+    },
+    {
+      "sha": "41bbe19d1a1a7eaab5e7bb9050a417e5c6cffc8f",
+      "node_id": "C_kwDOP0wfhtoAKDQxYmJlMTlkMWExYTdlYWFiNWU3YmI5MDUwYTQxN2U1YzZjZmZjOGY",
+      "commit": {
+        "author": {
+          "name": "william qian",
+          "email": "williamqian12@gmail.com",
+          "date": "2026-09-03T16:37:13Z"
+        },
+        "committer": {
+          "name": "GitHub",
+          "email": "noreply@github.com",
+          "date": "2026-09-03T16:37:13Z"
+        },
+        "message": "Update frontend-design skill to avoid generic design defaults (#1713)",
+        "tree": {
+          "sha": "b764c10625518a1fddad54597a4039152608cc3f",
+          "url": "https://api.github.com/repos/anthropics/skills/git/trees/b764c10625518a1fddad54597a4039152608cc3f"
+        },
+        "url": "https://api.github.com/repos/anthropics/skills/git/commits/41bbe19d1a1a7eaab5e7bb9050a417e5c6cffc8f",
+        "comment_count": 0,
+        "verification": {
+          "verified": true,
+          "reason": "valid",
+          "signature": "-----BEGIN PGP SIGNATURE-----\n\nwsFcBAABCAAQBQJqmaI5CRC1aQ7uu5UhlAAAu5EQAJNRKXIFsXcFCcoHnuXq26lT\nCwsW8bdVjMepmCj2UeoPSL0YRo6zengUH+Ynh+bqstcHdYYW7ch2uUFCIZCpgNFB\nfjkeFMa1CLlQbPrjNSjCkjDD1CTleXznpFCeqUC2ftZVKs5EIct/SId2Gps9akOV\niI/AF004y2OBsRhL+Kwa7hzyWknqMZlcbbolTt3ZusElZkx+KG2n+JyW8Ft942qy\n+U8LrrBrq0/Vx6IeYVh0Q57XmuC5MDKaXA8y2vcdDx7CmVlHq3zN98+sS56XJIdQ\n1sstsEsDVlCvniar7onGvBIIR15Pfiq09/xkE36I5KaXNzkHQTBXPGyZpTH34lDE\n1KA0pK9Vvpz+GweL9E87h56CuI2kaENc9EY8lTK4ixjm65H7rLQ//YjQIF9fLJnx\nYw0vl1dAMyUy4xINPn7AdrLHFU9qdQOlMUsO2D1uyi1j7kNtECNRG01da5wMndja\n/RiHuKF2m8oxGCAA3SGiH88mKde6eMrPe2yErG1zYQnUKXbryt4ktX6g26hiIi5F\nvjfivOGEqfzdxIN0Fyzy3dTtkuFqjMPYKFH8+gSIYDnzW6JBjc/WdIIUcsB/FHd8\nq8iZAWwtHv0DeTk/uTNG2pVlqInlyEPxu70A5ndwI0irt27BuAmgUhK4ZYAzeOSf\nsPPFnhzjr53KQwMysj5N\n=ijsM\n-----END PGP SIGNATURE-----\n",
+          "payload": "tree b764c10625518a1fddad54597a4039152608cc3f\nparent 53048666b05b4799081517d00e09e0a2dd688678\nauthor william qian <williamqian12@gmail.com> 1788453433 -0700\ncommitter GitHub <noreply@github.com> 1788453433 -0700\n\nUpdate frontend-design skill to avoid generic design defaults (#1713)",
+          "verified_at": "2026-09-03T16:37:14Z"
+        }
+      },
+      "url": "https://api.github.com/repos/anthropics/skills/commits/41bbe19d1a1a7eaab5e7bb9050a417e5c6cffc8f",
+      "html_url": "https://github.com/anthropics/skills/commit/41bbe19d1a1a7eaab5e7bb9050a417e5c6cffc8f",
+      "comments_url": "https://api.github.com/repos/anthropics/skills/commits/41bbe19d1a1a7eaab5e7bb9050a417e5c6cffc8f/comments",
+      "author": {
+        "login": "williamqian12",
+        "id": 22250112,
+        "node_id": "MDQ6VXNlcjIyMjUwMTEy",
+        "avatar_url": "https://avatars.githubusercontent.com/u/22250112?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/williamqian12",
+        "html_url": "https://github.com/williamqian12",
+        "followers_url": "https://api.github.com/users/williamqian12/followers",
+        "following_url": "https://api.github.com/users/williamqian12/following{/other_user}",
+        "gists_url": "https://api.github.com/users/williamqian12/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/williamqian12/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/williamqian12/subscriptions",
+        "organizations_url": "https://api.github.com/users/williamqian12/orgs",
+        "repos_url": "https://api.github.com/users/williamqian12/repos",
+        "events_url": "https://api.github.com/users/williamqian12/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/williamqian12/received_events",
+        "type": "User",
+        "user_view_type": "public",
+        "site_admin": false
+      },
+      "committer": {
+        "login": "web-flow",
+        "id": 19864447,
+        "node_id": "MDQ6VXNlcjE5ODY0NDQ3",
+        "avatar_url": "https://avatars.githubusercontent.com/u/19864447?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/web-flow",
+        "html_url": "https://github.com/web-flow",
+        "followers_url": "https://api.github.com/users/web-flow/followers",
+        "following_url": "https://api.github.com/users/web-flow/following{/other_user}",
+        "gists_url": "https://api.github.com/users/web-flow/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/web-flow/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/web-flow/subscriptions",
+        "organizations_url": "https://api.github.com/users/web-flow/orgs",
+        "repos_url": "https://api.github.com/users/web-flow/repos",
+        "events_url": "https://api.github.com/users/web-flow/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/web-flow/received_events",
+        "type": "User",
+        "user_view_type": "public",
+        "site_admin": false
+      },
+      "parents": [
+        {
+          "sha": "53048666b05b4799081517d00e09e0a2dd688678",
+          "url": "https://api.github.com/repos/anthropics/skills/commits/53048666b05b4799081517d00e09e0a2dd688678",
+          "html_url": "https://github.com/anthropics/skills/commit/53048666b05b4799081517d00e09e0a2dd688678"
+        }
+      ]
+    },
+    {
+      "sha": "53048666b05b4799081517d00e09e0a2dd688678",
+      "node_id": "C_kwDOP0wfhtoAKDUzMDQ4NjY2YjA1YjQ3OTkwODE1MTdkMDBlMDllMGEyZGQ2ODg2Nzg",
+      "commit": {
+        "author": {
+          "name": "Lance Martin",
+          "email": "122662504+rlancemartin@users.noreply.github.com",
+          "date": "2026-09-01T18:30:38Z"
+        },
+        "committer": {
+          "name": "GitHub",
+          "email": "noreply@github.com",
+          "date": "2026-09-01T18:30:38Z"
+        },
+        "message": "Update claude-api skill: Claude Fable 5.1 / Mythos 5.1, Managed Agents updates, cost-optimize (#1704)\n\n* Update claude-api skill: Managed Agents self-hosted memory stores and web tool domain settings, cost-optimize subcommand, Admin API reference, ASCII-only text\n\nManaged Agents: self-hosted sandboxes can now attach memory stores via the SDK worker (handle_item, ANTHROPIC_WORK_SECRET, sync options, troubleshooting); web_search/web_fetch accept allowed_domains/blocked_domains/user_location/max_content_tokens on the toolset configs entry and are not governed by environment networking; typed per-tool config unions; Console session viewer notes; packages caveat under limited networking; Claude Platform on AWS self-hosted worker auth.\n\nNew shared/cost-optimization.md backing a cost-optimize subcommand, and new shared/admin-api.md covering client.beta.organization in all SDKs and the CLI. Prompt caching gains TTL selection, automatic vs explicit breakpoint guidance, workspace isolation, and verification guidance. Sonnet 5 pricing is the permanent $2/$10 list price. Advisor pairing no longer excludes Claude Fable 5 for Managed Agents. Reviewer-only HTML comments are stripped from the published files.\n\nAll files are now plain ASCII in prose (em dashes, arrows, emoji callouts, and box-drawing replaced with ASCII equivalents), matching the source so future syncs diff cleanly.\n\nNo-Verification-Needed: documentation-only change to skill reference content\n\n* Update claude-api skill: Claude Fable 5.1 / Mythos 5.1 catalog rows, Files and Skills APIs out of beta\n\nClaude Fable 5.1 (claude-fable-5-1) and Claude Mythos 5.1 (claude-mythos-5-1) become the default Fable-tier models throughout the skill; Claude Fable 5 and Mythos 5 stay selectable by id with their own catalog rows. Feature-support lists that named Fable 5 now read Fable 5/5.1.\n\nThe Files API and Skills API are out of beta: examples use client.files.* / client.skills.* with no beta header, and the API-drift table points at the beta-to-GA migration docs.\n\nNo-Verification-Needed: documentation-only change to skill reference content\n\n* Update claude-api skill: Claude Fable 5.1 / Mythos 5.1 migration section and API changes\n\nAdds a \"Migrating to Claude Fable 5.1 from Claude Fable 5\" section to shared/model-migration.md: three breaking changes (forced tool_choice any/tool returns 400; thinking blocks are preserved only for the model that produced them or a newer one; and only in the conversation that produced them, so edited history replayed with thinking blocks is rejected), what carries over from Fable 5, the Opus 5 path, Mythos 5.1 notes, capability improvements, prompt-tunable behavioral shifts, and a migration checklist.\n\nNew API features documented: per-message effort (mid-conversation-output-config beta), turn-scoped mid-conversation system messages with clear_at, progress updates between tool calls via thinking.display \"updates\", thinking block_binding controls, and the 0.025x cache-read rate on Fable 5.1 with a max_tokens: 0 keep-alive that usually beats the 1-hour TTL.\n\nError catalog, prompt-caching, tool-use, platform-availability, cost-optimization, and prompt-audit are updated to match; SKILL.md routes migration and prompting questions to the new section.\n\nNo-Verification-Needed: documentation-only change to skill reference content\n\n* Update claude-api skill: Claude Fable 5.1 launch-day hedges and migration-path table rows\n\nAdds claude-fable-5 -> claude-fable-5-1 and claude-mythos-5 -> claude-mythos-5-1 rows to the migration-path and model-ID mapping tables (including the Bedrock IDs), and updates the refusal-fallback example to the 5.1 model id.\n\nHedges three claims until the launch docs confirm them: Task Budgets support on Claude Fable 5.1, whether Claude Mythos 5.1 shares the 0.025x cache-read rate, and the fallback-credit wording. The block_binding error row now says to send the controls beta header only where that beta is offered and to fall back to strip-and-retry elsewhere. Cross-references within the migration section point at the history-editing check directly.\n\nNo-Verification-Needed: documentation-only change to skill reference content",
+        "tree": {
+          "sha": "f918bd1539ab7430b2d2d114c4553aa463fdea74",
+          "url": "https://api.github.com/repos/anthropics/skills/git/trees/f918bd1539ab7430b2d2d114c4553aa463fdea74"
+        },
+        "url": "https://api.github.com/repos/anthropics/skills/git/commits/53048666b05b4799081517d00e09e0a2dd688678",
+        "comment_count": 0,
+        "verification": {
+          "verified": true,
+          "reason": "valid",
+          "signature": "-----BEGIN PGP SIGNATURE-----\n\nwsFcBAABCAAQBQJqlxnOCRC1aQ7uu5UhlAAA+r0QAGfd/+GjYl2CG9H/E3/P2zRP\np0Ra0c4U8XA2V9505Y8ZS5zOsMFUcexJJCEc0M6iRMmK7pNl0pgwkryEEkSbHTWK\n2X2ah8MSD50QjAiD+I8vJAO03+LllaqycPfMe9I+RwVe7slvJmMjSjsfsmoJvf7F\nd547J2QzoKNUZ5RWiNCny71aDRSHsmwOCgSgxflHJyPSnJPPGKSQwmYfoHOXKNp1\nKS8PeT2P3c3K+odH7dJSmj3F3LI3ZIQBC0OenJZGo7lDyF/g3+v6uI/FkF2ynP9d\n8qPPB+NRbVQylmAGzq9RcO9H82P8BwdIZU5Lq9CbH6uiuGBNnPEY4N1z3WJamo7u\nUnyIpwNyB2+TRhquo1lHMWnrFmvo55y2HMoz5lrKo6KB/lkfFkcS9f+FqJ765X7j\nbBKsd8gKwV9n6LyJCT89OPmB6MeuW+urP9wj3cOQ25syMlJhV6GKpURy4UlwxZSD\nCnoKhwvPqQj23dYSqe57jzVm98YyA/xGIUfy9m9aF7Sfyfh3I0hEce9PM+bZjJmb\nriXGtSbTteUyaWe3Xt3qr6mE0zUlNC1EbGRwDJm19DANgTLm0bNNRm+XICndfBma\nTSbL94dQmHk2ADMYsaAYQd1YWmi9mRXSUvOOCR5kcIeF95Bz1ZU/+mcL3fJJs/kW\nX4Aew2jMgwT/gRn+n/P7\n=7j8z\n-----END PGP SIGNATURE-----\n",
+          "payload": "tree f918bd1539ab7430b2d2d114c4553aa463fdea74\nparent 3b3fad96af16a10759d930941b4520ba0c40edae\nauthor Lance Martin <122662504+rlancemartin@users.noreply.github.com> 1788287438 -0700\ncommitter GitHub <noreply@github.com> 1788287438 -0700\n\nUpdate claude-api skill: Claude Fable 5.1 / Mythos 5.1, Managed Agents updates, cost-optimize (#1704)\n\n* Update claude-api skill: Managed Agents self-hosted memory stores and web tool domain settings, cost-optimize subcommand, Admin API reference, ASCII-only text\n\nManaged Agents: self-hosted sandboxes can now attach memory stores via the SDK worker (handle_item, ANTHROPIC_WORK_SECRET, sync options, troubleshooting); web_search/web_fetch accept allowed_domains/blocked_domains/user_location/max_content_tokens on the toolset configs entry and are not governed by environment networking; typed per-tool config unions; Console session viewer notes; packages caveat under limited networking; Claude Platform on AWS self-hosted worker auth.\n\nNew shared/cost-optimization.md backing a cost-optimize subcommand, and new shared/admin-api.md covering client.beta.organization in all SDKs and the CLI. Prompt caching gains TTL selection, automatic vs explicit breakpoint guidance, workspace isolation, and verification guidance. Sonnet 5 pricing is the permanent $2/$10 list price. Advisor pairing no longer excludes Claude Fable 5 for Managed Agents. Reviewer-only HTML comments are stripped from the published files.\n\nAll files are now plain ASCII in prose (em dashes, arrows, emoji callouts, and box-drawing replaced with ASCII equivalents), matching the source so future syncs diff cleanly.\n\nNo-Verification-Needed: documentation-only change to skill reference content\n\n* Update claude-api skill: Claude Fable 5.1 / Mythos 5.1 catalog rows, Files and Skills APIs out of beta\n\nClaude Fable 5.1 (claude-fable-5-1) and Claude Mythos 5.1 (claude-mythos-5-1) become the default Fable-tier models throughout the skill; Claude Fable 5 and Mythos 5 stay selectable by id with their own catalog rows. Feature-support lists that named Fable 5 now read Fable 5/5.1.\n\nThe Files API and Skills API are out of beta: examples use client.files.* / client.skills.* with no beta header, and the API-drift table points at the beta-to-GA migration docs.\n\nNo-Verification-Needed: documentation-only change to skill reference content\n\n* Update claude-api skill: Claude Fable 5.1 / Mythos 5.1 migration section and API changes\n\nAdds a \"Migrating to Claude Fable 5.1 from Claude Fable 5\" section to shared/model-migration.md: three breaking changes (forced tool_choice any/tool returns 400; thinking blocks are preserved only for the model that produced them or a newer one; and only in the conversation that produced them, so edited history replayed with thinking blocks is rejected), what carries over from Fable 5, the Opus 5 path, Mythos 5.1 notes, capability improvements, prompt-tunable behavioral shifts, and a migration checklist.\n\nNew API features documented: per-message effort (mid-conversation-output-config beta), turn-scoped mid-conversation system messages with clear_at, progress updates between tool calls via thinking.display \"updates\", thinking block_binding controls, and the 0.025x cache-read rate on Fable 5.1 with a max_tokens: 0 keep-alive that usually beats the 1-hour TTL.\n\nError catalog, prompt-caching, tool-use, platform-availability, cost-optimization, and prompt-audit are updated to match; SKILL.md routes migration and prompting questions to the new section.\n\nNo-Verification-Needed: documentation-only change to skill reference content\n\n* Update claude-api skill: Claude Fable 5.1 launch-day hedges and migration-path table rows\n\nAdds claude-fable-5 -> claude-fable-5-1 and claude-mythos-5 -> claude-mythos-5-1 rows to the migration-path and model-ID mapping tables (including the Bedrock IDs), and updates the refusal-fallback example to the 5.1 model id.\n\nHedges three claims until the launch docs confirm them: Task Budgets support on Claude Fable 5.1, whether Claude Mythos 5.1 shares the 0.025x cache-read rate, and the fallback-credit wording. The block_binding error row now says to send the controls beta header only where that beta is offered and to fall back to strip-and-retry elsewhere. Cross-references within the migration section point at the history-editing check directly.\n\nNo-Verification-Needed: documentation-only change to skill reference content",
+          "verified_at": "2026-09-01T18:30:39Z"
+        }
+      },
+      "url": "https://api.github.com/repos/anthropics/skills/commits/53048666b05b4799081517d00e09e0a2dd688678",
+      "html_url": "https://github.com/anthropics/skills/commit/53048666b05b4799081517d00e09e0a2dd688678",
+      "comments_url": "https://api.github.com/repos/anthropics/skills/commits/53048666b05b4799081517d00e09e0a2dd688678/comments",
+      "author": {
+        "login": "rlancemartin",
+        "id": 122662504,
+        "node_id": "U_kgDOB0-uaA",
+        "avatar_url": "https://avatars.githubusercontent.com/u/122662504?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/rlancemartin",
+        "html_url": "https://github.com/rlancemartin",
+        "followers_url": "https://api.github.com/users/rlancemartin/followers",
+        "following_url": "https://api.github.com/users/rlancemartin/following{/other_user}",
+        "gists_url": "https://api.github.com/users/rlancemartin/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/rlancemartin/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/rlancemartin/subscriptions",
+        "organizations_url": "https://api.github.com/users/rlancemartin/orgs",
+        "repos_url": "https://api.github.com/users/rlancemartin/repos",
+        "events_url": "https://api.github.com/users/rlancemartin/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/rlancemartin/received_events",
+        "type": "User",
+        "user_view_type": "public",
+        "site_admin": false
+      },
+      "committer": {
+        "login": "web-flow",
+        "id": 19864447,
+        "node_id": "MDQ6VXNlcjE5ODY0NDQ3",
+        "avatar_url": "https://avatars.githubusercontent.com/u/19864447?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/web-flow",
+        "html_url": "https://github.com/web-flow",
+        "followers_url": "https://api.github.com/users/web-flow/followers",
+        "following_url": "https://api.github.com/users/web-flow/following{/other_user}",
+        "gists_url": "https://api.github.com/users/web-flow/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/web-flow/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/web-flow/subscriptions",
+        "organizations_url": "https://api.github.com/users/web-flow/orgs",
+        "repos_url": "https://api.github.com/users/web-flow/repos",
+        "events_url": "https://api.github.com/users/web-flow/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/web-flow/received_events",
+        "type": "User",
+        "user_view_type": "public",
+        "site_admin": false
+      },
+      "parents": [
+        {
+          "sha": "3b3fad96af16a10759d930941b4520ba0c40edae",
+          "url": "https://api.github.com/repos/anthropics/skills/commits/3b3fad96af16a10759d930941b4520ba0c40edae",
+          "html_url": "https://github.com/anthropics/skills/commit/3b3fad96af16a10759d930941b4520ba0c40edae"
+        }
+      ]
+    },
+    {
+      "sha": "3b3fad96af16a10759d930941b4520ba0c40edae",
+      "node_id": "C_kwDOP0wfhtoAKDNiM2ZhZDk2YWYxNmExMDc1OWQ5MzA5NDFiNDUyMGJhMGM0MGVkYWU",
+      "commit": {
+        "author": {
+          "name": "CJ Avilla",
+          "email": "cj@anthropic.com",
+          "date": "2026-08-21T17:10:53Z"
+        },
+        "committer": {
+          "name": "GitHub",
+          "email": "noreply@github.com",
+          "date": "2026-08-21T17:10:53Z"
+        },
+        "message": "Update claude-api skill: Python SDK 0.x -> 1.x upgrade guide (#1623)\n\nAdds an `upgrade` subcommand that walks a project from anthropic 0.x to\n1.x (httpx2 HTTP layer, Python 3.10 floor, removed deprecated surface).\n\n- New python/claude-api/sdk-upgrade.md: scope and version check, a\n  greppable inventory of affected call sites, one section per breaking\n  change, verification, and a report format.\n- SKILL.md: `upgrade` subcommand row and a reading-guide entry.\n- python/claude-api/README.md: timeouts use anthropic.Timeout, custom\n  clients note httpx2, link to the SDK MIGRATION.md.\n- shared/live-sources.md: SDK major-version upgrade guides table.",
+        "tree": {
+          "sha": "a415fa11e9ecd97bc897cec5709c6854679419ba",
+          "url": "https://api.github.com/repos/anthropics/skills/git/trees/a415fa11e9ecd97bc897cec5709c6854679419ba"
+        },
+        "url": "https://api.github.com/repos/anthropics/skills/git/commits/3b3fad96af16a10759d930941b4520ba0c40edae",
+        "comment_count": 2,
+        "verification": {
+          "verified": true,
+          "reason": "valid",
+          "signature": "-----BEGIN PGP SIGNATURE-----\n\nwsFcBAABCAAQBQJqiIadCRC1aQ7uu5UhlAAAtQUQAIftBbRlH4a7u7j0oiafGDs2\nz2sRZvzydXQZBSYUkFG+j/oNLvxLzALmYXKYb7fj1cpZzgA2BRsEPOfCxaeizBCm\nEfpKO9N1of7BmbVicJaFKiJ7D0vrJwHL1XiXVzE2lAbC8AsdyxwVyHuZ7lkgsjcx\nMSNn47xk7btMOtYMPhGUS0Cs6Ojfm8Q87Vmw9zQdhpDuiEsvsCmCzKeK1yo0RrZ6\nZrYpvBT5MILKcHmaQiQRJ03H59weXzGXJ34liUq3gGg+jBFIGTU6OklmrYMkDitO\nv9lftl0djM/mNI5LKrbDYeUbhXHZWgylI6VL5AaL9i6ljS52GBeQg59TZZAk2NtK\n14sGnCtlpnqwji6oyY6zpr8/MoC+WD0HLwzwEx/pl/BI+aIPtXv+KdPvF8qxEzNx\nmAq3WwRWN0LHfvd9eUo2hXXb6Qk8grdG7bNlPaHGg/KDLzFQbC3fKQuralyND42e\nbmhVLWbhk0a4BPUFYJIVQnr1x4rBKXZ+Ft667oO0YuRODPQbDSSE64Puu5Wlmf0x\nlVbuexIKPJoTNgf1fAB810i6ySMwo84aV6Hfucc41aiTUPAUwyZvYacHDG4A7YPd\npyCAvtrNM0/rxTDWfB5Sy2wSjtQDg8t+gAlf8eaYvA21az9hJWqkWTW4gaWqCDd0\nFX+N+fwQFiQ5lIuvevFm\n=FCbe\n-----END PGP SIGNATURE-----\n",
+          "payload": "tree a415fa11e9ecd97bc897cec5709c6854679419ba\nparent 0a64e398ec6bb34a494f0c347e8ccae53a862f8e\nauthor CJ Avilla <cj@anthropic.com> 1787332253 -0400\ncommitter GitHub <noreply@github.com> 1787332253 -0700\n\nUpdate claude-api skill: Python SDK 0.x -> 1.x upgrade guide (#1623)\n\nAdds an `upgrade` subcommand that walks a project from anthropic 0.x to\n1.x (httpx2 HTTP layer, Python 3.10 floor, removed deprecated surface).\n\n- New python/claude-api/sdk-upgrade.md: scope and version check, a\n  greppable inventory of affected call sites, one section per breaking\n  change, verification, and a report format.\n- SKILL.md: `upgrade` subcommand row and a reading-guide entry.\n- python/claude-api/README.md: timeouts use anthropic.Timeout, custom\n  clients note httpx2, link to the SDK MIGRATION.md.\n- shared/live-sources.md: SDK major-version upgrade guides table.",
+          "verified_at": "2026-08-21T17:10:54Z"
+        }
+      },
+      "url": "https://api.github.com/repos/anthropics/skills/commits/3b3fad96af16a10759d930941b4520ba0c40edae",
+      "html_url": "https://github.com/anthropics/skills/commit/3b3fad96af16a10759d930941b4520ba0c40edae",
+      "comments_url": "https://api.github.com/repos/anthropics/skills/commits/3b3fad96af16a10759d930941b4520ba0c40edae/comments",
+      "author": {
+        "login": "cj-ant",
+        "id": 286490957,
+        "node_id": "U_kgDOEROBTQ",
+        "avatar_url": "https://avatars.githubusercontent.com/u/286490957?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/cj-ant",
+        "html_url": "https://github.com/cj-ant",
+        "followers_url": "https://api.github.com/users/cj-ant/followers",
+        "following_url": "https://api.github.com/users/cj-ant/following{/other_user}",
+        "gists_url": "https://api.github.com/users/cj-ant/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/cj-ant/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/cj-ant/subscriptions",
+        "organizations_url": "https://api.github.com/users/cj-ant/orgs",
+        "repos_url": "https://api.github.com/users/cj-ant/repos",
+        "events_url": "https://api.github.com/users/cj-ant/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/cj-ant/received_events",
+        "type": "User",
+        "user_view_type": "public",
+        "site_admin": false
+      },
+      "committer": {
+        "login": "web-flow",
+        "id": 19864447,
+        "node_id": "MDQ6VXNlcjE5ODY0NDQ3",
+        "avatar_url": "https://avatars.githubusercontent.com/u/19864447?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/web-flow",
+        "html_url": "https://github.com/web-flow",
+        "followers_url": "https://api.github.com/users/web-flow/followers",
+        "following_url": "https://api.github.com/users/web-flow/following{/other_user}",
+        "gists_url": "https://api.github.com/users/web-flow/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/web-flow/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/web-flow/subscriptions",
+        "organizations_url": "https://api.github.com/users/web-flow/orgs",
+        "repos_url": "https://api.github.com/users/web-flow/repos",
+        "events_url": "https://api.github.com/users/web-flow/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/web-flow/received_events",
+        "type": "User",
+        "user_view_type": "public",
+        "site_admin": false
+      },
+      "parents": [
+        {
+          "sha": "0a64e398ec6bb34a494f0c347e8ccae53a862f8e",
+          "url": "https://api.github.com/repos/anthropics/skills/commits/0a64e398ec6bb34a494f0c347e8ccae53a862f8e",
+          "html_url": "https://github.com/anthropics/skills/commit/0a64e398ec6bb34a494f0c347e8ccae53a862f8e"
+        }
+      ]
+    },
+    {
+      "sha": "0a64e398ec6bb34a494f0c347e8ccae53a862f8e",
+      "node_id": "C_kwDOP0wfhtoAKDBhNjRlMzk4ZWM2YmIzNGE0OTRmMGMzNDdlOGNjYWU1M2E4NjJmOGU",
+      "commit": {
+        "author": {
+          "name": "Kswan",
+          "email": "254044062+kswan-wk@users.noreply.github.com",
+          "date": "2026-08-18T16:02:05Z"
+        },
+        "committer": {
+          "name": "GitHub",
+          "email": "noreply@github.com",
+          "date": "2026-08-18T16:02:05Z"
+        },
+        "message": "Rename claude-academy-guide skill to academy-guide and shorten its description (#1605)\n\nTwo changes to make the skill packageable as an uploaded custom skill,\nwith no other content changes:\n\n- Rename: the skill folder, the SKILL.md frontmatter name, and the\n  marketplace.json entry name and path. Skill names cannot contain the\n  reserved words \"claude\" or \"anthropic\" (per the agent skills\n  best-practices documentation).\n- Description: shortened from 1,176 to 992 characters to fit the\n  1,024-character limit that skill upload validation applies to the\n  SKILL.md frontmatter description. The shortened text is the version\n  tested internally.",
+        "tree": {
+          "sha": "9a4c92ad05af6a5fbef93429dacd1be6ada9a4b8",
+          "url": "https://api.github.com/repos/anthropics/skills/git/trees/9a4c92ad05af6a5fbef93429dacd1be6ada9a4b8"
+        },
+        "url": "https://api.github.com/repos/anthropics/skills/git/commits/0a64e398ec6bb34a494f0c347e8ccae53a862f8e",
+        "comment_count": 0,
+        "verification": {
+          "verified": true,
+          "reason": "valid",
+          "signature": "-----BEGIN PGP SIGNATURE-----\n\nwsFcBAABCAAQBQJqhIH9CRC1aQ7uu5UhlAAAMyEQAINoBOOzXY5qFeAonWSswuX4\nT3ziNCCgOhJqPb9RFVwz1yw2lewQ8tdNmuQdCbybWFlIOD3Nz+agaiH7ZbEzWDax\nYYEugDG2JhIUK3q6/c5gYX/za6DhaWRj2/uP8Oqx19RaK6jr1vKHTeAaZla22m6G\n6SawUAPgvhWvlaUkshEEZF2/51ASQr7AnDnaTXvm9H6T0/AObhjZMkukTsA1gj/7\nkmS0znx2d9AXtL4dnUzIva5kVgldMILwR4FFAC7ODDnjfS5GyFT9LHJXPoR4renZ\neBy2teiDtvyRRB5h8Ct7ZyqlQFtBFYUjy1HtEwrHTPsncR5Wk9tEbp7TUvNXuhL2\nJvL+bR1vUH9e1dvWBzTprh61HrM6ZyDgHB7+zDrieUyE3AW9Z5pIVhEdlHPQK+iI\nXDZC8YBT8pWUD8njjjyH6CDaXhYfKykWIqoxEMB+lyM2HDEhYuijGl469aiZCx9D\nH/5GBLvirQoFdw0iRm6h/ay9bG2BipuYCokCCudGZ09UUAKHcthDBrReFHwlhJhs\nrxx6BdOGakh6p5j3p/FljTOpdwiptyAAWeUxgch3vrvh0GL9gTY6Z/i6n80tJAlT\nCDCxed4Z4VrcyDIckauotaNoVZc9xVa/yNhRIKOIMW5B3iCfm79LSR/WzQ2suQ4a\nHsxmIT8Mv8JXlpB6Vxe1\n=l/t+\n-----END PGP SIGNATURE-----\n",
+          "payload": "tree 9a4c92ad05af6a5fbef93429dacd1be6ada9a4b8\nparent f379e5ad66e2febc1616cf8d6284666fecbe514e\nauthor Kswan <254044062+kswan-wk@users.noreply.github.com> 1787068925 -0700\ncommitter GitHub <noreply@github.com> 1787068925 -0400\n\nRename claude-academy-guide skill to academy-guide and shorten its description (#1605)\n\nTwo changes to make the skill packageable as an uploaded custom skill,\nwith no other content changes:\n\n- Rename: the skill folder, the SKILL.md frontmatter name, and the\n  marketplace.json entry name and path. Skill names cannot contain the\n  reserved words \"claude\" or \"anthropic\" (per the agent skills\n  best-practices documentation).\n- Description: shortened from 1,176 to 992 characters to fit the\n  1,024-character limit that skill upload validation applies to the\n  SKILL.md frontmatter description. The shortened text is the version\n  tested internally.",
+          "verified_at": "2026-08-18T16:02:06Z"
+        }
+      },
+      "url": "https://api.github.com/repos/anthropics/skills/commits/0a64e398ec6bb34a494f0c347e8ccae53a862f8e",
+      "html_url": "https://github.com/anthropics/skills/commit/0a64e398ec6bb34a494f0c347e8ccae53a862f8e",
+      "comments_url": "https://api.github.com/repos/anthropics/skills/commits/0a64e398ec6bb34a494f0c347e8ccae53a862f8e/comments",
+      "author": {
+        "login": "kswan-wk",
+        "id": 254044062,
+        "node_id": "U_kgDODyRnng",
+        "avatar_url": "https://avatars.githubusercontent.com/u/254044062?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/kswan-wk",
+        "html_url": "https://github.com/kswan-wk",
+        "followers_url": "https://api.github.com/users/kswan-wk/followers",
+        "following_url": "https://api.github.com/users/kswan-wk/following{/other_user}",
+        "gists_url": "https://api.github.com/users/kswan-wk/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/kswan-wk/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/kswan-wk/subscriptions",
+        "organizations_url": "https://api.github.com/users/kswan-wk/orgs",
+        "repos_url": "https://api.github.com/users/kswan-wk/repos",
+        "events_url": "https://api.github.com/users/kswan-wk/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/kswan-wk/received_events",
+        "type": "User",
+        "user_view_type": "public",
+        "site_admin": false
+      },
+      "committer": {
+        "login": "web-flow",
+        "id": 19864447,
+        "node_id": "MDQ6VXNlcjE5ODY0NDQ3",
+        "avatar_url": "https://avatars.githubusercontent.com/u/19864447?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/web-flow",
+        "html_url": "https://github.com/web-flow",
+        "followers_url": "https://api.github.com/users/web-flow/followers",
+        "following_url": "https://api.github.com/users/web-flow/following{/other_user}",
+        "gists_url": "https://api.github.com/users/web-flow/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/web-flow/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/web-flow/subscriptions",
+        "organizations_url": "https://api.github.com/users/web-flow/orgs",
+        "repos_url": "https://api.github.com/users/web-flow/repos",
+        "events_url": "https://api.github.com/users/web-flow/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/web-flow/received_events",
+        "type": "User",
+        "user_view_type": "public",
+        "site_admin": false
+      },
+      "parents": [
+        {
+          "sha": "f379e5ad66e2febc1616cf8d6284666fecbe514e",
+          "url": "https://api.github.com/repos/anthropics/skills/commits/f379e5ad66e2febc1616cf8d6284666fecbe514e",
+          "html_url": "https://github.com/anthropics/skills/commit/f379e5ad66e2febc1616cf8d6284666fecbe514e"
+        }
+      ]
+    },
+    {
+      "sha": "f379e5ad66e2febc1616cf8d6284666fecbe514e",
+      "node_id": "C_kwDOP0wfhtoAKGYzNzllNWFkNjZlMmZlYmMxNjE2Y2Y4ZDYyODQ2NjZmZWNiZTUxNGU",
+      "commit": {
+        "author": {
+          "name": "Kswan",
+          "email": "254044062+kswan-wk@users.noreply.github.com",
+          "date": "2026-08-17T17:23:10Z"
+        },
+        "committer": {
+          "name": "GitHub",
+          "email": "noreply@github.com",
+          "date": "2026-08-17T17:23:10Z"
+        },
+        "message": "Add discernment-nudge skill (#1553)\n\nOpt-in skill that appends two or three short, targeted follow-up questions after a substantive answer the user may act on, helping them check key facts, probe the reasoning and assumptions, and notice missing context before relying on the answer. Fires at most once per conversation, with explicit skip rules for trivial lookups, formatting tasks, code, and creative writing.",
+        "tree": {
+          "sha": "e159ff7ef0243acb8dbb33e24a2998b214a5149e",
+          "url": "https://api.github.com/repos/anthropics/skills/git/trees/e159ff7ef0243acb8dbb33e24a2998b214a5149e"
+        },
+        "url": "https://api.github.com/repos/anthropics/skills/git/commits/f379e5ad66e2febc1616cf8d6284666fecbe514e",
+        "comment_count": 0,
+        "verification": {
+          "verified": true,
+          "reason": "valid",
+          "signature": "-----BEGIN PGP SIGNATURE-----\n\nwsFcBAABCAAQBQJqg0N/CRC1aQ7uu5UhlAAA/B4QAAa4QIks8YsVYm3JSnMlFZu3\nNwkIez+jng075fZd9GghPGCxgCwOJCAVDdL2QWc3VmwN9LdIHK82cPxc6+IfsaRX\nzP0+Q9+tiPTe5Aq4cH76bh0b1CkjnRp0kIWJOYiwXm//dtWDyofOfKsvwfe0pEQQ\ndmt2HQ1mb8se+emm3V6ErlfKiWqBIALQP+5nrz6MXSxJIy3B0vsL0moAb12ZUOdM\ng8wWzZZgbPGBVyvP82N7P1ZtalNtf1neBbtZfUWu20yuuTtgggCLTTXJBh7jBpZe\ngo0UcQ/JDRYtzv+z21TbBbiSMwX9aAG39Fqhj6Lof74V/TGP4tcuQJLq1QCPcnjW\np3dcPBkbUeT/uqQsKUYMUA5H1ePDP4JRZ/QAMeb4oYYAcK7LyTECqb3/xTRgo74Z\nWQW8kPKmXsChvr2dSEk48D6kl/yP1NKurMixtDORPmaJ5BU8pbxUvcAnXnrcrehR\n2oGkmk42BIskN9OSp4RPOYD7cxlFxwf7nWf5+IsBAsh4xZSX1UqCbMUG+iSl8pYJ\nSvIbRV25JYuyaFnwTbdFS1dzjBxws0bfKinkanHBgldUFimMp7mqhN5oMSW/63Pz\nHJf1bARa3TOW9PAa0wdKJ2Wl3LIeVQIAW5EvAb35wm1x+i+n4aCxV2oMkziR1tEx\n6WP8DhCBkFS/LcOHx3Z3\n=tP2I\n-----END PGP SIGNATURE-----\n",
+          "payload": "tree e159ff7ef0243acb8dbb33e24a2998b214a5149e\nparent 89dcaa3a283f79ed84fd8fe53e2208b9442a6427\nauthor Kswan <254044062+kswan-wk@users.noreply.github.com> 1786987390 -0700\ncommitter GitHub <noreply@github.com> 1786987390 -0400\n\nAdd discernment-nudge skill (#1553)\n\nOpt-in skill that appends two or three short, targeted follow-up questions after a substantive answer the user may act on, helping them check key facts, probe the reasoning and assumptions, and notice missing context before relying on the answer. Fires at most once per conversation, with explicit skip rules for trivial lookups, formatting tasks, code, and creative writing.",
+          "verified_at": "2026-08-17T17:23:11Z"
+        }
+      },
+      "url": "https://api.github.com/repos/anthropics/skills/commits/f379e5ad66e2febc1616cf8d6284666fecbe514e",
+      "html_url": "https://github.com/anthropics/skills/commit/f379e5ad66e2febc1616cf8d6284666fecbe514e",
+      "comments_url": "https://api.github.com/repos/anthropics/skills/commits/f379e5ad66e2febc1616cf8d6284666fecbe514e/comments",
+      "author": {
+        "login": "kswan-wk",
+        "id": 254044062,
+        "node_id": "U_kgDODyRnng",
+        "avatar_url": "https://avatars.githubusercontent.com/u/254044062?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/kswan-wk",
+        "html_url": "https://github.com/kswan-wk",
+        "followers_url": "https://api.github.com/users/kswan-wk/followers",
+        "following_url": "https://api.github.com/users/kswan-wk/following{/other_user}",
+        "gists_url": "https://api.github.com/users/kswan-wk/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/kswan-wk/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/kswan-wk/subscriptions",
+        "organizations_url": "https://api.github.com/users/kswan-wk/orgs",
+        "repos_url": "https://api.github.com/users/kswan-wk/repos",
+        "events_url": "https://api.github.com/users/kswan-wk/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/kswan-wk/received_events",
+        "type": "User",
+        "user_view_type": "public",
+        "site_admin": false
+      },
+      "committer": {
+        "login": "web-flow",
+        "id": 19864447,
+        "node_id": "MDQ6VXNlcjE5ODY0NDQ3",
+        "avatar_url": "https://avatars.githubusercontent.com/u/19864447?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/web-flow",
+        "html_url": "https://github.com/web-flow",
+        "followers_url": "https://api.github.com/users/web-flow/followers",
+        "following_url": "https://api.github.com/users/web-flow/following{/other_user}",
+        "gists_url": "https://api.github.com/users/web-flow/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/web-flow/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/web-flow/subscriptions",
+        "organizations_url": "https://api.github.com/users/web-flow/orgs",
+        "repos_url": "https://api.github.com/users/web-flow/repos",
+        "events_url": "https://api.github.com/users/web-flow/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/web-flow/received_events",
+        "type": "User",
+        "user_view_type": "public",
+        "site_admin": false
+      },
+      "parents": [
+        {
+          "sha": "89dcaa3a283f79ed84fd8fe53e2208b9442a6427",
+          "url": "https://api.github.com/repos/anthropics/skills/commits/89dcaa3a283f79ed84fd8fe53e2208b9442a6427",
+          "html_url": "https://github.com/anthropics/skills/commit/89dcaa3a283f79ed84fd8fe53e2208b9442a6427"
+        }
+      ]
+    },
+    {
+      "sha": "89dcaa3a283f79ed84fd8fe53e2208b9442a6427",
+      "node_id": "C_kwDOP0wfhtoAKDg5ZGNhYTNhMjgzZjc5ZWQ4NGZkOGZlNTNlMjIwOGI5NDQyYTY0Mjc",
+      "commit": {
+        "author": {
+          "name": "Kswan",
+          "email": "254044062+kswan-wk@users.noreply.github.com",
+          "date": "2026-08-17T13:03:59Z"
+        },
+        "committer": {
+          "name": "GitHub",
+          "email": "noreply@github.com",
+          "date": "2026-08-17T13:03:59Z"
+        },
+        "message": "Add claude-academy-guide skill (#1554)\n\nOpt-in skill that recommends matching Claude Academy (academy.claude.com) courses, tutorials, and use cases when a user asks how to use Claude or a Claude product. Reads the live catalog at academy.claude.com/assets/data/catalog.json at runtime rather than embedding a snapshot, so recommendations never go stale; when the catalog cannot be fetched it names no specific item and points to the relevant Academy product hub or the resources library instead. Only recommends on a strong match and never invents Academy content.",
+        "tree": {
+          "sha": "cf77fec1912b98e263837e0d494caa1209d062b0",
+          "url": "https://api.github.com/repos/anthropics/skills/git/trees/cf77fec1912b98e263837e0d494caa1209d062b0"
+        },
+        "url": "https://api.github.com/repos/anthropics/skills/git/commits/89dcaa3a283f79ed84fd8fe53e2208b9442a6427",
+        "comment_count": 0,
+        "verification": {
+          "verified": true,
+          "reason": "valid",
+          "signature": "-----BEGIN PGP SIGNATURE-----\n\nwsFcBAABCAAQBQJqgwa/CRC1aQ7uu5UhlAAAQf0QAItWNbVZiUBaYxwUgVQN0iZN\ngiqwX50BTCPsDLkW4wSRWDC9nGU+9WxXEWC8Py9hYyblBDliXAi/Mq7PgZ6k9jya\np20+2Tgtrd5kDo3BtJDSe7Mv+uXZQJOi04cMXCkzApXxAAR02Hgnoi1v76NCbJ4i\ngNquLQNdEhXDAEIO38eW7pJGbMHmgnaFjgLT9VhvC4UXK0KQo2b13XgvvF9+OPvg\n7HpMMETDeNBX6Gzn93/elLaIPwP2KsNrGOzTX2/Ay+1HEsZ9Xg2GJ0V8CtA7AEWD\ngVooTwhIAJvrXOcJJWr2DwArO2prLOhwXYUOxGO2qK7xyE573VpwLMIVlCA8F20n\nS1g25kcLYBA+iRcH/MskhdLnpE+E3/xLyF8bLJvdaim/pppcF81KCjLM3CyfC1CM\nZbXHL4vbqzfm2ATzH2CvxaHvZMEbc8Sd+1DIQjVxJ5yvyc6QmpG7KUjVj/YiwtUQ\nl+mjoyCnPw5KP4pLcejYDIguXYQT0yhvAIHRLSfDDQzfDAKo+YSbXr2G0WOleITK\n6S+yuHVEZwiQqmaqEkYLJ4D75tQ/SNKRxVIQcBbsev8SrjDnFBF3qrKcVyyNn6lr\nmB2mSeyv+T/g8Y4AxEiTtezrKHRdorrcu8HwvNG3xyLlBkVXDNUh7DSdQgYz9Yz1\n8z1ao8LjN+QtCEGnL2Xu\n=nFZG\n-----END PGP SIGNATURE-----\n",
+          "payload": "tree cf77fec1912b98e263837e0d494caa1209d062b0\nparent f6656c1256d5a8adfa37db9110046ef20bac644c\nauthor Kswan <254044062+kswan-wk@users.noreply.github.com> 1786971839 -0700\ncommitter GitHub <noreply@github.com> 1786971839 -0400\n\nAdd claude-academy-guide skill (#1554)\n\nOpt-in skill that recommends matching Claude Academy (academy.claude.com) courses, tutorials, and use cases when a user asks how to use Claude or a Claude product. Reads the live catalog at academy.claude.com/assets/data/catalog.json at runtime rather than embedding a snapshot, so recommendations never go stale; when the catalog cannot be fetched it names no specific item and points to the relevant Academy product hub or the resources library instead. Only recommends on a strong match and never invents Academy content.",
+          "verified_at": "2026-08-17T13:04:00Z"
+        }
+      },
+      "url": "https://api.github.com/repos/anthropics/skills/commits/89dcaa3a283f79ed84fd8fe53e2208b9442a6427",
+      "html_url": "https://github.com/anthropics/skills/commit/89dcaa3a283f79ed84fd8fe53e2208b9442a6427",
+      "comments_url": "https://api.github.com/repos/anthropics/skills/commits/89dcaa3a283f79ed84fd8fe53e2208b9442a6427/comments",
+      "author": {
+        "login": "kswan-wk",
+        "id": 254044062,
+        "node_id": "U_kgDODyRnng",
+        "avatar_url": "https://avatars.githubusercontent.com/u/254044062?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/kswan-wk",
+        "html_url": "https://github.com/kswan-wk",
+        "followers_url": "https://api.github.com/users/kswan-wk/followers",
+        "following_url": "https://api.github.com/users/kswan-wk/following{/other_user}",
+        "gists_url": "https://api.github.com/users/kswan-wk/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/kswan-wk/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/kswan-wk/subscriptions",
+        "organizations_url": "https://api.github.com/users/kswan-wk/orgs",
+        "repos_url": "https://api.github.com/users/kswan-wk/repos",
+        "events_url": "https://api.github.com/users/kswan-wk/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/kswan-wk/received_events",
+        "type": "User",
+        "user_view_type": "public",
+        "site_admin": false
+      },
+      "committer": {
+        "login": "web-flow",
+        "id": 19864447,
+        "node_id": "MDQ6VXNlcjE5ODY0NDQ3",
+        "avatar_url": "https://avatars.githubusercontent.com/u/19864447?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/web-flow",
+        "html_url": "https://github.com/web-flow",
+        "followers_url": "https://api.github.com/users/web-flow/followers",
+        "following_url": "https://api.github.com/users/web-flow/following{/other_user}",
+        "gists_url": "https://api.github.com/users/web-flow/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/web-flow/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/web-flow/subscriptions",
+        "organizations_url": "https://api.github.com/users/web-flow/orgs",
+        "repos_url": "https://api.github.com/users/web-flow/repos",
+        "events_url": "https://api.github.com/users/web-flow/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/web-flow/received_events",
+        "type": "User",
+        "user_view_type": "public",
+        "site_admin": false
+      },
+      "parents": [
+        {
+          "sha": "f6656c1256d5a8adfa37db9110046ef20bac644c",
+          "url": "https://api.github.com/repos/anthropics/skills/commits/f6656c1256d5a8adfa37db9110046ef20bac644c",
+          "html_url": "https://github.com/anthropics/skills/commit/f6656c1256d5a8adfa37db9110046ef20bac644c"
+        }
+      ]
+    },
+    {
+      "sha": "f6656c1256d5a8adfa37db9110046ef20bac644c",
+      "node_id": "C_kwDOP0wfhtoAKGY2NjU2YzEyNTZkNWE4YWRmYTM3ZGI5MTEwMDQ2ZWYyMGJhYzY0NGM",
+      "commit": {
+        "author": {
+          "name": "CJ Avilla",
+          "email": "cj@anthropic.com",
+          "date": "2026-08-13T18:09:54Z"
+        },
+        "committer": {
+          "name": "GitHub",
+          "email": "noreply@github.com",
+          "date": "2026-08-13T18:09:54Z"
+        },
+        "message": "Update claude-api skill: prompt-audit subcommand (#1557)\n\n* Add prompt-audit subcommand to claude-api skill\n\nNew shared/prompt-audit.md: a non-interactive audit that inventories the\nprompt surface, dates each instruction, scans against dated-pattern\ntables, and produces a findings report plus a proposed diff. SKILL.md\ngains the subcommand row, a cross-reference from migrate, carve-outs in\nthe provider check and language detection for the non-interactive\ncontract, and a reading-guide entry. model-migration.md points at the\naudit from its prompt-behavior section.\n\nNo-Verification-Needed: markdown-only skill content, no runtime surface\n\n* Replace prompt-audit exception callouts with an intent check in language detection\n\nNo-Verification-Needed: markdown-only skill content, no runtime surface",
+        "tree": {
+          "sha": "0caa16f7ab1dd33df735e42b97bafc1b3d32d29c",
+          "url": "https://api.github.com/repos/anthropics/skills/git/trees/0caa16f7ab1dd33df735e42b97bafc1b3d32d29c"
+        },
+        "url": "https://api.github.com/repos/anthropics/skills/git/commits/f6656c1256d5a8adfa37db9110046ef20bac644c",
+        "comment_count": 0,
+        "verification": {
+          "verified": true,
+          "reason": "valid",
+          "signature": "-----BEGIN PGP SIGNATURE-----\n\nwsFcBAABCAAQBQJqfghyCRC1aQ7uu5UhlAAAD5AQAFOHpl7Rw3C4/whR+yILdZo4\nJrL9WqWRbi/alL1Rw+qNy2WvIlNFDmH2q9L1z8/CiJgBRG+60pbJBQpJYjnklP7g\nMIEmOSctoON6DHKfvvXY2ihJaIQRFvBmf4fCpYjd+l3nB7GUb1RzVLzFBQ/4pSer\ndNmIpBLPm0dU+oVsutp3orXHJwYu2OTN0GpwSefl4AWfPVcRd9nFPqih9yFC7Iyd\nXJs+bxEQD/dngYyoy7JubBYtl/IbfsleJcPzbv/ATvX71y5NMy8V2V8Sz+iygFbd\naRwe37XoYyyXAWFnTfFyAdxufzUSb6YmhHX7voLaW1XwWMUSlYNUX3IfzGVoxEKz\nIeyvfvFwxg7mcwjSnN8KB+4YezCb6aVjQAM/B0xuzT/5rK43G59i++p4NQRpSc9r\nYqNCEqmeKM6mF5M3B/OwHkXLOcVJLNUDFjf4qUrWsJ5wQH5kXfDncAIdWyRn6BpQ\n+BPNt1aoWaVex9qK8xghC/on1wOQWXtFgxTd2FUcKL71We/qtuetOpB8mONvuXUR\nykJi36AI7bAKb1MVFTqvbh9Mh4+6Bc2ELxrufnudgFSI0OvZ42S+d8EpayzJxTZ8\nuWZug1x7U9XaItcY0ncmtNwwoVajXmfnp9ep+8Y5Cu2gWl3rtiI7RMlRhz7BYpgy\nTo0ZuvFoYKCzXJTiX0JB\n=w2OB\n-----END PGP SIGNATURE-----\n",
+          "payload": "tree 0caa16f7ab1dd33df735e42b97bafc1b3d32d29c\nparent f17010c9bb483898c1d9c9f42dde2b3a98889434\nauthor CJ Avilla <cj@anthropic.com> 1786644594 -0400\ncommitter GitHub <noreply@github.com> 1786644594 -0700\n\nUpdate claude-api skill: prompt-audit subcommand (#1557)\n\n* Add prompt-audit subcommand to claude-api skill\n\nNew shared/prompt-audit.md: a non-interactive audit that inventories the\nprompt surface, dates each instruction, scans against dated-pattern\ntables, and produces a findings report plus a proposed diff. SKILL.md\ngains the subcommand row, a cross-reference from migrate, carve-outs in\nthe provider check and language detection for the non-interactive\ncontract, and a reading-guide entry. model-migration.md points at the\naudit from its prompt-behavior section.\n\nNo-Verification-Needed: markdown-only skill content, no runtime surface\n\n* Replace prompt-audit exception callouts with an intent check in language detection\n\nNo-Verification-Needed: markdown-only skill content, no runtime surface",
+          "verified_at": "2026-08-13T18:09:57Z"
+        }
+      },
+      "url": "https://api.github.com/repos/anthropics/skills/commits/f6656c1256d5a8adfa37db9110046ef20bac644c",
+      "html_url": "https://github.com/anthropics/skills/commit/f6656c1256d5a8adfa37db9110046ef20bac644c",
+      "comments_url": "https://api.github.com/repos/anthropics/skills/commits/f6656c1256d5a8adfa37db9110046ef20bac644c/comments",
+      "author": {
+        "login": "cj-ant",
+        "id": 286490957,
+        "node_id": "U_kgDOEROBTQ",
+        "avatar_url": "https://avatars.githubusercontent.com/u/286490957?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/cj-ant",
+        "html_url": "https://github.com/cj-ant",
+        "followers_url": "https://api.github.com/users/cj-ant/followers",
+        "following_url": "https://api.github.com/users/cj-ant/following{/other_user}",
+        "gists_url": "https://api.github.com/users/cj-ant/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/cj-ant/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/cj-ant/subscriptions",
+        "organizations_url": "https://api.github.com/users/cj-ant/orgs",
+        "repos_url": "https://api.github.com/users/cj-ant/repos",
+        "events_url": "https://api.github.com/users/cj-ant/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/cj-ant/received_events",
+        "type": "User",
+        "user_view_type": "public",
+        "site_admin": false
+      },
+      "committer": {
+        "login": "web-flow",
+        "id": 19864447,
+        "node_id": "MDQ6VXNlcjE5ODY0NDQ3",
+        "avatar_url": "https://avatars.githubusercontent.com/u/19864447?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/web-flow",
+        "html_url": "https://github.com/web-flow",
+        "followers_url": "https://api.github.com/users/web-flow/followers",
+        "following_url": "https://api.github.com/users/web-flow/following{/other_user}",
+        "gists_url": "https://api.github.com/users/web-flow/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/web-flow/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/web-flow/subscriptions",
+        "organizations_url": "https://api.github.com/users/web-flow/orgs",
+        "repos_url": "https://api.github.com/users/web-flow/repos",
+        "events_url": "https://api.github.com/users/web-flow/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/web-flow/received_events",
+        "type": "User",
+        "user_view_type": "public",
+        "site_admin": false
+      },
+      "parents": [
+        {
+          "sha": "f17010c9bb483898c1d9c9f42dde2b3a98889434",
+          "url": "https://api.github.com/repos/anthropics/skills/commits/f17010c9bb483898c1d9c9f42dde2b3a98889434",
+          "html_url": "https://github.com/anthropics/skills/commit/f17010c9bb483898c1d9c9f42dde2b3a98889434"
+        }
+      ]
+    },
+    {
+      "sha": "f17010c9bb483898c1d9c9f42dde2b3a98889434",
+      "node_id": "C_kwDOP0wfhtoAKGYxNzAxMGM5YmI0ODM4OThjMWQ5YzlmNDJkZGUyYjNhOTg4ODk0MzQ",
+      "commit": {
+        "author": {
+          "name": "CJ Avilla",
+          "email": "cj@anthropic.com",
+          "date": "2026-08-07T17:14:14Z"
+        },
+        "committer": {
+          "name": "GitHub",
+          "email": "noreply@github.com",
+          "date": "2026-08-07T17:14:14Z"
+        },
+        "message": "Update claude-api skill: Managed Agents August launch wave (#1532)\n\nMirror the latest bundled-skill content for the August 5 Managed Agents\nlaunch wave:\n\n- Session budgets: budget object at session create (minor-unit cents\n  string), budget_reached pause semantics, settle-event allowlist,\n  session.usage event, change/remove-to-resume, multiagent shared cap\n- Deployment budgets: same budget object on deployments, copied onto\n  each fired session, clearable and re-addable\n- Inference geo pinning: inference_geo on the agent model object,\n  per-session override, roster uniformity, never grandfathered\n- Skills from a GitHub repository: root .claude/skills discovery at\n  session start (cloud sandboxes only), trust-boundary warning\n- Advisor: {type: \"advisor\", model} multiagent roster entry, reserved\n  anthropic.advisor thread, plaintext vs redacted delivery; advisor\n  tool max_uses/max_tokens/caching options and error result variant\n- Multiagent: new when-to-use guidance (start with self, add cheaper\n  workers, dedicated specialists), delegation tools, docs URL rename\n- Corrections: agent versions are sequential integers, Files API\n  uploads take a purpose param, stop_details refusal categories are an\n  open set, Sonnet 5 added to the prefill-removed list, vault_ids is\n  create-only on sessions, deployments gain an update endpoint\n\nNo-Verification-Needed: markdown-only skill content sync",
+        "tree": {
+          "sha": "0fe4c0c8372b239b13062036d08d05f79d4055a1",
+          "url": "https://api.github.com/repos/anthropics/skills/git/trees/0fe4c0c8372b239b13062036d08d05f79d4055a1"
+        },
+        "url": "https://api.github.com/repos/anthropics/skills/git/commits/f17010c9bb483898c1d9c9f42dde2b3a98889434",
+        "comment_count": 0,
+        "verification": {
+          "verified": true,
+          "reason": "valid",
+          "signature": "-----BEGIN PGP SIGNATURE-----\n\nwsFcBAABCAAQBQJqdhJmCRC1aQ7uu5UhlAAAHpkQAAF6UJ97cJapsdhSglRES0sK\nl3qUYGflUytNQGLc562gSwbW4h1UrpCootPv6Irs2cBkTv2LoYJZxvku2gaxUZDl\nNdmMTjFZINhGbC0XDTjUg18X00f2OeWOCqZvrlMjZG8I3ktsNPpdiY8yLtekkxtV\nVbtcNUPSsc/7AxNvQz60pFNJXYNRcfW91VmUC6OeuZICfz3psDyee+uDd3gNhDXl\nM4g/KQOQJ8cJ13vIsbCetYVeD/Yh7/QFkdjLOL5/W6ZnjtuU9kp/NHvkhLvMbfbt\nn5yo+RL/nn76ZxWfmUJ+i+MZ29tPb5xHHLGx26UQrcyuJQk+BLnZhCszP8+fiTv9\nFcNKcR7GOBgowz1WRhsVrvEarG6GlCVvN7RPh2X5vtoo+kQvUssAoPHxnhxZhTqK\nK+r67bga0aSovn0w5RUaKRaGh2yHDuAoHGlPiBUfi6Y+9DzxH7lGObdTwIwerdnT\nCH7kQjFo4rSUOt1iNPROvL6KDc/Bj7aDigVo3/XhJd7KiKzpruWrIk87PBC6UY3p\n1Bu7MsGwXnhXNSKDTk4xm5RkN5QKTVZiGg5FaMbwjESJCBDVJcqp3O3TkaTDOVKo\nPyLUDK31kWm4xGXS5CPWySdcmgIHX1fNLIPystLBkAu6N0ac6eLLbELJfk69Q1nz\n+MdViX1/jk4mP8QiXoou\n=cRug\n-----END PGP SIGNATURE-----\n",
+          "payload": "tree 0fe4c0c8372b239b13062036d08d05f79d4055a1\nparent b29e7cf65e5cb78a5ac33d582270551bc74a14eb\nauthor CJ Avilla <cj@anthropic.com> 1786122854 -0400\ncommitter GitHub <noreply@github.com> 1786122854 -0400\n\nUpdate claude-api skill: Managed Agents August launch wave (#1532)\n\nMirror the latest bundled-skill content for the August 5 Managed Agents\nlaunch wave:\n\n- Session budgets: budget object at session create (minor-unit cents\n  string), budget_reached pause semantics, settle-event allowlist,\n  session.usage event, change/remove-to-resume, multiagent shared cap\n- Deployment budgets: same budget object on deployments, copied onto\n  each fired session, clearable and re-addable\n- Inference geo pinning: inference_geo on the agent model object,\n  per-session override, roster uniformity, never grandfathered\n- Skills from a GitHub repository: root .claude/skills discovery at\n  session start (cloud sandboxes only), trust-boundary warning\n- Advisor: {type: \"advisor\", model} multiagent roster entry, reserved\n  anthropic.advisor thread, plaintext vs redacted delivery; advisor\n  tool max_uses/max_tokens/caching options and error result variant\n- Multiagent: new when-to-use guidance (start with self, add cheaper\n  workers, dedicated specialists), delegation tools, docs URL rename\n- Corrections: agent versions are sequential integers, Files API\n  uploads take a purpose param, stop_details refusal categories are an\n  open set, Sonnet 5 added to the prefill-removed list, vault_ids is\n  create-only on sessions, deployments gain an update endpoint\n\nNo-Verification-Needed: markdown-only skill content sync",
+          "verified_at": "2026-08-07T17:14:19Z"
+        }
+      },
+      "url": "https://api.github.com/repos/anthropics/skills/commits/f17010c9bb483898c1d9c9f42dde2b3a98889434",
+      "html_url": "https://github.com/anthropics/skills/commit/f17010c9bb483898c1d9c9f42dde2b3a98889434",
+      "comments_url": "https://api.github.com/repos/anthropics/skills/commits/f17010c9bb483898c1d9c9f42dde2b3a98889434/comments",
+      "author": {
+        "login": "cj-ant",
+        "id": 286490957,
+        "node_id": "U_kgDOEROBTQ",
+        "avatar_url": "https://avatars.githubusercontent.com/u/286490957?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/cj-ant",
+        "html_url": "https://github.com/cj-ant",
+        "followers_url": "https://api.github.com/users/cj-ant/followers",
+        "following_url": "https://api.github.com/users/cj-ant/following{/other_user}",
+        "gists_url": "https://api.github.com/users/cj-ant/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/cj-ant/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/cj-ant/subscriptions",
+        "organizations_url": "https://api.github.com/users/cj-ant/orgs",
+        "repos_url": "https://api.github.com/users/cj-ant/repos",
+        "events_url": "https://api.github.com/users/cj-ant/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/cj-ant/received_events",
+        "type": "User",
+        "user_view_type": "public",
+        "site_admin": false
+      },
+      "committer": {
+        "login": "web-flow",
+        "id": 19864447,
+        "node_id": "MDQ6VXNlcjE5ODY0NDQ3",
+        "avatar_url": "https://avatars.githubusercontent.com/u/19864447?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/web-flow",
+        "html_url": "https://github.com/web-flow",
+        "followers_url": "https://api.github.com/users/web-flow/followers",
+        "following_url": "https://api.github.com/users/web-flow/following{/other_user}",
+        "gists_url": "https://api.github.com/users/web-flow/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/web-flow/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/web-flow/subscriptions",
+        "organizations_url": "https://api.github.com/users/web-flow/orgs",
+        "repos_url": "https://api.github.com/users/web-flow/repos",
+        "events_url": "https://api.github.com/users/web-flow/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/web-flow/received_events",
+        "type": "User",
+        "user_view_type": "public",
+        "site_admin": false
+      },
+      "parents": [
+        {
+          "sha": "b29e7cf65e5cb78a5ac33d582270551bc74a14eb",
+          "url": "https://api.github.com/repos/anthropics/skills/commits/b29e7cf65e5cb78a5ac33d582270551bc74a14eb",
+          "html_url": "https://github.com/anthropics/skills/commit/b29e7cf65e5cb78a5ac33d582270551bc74a14eb"
+        }
+      ]
+    },
+    {
+      "sha": "b29e7cf65e5cb78a5ac33d582270551bc74a14eb",
+      "node_id": "C_kwDOP0wfhtoAKGIyOWU3Y2Y2NWU1Y2I3OGE1YWMzM2Q1ODIyNzA1NTFiYzc0YTE0ZWI",
+      "commit": {
+        "author": {
+          "name": "Lance Martin",
+          "email": "122662504+rlancemartin@users.noreply.github.com",
+          "date": "2026-07-24T20:12:34Z"
+        },
+        "committer": {
+          "name": "GitHub",
+          "email": "noreply@github.com",
+          "date": "2026-07-24T20:12:34Z"
+        },
+        "message": "Update claude-api skill: Claude Opus 5 (#1476)\n\n* Update claude-api skill: Claude Opus 5\n\n- Add Claude Opus 5 (`claude-opus-5`) as the default model across all\n  SDK examples, model tables, pricing, and migration guidance.\n- Add an Opus 5 migration section covering the API changes that come\n  with it, and move Opus 4.8 into the previous-generation slot.\n- Drop the Opus 4.7 fast-mode guidance, which no longer applies.\n- Scope the server-side fallbacks beta header to the current version.\n\n* Update claude-api skill: Opus 5 fast-follow corrections\n\n- Server-side refusal fallbacks are available on Claude Platform on AWS,\n  not just the Claude API. Correct the availability statements in\n  SKILL.md, the migration guide, and the platform-availability table.\n- Simplify the effort guidance: start at `high` (the API default) and\n  sweep down, rather than starting at `xhigh` for coding work.\n- Add a time-to-first-token section with the prompt instruction that\n  reduces pre-answer thinking on latency-sensitive routes.\n- Replace the two separate thinking-disabled mitigations with the single\n  combined instruction that covers both failure modes.",
+        "tree": {
+          "sha": "a87780349fa9dc5c65c9a11dcc7151ec297f21a1",
+          "url": "https://api.github.com/repos/anthropics/skills/git/trees/a87780349fa9dc5c65c9a11dcc7151ec297f21a1"
+        },
+        "url": "https://api.github.com/repos/anthropics/skills/git/commits/b29e7cf65e5cb78a5ac33d582270551bc74a14eb",
+        "comment_count": 0,
+        "verification": {
+          "verified": true,
+          "reason": "valid",
+          "signature": "-----BEGIN PGP SIGNATURE-----\n\nwsFcBAABCAAQBQJqY8cyCRC1aQ7uu5UhlAAA9egQADIklIkEAfRn7jSt1AVwU4rm\nGEnd70FFj+ha6aWWk+eCUyl0+1tEEhjfCqBHKpOIoo7VXvPjCpfAPzJdiNxBOtvl\n5flKTG9mTotNyEFTxwgOUifjKyPJPytDN3UlmnbIPd3cabAjcYMB/dbssXwGANf6\nDy+5kefyOM3Y/f5J6np+xI0S6iG89cWVkFCCFjD4ALS1NyIFnFLCFsRe4mfC+t14\no/SOjR07LUmdY1jgjXqXNCpZLWRPwRWIt21gmCeU8guHPdomkJFGvn33UxcIipbz\njTnn8RJfHEX/QYPt+9ThoSTWSG8mlX3xY7SPJMyDe1hPIxQjATOovFQEn3vHM06G\nL3XQsabcvm3KyxakJSYBvoAMf/tD27IDpngG5QIGLtepxULMtrCw5jCYxPsCvCrN\nyfZGb9etb77rIjRqhYbnNm489BuITy53cwRzXWXCnou+0GU/Htlh3P4tp49K4uDf\nvC+JalJprtoZAac59PgLrLBYJOXrNIPK/4yi9fwO2D8lxFq3jEwqw5AUKth+1pC0\njkfJXRLn/UreM/QDXtrM2qiWUhzmMi/5bFP6nDYiMbneoa72oR+vYOc4+CeHewRU\n1JQQkrMSpqxFl7H+FqKz3SHuSr9RtSoiUN/N34an31m48fe3Y8/2wSKpS8DJwLK/\nmf7XYhveboQiKWEWgUPm\n=nGxv\n-----END PGP SIGNATURE-----\n",
+          "payload": "tree a87780349fa9dc5c65c9a11dcc7151ec297f21a1\nparent 1f630fdf9259cec4a14913127dfd7c3b69ef72eb\nauthor Lance Martin <122662504+rlancemartin@users.noreply.github.com> 1784923954 -0700\ncommitter GitHub <noreply@github.com> 1784923954 -0400\n\nUpdate claude-api skill: Claude Opus 5 (#1476)\n\n* Update claude-api skill: Claude Opus 5\n\n- Add Claude Opus 5 (`claude-opus-5`) as the default model across all\n  SDK examples, model tables, pricing, and migration guidance.\n- Add an Opus 5 migration section covering the API changes that come\n  with it, and move Opus 4.8 into the previous-generation slot.\n- Drop the Opus 4.7 fast-mode guidance, which no longer applies.\n- Scope the server-side fallbacks beta header to the current version.\n\n* Update claude-api skill: Opus 5 fast-follow corrections\n\n- Server-side refusal fallbacks are available on Claude Platform on AWS,\n  not just the Claude API. Correct the availability statements in\n  SKILL.md, the migration guide, and the platform-availability table.\n- Simplify the effort guidance: start at `high` (the API default) and\n  sweep down, rather than starting at `xhigh` for coding work.\n- Add a time-to-first-token section with the prompt instruction that\n  reduces pre-answer thinking on latency-sensitive routes.\n- Replace the two separate thinking-disabled mitigations with the single\n  combined instruction that covers both failure modes.",
+          "verified_at": "2026-07-24T20:12:35Z"
+        }
+      },
+      "url": "https://api.github.com/repos/anthropics/skills/commits/b29e7cf65e5cb78a5ac33d582270551bc74a14eb",
+      "html_url": "https://github.com/anthropics/skills/commit/b29e7cf65e5cb78a5ac33d582270551bc74a14eb",
+      "comments_url": "https://api.github.com/repos/anthropics/skills/commits/b29e7cf65e5cb78a5ac33d582270551bc74a14eb/comments",
+      "author": {
+        "login": "rlancemartin",
+        "id": 122662504,
+        "node_id": "U_kgDOB0-uaA",
+        "avatar_url": "https://avatars.githubusercontent.com/u/122662504?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/rlancemartin",
+        "html_url": "https://github.com/rlancemartin",
+        "followers_url": "https://api.github.com/users/rlancemartin/followers",
+        "following_url": "https://api.github.com/users/rlancemartin/following{/other_user}",
+        "gists_url": "https://api.github.com/users/rlancemartin/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/rlancemartin/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/rlancemartin/subscriptions",
+        "organizations_url": "https://api.github.com/users/rlancemartin/orgs",
+        "repos_url": "https://api.github.com/users/rlancemartin/repos",
+        "events_url": "https://api.github.com/users/rlancemartin/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/rlancemartin/received_events",
+        "type": "User",
+        "user_view_type": "public",
+        "site_admin": false
+      },
+      "committer": {
+        "login": "web-flow",
+        "id": 19864447,
+        "node_id": "MDQ6VXNlcjE5ODY0NDQ3",
+        "avatar_url": "https://avatars.githubusercontent.com/u/19864447?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/web-flow",
+        "html_url": "https://github.com/web-flow",
+        "followers_url": "https://api.github.com/users/web-flow/followers",
+        "following_url": "https://api.github.com/users/web-flow/following{/other_user}",
+        "gists_url": "https://api.github.com/users/web-flow/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/web-flow/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/web-flow/subscriptions",
+        "organizations_url": "https://api.github.com/users/web-flow/orgs",
+        "repos_url": "https://api.github.com/users/web-flow/repos",
+        "events_url": "https://api.github.com/users/web-flow/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/web-flow/received_events",
+        "type": "User",
+        "user_view_type": "public",
+        "site_admin": false
+      },
+      "parents": [
+        {
+          "sha": "1f630fdf9259cec4a14913127dfd7c3b69ef72eb",
+          "url": "https://api.github.com/repos/anthropics/skills/commits/1f630fdf9259cec4a14913127dfd7c3b69ef72eb",
+          "html_url": "https://github.com/anthropics/skills/commit/1f630fdf9259cec4a14913127dfd7c3b69ef72eb"
+        }
+      ]
+    },
+    {
+      "sha": "1f630fdf9259cec4a14913127dfd7c3b69ef72eb",
+      "node_id": "C_kwDOP0wfhtoAKDFmNjMwZmRmOTI1OWNlYzRhMTQ5MTMxMjdkZmQ3YzNiNjllZjcyZWI",
+      "commit": {
+        "author": {
+          "name": "Lance Martin",
+          "email": "122662504+rlancemartin@users.noreply.github.com",
+          "date": "2026-07-22T18:20:09Z"
+        },
+        "committer": {
+          "name": "GitHub",
+          "email": "noreply@github.com",
+          "date": "2026-07-22T18:20:09Z"
+        },
+        "message": "Update claude-api skill: Managed Agents July launch wave, partner pricing, tool-runner corrections (#1463)\n\nSyncs the claude-api skill with the current upstream source.\n\n## Managed Agents — five new features\n\n- `effort` on the agent's `model` object (a level string or `{\"type\": \"<level>\"}`).\n  It is agent-configuration only: setting it in a per-session `model` override is\n  silently ignored.\n- Optional `version` on agent update, for optimistic concurrency. Omit it for\n  last-write-wins.\n- `initial_events` on session create, collapsing create plus first send into one\n  call. Validation is all-or-nothing and only `user.message` and\n  `user.define_outcome` are accepted.\n- Environment and memory-store webhooks: four `environment.*` events and three\n  `memory_store.*` events.\n- Event deltas on per-thread streams. Previews are thread-scoped, so a child\n  thread's previews never reach the session-level stream.\n\n## Corrections to behavior the skill already documented\n\n- Tool output offload triggers at 100,000 characters (~25k tokens), not 100K\n  tokens, and covers built-in tools rather than MCP alone.\n- `system.message` works on four models, checks only the primary model, appends\n  system context instead of replacing the prompt, and is accepted during a\n  `requires_action` idle when it trails a tool result in the same request.\n- Vault-to-MCP credential matching is normalized (scheme and host lowercased,\n  default ports and trailing slashes stripped), not byte-exact.\n- Multiagent depth greater than 1 is a validation error, not silently ignored.\n- Outcome `interrupted` fires even when evaluation never started, and then\n  carries an empty-string `outcome_evaluation_start_id`.\n- Deployment jitter is 15% of the run interval, floor 5s, cap 9 minutes.\n- Webhooks retry three times with jittered 5-120s backoff, then drop silently.\n  Auto-disable is duration-based with three named triggers.\n- `session.status_terminated` means completion or error.\n- `agent.thinking` is a progress signal and carries no thinking content.\n- `processed_at` is already populated on first sighting for\n  `user.define_outcome`, `user.custom_tool_result`, and `user.tool_result`.\n- Session creation does not provision the sandbox.\n- Skill `version` applies to Anthropic-authored skills too.\n- Console-created vault credentials are header-injection only, and vault\n  environment-variable substitution skips secrets in URL paths.\n- Console trace URLs need the real workspace ID when the API key is not in the\n  Default workspace.\n\n## Elsewhere in the skill\n\n- Note partner pricing under the first-party price table: Microsoft Foundry\n  bills at standard API rates, while Amazon Bedrock and Vertex AI are\n  partner-operated with separate pricing.\n- Correct the tool-runner human-in-the-loop guidance, which previously pointed\n  readers at the manual loop for approval gates the runner's per-turn hooks\n  already cover.\n- Repoint links away from the retired documentation hosts.\n- Dedupe eagerly loaded SKILL.md content that the per-section files already\n  cover.",
+        "tree": {
+          "sha": "9bc09f3e1f4775dfcb06081a13fb563ebff12f22",
+          "url": "https://api.github.com/repos/anthropics/skills/git/trees/9bc09f3e1f4775dfcb06081a13fb563ebff12f22"
+        },
+        "url": "https://api.github.com/repos/anthropics/skills/git/commits/1f630fdf9259cec4a14913127dfd7c3b69ef72eb",
+        "comment_count": 0,
+        "verification": {
+          "verified": true,
+          "reason": "valid",
+          "signature": "-----BEGIN PGP SIGNATURE-----\n\nwsFcBAABCAAQBQJqYQnZCRC1aQ7uu5UhlAAAkcQQAAVUJsujRhd6j5Uv0kQTJnyO\n52g3Tzkc6rvhQ5OkGwB/JN1bt0XqyswXqhNreiQogj72olGDxjh/SAYwKLKFX06X\n4lt/fCg1cpqOBsNQL137AYuYjln1cYSIYvAUTPDIZHabALcYj2QBPB+/lME9cluP\n2IeanP70+ZUzJwpFWvYWIqqFkURp99MOvdUamall2Q0tDRwq27hBHJBKD9ll6Ntg\n0uR9iNmqF3YMTOfNnRe17G5MHKxrnyIhtHRZThgOSPR1Fk2zvoqTxMINK0d/gDJz\ne//Xb1sikSIsn9MqVHFNCsurmjUzm7Pr3Zu9ffptv5zN6ZKYsMmrOIzdqrYlL2ax\nJvym7aW3wi7qJODj5CMw4KYyLILICIQ7ZXXwTBr3RTeU3Jyy1+EOj7MH1PLBXvIo\nU3u8R13Is9dCm2FNg+HTxtwWvCPQP0JD19D7XVxLR5kKEVj/JJLICnf9pYcfMCpD\noWBzha6NW4Zz0n3/AmMWY940ieDkCWeZ7ibPCh1QC1B3wSnIc/6hXUGdlD0jApvu\nPriG66BaznE3iIYFKF3wKO/kMmBlkNFMmtZm1Q9CcF6UuPmoS51YjzA3pnWIOvY+\nsHrZynl7s8s+/OOPZhABrIh79VxSniOFlVmShEitvIdUrD7XT8euHQ0g2bL3AgvL\nxum4w7EiWJ0mci0EcCtC\n=6lqF\n-----END PGP SIGNATURE-----\n",
+          "payload": "tree 9bc09f3e1f4775dfcb06081a13fb563ebff12f22\nparent fa0fa64bdc967915dc8399e803be67759e1e62b8\nauthor Lance Martin <122662504+rlancemartin@users.noreply.github.com> 1784744409 -0700\ncommitter GitHub <noreply@github.com> 1784744409 -0400\n\nUpdate claude-api skill: Managed Agents July launch wave, partner pricing, tool-runner corrections (#1463)\n\nSyncs the claude-api skill with the current upstream source.\n\n## Managed Agents — five new features\n\n- `effort` on the agent's `model` object (a level string or `{\"type\": \"<level>\"}`).\n  It is agent-configuration only: setting it in a per-session `model` override is\n  silently ignored.\n- Optional `version` on agent update, for optimistic concurrency. Omit it for\n  last-write-wins.\n- `initial_events` on session create, collapsing create plus first send into one\n  call. Validation is all-or-nothing and only `user.message` and\n  `user.define_outcome` are accepted.\n- Environment and memory-store webhooks: four `environment.*` events and three\n  `memory_store.*` events.\n- Event deltas on per-thread streams. Previews are thread-scoped, so a child\n  thread's previews never reach the session-level stream.\n\n## Corrections to behavior the skill already documented\n\n- Tool output offload triggers at 100,000 characters (~25k tokens), not 100K\n  tokens, and covers built-in tools rather than MCP alone.\n- `system.message` works on four models, checks only the primary model, appends\n  system context instead of replacing the prompt, and is accepted during a\n  `requires_action` idle when it trails a tool result in the same request.\n- Vault-to-MCP credential matching is normalized (scheme and host lowercased,\n  default ports and trailing slashes stripped), not byte-exact.\n- Multiagent depth greater than 1 is a validation error, not silently ignored.\n- Outcome `interrupted` fires even when evaluation never started, and then\n  carries an empty-string `outcome_evaluation_start_id`.\n- Deployment jitter is 15% of the run interval, floor 5s, cap 9 minutes.\n- Webhooks retry three times with jittered 5-120s backoff, then drop silently.\n  Auto-disable is duration-based with three named triggers.\n- `session.status_terminated` means completion or error.\n- `agent.thinking` is a progress signal and carries no thinking content.\n- `processed_at` is already populated on first sighting for\n  `user.define_outcome`, `user.custom_tool_result`, and `user.tool_result`.\n- Session creation does not provision the sandbox.\n- Skill `version` applies to Anthropic-authored skills too.\n- Console-created vault credentials are header-injection only, and vault\n  environment-variable substitution skips secrets in URL paths.\n- Console trace URLs need the real workspace ID when the API key is not in the\n  Default workspace.\n\n## Elsewhere in the skill\n\n- Note partner pricing under the first-party price table: Microsoft Foundry\n  bills at standard API rates, while Amazon Bedrock and Vertex AI are\n  partner-operated with separate pricing.\n- Correct the tool-runner human-in-the-loop guidance, which previously pointed\n  readers at the manual loop for approval gates the runner's per-turn hooks\n  already cover.\n- Repoint links away from the retired documentation hosts.\n- Dedupe eagerly loaded SKILL.md content that the per-section files already\n  cover.",
+          "verified_at": "2026-07-22T18:20:09Z"
+        }
+      },
+      "url": "https://api.github.com/repos/anthropics/skills/commits/1f630fdf9259cec4a14913127dfd7c3b69ef72eb",
+      "html_url": "https://github.com/anthropics/skills/commit/1f630fdf9259cec4a14913127dfd7c3b69ef72eb",
+      "comments_url": "https://api.github.com/repos/anthropics/skills/commits/1f630fdf9259cec4a14913127dfd7c3b69ef72eb/comments",
+      "author": {
+        "login": "rlancemartin",
+        "id": 122662504,
+        "node_id": "U_kgDOB0-uaA",
+        "avatar_url": "https://avatars.githubusercontent.com/u/122662504?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/rlancemartin",
+        "html_url": "https://github.com/rlancemartin",
+        "followers_url": "https://api.github.com/users/rlancemartin/followers",
+        "following_url": "https://api.github.com/users/rlancemartin/following{/other_user}",
+        "gists_url": "https://api.github.com/users/rlancemartin/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/rlancemartin/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/rlancemartin/subscriptions",
+        "organizations_url": "https://api.github.com/users/rlancemartin/orgs",
+        "repos_url": "https://api.github.com/users/rlancemartin/repos",
+        "events_url": "https://api.github.com/users/rlancemartin/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/rlancemartin/received_events",
+        "type": "User",
+        "user_view_type": "public",
+        "site_admin": false
+      },
+      "committer": {
+        "login": "web-flow",
+        "id": 19864447,
+        "node_id": "MDQ6VXNlcjE5ODY0NDQ3",
+        "avatar_url": "https://avatars.githubusercontent.com/u/19864447?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/web-flow",
+        "html_url": "https://github.com/web-flow",
+        "followers_url": "https://api.github.com/users/web-flow/followers",
+        "following_url": "https://api.github.com/users/web-flow/following{/other_user}",
+        "gists_url": "https://api.github.com/users/web-flow/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/web-flow/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/web-flow/subscriptions",
+        "organizations_url": "https://api.github.com/users/web-flow/orgs",
+        "repos_url": "https://api.github.com/users/web-flow/repos",
+        "events_url": "https://api.github.com/users/web-flow/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/web-flow/received_events",
+        "type": "User",
+        "user_view_type": "public",
+        "site_admin": false
+      },
+      "parents": [
+        {
+          "sha": "fa0fa64bdc967915dc8399e803be67759e1e62b8",
+          "url": "https://api.github.com/repos/anthropics/skills/commits/fa0fa64bdc967915dc8399e803be67759e1e62b8",
+          "html_url": "https://github.com/anthropics/skills/commit/fa0fa64bdc967915dc8399e803be67759e1e62b8"
+        }
+      ]
+    },
+    {
+      "sha": "fa0fa64bdc967915dc8399e803be67759e1e62b8",
+      "node_id": "C_kwDOP0wfhtoAKGZhMGZhNjRiZGM5Njc5MTVkYzgzOTllODAzYmU2Nzc1OWUxZTYyYjg",
+      "commit": {
+        "author": {
+          "name": "Peter Lai",
+          "email": "peterlai@anthropic.com",
+          "date": "2026-07-17T02:47:37Z"
+        },
+        "committer": {
+          "name": "GitHub",
+          "email": "noreply@github.com",
+          "date": "2026-07-17T02:47:37Z"
+        },
+        "message": "Update docx, pptx, and xlsx skills (#1447)\n\nAdd support for template formats (.dotx, .potx, .xltx) across validation\nand the helper scripts.\n\nConsolidate the shared office helpers into a single module, replacing the\npack/unpack pipeline with explicit zip/unzip steps. Extraction now rejects\nsymlink and path-traversal archive entries. Move run merging to a\nstandalone docx script, since it only ever applied to Word documents.\n\nFix the redlining validator so it compares against the original even when\na document has no tracked changes, which is when an untracked edit would\notherwise go unreported.\n\nProvision a LibreOffice user profile per invocation so conversions work in\nsandboxed environments.\n\nTrim the skill docs to the guidance that earns its place.",
+        "tree": {
+          "sha": "34f8dac41f4a813a79a268367d4639f8b2818ddb",
+          "url": "https://api.github.com/repos/anthropics/skills/git/trees/34f8dac41f4a813a79a268367d4639f8b2818ddb"
+        },
+        "url": "https://api.github.com/repos/anthropics/skills/git/commits/fa0fa64bdc967915dc8399e803be67759e1e62b8",
+        "comment_count": 0,
+        "verification": {
+          "verified": true,
+          "reason": "valid",
+          "signature": "-----BEGIN PGP SIGNATURE-----\n\nwsFcBAABCAAQBQJqWZfJCRC1aQ7uu5UhlAAASNEQAAcbzbwxxkGC6ksJepCQ7fqp\nNvi+oNMiV95kqYXnR/AYBT+5qxiacrLPBp9ulMt9PZFk2V0NhNByZ+YFPLzyOouf\nQYLpNYprdeoFkrO8QbD32d9BVzRV6sfrvsiHFpe+YWwFZkGhDy3HdSyVKl7Go8RH\n+lLVkPx6Zw5XI9bMmb6iVQG3ID/BwImFbNJCS9DWPwhD1a6lrHq4IujG+tz52WOV\n2H+uphU/Pa826wPlkd0t+P9p3UwLODKyEQy7iCTqZIDYrRcE6tjcA/6STHs0acps\n4YkBAlZKhwc8Lt6EXESGGc9iBToSvAHSK1KQOi4mQvSQM38jMGmXaDA5bCVby9pv\n9yEL+WxfnhZysF+A+mVN+L4h/iD1Nt/ZZJKXxs7otJvjdOI6xNUgSNXFtVca+yA+\nuscdzttCDUcv9Cv2qw4LAvzZyiUGCA+XHTn2cexcotVaICYQibvLS80uzc+fDe2l\nCEjVK5tryG17SVKiESS33X4OUidm/mCKHAj9EGALGN1rAEU8MYqlK0Pla2OOxSBe\nl1uaVXLyXTlxEMBgmO0FjOSq2HsHCA1ZElM9pTcd1D0Q5+iU5oVf2rfm3saw0zle\nsI1SjyZwX3ZHVlC1O7w2KjWa3jkOZ3in9i1jkRLIdr3XRiSUQhLtKN4aS8ZBbSfo\neC/KSB4MDR9/kkIfh30v\n=r9mT\n-----END PGP SIGNATURE-----\n",
+          "payload": "tree 34f8dac41f4a813a79a268367d4639f8b2818ddb\nparent 9d2f1ae187231d8199c64b5b762e1bdf2244733d\nauthor Peter Lai <peterlai@anthropic.com> 1784256457 -0700\ncommitter GitHub <noreply@github.com> 1784256457 -0700\n\nUpdate docx, pptx, and xlsx skills (#1447)\n\nAdd support for template formats (.dotx, .potx, .xltx) across validation\nand the helper scripts.\n\nConsolidate the shared office helpers into a single module, replacing the\npack/unpack pipeline with explicit zip/unzip steps. Extraction now rejects\nsymlink and path-traversal archive entries. Move run merging to a\nstandalone docx script, since it only ever applied to Word documents.\n\nFix the redlining validator so it compares against the original even when\na document has no tracked changes, which is when an untracked edit would\notherwise go unreported.\n\nProvision a LibreOffice user profile per invocation so conversions work in\nsandboxed environments.\n\nTrim the skill docs to the guidance that earns its place.",
+          "verified_at": "2026-07-17T02:47:38Z"
+        }
+      },
+      "url": "https://api.github.com/repos/anthropics/skills/commits/fa0fa64bdc967915dc8399e803be67759e1e62b8",
+      "html_url": "https://github.com/anthropics/skills/commit/fa0fa64bdc967915dc8399e803be67759e1e62b8",
+      "comments_url": "https://api.github.com/repos/anthropics/skills/commits/fa0fa64bdc967915dc8399e803be67759e1e62b8/comments",
+      "author": {
+        "login": "peterlai-ant",
+        "id": 216783784,
+        "node_id": "U_kgDODOvbqA",
+        "avatar_url": "https://avatars.githubusercontent.com/u/216783784?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/peterlai-ant",
+        "html_url": "https://github.com/peterlai-ant",
+        "followers_url": "https://api.github.com/users/peterlai-ant/followers",
+        "following_url": "https://api.github.com/users/peterlai-ant/following{/other_user}",
+        "gists_url": "https://api.github.com/users/peterlai-ant/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/peterlai-ant/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/peterlai-ant/subscriptions",
+        "organizations_url": "https://api.github.com/users/peterlai-ant/orgs",
+        "repos_url": "https://api.github.com/users/peterlai-ant/repos",
+        "events_url": "https://api.github.com/users/peterlai-ant/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/peterlai-ant/received_events",
+        "type": "User",
+        "user_view_type": "public",
+        "site_admin": false
+      },
+      "committer": {
+        "login": "web-flow",
+        "id": 19864447,
+        "node_id": "MDQ6VXNlcjE5ODY0NDQ3",
+        "avatar_url": "https://avatars.githubusercontent.com/u/19864447?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/web-flow",
+        "html_url": "https://github.com/web-flow",
+        "followers_url": "https://api.github.com/users/web-flow/followers",
+        "following_url": "https://api.github.com/users/web-flow/following{/other_user}",
+        "gists_url": "https://api.github.com/users/web-flow/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/web-flow/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/web-flow/subscriptions",
+        "organizations_url": "https://api.github.com/users/web-flow/orgs",
+        "repos_url": "https://api.github.com/users/web-flow/repos",
+        "events_url": "https://api.github.com/users/web-flow/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/web-flow/received_events",
+        "type": "User",
+        "user_view_type": "public",
+        "site_admin": false
+      },
+      "parents": [
+        {
+          "sha": "9d2f1ae187231d8199c64b5b762e1bdf2244733d",
+          "url": "https://api.github.com/repos/anthropics/skills/commits/9d2f1ae187231d8199c64b5b762e1bdf2244733d",
+          "html_url": "https://github.com/anthropics/skills/commit/9d2f1ae187231d8199c64b5b762e1bdf2244733d"
+        }
+      ]
+    },
+    {
+      "sha": "9d2f1ae187231d8199c64b5b762e1bdf2244733d",
+      "node_id": "C_kwDOP0wfhtoAKDlkMmYxYWUxODcyMzFkODE5OWM2NGI1Yjc2MmUxYmRmMjI0NDczM2Q",
+      "commit": {
+        "author": {
+          "name": "Lance Martin",
+          "email": "122662504+rlancemartin@users.noreply.github.com",
+          "date": "2026-07-01T18:11:23Z"
+        },
+        "committer": {
+          "name": "GitHub",
+          "email": "noreply@github.com",
+          "date": "2026-07-01T18:11:23Z"
+        },
+        "message": "Update claude-api skill: Claude Sonnet 5 and Managed Agents July updates (#1373)",
+        "tree": {
+          "sha": "a1aa084ffa767c20525eb79bea0dacba3b50a2eb",
+          "url": "https://api.github.com/repos/anthropics/skills/git/trees/a1aa084ffa767c20525eb79bea0dacba3b50a2eb"
+        },
+        "url": "https://api.github.com/repos/anthropics/skills/git/commits/9d2f1ae187231d8199c64b5b762e1bdf2244733d",
+        "comment_count": 0,
+        "verification": {
+          "verified": true,
+          "reason": "valid",
+          "signature": "-----BEGIN PGP SIGNATURE-----\n\nwsFcBAABCAAQBQJqRVhLCRC1aQ7uu5UhlAAAzyMQAEqCtfkIgObNX7kxRqBrIIvl\nlB2pMmznr59FAkAP2hB85sFUV64QIf7YQ1jsCiaflKYOA+SFKnN/L5ulxbHdVL7I\nL0+Cs/9Rw6WMdsDzOJqdEDQcBHAjf0brc5szmEAevUlwkh7iJuJF677zkhVtoARE\nDHcTii6a8Q772Pgij9b0q8vNQupJV7eJMgaVbqOG8dTqPRzyXZV54dEQeBU5rK1U\ni1r3/uuCBQTQWuk0tm3ZAcc5Ah+6zSVRkr/mBFScr+5i4uakC3WSXtLIH8UFc77l\nddhnzPdsRhQCdwUUi9LT/v8P5v8bVC9b8c9Cr0SKfR4jQi6VOy2vjTWM+509jA+1\nNb4xnnIgnlH2xln2QpGj0Za7n9yVubgxtlh3Hh+1LCvqrdzeyZYa7dNPJTw7RuRo\n5QC+hIJ3Vmewzui+JFAxNnHzJ4I8T7U6a9kCcU9O65KXlspP74D3qBJqHh0jY8ho\nYu0zJSQQ91PXdqEolAz1XTDOLDVSoXiqKFn98cqzZ5UHcnirl0mD8JZdqOjtoaM8\nUn7BQHnaaC4lSYJLsuhx/ktN8QHiw3vRQ1p15G/sKb3/b9kg4EqNrJDu6EJ5ncby\nVkX/wNOPs7NyK2xabzeTagyRQLj6MrrDFHPuiABgALufEViNtfY3mt3Mt+L/cFTj\nc2zI+8gQ/1tZPt3WYC8+\n=5Ez6\n-----END PGP SIGNATURE-----\n",
+          "payload": "tree a1aa084ffa767c20525eb79bea0dacba3b50a2eb\nparent 35414756ca55738e050562e272a6bbc6273aa926\nauthor Lance Martin <122662504+rlancemartin@users.noreply.github.com> 1782929483 -0700\ncommitter GitHub <noreply@github.com> 1782929483 -0400\n\nUpdate claude-api skill: Claude Sonnet 5 and Managed Agents July updates (#1373)",
+          "verified_at": "2026-07-01T18:11:24Z"
+        }
+      },
+      "url": "https://api.github.com/repos/anthropics/skills/commits/9d2f1ae187231d8199c64b5b762e1bdf2244733d",
+      "html_url": "https://github.com/anthropics/skills/commit/9d2f1ae187231d8199c64b5b762e1bdf2244733d",
+      "comments_url": "https://api.github.com/repos/anthropics/skills/commits/9d2f1ae187231d8199c64b5b762e1bdf2244733d/comments",
+      "author": {
+        "login": "rlancemartin",
+        "id": 122662504,
+        "node_id": "U_kgDOB0-uaA",
+        "avatar_url": "https://avatars.githubusercontent.com/u/122662504?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/rlancemartin",
+        "html_url": "https://github.com/rlancemartin",
+        "followers_url": "https://api.github.com/users/rlancemartin/followers",
+        "following_url": "https://api.github.com/users/rlancemartin/following{/other_user}",
+        "gists_url": "https://api.github.com/users/rlancemartin/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/rlancemartin/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/rlancemartin/subscriptions",
+        "organizations_url": "https://api.github.com/users/rlancemartin/orgs",
+        "repos_url": "https://api.github.com/users/rlancemartin/repos",
+        "events_url": "https://api.github.com/users/rlancemartin/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/rlancemartin/received_events",
+        "type": "User",
+        "user_view_type": "public",
+        "site_admin": false
+      },
+      "committer": {
+        "login": "web-flow",
+        "id": 19864447,
+        "node_id": "MDQ6VXNlcjE5ODY0NDQ3",
+        "avatar_url": "https://avatars.githubusercontent.com/u/19864447?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/web-flow",
+        "html_url": "https://github.com/web-flow",
+        "followers_url": "https://api.github.com/users/web-flow/followers",
+        "following_url": "https://api.github.com/users/web-flow/following{/other_user}",
+        "gists_url": "https://api.github.com/users/web-flow/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/web-flow/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/web-flow/subscriptions",
+        "organizations_url": "https://api.github.com/users/web-flow/orgs",
+        "repos_url": "https://api.github.com/users/web-flow/repos",
+        "events_url": "https://api.github.com/users/web-flow/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/web-flow/received_events",
+        "type": "User",
+        "user_view_type": "public",
+        "site_admin": false
+      },
+      "parents": [
+        {
+          "sha": "35414756ca55738e050562e272a6bbc6273aa926",
+          "url": "https://api.github.com/repos/anthropics/skills/commits/35414756ca55738e050562e272a6bbc6273aa926",
+          "html_url": "https://github.com/anthropics/skills/commit/35414756ca55738e050562e272a6bbc6273aa926"
+        }
+      ]
+    },
+    {
+      "sha": "35414756ca55738e050562e272a6bbc6273aa926",
+      "node_id": "C_kwDOP0wfhtoAKDM1NDE0NzU2Y2E1NTczOGUwNTA1NjJlMjcyYTZiYmM2MjczYWE5MjY",
+      "commit": {
+        "author": {
+          "name": "Lance Martin",
+          "email": "122662504+rlancemartin@users.noreply.github.com",
+          "date": "2026-06-27T16:07:56Z"
+        },
+        "committer": {
+          "name": "GitHub",
+          "email": "noreply@github.com",
+          "date": "2026-06-27T16:07:56Z"
+        },
+        "message": "Update claude-api skill: per-SDK doc split, code_execution_20260521, platform-availability, onboarding streamline (#1363)",
+        "tree": {
+          "sha": "6ba20b94aa54b401fb4b19a1686f4af77d87ed3d",
+          "url": "https://api.github.com/repos/anthropics/skills/git/trees/6ba20b94aa54b401fb4b19a1686f4af77d87ed3d"
+        },
+        "url": "https://api.github.com/repos/anthropics/skills/git/commits/35414756ca55738e050562e272a6bbc6273aa926",
+        "comment_count": 0,
+        "verification": {
+          "verified": true,
+          "reason": "valid",
+          "signature": "-----BEGIN PGP SIGNATURE-----\n\nwsFcBAABCAAQBQJqP/VcCRC1aQ7uu5UhlAAApwQQAFlw7HPhvKmGH12Nz7ESj0wq\n8QRINKLzgVnmqVoHW5EESc0DX+2pZNVB6hJzuRBmkvkkqu0jIN0I+gzuiLxQWadH\nnN/4FemvV7SGhkkLq0GRJi+fVw7sGeMmew2lMar568y7HfFbXAdAKeY+YUezit1f\nXaj43uOYLKstrpfaMwblWcOe81KrU3bqBvNPrBrR7zCr7dY4l9y7mNOXVWkkek2l\nUjallkPl06O6+7ojJjdx5zj4Edgti4P02IgANd3zPMWQO/OxdB8PtPY03JiW7VGs\n23KehuSyWjmaflhMe/BSt3HgBtgcYFh9mY52L4mAA2ES5FtetWI0JoEP8D+qvNWg\n0CkP+WcJzdmaL2DdZn6HaAEXsvcGx3IlCcxB3AV1Dn/kjRtTqSCLWwj8X2bHlp3l\nXLRoKZ+j2/vnxqQb23wXp3Vt/Q6oDmoKQ9zmjwRWZdZsjz14nJ3kjeqMHtWKh0zV\n8a+TYCq5KTi5q/wdePvNY5FbF93dF1BlH4zOIGLnR7bPcuEeIX0ur7sW5KsGyXhE\nAt4AqUttu6lX6h3elmtOKJdw/aoTuk2HbrN2i8LCYRoIzg6J51EgK0ztAeBLMYCh\n46FpD9dCWVeI7gWlsbT4JUeHpJRSgilzAcICXLF1eLengyYuUcxvmjHWWJzp1IsE\nctAebl8KnaJ/WL6J7pts\n=xu4S\n-----END PGP SIGNATURE-----\n",
+          "payload": "tree 6ba20b94aa54b401fb4b19a1686f4af77d87ed3d\nparent 57546260929473d4e0d1c1bb75297be2fdfa1949\nauthor Lance Martin <122662504+rlancemartin@users.noreply.github.com> 1782576476 -0700\ncommitter GitHub <noreply@github.com> 1782576476 -0400\n\nUpdate claude-api skill: per-SDK doc split, code_execution_20260521, platform-availability, onboarding streamline (#1363)",
+          "verified_at": "2026-06-27T16:07:57Z"
+        }
+      },
+      "url": "https://api.github.com/repos/anthropics/skills/commits/35414756ca55738e050562e272a6bbc6273aa926",
+      "html_url": "https://github.com/anthropics/skills/commit/35414756ca55738e050562e272a6bbc6273aa926",
+      "comments_url": "https://api.github.com/repos/anthropics/skills/commits/35414756ca55738e050562e272a6bbc6273aa926/comments",
+      "author": {
+        "login": "rlancemartin",
+        "id": 122662504,
+        "node_id": "U_kgDOB0-uaA",
+        "avatar_url": "https://avatars.githubusercontent.com/u/122662504?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/rlancemartin",
+        "html_url": "https://github.com/rlancemartin",
+        "followers_url": "https://api.github.com/users/rlancemartin/followers",
+        "following_url": "https://api.github.com/users/rlancemartin/following{/other_user}",
+        "gists_url": "https://api.github.com/users/rlancemartin/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/rlancemartin/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/rlancemartin/subscriptions",
+        "organizations_url": "https://api.github.com/users/rlancemartin/orgs",
+        "repos_url": "https://api.github.com/users/rlancemartin/repos",
+        "events_url": "https://api.github.com/users/rlancemartin/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/rlancemartin/received_events",
+        "type": "User",
+        "user_view_type": "public",
+        "site_admin": false
+      },
+      "committer": {
+        "login": "web-flow",
+        "id": 19864447,
+        "node_id": "MDQ6VXNlcjE5ODY0NDQ3",
+        "avatar_url": "https://avatars.githubusercontent.com/u/19864447?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/web-flow",
+        "html_url": "https://github.com/web-flow",
+        "followers_url": "https://api.github.com/users/web-flow/followers",
+        "following_url": "https://api.github.com/users/web-flow/following{/other_user}",
+        "gists_url": "https://api.github.com/users/web-flow/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/web-flow/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/web-flow/subscriptions",
+        "organizations_url": "https://api.github.com/users/web-flow/orgs",
+        "repos_url": "https://api.github.com/users/web-flow/repos",
+        "events_url": "https://api.github.com/users/web-flow/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/web-flow/received_events",
+        "type": "User",
+        "user_view_type": "public",
+        "site_admin": false
+      },
+      "parents": [
+        {
+          "sha": "57546260929473d4e0d1c1bb75297be2fdfa1949",
+          "url": "https://api.github.com/repos/anthropics/skills/commits/57546260929473d4e0d1c1bb75297be2fdfa1949",
+          "html_url": "https://github.com/anthropics/skills/commit/57546260929473d4e0d1c1bb75297be2fdfa1949"
+        }
+      ]
+    },
+    {
+      "sha": "57546260929473d4e0d1c1bb75297be2fdfa1949",
+      "node_id": "C_kwDOP0wfhtoAKDU3NTQ2MjYwOTI5NDczZDRlMGQxYzFiYjc1Mjk3YmUyZmRmYTE5NDk",
+      "commit": {
+        "author": {
+          "name": "Lance Martin",
+          "email": "122662504+rlancemartin@users.noreply.github.com",
+          "date": "2026-06-09T20:35:16Z"
+        },
+        "committer": {
+          "name": "GitHub",
+          "email": "noreply@github.com",
+          "date": "2026-06-09T20:35:16Z"
+        },
+        "message": "Update claude-api skill: scheduled deployments, vault env-var credentials, system.message events (#1297)\n\n- Add Managed Agents scheduled deployments: new\n  shared/managed-agents-scheduled-deployments.md (cron schedules, deployment\n  runs, pause/auto-pause), Deployments and Deployment Runs API reference,\n  beta-header coverage, and SKILL.md routing\n- Vault environment_variable credentials: secrets substituted at egress with\n  networking allowlists; secrets guidance in tools, client-patterns, and\n  onboarding docs rewritten around them; self-hosted sandbox caveats noted\n- Add system.message event for mid-session system prompt updates (Opus 4.8\n  only) to the events guide and API reference",
+        "tree": {
+          "sha": "85bb6be91988eb679e3c636f755b91a7d65a680d",
+          "url": "https://api.github.com/repos/anthropics/skills/git/trees/85bb6be91988eb679e3c636f755b91a7d65a680d"
+        },
+        "url": "https://api.github.com/repos/anthropics/skills/git/commits/57546260929473d4e0d1c1bb75297be2fdfa1949",
+        "comment_count": 0,
+        "verification": {
+          "verified": true,
+          "reason": "valid",
+          "signature": "-----BEGIN PGP SIGNATURE-----\n\nwsFcBAABCAAQBQJqKHkECRC1aQ7uu5UhlAAAkRIQAEAr/ORKIcpZ3Af03nu1vyqs\niE50skAAkUp29vONiCCz7V4z3cTJb6ThH9qXOt8X42v1ZWlzyh+ePaTRkREQtDgM\nJIUMk15mWA75cYFs6o65C9Nr1S02sc74mOWm0HFF33xAL2K0VlggqNtszwemm0wz\nFHDf9M7+lsMbHMmE6AaciYSn7TGel6ibXq53Lsu+2KvAOTpeJij6S1tvGc+6i3kt\nKwulVQeHmpHttWk9h0HpgbA0IgJGrKpDYMSkii2rA7jzSwTTsv0tqUu9S5vfhE4v\n+a5rjp/FScCbNNqJ4YnUDRHseDEaqgF6dq+N7s5J5I4/Ss2e5cGSufPkG3r9hY1t\n6MIHHOoF5WuP3pB3jVD8e26hAnf0bR/fH4yhW6pvWDC1IpM9KyPbvCMFCvSWkq7M\nq2P35oSAYinTglqK4SsKrE+vyVUgOHrIxlDCHaFdTbA9q92lFllgs7WOZjs09hSM\nHXMAQM4Izvqo/iMqH+zfskiiuHWcoRqSyx29mM/JhJL9W61Gx6hFDREvdEbYfpVi\ngxXSdzuW6MNo6YvSL08D1ZEyOjzGig02m2rNTnH91kQIUwnktXAsewHJS1KSu2I2\nrgORBmGp44yqAALOIacHEUKwjB4GXtSvhEoLCPprP5oX7Rdb0aw5IDD8VizxaVxb\nIVPtmvmEwmMGFzV/1BqJ\n=TUJe\n-----END PGP SIGNATURE-----\n",
+          "payload": "tree 85bb6be91988eb679e3c636f755b91a7d65a680d\nparent 2235be7c60b551f5de82ade908fd3816455afcda\nauthor Lance Martin <122662504+rlancemartin@users.noreply.github.com> 1781037316 -0700\ncommitter GitHub <noreply@github.com> 1781037316 -0400\n\nUpdate claude-api skill: scheduled deployments, vault env-var credentials, system.message events (#1297)\n\n- Add Managed Agents scheduled deployments: new\n  shared/managed-agents-scheduled-deployments.md (cron schedules, deployment\n  runs, pause/auto-pause), Deployments and Deployment Runs API reference,\n  beta-header coverage, and SKILL.md routing\n- Vault environment_variable credentials: secrets substituted at egress with\n  networking allowlists; secrets guidance in tools, client-patterns, and\n  onboarding docs rewritten around them; self-hosted sandbox caveats noted\n- Add system.message event for mid-session system prompt updates (Opus 4.8\n  only) to the events guide and API reference",
+          "verified_at": "2026-06-09T20:35:17Z"
+        }
+      },
+      "url": "https://api.github.com/repos/anthropics/skills/commits/57546260929473d4e0d1c1bb75297be2fdfa1949",
+      "html_url": "https://github.com/anthropics/skills/commit/57546260929473d4e0d1c1bb75297be2fdfa1949",
+      "comments_url": "https://api.github.com/repos/anthropics/skills/commits/57546260929473d4e0d1c1bb75297be2fdfa1949/comments",
+      "author": {
+        "login": "rlancemartin",
+        "id": 122662504,
+        "node_id": "U_kgDOB0-uaA",
+        "avatar_url": "https://avatars.githubusercontent.com/u/122662504?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/rlancemartin",
+        "html_url": "https://github.com/rlancemartin",
+        "followers_url": "https://api.github.com/users/rlancemartin/followers",
+        "following_url": "https://api.github.com/users/rlancemartin/following{/other_user}",
+        "gists_url": "https://api.github.com/users/rlancemartin/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/rlancemartin/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/rlancemartin/subscriptions",
+        "organizations_url": "https://api.github.com/users/rlancemartin/orgs",
+        "repos_url": "https://api.github.com/users/rlancemartin/repos",
+        "events_url": "https://api.github.com/users/rlancemartin/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/rlancemartin/received_events",
+        "type": "User",
+        "user_view_type": "public",
+        "site_admin": false
+      },
+      "committer": {
+        "login": "web-flow",
+        "id": 19864447,
+        "node_id": "MDQ6VXNlcjE5ODY0NDQ3",
+        "avatar_url": "https://avatars.githubusercontent.com/u/19864447?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/web-flow",
+        "html_url": "https://github.com/web-flow",
+        "followers_url": "https://api.github.com/users/web-flow/followers",
+        "following_url": "https://api.github.com/users/web-flow/following{/other_user}",
+        "gists_url": "https://api.github.com/users/web-flow/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/web-flow/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/web-flow/subscriptions",
+        "organizations_url": "https://api.github.com/users/web-flow/orgs",
+        "repos_url": "https://api.github.com/users/web-flow/repos",
+        "events_url": "https://api.github.com/users/web-flow/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/web-flow/received_events",
+        "type": "User",
+        "user_view_type": "public",
+        "site_admin": false
+      },
+      "parents": [
+        {
+          "sha": "2235be7c60b551f5de82ade908fd3816455afcda",
+          "url": "https://api.github.com/repos/anthropics/skills/commits/2235be7c60b551f5de82ade908fd3816455afcda",
+          "html_url": "https://github.com/anthropics/skills/commit/2235be7c60b551f5de82ade908fd3816455afcda"
+        }
+      ]
+    },
+    {
+      "sha": "2235be7c60b551f5de82ade908fd3816455afcda",
+      "node_id": "C_kwDOP0wfhtoAKDIyMzViZTdjNjBiNTUxZjVkZTgyYWRlOTA4ZmQzODE2NDU1YWZjZGE",
+      "commit": {
+        "author": {
+          "name": "william qian",
+          "email": "williamqian12@gmail.com",
+          "date": "2026-06-09T19:33:41Z"
+        },
+        "committer": {
+          "name": "GitHub",
+          "email": "noreply@github.com",
+          "date": "2026-06-09T19:33:41Z"
+        },
+        "message": "Update frontend-design skill (#1293)",
+        "tree": {
+          "sha": "3571fceeeb5a90354fc24e7283d3bb967763f0ae",
+          "url": "https://api.github.com/repos/anthropics/skills/git/trees/3571fceeeb5a90354fc24e7283d3bb967763f0ae"
+        },
+        "url": "https://api.github.com/repos/anthropics/skills/git/commits/2235be7c60b551f5de82ade908fd3816455afcda",
+        "comment_count": 0,
+        "verification": {
+          "verified": true,
+          "reason": "valid",
+          "signature": "-----BEGIN PGP SIGNATURE-----\n\nwsFcBAABCAAQBQJqKGqVCRC1aQ7uu5UhlAAAuDwQAKLRrt5LEL3HKRHvvTUgxt5S\nEl15i86gGMLpaWi16DiH5dsSQGllxBlpXnBY+qvvO48cugwYTiK1Usn/gT2oZb0R\nW7SKk6coYu/d0rsunD/si7z7xNsHzTG79TMB9pwMVmDdIcI+NHFU2W+MkDC5dv22\nYbiz1Q4+lartuQrn7K6DQpOu6AEZ6StUmOgnOD3ut/uWEop6n9iQCvc1oxsfPqJW\njnqfDKNelo6B2HGB5nLJx8yqIt9oi8CGe6GNGxFZcsoP5A2jmy3ka/WT66J41Ins\nS8doJhoThFnJeHBRkm4nHEMCwiI05/DqVxLVbu7QAPcqsUtMBlV/sycP2na9oQYl\nAAOEUYpW79CMLg++04PGmThFcg2mY/jIA3WVHAgHsrDmJRJQb/x7HMoPmZfVmHaN\naXJ8dodj2njy3KNU2ysSzdrNkr/6X49zSeXMJn8olQ8UFKomuZ3dJFDP2CxoXnQN\ncCPnOMxLelus2L7itxWCb1z5Sb/UxUbu0p+f7hvbNgkM3c4Vx2a6cH/jERnrNIOz\n0c6qR2PEM7epjLuP3HuW3/yUfIzm80lP8IFuLzNTXv2+/uDPLRtdENkFxJaL26oD\n6WGapukhy0sOQJ9rhqOWOCNGRM14dctVpo52fl3WsOc/kPFKVLeaNm11uTyHVDsq\n88xFfBGZQTA8KFCm1p6G\n=H3Y8\n-----END PGP SIGNATURE-----\n",
+          "payload": "tree 3571fceeeb5a90354fc24e7283d3bb967763f0ae\nparent 5d25128289ff72bc9c7839ac3d245f4d57515447\nauthor william qian <williamqian12@gmail.com> 1781033621 -0700\ncommitter GitHub <noreply@github.com> 1781033621 -0700\n\nUpdate frontend-design skill (#1293)",
+          "verified_at": "2026-06-09T19:33:42Z"
+        }
+      },
+      "url": "https://api.github.com/repos/anthropics/skills/commits/2235be7c60b551f5de82ade908fd3816455afcda",
+      "html_url": "https://github.com/anthropics/skills/commit/2235be7c60b551f5de82ade908fd3816455afcda",
+      "comments_url": "https://api.github.com/repos/anthropics/skills/commits/2235be7c60b551f5de82ade908fd3816455afcda/comments",
+      "author": {
+        "login": "williamqian12",
+        "id": 22250112,
+        "node_id": "MDQ6VXNlcjIyMjUwMTEy",
+        "avatar_url": "https://avatars.githubusercontent.com/u/22250112?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/williamqian12",
+        "html_url": "https://github.com/williamqian12",
+        "followers_url": "https://api.github.com/users/williamqian12/followers",
+        "following_url": "https://api.github.com/users/williamqian12/following{/other_user}",
+        "gists_url": "https://api.github.com/users/williamqian12/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/williamqian12/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/williamqian12/subscriptions",
+        "organizations_url": "https://api.github.com/users/williamqian12/orgs",
+        "repos_url": "https://api.github.com/users/williamqian12/repos",
+        "events_url": "https://api.github.com/users/williamqian12/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/williamqian12/received_events",
+        "type": "User",
+        "user_view_type": "public",
+        "site_admin": false
+      },
+      "committer": {
+        "login": "web-flow",
+        "id": 19864447,
+        "node_id": "MDQ6VXNlcjE5ODY0NDQ3",
+        "avatar_url": "https://avatars.githubusercontent.com/u/19864447?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/web-flow",
+        "html_url": "https://github.com/web-flow",
+        "followers_url": "https://api.github.com/users/web-flow/followers",
+        "following_url": "https://api.github.com/users/web-flow/following{/other_user}",
+        "gists_url": "https://api.github.com/users/web-flow/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/web-flow/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/web-flow/subscriptions",
+        "organizations_url": "https://api.github.com/users/web-flow/orgs",
+        "repos_url": "https://api.github.com/users/web-flow/repos",
+        "events_url": "https://api.github.com/users/web-flow/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/web-flow/received_events",
+        "type": "User",
+        "user_view_type": "public",
+        "site_admin": false
+      },
+      "parents": [
+        {
+          "sha": "5d25128289ff72bc9c7839ac3d245f4d57515447",
+          "url": "https://api.github.com/repos/anthropics/skills/commits/5d25128289ff72bc9c7839ac3d245f4d57515447",
+          "html_url": "https://github.com/anthropics/skills/commit/5d25128289ff72bc9c7839ac3d245f4d57515447"
+        }
+      ]
+    },
+    {
+      "sha": "5d25128289ff72bc9c7839ac3d245f4d57515447",
+      "node_id": "C_kwDOP0wfhtoAKDVkMjUxMjgyODlmZjcyYmM5Yzc4MzlhYzNkMjQ1ZjRkNTc1MTU0NDc",
+      "commit": {
+        "author": {
+          "name": "Lance Martin",
+          "email": "122662504+rlancemartin@users.noreply.github.com",
+          "date": "2026-06-09T17:34:55Z"
+        },
+        "committer": {
+          "name": "GitHub",
+          "email": "noreply@github.com",
+          "date": "2026-06-09T17:34:55Z"
+        },
+        "message": "Update claude-api skill: Claude Fable 5 and Claude Mythos 5 (#1294)\n\n- Add Claude Fable 5 and Claude Mythos 5 to the model tables with pricing,\n  context window, and model-selection guidance\n- Document Fable-specific API behavior: always-on adaptive thinking (explicit\n  disabled returns 400), protected-thinking display and replay rules, new\n  tokenizer (~30% more tokens), refusal stop reason with server-side fallbacks\n  and SDK fallback middleware, 30-day data-retention requirement\n- Add the full Migrating to Claude Fable 5 guide section and checklist,\n  including the Mythos Preview migration path\n- Refresh skill trigger description, effort/compaction/task-budget notes,\n  caching minimums, structured-output and dynamic-filtering support tables",
+        "tree": {
+          "sha": "10123e8e50a17208972dd23ae1f95045565bc31b",
+          "url": "https://api.github.com/repos/anthropics/skills/git/trees/10123e8e50a17208972dd23ae1f95045565bc31b"
+        },
+        "url": "https://api.github.com/repos/anthropics/skills/git/commits/5d25128289ff72bc9c7839ac3d245f4d57515447",
+        "comment_count": 0,
+        "verification": {
+          "verified": true,
+          "reason": "valid",
+          "signature": "-----BEGIN PGP SIGNATURE-----\n\nwsFcBAABCAAQBQJqKE6/CRC1aQ7uu5UhlAAAjVwQAJqQNYh6ia2i7apISa0+tfLm\nTLmGBE9qLzzxkXE+/ICpTJ+w5PvEh7s0GwMg55JfQMegKpvUmRsgYEq0/D1D9Zza\nWjizc4g3URoZXWzJFk2fhZFF4hcPF/LkqcHFdXGq32nTWw3ftzuLRIB9RZuAI54p\n5lfKOqCuSrkgcmuW97zLMaUynnzv4qA/loKzVulYybH2ndzMJCZfPZjRi+BfnCJW\nAZHMIEUwA4LmdB5dQX2eUXlJc1TFnNJzdIkFV+insiR41rpSIBKRJanA5TPcjhy5\nqCrhE9YEDQ8BDinRNsa/TaMrYpEGq4p+Csq31+ZMFw6NnVgmW16J1N7nC1O1GZ6g\n80g6CRrSq2hqV+RMaH6aYk5ldmoek4BYaj9W90bE9/M6H7E2uwY0+V8iQNVdV0Lh\nby7FUA64Ccap9IPGPhgfI25c9RlUF04PONtprE+nXNAPPINw6L5j4kcadR4RygAm\nVoKWU2yLn2JDPF2KO0M4DAfqa7dzX/nfCz7hXF6qE3nKLunfkIdAMuUB13ATm9nk\nYgekbDZpVNRm/p5xx1YKsTk03t2+54q3GKfj6E9opEufFEs38F8l7KtVdd+xIsl/\nOSUJzvz0QN7V0qub1ChlXlyeLJnWHEoUL0A2XUibSqZ5V+CypFCN0OGrxPB9v64X\nSIsuF9gOrdFkLkvFUASZ\n=wybk\n-----END PGP SIGNATURE-----\n",
+          "payload": "tree 10123e8e50a17208972dd23ae1f95045565bc31b\nparent c30d329f5814647c1e2f071020c1e8c1c9893ef1\nauthor Lance Martin <122662504+rlancemartin@users.noreply.github.com> 1781026495 -0700\ncommitter GitHub <noreply@github.com> 1781026495 +0900\n\nUpdate claude-api skill: Claude Fable 5 and Claude Mythos 5 (#1294)\n\n- Add Claude Fable 5 and Claude Mythos 5 to the model tables with pricing,\n  context window, and model-selection guidance\n- Document Fable-specific API behavior: always-on adaptive thinking (explicit\n  disabled returns 400), protected-thinking display and replay rules, new\n  tokenizer (~30% more tokens), refusal stop reason with server-side fallbacks\n  and SDK fallback middleware, 30-day data-retention requirement\n- Add the full Migrating to Claude Fable 5 guide section and checklist,\n  including the Mythos Preview migration path\n- Refresh skill trigger description, effort/compaction/task-budget notes,\n  caching minimums, structured-output and dynamic-filtering support tables",
+          "verified_at": "2026-06-09T17:34:55Z"
+        }
+      },
+      "url": "https://api.github.com/repos/anthropics/skills/commits/5d25128289ff72bc9c7839ac3d245f4d57515447",
+      "html_url": "https://github.com/anthropics/skills/commit/5d25128289ff72bc9c7839ac3d245f4d57515447",
+      "comments_url": "https://api.github.com/repos/anthropics/skills/commits/5d25128289ff72bc9c7839ac3d245f4d57515447/comments",
+      "author": {
+        "login": "rlancemartin",
+        "id": 122662504,
+        "node_id": "U_kgDOB0-uaA",
+        "avatar_url": "https://avatars.githubusercontent.com/u/122662504?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/rlancemartin",
+        "html_url": "https://github.com/rlancemartin",
+        "followers_url": "https://api.github.com/users/rlancemartin/followers",
+        "following_url": "https://api.github.com/users/rlancemartin/following{/other_user}",
+        "gists_url": "https://api.github.com/users/rlancemartin/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/rlancemartin/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/rlancemartin/subscriptions",
+        "organizations_url": "https://api.github.com/users/rlancemartin/orgs",
+        "repos_url": "https://api.github.com/users/rlancemartin/repos",
+        "events_url": "https://api.github.com/users/rlancemartin/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/rlancemartin/received_events",
+        "type": "User",
+        "user_view_type": "public",
+        "site_admin": false
+      },
+      "committer": {
+        "login": "web-flow",
+        "id": 19864447,
+        "node_id": "MDQ6VXNlcjE5ODY0NDQ3",
+        "avatar_url": "https://avatars.githubusercontent.com/u/19864447?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/web-flow",
+        "html_url": "https://github.com/web-flow",
+        "followers_url": "https://api.github.com/users/web-flow/followers",
+        "following_url": "https://api.github.com/users/web-flow/following{/other_user}",
+        "gists_url": "https://api.github.com/users/web-flow/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/web-flow/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/web-flow/subscriptions",
+        "organizations_url": "https://api.github.com/users/web-flow/orgs",
+        "repos_url": "https://api.github.com/users/web-flow/repos",
+        "events_url": "https://api.github.com/users/web-flow/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/web-flow/received_events",
+        "type": "User",
+        "user_view_type": "public",
+        "site_admin": false
+      },
+      "parents": [
+        {
+          "sha": "c30d329f5814647c1e2f071020c1e8c1c9893ef1",
+          "url": "https://api.github.com/repos/anthropics/skills/commits/c30d329f5814647c1e2f071020c1e8c1c9893ef1",
+          "html_url": "https://github.com/anthropics/skills/commit/c30d329f5814647c1e2f071020c1e8c1c9893ef1"
+        }
+      ]
+    },
+    {
+      "sha": "c30d329f5814647c1e2f071020c1e8c1c9893ef1",
+      "node_id": "C_kwDOP0wfhtoAKGMzMGQzMjlmNTgxNDY0N2MxZTJmMDcxMDIwYzFlOGMxYzk4OTNlZjE",
+      "commit": {
+        "author": {
+          "name": "Lance Martin",
+          "email": "122662504+rlancemartin@users.noreply.github.com",
+          "date": "2026-06-07T20:21:33Z"
+        },
+        "committer": {
+          "name": "GitHub",
+          "email": "noreply@github.com",
+          "date": "2026-06-07T20:21:33Z"
+        },
+        "message": "Update claude-api skill: auth, cloud providers, Managed Agents fixes, token counting (#1276)\n\n* Sync claude-api skill with latest upstream updates\n\n- Add token-counting.md and SKILL.md trigger description update\n- Add auth guidance: env credential resolution, ant auth login, OAuth/WIF doc links, 401 causes\n- Add mid-conversation system messages (beta) to prompt-caching, agent-design, SKILL.md, Python/TS READMEs\n- Add cache pre-warming (max_tokens: 0) section to prompt-caching\n- Add Managed Agents pre-flight viability check to onboarding and overview\n- Add Bedrock model-ID section to model-migration; add Bedrock row to live-sources\n- Add /claude-api migrate subcommand row and migrate-entry callout\n- Fix MA networking config: limited type with allow_package_managers/allow_mcp_servers\n- Bump MA create-operations rate limit to 300 RPM\n- Fix MA SDK drift: sessions.events.stream(), event.name, typed event arrays\n- Add SDK coverage: stop_details, error .type, C# tool runner + MA support, Go model constants, Java 2.34.0, client config, response helpers, auto-pagination, advisor tool\n- Move Sonnet 4 / Opus 4 to deprecated in models.md\n\n* Add Anthropic CLI and Claude Platform on AWS docs to claude-api skill\n\n- Add shared/anthropic-cli.md: install, auth profiles, OAuth scopes, command\n  structure, version-controlled Managed Agents resources, credential traps\n- Add shared/claude-platform-on-aws.md: AnthropicAWS clients, SigV4 auth,\n  workspace_id, regions, feature availability\n- Restore cross-references to both files throughout SKILL.md and the\n  managed-agents docs (previously rewritten to live-sources.md pointers)\n- Restore Claude Platform on AWS provider taxonomy in SKILL.md, the\n  migration-guide section, and live-sources rows",
+        "tree": {
+          "sha": "388cf22b679b0c0116c6b0c2b086a9281af8b686",
+          "url": "https://api.github.com/repos/anthropics/skills/git/trees/388cf22b679b0c0116c6b0c2b086a9281af8b686"
+        },
+        "url": "https://api.github.com/repos/anthropics/skills/git/commits/c30d329f5814647c1e2f071020c1e8c1c9893ef1",
+        "comment_count": 0,
+        "verification": {
+          "verified": true,
+          "reason": "valid",
+          "signature": "-----BEGIN PGP SIGNATURE-----\n\nwsFcBAABCAAQBQJqJdLOCRC1aQ7uu5UhlAAAIlEQACL/EmUolYyDV0qsGhE4/9ZF\n/Ok0IncP4lqmeAdYzbPpKsrs83YaAJz7QLaSBi2Ra2huX7tPAs3vd8cST6Sdibpm\nRRzbKIK0CHfsiXwM31R+CJDIZD3edPm/+T4YCP/cwndWzTDSj/0uAgJiEPq2ZS4W\nF+On2LFXjNCVOaYxNrrZsGwfM0LLnkLmTC1P5MD+lnK0Ytb+QTvuxhqRu2HJ4MRi\nUr5Nngn7N2REwCSvwWySx5H96BZZRlPD5unGKC3n92fA3NIADl7QmmiSubVMMtNq\nj+qPDTO0c2sQmyHpGxN9do9XggWdewa9zs2AthVdYI9sg2FF85wRLDvMB5GRhHr5\n9LfzQyBag8oOn9nRx3GAjAZvapaz/s05Zd3A1B7MckTcMbWEX99XNzOsLPBo2NKR\njEurQHD52cCrkK5WH3qRMcYj/FsMpQtthuZsTNYBiepRnTfqBY4ZWAMNV1t8c4/O\nMDmBazjhDYGdJjH+MyKYvK4FP94DTWrxwts1SeNpEDrNfK4DSF5t1MEhsFmun7/c\nyoF97pbAFvCVg5W1P7NfOXfRt4bJoFc2wD+gXRvYRhlLWmU+GeGLEAdqHfZKiQ+u\nrobAQhlk2QOYxFFE3nogMfwgm3Oanz4Lsw/+U2BT5E++jmUi/x/oH36s43LIoyTy\nh9OnK+tLAgJSx4LxDq0S\n=Q7B/\n-----END PGP SIGNATURE-----\n",
+          "payload": "tree 388cf22b679b0c0116c6b0c2b086a9281af8b686\nparent da20c92503b2e8ff1cf28ca81a0df4673debdbf7\nauthor Lance Martin <122662504+rlancemartin@users.noreply.github.com> 1780863693 -0700\ncommitter GitHub <noreply@github.com> 1780863693 -0400\n\nUpdate claude-api skill: auth, cloud providers, Managed Agents fixes, token counting (#1276)\n\n* Sync claude-api skill with latest upstream updates\n\n- Add token-counting.md and SKILL.md trigger description update\n- Add auth guidance: env credential resolution, ant auth login, OAuth/WIF doc links, 401 causes\n- Add mid-conversation system messages (beta) to prompt-caching, agent-design, SKILL.md, Python/TS READMEs\n- Add cache pre-warming (max_tokens: 0) section to prompt-caching\n- Add Managed Agents pre-flight viability check to onboarding and overview\n- Add Bedrock model-ID section to model-migration; add Bedrock row to live-sources\n- Add /claude-api migrate subcommand row and migrate-entry callout\n- Fix MA networking config: limited type with allow_package_managers/allow_mcp_servers\n- Bump MA create-operations rate limit to 300 RPM\n- Fix MA SDK drift: sessions.events.stream(), event.name, typed event arrays\n- Add SDK coverage: stop_details, error .type, C# tool runner + MA support, Go model constants, Java 2.34.0, client config, response helpers, auto-pagination, advisor tool\n- Move Sonnet 4 / Opus 4 to deprecated in models.md\n\n* Add Anthropic CLI and Claude Platform on AWS docs to claude-api skill\n\n- Add shared/anthropic-cli.md: install, auth profiles, OAuth scopes, command\n  structure, version-controlled Managed Agents resources, credential traps\n- Add shared/claude-platform-on-aws.md: AnthropicAWS clients, SigV4 auth,\n  workspace_id, regions, feature availability\n- Restore cross-references to both files throughout SKILL.md and the\n  managed-agents docs (previously rewritten to live-sources.md pointers)\n- Restore Claude Platform on AWS provider taxonomy in SKILL.md, the\n  migration-guide section, and live-sources rows",
+          "verified_at": "2026-06-07T20:21:34Z"
+        }
+      },
+      "url": "https://api.github.com/repos/anthropics/skills/commits/c30d329f5814647c1e2f071020c1e8c1c9893ef1",
+      "html_url": "https://github.com/anthropics/skills/commit/c30d329f5814647c1e2f071020c1e8c1c9893ef1",
+      "comments_url": "https://api.github.com/repos/anthropics/skills/commits/c30d329f5814647c1e2f071020c1e8c1c9893ef1/comments",
+      "author": {
+        "login": "rlancemartin",
+        "id": 122662504,
+        "node_id": "U_kgDOB0-uaA",
+        "avatar_url": "https://avatars.githubusercontent.com/u/122662504?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/rlancemartin",
+        "html_url": "https://github.com/rlancemartin",
+        "followers_url": "https://api.github.com/users/rlancemartin/followers",
+        "following_url": "https://api.github.com/users/rlancemartin/following{/other_user}",
+        "gists_url": "https://api.github.com/users/rlancemartin/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/rlancemartin/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/rlancemartin/subscriptions",
+        "organizations_url": "https://api.github.com/users/rlancemartin/orgs",
+        "repos_url": "https://api.github.com/users/rlancemartin/repos",
+        "events_url": "https://api.github.com/users/rlancemartin/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/rlancemartin/received_events",
+        "type": "User",
+        "user_view_type": "public",
+        "site_admin": false
+      },
+      "committer": {
+        "login": "web-flow",
+        "id": 19864447,
+        "node_id": "MDQ6VXNlcjE5ODY0NDQ3",
+        "avatar_url": "https://avatars.githubusercontent.com/u/19864447?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/web-flow",
+        "html_url": "https://github.com/web-flow",
+        "followers_url": "https://api.github.com/users/web-flow/followers",
+        "following_url": "https://api.github.com/users/web-flow/following{/other_user}",
+        "gists_url": "https://api.github.com/users/web-flow/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/web-flow/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/web-flow/subscriptions",
+        "organizations_url": "https://api.github.com/users/web-flow/orgs",
+        "repos_url": "https://api.github.com/users/web-flow/repos",
+        "events_url": "https://api.github.com/users/web-flow/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/web-flow/received_events",
+        "type": "User",
+        "user_view_type": "public",
+        "site_admin": false
+      },
+      "parents": [
+        {
+          "sha": "da20c92503b2e8ff1cf28ca81a0df4673debdbf7",
+          "url": "https://api.github.com/repos/anthropics/skills/commits/da20c92503b2e8ff1cf28ca81a0df4673debdbf7",
+          "html_url": "https://github.com/anthropics/skills/commit/da20c92503b2e8ff1cf28ca81a0df4673debdbf7"
+        }
+      ]
+    }
+  ]
+}

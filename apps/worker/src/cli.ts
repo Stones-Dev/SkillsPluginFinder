@@ -61,7 +61,7 @@ program
   )
   .option(
     '-s, --source <source>',
-    'Fuente a recoger: github-search o awesome-list (sin la opción, todas)',
+    'Fuente a recoger: github-search, awesome-list o anthropic-skills (sin la opción, todas)',
   )
   .option(
     '--dry-run',
@@ -94,6 +94,11 @@ program
             ? []
             : [
                 `  awesome-list: ${s.awesomeLists} listas · ${s.awesomeRequests ?? 0} peticiones core (${s.awesomeNotModified ?? 0} READMEs con 304) · ${s.awesomeNuevos ?? 0} enlaces nuevos → ${s.awesomeResueltos ?? 0} resueltos, ${s.awesomePendientes ?? 0} pendientes`,
+              ]),
+          ...(s.anthropicRequests === undefined
+            ? []
+            : [
+                `  anthropic-skills: ${s.anthropicRequests} peticiones core (${s.anthropicNotModified ?? 0} listados con 304) · ${s.anthropicCambios ?? 0} cambios oficiales → ${s.anthropicResueltos ?? 0} candidatos resueltos, ${s.anthropicPendientes ?? 0} pendientes`,
               ]),
           `  errores por fuente: ${run.errorsBySource.length}`,
           `→ ${file} (${totalCandidates} candidatos)`,

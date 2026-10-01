@@ -25,6 +25,11 @@ const render = (over: Partial<Parameters<typeof renderReport>[0]> = {}) =>
     ...over,
   });
 const md = render();
+
+test('sin changelog oficial en el fichero de la semana, el informe no tiene su sección', () => {
+  expect(file.oficiales).toBeUndefined();
+  expect(md).not.toContain('Novedades oficiales de Anthropic');
+});
 const day = (value: unknown) =>
   new Date(value as Date).toISOString().slice(0, 10);
 

@@ -137,6 +137,7 @@ const collect = (over: Partial<Parameters<typeof collectWeek>[0]> = {}) =>
     repoDir,
     token: 'test-token',
     now: NOW,
+    sources: ['github-search'],
     throttle: false,
     retryBaseMs: 1,
     ...over,

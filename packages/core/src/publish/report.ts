@@ -167,6 +167,42 @@ function deferredByCap(file: CandidatesFile): string {
   );
 }
 
+const truncate = (text: string, max: number) =>
+  text.length > max ? `${text.slice(0, max - 1).trimEnd()}…` : text;
+
+/** Changelog de los repos oficiales de Anthropic (colector `anthropic-skills`). Informativo. */
+function officialSection(file: CandidatesFile): string {
+  const lines = [
+    '## Novedades oficiales de Anthropic',
+    '',
+    'Cambios desde la última recogida en `anthropics/skills` y en el marketplace oficial de plugins de Claude Code. Es informativo: no puntúa ni entra en el catálogo.',
+  ];
+  for (const entry of file.oficiales ?? []) {
+    lines.push(
+      '',
+      `### [${entry.fuente}](https://github.com/${entry.fuente}) (\`${entry.desde}\`…\`${entry.hasta}\`)`,
+      '',
+    );
+    for (const c of entry.cambios) {
+      lines.push(
+        `- **${c.cambio}** ${c.tipo} [${oneLine(c.nombre)}](${c.url})${c.descripcion ? ` — ${truncate(oneLine(c.descripcion), 200)}` : ''}`,
+      );
+    }
+    if (entry.commits.length > 0) {
+      lines.push(
+        '',
+        `Commits${entry.masCommits ? ' (los más recientes; hay más)' : ''}:`,
+        '',
+        ...entry.commits.map(
+          (c) =>
+            `- \`${c.sha}\` ${c.fecha} — ${truncate(oneLine(c.mensaje), 160)}`,
+        ),
+      );
+    }
+  }
+  return lines.join('\n');
+}
+
 function errorsSection(file: CandidatesFile): string {
   const errors = file.runs.flatMap((run) => run.errorsBySource);
   const unique = [
@@ -242,6 +278,7 @@ export function renderReport(input: ReportInput): string {
   if (below.length > 0) sections.push(underThreshold(below, umbral));
   if (file.descartados.length > 0) sections.push(discardedByRules(file));
   if (file.diferidos.length > 0) sections.push(deferredByCap(file));
+  if (file.oficiales?.length) sections.push(officialSection(file));
   sections.push(
     errorsSection(file),
     [

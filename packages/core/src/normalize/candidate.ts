@@ -1,6 +1,10 @@
 import { z } from 'zod';
 
-export const SOURCE_IDS = ['github-search', 'awesome-list'] as const;
+export const SOURCE_IDS = [
+  'github-search',
+  'awesome-list',
+  'anthropic-skills',
+] as const;
 
 export const KINDS = [
   'skill',
@@ -18,7 +22,8 @@ export const originSchema = z
   .object({
     categoria: z.string().min(1),
     /** `awesome`: salió de una lista `awesome-*`; `query` es el `owner/repo` de la lista. */
-    tipo: z.enum(['keyword', 'topic', 'awesome']),
+    /** `anthropic`: plugin nuevo del marketplace oficial; `query` es `<marketplace>:<plugin>`. */
+    tipo: z.enum(['keyword', 'topic', 'awesome', 'anthropic']),
     query: z.string().min(1),
   })
   .strict();

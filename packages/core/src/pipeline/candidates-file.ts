@@ -60,10 +60,46 @@ export const runStatsSchema = z
     awesomeResueltos: count.optional(),
     /** Enlaces que vuelven la próxima semana (tope por lista o error transitorio). */
     awesomePendientes: count.optional(),
+    /** Colector `anthropic-skills` (ausentes si no se ejecutó). */
+    anthropicRequests: count.optional(),
+    anthropicNotModified: count.optional(),
+    /** Skills y plugins oficiales nuevos, actualizados o eliminados. */
+    anthropicCambios: count.optional(),
+    anthropicResueltos: count.optional(),
+    anthropicPendientes: count.optional(),
   })
   .strict();
 
 export type RunStats = z.infer<typeof runStatsSchema>;
+
+export const officialChangeSchema = z
+  .object({
+    tipo: z.enum(['skill', 'plugin']),
+    cambio: z.enum(['nuevo', 'actualizado', 'eliminado']),
+    nombre: z.string().min(1),
+    descripcion: z.string().optional(),
+    url: z.string().min(1),
+  })
+  .strict();
+
+/**
+ * Changelog de un repo oficial de Anthropic desde la última ejecución del colector
+ * `anthropic-skills`. Es informativo: no entra en el batch ni en el catálogo.
+ */
+export const officialEntrySchema = z
+  .object({
+    fuente: z.string().min(1),
+    desde: z.string().min(1),
+    hasta: z.string().min(1),
+    commits: z.array(
+      z
+        .object({ sha: z.string(), fecha: z.string(), mensaje: z.string() })
+        .strict(),
+    ),
+    masCommits: z.boolean(),
+    cambios: z.array(officialChangeSchema),
+  })
+  .strict();
 
 export const sourceErrorSchema = z
   .object({
@@ -94,6 +130,8 @@ export const candidatesFileSchema = z
     candidates: z.array(candidateSchema),
     descartados: z.array(discardedEntrySchema),
     diferidos: z.array(deferredEntrySchema),
+    /** Changelog de los repos oficiales de Anthropic; ausente si no hubo novedades. */
+    oficiales: z.array(officialEntrySchema).optional(),
   })
   .strict();
 
@@ -158,6 +196,7 @@ export function mergeCandidatesFile(
     candidates: CandidatesFile['candidates'];
     descartados: CandidatesFile['descartados'];
     diferidos: CandidatesFile['diferidos'];
+    oficiales?: CandidatesFile['oficiales'];
   },
 ): CandidatesFile {
   const candidates = byId([
@@ -180,5 +219,18 @@ export function mergeCandidatesFile(
       ...(existing?.diferidos ?? []),
       ...incoming.diferidos,
     ]),
+    // Los changelogs de varias ejecuciones de la semana se acumulan, sin repetir el mismo tramo.
+    ...(existing?.oficiales?.length || incoming.oficiales?.length
+      ? {
+          oficiales: [
+            ...new Map(
+              [
+                ...(existing?.oficiales ?? []),
+                ...(incoming.oficiales ?? []),
+              ].map((o) => [`${o.fuente}|${o.desde}|${o.hasta}`, o]),
+            ).values(),
+          ],
+        }
+      : {}),
   };
 }

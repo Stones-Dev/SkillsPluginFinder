@@ -1,16 +1,21 @@
-import fs from 'node:fs/promises';
 import path from 'node:path';
 import pLimit from 'p-limit';
 import { z } from 'zod';
 import type { Interests } from '../config/schema.js';
 import type { Origin } from '../normalize/candidate.js';
-import { atomicWriteFile } from '../vault/fsutil.js';
 import { createGithubClient, requireToken } from './github-client.js';
 import {
   COLLECTOR_TIMEOUT_MS,
   type GithubRepo,
   type SourceError,
 } from './github.js';
+import { type Resolution, resolveGithubRepo } from './resolve-repo.js';
+import {
+  type SnapshotWrite,
+  readSnapshotFile,
+  snapshotFileName,
+  writeSnapshots,
+} from './snapshots.js';
 
 export const AWESOME_SOURCE_ID = 'awesome-list';
 /** Enlaces nuevos que se resuelven por lista y por semana; el resto queda para la siguiente. */
@@ -102,36 +107,7 @@ export const awesomeSnapshotSchema = z
 export type AwesomeSnapshot = z.infer<typeof awesomeSnapshotSchema>;
 
 export const snapshotPath = (snapshotDir: string, repo: string) =>
-  path.join(snapshotDir, `${repo.toLowerCase().replace('/', '-')}.json`);
-
-async function readSnapshot(
-  file: string,
-  repo: string,
-): Promise<AwesomeSnapshot | null> {
-  let raw: string;
-  try {
-    raw = await fs.readFile(file, 'utf8');
-  } catch (err) {
-    if ((err as NodeJS.ErrnoException).code === 'ENOENT') return null;
-    throw err;
-  }
-  let json: unknown;
-  try {
-    json = JSON.parse(raw);
-  } catch {
-    throw new Error(`${file} no es JSON válido; no se sobrescribe.`);
-  }
-  const parsed = awesomeSnapshotSchema.safeParse(json);
-  if (!parsed.success) {
-    throw new Error(`${file} no cumple el esquema; no se sobrescribe.`);
-  }
-  if (parsed.data.repo.toLowerCase() !== repo.toLowerCase()) {
-    throw new Error(
-      `${file} es de ${parsed.data.repo}, no de ${repo} (mismo nombre de fichero); no se sobrescribe.`,
-    );
-  }
-  return parsed.data;
-}
+  path.join(snapshotDir, snapshotFileName(repo));
 
 export type AwesomeListReport = {
   repo: string;
@@ -195,13 +171,6 @@ export type CollectAwesomeOptions = {
 const statusOf = (err: unknown) => (err as { status?: number }).status;
 const messageOf = (err: unknown) =>
   err instanceof Error ? err.message : String(err);
-const GONE = new Set([404, 410, 451]);
-
-type Resolution =
-  | { kind: 'ok'; link: string; repo: GithubRepo }
-  | { kind: 'gone'; link: string }
-  | { kind: 'error'; link: string };
-
 function readmeText(data: unknown): string {
   if (typeof data === 'string') return data;
   if (data instanceof ArrayBuffer) return new TextDecoder().decode(data);
@@ -246,23 +215,6 @@ export async function collectFromAwesomeLists(
   const drafts: SnapshotDraft[] = [];
   let notModified = 0;
 
-  const resolveLink = async (link: string): Promise<Resolution> => {
-    const [owner, repo] = link.split('/');
-    try {
-      const res = await octokit.request('GET /repos/{owner}/{repo}', {
-        owner,
-        repo,
-      });
-      return { kind: 'ok', link, repo: res.data as unknown as GithubRepo };
-    } catch (err) {
-      const status = statusOf(err);
-      if (status === 401) throw err;
-      if (status !== undefined && GONE.has(status))
-        return { kind: 'gone', link };
-      return { kind: 'error', link };
-    }
-  };
-
   for (const [listRepo, categoria] of lists) {
     const [owner, repo] = listRepo.split('/');
     const report: AwesomeListReport = {
@@ -289,7 +241,11 @@ export async function collectFromAwesomeLists(
 
     try {
       const file = snapshotPath(options.snapshotDir, listRepo);
-      const previous = await readSnapshot(file, listRepo);
+      const previous = await readSnapshotFile(
+        file,
+        listRepo,
+        awesomeSnapshotSchema,
+      );
 
       let text: string;
       let etag: string | null;
@@ -340,7 +296,7 @@ export async function collectFromAwesomeLists(
         toResolve.map((link) =>
           limit(async (): Promise<Resolution> => {
             if (Date.now() > deadline) return { kind: 'error', link };
-            return resolveLink(link);
+            return resolveGithubRepo(octokit, link);
           }),
         ),
       );
@@ -417,12 +373,6 @@ export async function collectFromAwesomeLists(
   };
 }
 
-export type SnapshotWrite = {
-  file: string;
-  existed: boolean;
-  snapshot: AwesomeSnapshot;
-};
-
 /**
  * Instantáneas definitivas. Los candidatos que el tope `enrich_max` difirió
  * (`deferred`, `full_name` en minúsculas) no se dan por vistos, igual que en
@@ -433,7 +383,7 @@ export type SnapshotWrite = {
 export function finalizeSnapshots(
   result: AwesomeResult,
   deferred: Iterable<string>,
-): SnapshotWrite[] {
+): SnapshotWrite<AwesomeSnapshot>[] {
   const deferredNames = new Set(deferred);
   return result.drafts.map((draft) => {
     const pending = new Set(draft.pending);
@@ -452,24 +402,5 @@ export function finalizeSnapshots(
   });
 }
 
-/**
- * Escribe las instantáneas. Con `onlyMissing` (el `--dry-run`) nunca sobrescribe
- * una que ya existe: si lo hiciera, el ensayo se comería las novedades que debe
- * ver la recogida real. Devuelve las que ha escrito.
- */
-export async function writeAwesomeSnapshots(
-  writes: SnapshotWrite[],
-  { onlyMissing = false }: { onlyMissing?: boolean } = {},
-): Promise<string[]> {
-  const written: string[] = [];
-  for (const write of writes) {
-    if (onlyMissing && write.existed) continue;
-    await fs.mkdir(path.dirname(write.file), { recursive: true });
-    await atomicWriteFile(
-      write.file,
-      `${JSON.stringify(write.snapshot, null, 2)}\n`,
-    );
-    written.push(write.file);
-  }
-  return written;
-}
+/** Escribe las instantáneas de `data/awesome/` (ver `writeSnapshots`). */
+export const writeAwesomeSnapshots = writeSnapshots;
