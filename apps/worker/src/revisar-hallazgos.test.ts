@@ -131,7 +131,7 @@ test('la entrada de «Mejoras propuestas» y la nota de conocimiento siguen el f
   expect(antigravity).toContain('## Mejoras propuestas');
   expect(antigravity).toContain('antes de `## Notas relacionadas`');
   expect(antigravity).toContain('**Buscar antes de crear.**');
-  expect(antigravity).toContain('`uso: 1`');
+  expect(antigravity).toContain('`uso: 0` (evaluada y no usada');
   expect(antigravity).toContain('`proyectos_uso: []`');
   expect(antigravity).toContain('no tiene nota índice');
   expect(antigravity).toContain('no la crees');
