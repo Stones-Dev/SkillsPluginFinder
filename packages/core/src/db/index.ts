@@ -11,11 +11,35 @@ import * as schema from './schema.js';
 export type Db = BetterSQLite3Database<typeof schema>;
 
 const connections = new Map<string, { db: Db; sqlite: Database.Database }>();
+const readonlyConnections = new Map<
+  string,
+  { db: Db; sqlite: Database.Database }
+>();
 
 /** Cierra todas las conexiones abiertas (tests y cierre limpio del CLI). */
 export function closeDatabases() {
   for (const { sqlite } of connections.values()) sqlite.close();
   connections.clear();
+  for (const { sqlite } of readonlyConnections.values()) sqlite.close();
+  readonlyConnections.clear();
+}
+
+/**
+ * La base de datos en solo lectura, para `spf collect --dry-run`: no crea el
+ * fichero, el directorio ni las tablas, y SQLite rechaza cualquier escritura. Si
+ * el fichero no existe devuelve `null` (no hay nada visto todavía).
+ */
+export function getReadonlyDb(
+  dbPath = path.join(repoRoot(), 'data', 'seen.sqlite'),
+): Db | null {
+  if (!fs.existsSync(dbPath)) return null;
+  const cached = readonlyConnections.get(dbPath);
+  if (cached) return cached.db;
+
+  const sqlite = new Database(dbPath, { readonly: true, fileMustExist: true });
+  const db = drizzle(sqlite, { schema });
+  readonlyConnections.set(dbPath, { db, sqlite });
+  return db;
 }
 
 export function getDb(

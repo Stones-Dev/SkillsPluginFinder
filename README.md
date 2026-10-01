@@ -30,7 +30,7 @@ Se ejecutan con `pnpm spf <comando>` (compila antes).
 | Comando | Qué hace |
 |---|---|
 | `week` | Imprime la semana ISO de hoy (`YYYY-Www`, Europe/Madrid). |
-| `collect [--source github-search]` | Mitad nube: recoge, filtra y enriquece. |
+| `collect [--source github-search] [--dry-run]` | Mitad nube: recoge, filtra y enriquece. Con `--dry-run` hace el ensayo —búsqueda, dedupe (`seen.sqlite` en solo lectura), reglas y tope— y cuenta lo que pasaría **sin escribir nada** (ni `data/candidates/`, ni `seen.sqlite`, ni `runs`, ni la caché de `data/cache/`) y sin enriquecer; sí gasta las ~109 búsquedas (≈ 4 min). Es la forma segura de probar un colector o un cambio de `Intereses.md` antes del lunes. |
 | `rate-limit [--min-core N] [--min-search N]` | Consulta los límites de la API de GitHub del token (`GET /rate_limit`, no gasta cuota). Con los mínimos, sale con error si no alcanzan. |
 | `prepare --week <semana>` | Genera `data/batches/<semana>/batch.md`. |
 | `collect-batch --week <semana> [--agent antigravity] [--reason <texto>]` | Valida el scoring del evaluador y guarda los scorings. Con `--agent antigravity` valida `scoring-antigravity.json` y un fallo **no es fatal**: se anota en `runs` (con `--reason`, la causa del wrapper de `agy`) y la semana sigue solo con Claude Code. |

@@ -36,6 +36,23 @@ export function collect(options: {
   });
 }
 
+/**
+ * `spf collect --dry-run`: el mismo camino que `collect`, sin escribir nada (ni
+ * `data/candidates/`, ni `seen.sqlite`, ni `runs`, ni la caché) y sin enriquecer.
+ */
+export function collectDryRun(options: {
+  source?: string;
+  logger?: (message: string) => void;
+}) {
+  return collectWeek({
+    repoDir: repoRoot(),
+    token: process.env.GITHUB_TOKEN,
+    trigger: 'dry-run',
+    ...options,
+    dryRun: true,
+  });
+}
+
 /** `spf prepare --week`: genera `data/batches/<week>/batch.md`. */
 export function prepare(week: string) {
   return prepareBatch({ repoDir: repoRoot(), week });

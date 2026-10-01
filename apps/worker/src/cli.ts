@@ -6,11 +6,13 @@ import {
   closeDatabases,
   collect,
   collectAntigravityScorings,
+  collectDryRun,
   collectScorings,
   cross,
   fetchRateLimits,
   formatApply,
   formatCross,
+  formatDryRun,
   formatPrepare,
   formatRateLimits,
   formatReviewList,
@@ -58,8 +60,21 @@ program
     'Mitad nube: recoge, filtra y enriquece candidatos en data/candidates/YYYY-Www.json',
   )
   .option('-s, --source <source>', 'Fuente a recoger (solo github-search)')
+  .option(
+    '--dry-run',
+    'Ensayo: hace la búsqueda, el dedupe (solo lectura), las reglas y el tope y cuenta lo que pasaría, sin escribir data/candidates, seen.sqlite, runs ni caché, y sin enriquecer',
+  )
   .action(async (options) => {
     try {
+      if (options.dryRun) {
+        const r = await collectDryRun({
+          source: options.source,
+          logger: (m) => console.log(m),
+        });
+        closeDatabases();
+        console.log(formatDryRun(r).join('\n'));
+        return;
+      }
       const { week, file, run, totalCandidates } = await collect({
         source: options.source,
         logger: (m) => console.log(m),
