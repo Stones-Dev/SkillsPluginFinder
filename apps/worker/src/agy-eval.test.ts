@@ -49,12 +49,15 @@ fs.writeFileSync(process.env.FAKE_ARGS_FILE, JSON.stringify(args));
 const mode = process.env.FAKE_MODE;
 const repo = process.cwd();
 const out = path.join(repo, ${JSON.stringify(OUT)});
-const good = JSON.stringify([{ candidateId: 'github:a/b', agent: 'antigravity' }]);
+const item = (id) => ({ candidateId: id, agent: 'antigravity' });
+const good = JSON.stringify([item('github:a/b'), item('github:c/d'), item('github:e/f')]);
+const single = JSON.stringify([item('github:a/b')]);
 if (mode === 'sleep') { setTimeout(() => {}, 30000); return; }
 if (mode === 'error') { console.error('boom'); process.exit(3); }
 if (mode === 'denied') { console.log('jetski: no output produced - a tool required the "command" permission that headless mode cannot prompt for, so it was auto-denied.'); process.exit(0); }
 if (mode !== 'nofile') fs.mkdirSync(path.dirname(out), { recursive: true });
-if (mode === 'ok' || mode === 'nofin' || mode === 'extra' || mode === 'env' || mode === 'vault' || mode === 'tracked' || mode === 'scoring' || mode === 'oneitem') fs.writeFileSync(out, good);
+if (mode === 'ok' || mode === 'nofin' || mode === 'extra' || mode === 'env' || mode === 'vault' || mode === 'tracked' || mode === 'scoring') fs.writeFileSync(out, good);
+if (mode === 'oneitem') fs.writeFileSync(out, single);
 if (mode === 'notarray') fs.writeFileSync(out, '{"candidateId":"x"}');
 if (mode === 'extra') fs.writeFileSync(path.join(repo, 'extra.txt'), 'x');
 if (mode === 'env') fs.appendFileSync(path.join(repo, '.env'), 'X=1');
@@ -156,7 +159,7 @@ describe.skipIf(!isWindows)('scripts/agy-eval.ps1 con un agy de prueba', () => {
 
     expect(r.code, r.out + r.err).toBe(0);
     expect(r.out).toContain('OK: agy termino y senalo FIN');
-    expect(r.out).toContain('tiene 1 objetos');
+    expect(r.out).toContain('tiene 3 objetos');
     expect(r.out).toContain(
       'pnpm spf collect-batch --week 2026-W40 --agent antigravity',
     );

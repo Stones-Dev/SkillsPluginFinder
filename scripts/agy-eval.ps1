@@ -228,7 +228,8 @@ if (-not $hasFin) {
 if (-not (Test-Path -LiteralPath $outFile)) { Stop-WithCode 6 "agy termino pero no existe $outFile." }
 $outText = Get-Content -LiteralPath $outFile -Raw -Encoding UTF8
 try {
-  $json = @($outText | ConvertFrom-Json)
+  # Con -InputObject el array llega entero (con `@($texto | ConvertFrom-Json)` lo envolvia y contaba 1).
+  $json = ConvertFrom-Json -InputObject $outText
 } catch {
   Stop-WithCode 6 "$outFile no es JSON valido: $($_.Exception.Message)"
 }
