@@ -193,3 +193,66 @@ test('un informe publicado antes del cruce está desfasado: hay que volver a pub
     'el informe es anterior al cruce (hay que volver a publicar)',
   );
 });
+
+test('cada paso lleva un id estable (lo usa run-weekly.ps1, que es ASCII y no compara nombres con tildes)', async () => {
+  const s = await status();
+
+  expect(s.steps.map((x) => x.id)).toEqual([
+    'recogida',
+    'claude',
+    'antigravity',
+    'cruce',
+    'publicacion',
+    'revision',
+  ]);
+  // el JSON que imprime `spf status --json` es el mismo objeto
+  expect(JSON.parse(JSON.stringify(s))).toMatchObject({
+    week: WEEK,
+    complete: false,
+    nothingToEvaluate: true,
+  });
+});
+
+test('los tres estados que distingue el flujo semanal: sin recogida, con recogida sin evaluar, evaluada', async () => {
+  // 1. sin recogida
+  const none = await status();
+  expect([none.nothingToEvaluate, none.complete]).toEqual([true, false]);
+
+  // 2. con recogida, sin evaluar
+  await writeCandidatesFile(repoDir, file);
+  const collected = await status();
+  expect([collected.nothingToEvaluate, collected.complete]).toEqual([
+    false,
+    false,
+  ]);
+  expect(collected.steps.filter((x) => x.done).map((x) => x.id)).toEqual([
+    'recogida',
+  ]);
+
+  // 3. evaluada y revisada
+  writeScoring(
+    'scoring.json',
+    'claude-code',
+    claude.map((s) => s.score),
+  );
+  writeScoring('scoring-antigravity.json', 'antigravity', AG);
+  await collectBatch({ repoDir, week: WEEK });
+  await collectAntigravity({ repoDir, week: WEEK });
+  await crossWeek({ repoDir, week: WEEK, now: at('10:00') });
+  await publishWeek({ repoDir, vaultDir, week: WEEK, now: at('10:05') });
+  const catalogFile = path.join(vaultDir, 'Catalogo.md');
+  let text = fs.readFileSync(catalogFile, 'utf8');
+  for (const row of parseCatalog(text).filter(
+    (e) => e.estado === 'candidato' && e.semana === WEEK,
+  )) {
+    text = editCatalogRow(
+      text,
+      row.repo as string,
+      { estado: 'probado' },
+      '2026-10-01',
+    ).text;
+  }
+  fs.writeFileSync(catalogFile, text);
+  const done = await status();
+  expect([done.nothingToEvaluate, done.complete]).toEqual([false, true]);
+});

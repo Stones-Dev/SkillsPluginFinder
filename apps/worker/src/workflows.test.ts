@@ -174,3 +174,18 @@ test('collect.yml: comprueba la cuota antes de recoger, con el mismo token y sin
     expect(code).not.toMatch(/\bset -x\b|\bprintenv\b|^env$/);
   }
 });
+
+test('evaluar-semana sabe reanudar: lee `spf status` y empieza por el primer paso pendiente, con los números de paso correctos', () => {
+  expect(antigravity).toContain('**Si el flujo ya empezó**');
+  expect(antigravity).toContain('`pnpm spf status --week <semana>`');
+  expect(antigravity).toContain('no reevalúes y pasa al paso 7');
+  expect(antigravity).toContain('al paso 8');
+  expect(antigravity).toContain('al 9');
+  // los pasos a los que remite son los que dice la lista
+  expect(antigravity).toContain('\n7. **Segunda evaluación (Antigravity).**');
+  expect(antigravity).toContain('\n8. **Cruzar.**');
+  expect(antigravity).toContain('\n9. **Publicar.**');
+  // y `status` es un comando real del CLI, con --json para el runner
+  expect(cli).toContain(".command('status')");
+  expect(cli).toContain("'--json'");
+});

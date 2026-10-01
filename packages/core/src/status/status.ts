@@ -9,7 +9,20 @@ import { readCandidatesFile } from '../pipeline/candidates-file.js';
 import { assertWeek } from '../pipeline/week.js';
 import { parseCatalog } from '../vault/catalogo.js';
 
+/** Identificador estable de cada paso (el nombre se muestra y lleva tildes). */
+export const STEP_IDS = {
+  recogida: 'recogida',
+  'evaluación de Claude Code': 'claude',
+  'evaluación de Antigravity': 'antigravity',
+  cruce: 'cruce',
+  publicación: 'publicacion',
+  'revisión de hallazgos': 'revision',
+} as const;
+
+export type StatusStepId = (typeof STEP_IDS)[keyof typeof STEP_IDS];
+
 export type StatusStep = {
+  id: StatusStepId;
   /** Nombre corto del paso. */
   name: string;
   done: boolean;
@@ -48,8 +61,8 @@ export async function weekStatus(opts: {
   const week = assertWeek(opts.week);
   const db = opts.db ?? getDb(path.join(repoDir, 'data', 'seen.sqlite'));
   const steps: StatusStep[] = [];
-  const add = (name: string, done: boolean, detail: string) =>
-    steps.push({ name, done, detail });
+  const add = (name: keyof typeof STEP_IDS, done: boolean, detail: string) =>
+    steps.push({ id: STEP_IDS[name], name, done, detail });
 
   const candidates = await readCandidatesFile(repoDir, week);
   add(

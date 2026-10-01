@@ -97,7 +97,9 @@ test('evaluar-semana cruza antes de publicar, no repite la semana revisada y enc
   expect(evaluar).toContain('**Cruzar.** `pnpm spf cross --week <semana>`');
   expect(evaluar).toContain('el workflow `cruzar-evaluaciones`');
   expect(evaluar).toContain('Sigue el workflow `revisar-hallazgos`');
-  expect(evaluar).toContain('`--week <semana>`');
+  expect(evaluar).toContain(
+    '**sin `--week`**, para que revise todos los `candidato`',
+  );
   expect(evaluar).toContain(
     'una disputa entre los dos evaluadores bloquea `adoptado`',
   );

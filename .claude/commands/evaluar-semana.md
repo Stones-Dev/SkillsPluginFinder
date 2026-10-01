@@ -9,6 +9,8 @@ Flujo semanal de la **mitad local**. La recogida (`spf collect`) ya la hizo la n
 
 Semana: `$ARGUMENTS` en Claude Code, o la que indique Stones. Si no hay ninguna, ejecuta `pnpm spf week` (la semana ISO de hoy en Europe/Madrid, en la última línea de la salida). En lo que sigue es `<semana>`.
 
+**Si el flujo ya empezó** (el reintento de las 12:00, o una recuperación tras un lunes con el equipo apagado), no repitas lo hecho: `pnpm spf status --week <semana>` dice qué pasos están hechos y cuáles no. Empieza por el primer ✗: con la evaluación de Claude Code validada (`scoring.json` existe y `status` la da por hecha), no reevalúes y pasa al paso 7; con la de Antigravity ya validada o anotada como fallida, al paso 8; con el cruce hecho, al 9. Reevaluar una semana ya evaluada deja el cruce y el informe desfasados.
+
 ## Reglas
 
 - **Nunca instales, clones ni ejecutes nada de un candidato.** Solo lees: la ficha, su README y, si hace falta, su página (Constitución §1).
@@ -33,7 +35,7 @@ Semana: `$ARGUMENTS` en Claude Code, o la que indique Stones. Si no hay ninguna,
 9. **Publicar.** `pnpm spf publish --week <semana>` escribe `Informes/<semana>.md` (con el score cruzado y la línea «Evaluación cruzada» de cada hallazgo) y añade filas `candidato` a `Catalogo.md` en el vault (`VAULT_PATH`). Si dice que el informe ya está revisado, para: eso solo pasa al repetir una semana, y para eso está el workflow `cruzar-evaluaciones`.
 10. **Sincronizar otra vez.** `pnpm spf interests sync`, por si algo cambió durante la sesión.
 11. **Commit.** `git add data interests.yaml catalog.json` y `git commit -m "feat(evaluate): semana <semana>"`. Enseña `git status`. No hagas push: lo hace Stones.
-12. **Revisar los hallazgos.** Sigue el workflow `revisar-hallazgos` (`.claude/commands/revisar-hallazgos.md`; en Antigravity, `.agent/workflows/revisar-hallazgos.md`) con `--week <semana>`: clona cada hallazgo en `candidato`, lo inspecciona en solo lectura y decide `probado`, `descartado` o `adoptado`. Esa revisión usa el cruce: una disputa entre los dos evaluadores bloquea `adoptado`.
+12. **Revisar los hallazgos.** Sigue el workflow `revisar-hallazgos` (`.claude/commands/revisar-hallazgos.md`; en Antigravity, `.agent/workflows/revisar-hallazgos.md`) **sin `--week`**, para que revise todos los `candidato` y no solo los de esta semana (los que quedaron sin revisar de semanas anteriores también): clona cada hallazgo en `candidato`, lo inspecciona en solo lectura y decide `probado`, `descartado` o `adoptado`. Esa revisión usa el cruce: una disputa entre los dos evaluadores bloquea `adoptado`.
 13. **Resumen para Stones.** Nº de fichas y distribución de scores, el resultado del cruce (coincidencias, disputas y confianza alta), los hallazgos ≥ umbral (nombre y score), ruta del informe, filas añadidas al catálogo, si Antigravity aportó su evaluación (o por qué no), el resumen de la revisión y la salida de cada comando.
 
 ## Cómo evaluar

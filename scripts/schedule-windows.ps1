@@ -21,8 +21,11 @@
   cuenta por stderr y sale con codigo 1; nunca imprime un exito que no ha comprobado.
 
   Cada ejecucion deja su log en data/logs/ (weekly-<modo>-<fecha>.log y .claude.out.txt/.err.txt).
-  run-weekly.ps1 solo hace algo los lunes (hora de Madrid): lanzar la tarea otro dia con Start-ScheduledTask sale sin
-  hacer nada y lo deja en el log.
+  run-weekly.ps1 decide por el ESTADO de la semana ISO de hoy (`pnpm spf status`), no por el dia: si ya esta evaluada sale
+  sin hacer nada ("semana <semana> ya evaluada"), y antes del lunes 06:00 UTC (cron de Actions) sin recogida tampoco
+  actua. Por eso las dos tareas llevan -StartWhenAvailable: tras un lunes con el equipo apagado, se ejecutan en cuanto
+  se pueda (el martes, etc.) y retoman la semana. El reintento de las 12:00 solo actua si la tarea de las 09:00 llego a
+  lanzar el flujo de esa semana y esta sigue sin cerrar; y nunca hay dos ejecuciones a la vez (mutex).
 
   Condiciones, pensadas para este equipo:
     - Solo con la sesion iniciada (-LogonType Interactive): el vault esta en Proton Drive, que solo esta montado con

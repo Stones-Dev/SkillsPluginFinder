@@ -333,11 +333,17 @@ program
     'Estado del flujo semanal de una semana. Sale con 0 si está cerrada, 1 si quedan pasos y 2 si no hay recogida (lo usa el reintento de las 12:00)',
   )
   .requiredOption(...weekOption)
+  .option(
+    '--json',
+    'Imprime el estado como JSON (id, nombre, hecho y detalle de cada paso); mismos códigos de salida',
+  )
   .action(async (options) => {
     try {
       const result = await status(options.week);
       closeDatabases();
-      console.log(formatStatus(result).join('\n'));
+      console.log(
+        options.json ? JSON.stringify(result) : formatStatus(result).join('\n'),
+      );
       if (result.nothingToEvaluate) process.exit(2);
       if (!result.complete) process.exit(1);
     } catch (err) {
