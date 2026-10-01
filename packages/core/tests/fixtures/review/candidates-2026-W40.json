@@ -1,0 +1,335 @@
+{
+  "week": "2026-W40",
+  "generatedAt": "2026-09-30T21:18:18.155Z",
+  "runs": [
+    {
+      "at": "2026-09-30T21:18:18.155Z",
+      "trigger": "manual",
+      "stats": {
+        "queries": 109,
+        "requests": 0,
+        "cacheHits": 109,
+        "rawItems": 1121,
+        "uniqueRepos": 906,
+        "afterDedupe": 906,
+        "afterRules": 504,
+        "selected": 80,
+        "deferred": 424,
+        "enriched": 80
+      },
+      "errorsBySource": []
+    }
+  ],
+  "candidates": [
+    {
+      "id": "github:andyshiu/claude-skill-playwright-browser",
+      "name": "AndyShiu/claude-skill-playwright-browser",
+      "url": "https://github.com/AndyShiu/claude-skill-playwright-browser",
+      "source": "github-search",
+      "kind": "skill",
+      "description": "Claude Code skill: a background Playwright browser for screenshots (desktop/tablet/mobile), frontend health checks, visual diffs, scripted UI flows and logged-in pages — in any project. ｜ 讓 Claude Code 擁有背景瀏覽器：多尺寸截圖、前端健檢、視覺比對、操作流程與登入頁面，適用任何專案。",
+      "language": "JavaScript",
+      "stars": 49,
+      "forks": 11,
+      "contributors": 2,
+      "createdAt": "2026-09-24T17:54:42Z",
+      "lastCommitAt": "2026-09-26T12:23:33Z",
+      "license": "MIT",
+      "topics": [
+        "accessibility",
+        "browser-automation",
+        "claude",
+        "claude-code",
+        "claude-skills",
+        "e2e-testing",
+        "frontend",
+        "playwright",
+        "screenshot",
+        "visual-regression",
+        "web-vitals"
+      ],
+      "archived": false,
+      "fork": false,
+      "categoriaSugerida": "claude-skills",
+      "categoriasAlternativas": [],
+      "origins": [
+        {
+          "categoria": "claude-skills",
+          "tipo": "keyword",
+          "query": "claude code skill"
+        }
+      ],
+      "risk": {
+        "ageDays": 6,
+        "postinstall": false,
+        "lifecycleScripts": [],
+        "singleMaintainer": false,
+        "notes": []
+      },
+      "readmeExcerpt": "# claude-skill-playwright-browser\n\n**English** | [繁體中文](README.zh-TW.md)\n\nGives [Claude Code](https://claude.com/claude-code) a **browser that runs in the background**. Ask in plain language — \"screenshot the homepage on mobile\", \"why does the Submit button do nothing on this page?\", \"health-check the checkout page\" — and Claude opens a browser, clicks around, takes screenshots, runs checks, and hands you the results and files. It never touches the browser you're using, and it works in any project (frontend, backend, even non-Node projects).\n\n---\n\n## What it does\n\n| Feature | Details |\n|---|---|\n| 📸 **Screenshots** | Desktop / tablet / mobile, full page or a single element, many pages in one batch |\n| 🩺 **Frontend health check** | Console errors, failed API calls (4xx/5xx), broken images, broken links, mobile layout overflow (and which element causes it), accessibility issues (axe), performance (LCP / CLS) |\n| 🔍 **Visual comparison** | Save a baseline before a CSS change, compare afterwards, get a diff image with changes highlighted in red |\n| 🧭 **UI flows** | Log in, click through menus, fill forms, page through lists, assert results — with a screenshot at each step and an automatic screenshot on failure |\n| 🔐 **Sites that need login** | You log in once yourself; Claude then reuses that session in the background (your password is never stored) |\n| 🧪 **Real tests** | When you want it, turn a flow into a Playwright Test in your project and run it in CI |\n\n### See it in action\n\nAll images were produced by this skill against a small demo site.\n\n## Examples\n\nJust talk to Claude — no need to mention \"Playwright\":\n\n```\nTake mobile and desktop screenshots of the homepage at localhost:5173\nA customer says our site scrolls sideways on iPhone — find the element that's too wide\nHealth-check the new checkout page before we ship it\nI changed the header CSS — compare before and after\nOn the admin \"Orders\" page, does going to page 2 actually load different data?\nThis issue…",
+      "foundAt": "2026-09-30T21:18:18.155Z"
+    },
+    {
+      "id": "github:kuratlielia/arc-library",
+      "name": "kuratlielia/arc-library",
+      "url": "https://github.com/kuratlielia/arc-library",
+      "source": "github-search",
+      "kind": "library",
+      "description": "Arc Library: free, open source React components with calm motion. Copy the code or install with the shadcn CLI.",
+      "language": "TypeScript",
+      "stars": 128,
+      "forks": 6,
+      "contributors": 1,
+      "createdAt": "2026-09-24T11:29:16Z",
+      "lastCommitAt": "2026-09-30T18:28:26Z",
+      "license": "MIT",
+      "topics": [
+        "components",
+        "design-system",
+        "motion",
+        "nextjs",
+        "open-source",
+        "react",
+        "shadcn",
+        "typescript",
+        "ui-library"
+      ],
+      "archived": false,
+      "fork": false,
+      "categoriaSugerida": "frontend-bonito",
+      "categoriasAlternativas": [
+        "nextjs-react",
+        "librerias-relacionadas"
+      ],
+      "origins": [
+        {
+          "categoria": "frontend-bonito",
+          "tipo": "topic",
+          "query": "motion"
+        }
+      ],
+      "risk": {
+        "ageDays": 6,
+        "postinstall": false,
+        "lifecycleScripts": [],
+        "singleMaintainer": true,
+        "notes": []
+      },
+      "readmeExcerpt": "Docs\n  &nbsp;·&nbsp;\n  Components\n  &nbsp;·&nbsp;\n  Install\n  &nbsp;·&nbsp;\n  AI and MCP\n  &nbsp;·&nbsp;\n  Pro\n\nArc is a library of React components and blocks with calm, physical motion. Every item is plain source you own: CSS modules on a small set of design tokens, [Motion](https://motion.dev) for animation, keyboard support, and a reduced motion path for every animation. Install anything with the shadcn CLI or copy the files by hand. It works in Next.js and Vite, with or without Tailwind. This repository holds the free, open source part: **100 components and 22 blocks**, plus the design and motion tokens they share. Every one of them has a live preview at [uiarc.dev](https://uiarc.dev).\n\n## Showcase\n\nA few favorites, recorded live from [uiarc.dev](https://uiarc.dev). Items marked Pro are part of [Arc Pro](https://uiarc.dev/pro) and are not in this repository; everything else installs from here for free.\n\nCover flow Pro\nA depth rail of photos you can throw, with soft grounded shadows and a quiet reflection.\n\nDonut chart\nArcs morph between datasets while the total rolls into the center.\n\nBilling toggle\nMonthly and yearly prices roll into each other, savings included.\n\nOrbit logos Pro\nIntegrations orbit your product mark. Filter them by category.\n\nWallet stack Pro\nFan a stack of cards and lift one out to see its activity.\n\nLine chart\nSwitch the range and the line redraws against the previous period.\n\nNumber field\nBounded steppers that say so when you reach the limit.\n\nActivity rings Pro\nDaily goals sweep, count up and trace a second lap past 100%.\n\n## Contents\n\n- [Showcase](#showcase)\n- [Install](#install)\n  - [Requirements](#requirements)\n  - [With the shadcn CLI](#with-the-shadcn-cli)\n  - [Copy and paste](#copy-and-paste)\n- [Usage](#usage)\n- [Theming](#theming)\n- [Components](#components)\n- [Blocks](#blocks)\n- [AI tools](#ai-tools)\n- [Troubleshooting](#troubleshooting)\n- [How releases work](#how-releases-work)\n- [Repository layout](#repository-layout)\n- [Arc Pro…",
+      "foundAt": "2026-09-30T21:18:18.155Z"
+    },
+    {
+      "id": "github:next-safe-action/next-safe-action",
+      "name": "next-safe-action/next-safe-action",
+      "url": "https://github.com/next-safe-action/next-safe-action",
+      "source": "github-search",
+      "kind": "library",
+      "description": "Type safe and validated Server Actions in your Next.js project.",
+      "language": "TypeScript",
+      "stars": 3076,
+      "forks": 48,
+      "contributors": 26,
+      "createdAt": "2023-04-16T02:12:14Z",
+      "lastCommitAt": "2026-09-29T08:40:53Z",
+      "license": "MIT",
+      "topics": [
+        "actions",
+        "app-dir",
+        "mutations",
+        "next",
+        "next-actions",
+        "nextjs",
+        "react",
+        "react-actions",
+        "react-server-components",
+        "rsc",
+        "server-actions",
+        "server-components",
+        "typesafe",
+        "typescript",
+        "zod"
+      ],
+      "archived": false,
+      "fork": false,
+      "categoriaSugerida": "nextjs-react",
+      "categoriasAlternativas": [
+        "librerias-relacionadas"
+      ],
+      "origins": [
+        {
+          "categoria": "nextjs-react",
+          "tipo": "topic",
+          "query": "react-server-components"
+        }
+      ],
+      "risk": {
+        "ageDays": 1263,
+        "postinstall": false,
+        "lifecycleScripts": [],
+        "singleMaintainer": false,
+        "notes": []
+      },
+      "readmeExcerpt": "next-safe-action\n\n**next-safe-action** is a library that takes full advantage of the latest and greatest Next.js, React and TypeScript features to let you define **type safe** Server Actions and execute them inside React Components.\n\n## Features\n\n- ✅ Pretty simple\n- ✅ End-to-end type safety\n- ✅ Form Actions support\n- ✅ Powerful middleware system\n- ✅ Input/output validation using multiple validation libraries\n- ✅ Advanced server error handling\n- ✅ Optimistic updates\n\n## Documentation\n\n**Explore the documentation for the current stable version of the library on the [next-safe-action website](https://next-safe-action.dev).** ✨\n\n## Migrate from v7 to v8\n\nCheck out the [v7 to v8 migration guide](https://next-safe-action.dev/docs/migrations/v7-to-v8) to learn how to update your code for v8.\n\n## Installation\n\n```bash\nnpm i next-safe-action\n```\n\n## Playground\n\nYou can find a basic working implementation of the library [here](https://github.com/next-safe-action/next-safe-action/tree/main/apps/playground).\n\n## Sponsors\n\nThese amazing people and companies help keep next-safe-action running! ❤️\n\n## Contributing\n\nIf you want to contribute to next-safe-action, please check out the [contributing guide](https://github.com/next-safe-action/next-safe-action/blob/main/CONTRIBUTING.md).\n\nIf you found bugs or just want to ask a question, feel free to open an issue or a discussion by following the [issue templates](https://github.com/next-safe-action/next-safe-action/issues/new/choose).\n\n## Contributors\n\nMade with [contrib.rocks](https://contrib.rocks).\n\n## Preview releases powered by [pkg.pr.new](https://pkg.pr.new)\n\n## License\n\nnext-safe-action is released under the [MIT License](https://github.com/next-safe-action/next-safe-action/blob/main/LICENSE).",
+      "foundAt": "2026-09-30T21:18:18.155Z"
+    },
+    {
+      "id": "github:solanabr/ai-kit",
+      "name": "solanabr/ai-kit",
+      "url": "https://github.com/solanabr/ai-kit",
+      "source": "github-search",
+      "kind": "skill",
+      "description": "Claude Code / Codex / AI configs for the expert Solana builder. CLAUDE.md, agents, commands, hooks, rules, skills and settings across Web, Anchor, Pinnochio, Unity, Mobile, security and more.",
+      "language": "Shell",
+      "stars": 106,
+      "forks": 59,
+      "contributors": 3,
+      "createdAt": "2026-01-13T19:52:26Z",
+      "lastCommitAt": "2026-09-30T20:23:47Z",
+      "license": "MIT",
+      "topics": [
+        "claude-agent",
+        "claude-code",
+        "claude-commands",
+        "claude-md",
+        "claude-skills",
+        "claude-subagents",
+        "solana-agents",
+        "solana-ai",
+        "solana-claude",
+        "solana-engineer",
+        "solana-program"
+      ],
+      "archived": false,
+      "fork": false,
+      "categoriaSugerida": "solana",
+      "categoriasAlternativas": [
+        "claude-skills"
+      ],
+      "origins": [
+        {
+          "categoria": "solana",
+          "tipo": "topic",
+          "query": "solana-program"
+        }
+      ],
+      "risk": {
+        "ageDays": 260,
+        "singleMaintainer": false,
+        "notes": []
+      },
+      "readmeExcerpt": "# Solana AI Kit\n\nProduction-ready Claude Code configuration for full-stack Solana development. Combines best practices from multiple sources into an agent-optimized, token-efficient config you can install and adapt to your specific project.\n\nThe idea here is to provide a generic CLAUDE.md that relies on subagents to plan and execute actions, dynamically loading markdown files, saving tokens and context in the end of the day. This config fully leverages the official Claude Code config recommendations:\n- Nothing loads up front except a small CLAUDE.md and one-line agent/command descriptions; agent, command and skill bodies load only when used;\n- SKILL.md is a mega hub to dynamically-disclosed skill files that are directly fetched from the best skill repos distributed across the ecosystem (Solana Foundation, Colosseum, Solana Mobile, SendAI, etc);\n- Plus, its CLAUDE-solana.md is than half the size of the usual CLAUDE.md, leaving space for its self improvements programmed into the agents, noting and learning from anti-patterns, errors, recurrency and more. For less important notes, CLAUDE.local.md is constantly maintained by agents as well and, on monorepos, per-folder CLAUDE.md is also maintained.\n\nCurrent multi-agent workflow favors monorepos, so we use a single CLAUDE.md/config for the whole project while leveraging agents and context-specific skills to solve each step of builder flow.\n\nIf you installed manually, remember to rename ./CLAUDE-solana.md back to ./CLAUDE.md, as the current top-level CLAUDE.md file is focused on maintaining the repo itself.\n\n## What This Is\n\nA complete `.claude/` configuration that turns Claude into a Solana development expert with:\n\n- **15 specialized agents** for different tasks (architecture, Anchor, Pinocchio, DeFi, tokens, frontend, mobile, backend, DevOps, QA, docs, games, Unity, learning, research)\n- **31 workflow commands** for building, testing, deploying, profiling, migrating, and committing\n- **3 MCP servers** on by default fo…",
+      "foundAt": "2026-09-30T21:18:18.155Z"
+    },
+    {
+      "id": "github:solana-foundation/solana-web3.js",
+      "name": "solana-foundation/solana-web3.js",
+      "url": "https://github.com/solana-foundation/solana-web3.js",
+      "source": "github-search",
+      "kind": "library",
+      "description": "Solana JavaScript SDK",
+      "language": "TypeScript",
+      "stars": 2758,
+      "forks": 1082,
+      "contributors": 132,
+      "createdAt": "2018-08-22T20:30:39Z",
+      "lastCommitAt": "2026-09-30T20:17:18Z",
+      "license": "MIT",
+      "topics": [
+        "blockchain",
+        "javascript",
+        "js",
+        "node",
+        "nodejs",
+        "sdk",
+        "solana"
+      ],
+      "archived": false,
+      "fork": false,
+      "categoriaSugerida": "solana",
+      "categoriasAlternativas": [
+        "librerias-relacionadas"
+      ],
+      "origins": [
+        {
+          "categoria": "solana",
+          "tipo": "topic",
+          "query": "solana"
+        }
+      ],
+      "risk": {
+        "ageDays": 2961,
+        "postinstall": false,
+        "lifecycleScripts": [],
+        "singleMaintainer": false,
+        "notes": []
+      },
+      "readmeExcerpt": "# solana-web3.js\n\n> [!IMPORTANT]\n> Looking for Legacy `@solana/web3.js` (v.1.x)? That code exists on the [`maintenance/v1.x`](https://github.com/solana-foundation/solana-web3.js/tree/maintenance/v1.x) branch. Version 1.x is no longer actively maintained and receives critical fixes only. New development happens here, on the v3+.\n\nThis repository is a pnpm workspace containing `@solana/web3.js` and the tooling that ships alongside it. Each package is versioned and published independently; the root package is private and exists only to orchestrate installs and scripts across the workspace.\n\n## Packages\n\n| Package                                                       | Path                      | Description           |\n| ------------------------------------------------------------- | ------------------------- | --------------------- |\n| [`@solana/web3.js`](packages/web3.js/README.md)               | `packages/web3.js`        | Solana JavaScript API |\n| [`@solana/wallet-adapter`](packages/wallet-adapter/README.md) | `packages/wallet-adapter` | Solana Wallet Adapter |\n\n## Development\n\n### Prerequisites\n\n- [Just](https://github.com/casey/just) (command runner) — `brew install just`\n- Node.js 20.19+ and pnpm 10\n\n### Setup\n\n```shell\njust setup\n```\n\n### Common commands\n\n```shell\njust build      # bundle JavaScript and generate type definitions\njust test       # unit tests across every package\njust fmt        # check formatting\njust lint       # check lint rules\njust ci         # everything CI runs on a pull request\n```\n\nRun `just -l` to list every recipe, including the validator and release ones.\nRunning `just` with no arguments runs the default recipe: format, lint,\ntypecheck, build, and unit tests.\n\n## Security\n\nSee [SECURITY.md](SECURITY.md) for how to report a vulnerability.",
+      "foundAt": "2026-09-30T21:18:18.155Z"
+    },
+    {
+      "id": "github:crbnos/carbon",
+      "name": "crbnos/carbon",
+      "url": "https://github.com/crbnos/carbon",
+      "source": "github-search",
+      "kind": "mcp-server",
+      "description": "Open-source manufacturing ERP, MES and QMS. Quoting, MRP, inventory, shop floor, quality and lot/serial traceability on one Postgres schema, with a REST API and MCP server. Self-host or use Carbon Cloud.",
+      "language": "TypeScript",
+      "stars": 2655,
+      "forks": 364,
+      "contributors": 48,
+      "createdAt": "2024-06-03T10:43:24Z",
+      "lastCommitAt": "2026-09-30T20:08:06Z",
+      "license": "NOASSERTION",
+      "topics": [
+        "ai-agents",
+        "bill-of-materials",
+        "erp",
+        "inventory-management",
+        "lean",
+        "manufacturing",
+        "manufacturing-execution-system",
+        "mcp-server",
+        "mes",
+        "mrp",
+        "open-source-erp",
+        "postgresql",
+        "production-planning",
+        "qms",
+        "quality-management-system",
+        "react-router",
+        "self-hosted",
+        "supabase",
+        "traceability",
+        "typescript"
+      ],
+      "archived": false,
+      "fork": false,
+      "categoriaSugerida": "sage200",
+      "categoriasAlternativas": [
+        "mcp-servers",
+        "agent-skills",
+        "librerias-relacionadas"
+      ],
+      "origins": [
+        {
+          "categoria": "sage200",
+          "tipo": "topic",
+          "query": "erp"
+        }
+      ],
+      "risk": {
+        "ageDays": 849,
+        "postinstall": true,
+        "lifecycleScripts": [
+          "postinstall"
+        ],
+        "singleMaintainer": false,
+        "notes": []
+      },
+      "readmeExcerpt": "The open-source manufacturing ERP, MES &amp; QMS\n\n    Quote, plan, buy, build, inspect and ship on one live model of your factory,\n    from a ten-person prototype shop to a rate-production line.\n\n    Start free ·\n    Self-host ·\n    Docs ·\n    API ·\n    MCP ·\n    Discord ·\n    Roadmap\n\n      Quote to cash. Quotes, orders, jobs and invoices on one record.\n\n      Unfork your BOM. Multi-level BOMs, revisions and configuration.\n\n      Traceability by default. Lot and serial genealogy, forwards and back.\n\n## Contents\n\n- [Why Carbon](#why-carbon)\n- [Features](#features)\n- [Get Carbon](#get-carbon)\n- [API & MCP](#api--mcp)\n- [Architecture](#architecture)\n- [Tech Stack](#tech-stack)\n- [Monorepo](#monorepo)\n- [Local Development](#local-development)\n- [Commands](#commands)\n- [Security](#security)\n- [Contributing](#contributing)\n- [License](#license)\n\n## Why Carbon\n\nLegacy ERPs were built for accountants in the 1990s. We built Carbon after years of running manufacturing on off-the-shelf systems and finding that:\n\n- Modern, API-first tooling didn't exist\n- Vendor lock-in bordered on extortion\n- There is no \"perfect ERP\", because every manufacturer is unique\n\nSo Carbon puts ERP, MRP, MES and QMS on **one Postgres schema you can read, own and extend**. Every stage, from CAD to cash, writes to the same record: no handoffs, no re-keying, no reconciliation.\n\nCarbon is an open-source alternative to [NetSuite](https://carbon.ms/compare/netsuite), [Epicor](https://carbon.ms/compare/epicor), [SAP Business One](https://carbon.ms/compare/sap-business-one), [Plex](https://carbon.ms/compare/plex), [Odoo](https://carbon.ms/compare/odoo) and [ERPNext](https://carbon.ms/compare/erpnext), built for discrete manufacturing: complex assembly, contract manufacturing, configure-to-order and high-mix, low-volume production. See [all comparisons](https://carbon.ms/compare).\n\n## Features\n\n|                              |…",
+      "foundAt": "2026-09-30T21:18:18.155Z"
+    }
+  ],
+  "descartados": [],
+  "diferidos": []
+}

@@ -8,3 +8,4 @@ coverage/
 !.env.example
 data/cache/
 .claude/settings.local.json
+data/review/

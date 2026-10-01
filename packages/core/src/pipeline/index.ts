@@ -1,7 +1,7 @@
 import { collectBatch, prepareBatch } from '../batch/index.js';
 import { repoRoot, vaultPath } from '../paths.js';
 import { publishWeek } from '../publish/index.js';
-import { listForReview } from '../review/index.js';
+import { listForReview, prepareReview } from '../review/index.js';
 import { syncInterests as vaultSyncInterests } from '../vault/index.js';
 import { collectWeek } from './collect.js';
 
@@ -47,6 +47,15 @@ export function publish(week: string, options: { force?: boolean } = {}) {
 /** `spf review --list`: hallazgos en `candidato` pendientes de revisar. */
 export function reviewList() {
   return listForReview({ repoDir: repoRoot(), vaultDir: vaultPath() });
+}
+
+/** `spf review --prepare`: clon seguro e inventario de uno o varios hallazgos. */
+export function reviewPrepare(options: { ids?: string[]; week?: string }) {
+  return prepareReview({
+    repoDir: repoRoot(),
+    vaultDir: vaultPath(),
+    ...options,
+  });
 }
 
 export async function pipelineSyncInterests() {

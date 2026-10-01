@@ -5,6 +5,7 @@ import {
   collect,
   collectScorings,
   fetchRateLimits,
+  formatPrepare,
   formatRateLimits,
   formatReviewList,
   isoWeek,
@@ -12,6 +13,7 @@ import {
   prepare,
   publish,
   reviewList,
+  reviewPrepare,
 } from '@spf/core';
 import { Command, InvalidArgumentError } from 'commander';
 
@@ -199,12 +201,34 @@ program
     '--list',
     'Lista las filas candidato de Catalogo.md con su categoría, score, proyecto afectado y URL',
   )
+  .option(
+    '--prepare [id]',
+    'Clon superficial (sin instalar ni ejecutar nada) e inventario de un hallazgo (github:owner/repo) o, con --week, de todos los de esa semana',
+  )
+  .option('-w, --week <week>', 'Semana ISO (YYYY-Www) para --prepare')
   .action(async (options) => {
     try {
-      if (!options.list) {
-        throw new Error('indica una acción: --list');
+      const modes = [options.list, options.prepare].filter(Boolean).length;
+      if (modes !== 1) {
+        throw new Error('indica una sola acción: --list o --prepare');
       }
-      console.log(formatReviewList(await reviewList()).join('\n'));
+      if (options.list) {
+        console.log(formatReviewList(await reviewList()).join('\n'));
+        return;
+      }
+      const id =
+        typeof options.prepare === 'string' ? options.prepare : undefined;
+      if (!id && !options.week) {
+        throw new Error(
+          '--prepare necesita un id (github:owner/repo) o --week',
+        );
+      }
+      const outcomes = await reviewPrepare({
+        ids: id ? [id] : undefined,
+        week: options.week,
+      });
+      console.log(formatPrepare(outcomes).join('\n'));
+      if (outcomes.some((o) => !o.ok)) process.exit(1);
     } catch (err) {
       fail('review', err);
     }
