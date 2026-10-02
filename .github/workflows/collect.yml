@@ -5,7 +5,7 @@ on:
   workflow_dispatch:
     inputs:
       source:
-        description: 'Fuente a recoger (opcional: github-search, awesome-list o anthropic-skills). Vacío = todas'
+        description: 'Fuente a recoger (opcional: github-search, awesome-list, anthropic-skills o mcp-registry). Vacío = todas'
         required: false
         type: string
 

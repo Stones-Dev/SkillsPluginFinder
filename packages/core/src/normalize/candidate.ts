@@ -4,6 +4,7 @@ export const SOURCE_IDS = [
   'github-search',
   'awesome-list',
   'anthropic-skills',
+  'mcp-registry',
 ] as const;
 
 export const KINDS = [
@@ -23,7 +24,8 @@ export const originSchema = z
     categoria: z.string().min(1),
     /** `awesome`: salió de una lista `awesome-*`; `query` es el `owner/repo` de la lista. */
     /** `anthropic`: plugin nuevo del marketplace oficial; `query` es `<marketplace>:<plugin>`. */
-    tipo: z.enum(['keyword', 'topic', 'awesome', 'anthropic']),
+    /** `registry`: servidor del registro oficial MCP; `query` es su nombre en el registro. */
+    tipo: z.enum(['keyword', 'topic', 'awesome', 'anthropic', 'registry']),
     query: z.string().min(1),
   })
   .strict();

@@ -61,7 +61,7 @@ program
   )
   .option(
     '-s, --source <source>',
-    'Fuente a recoger: github-search, awesome-list o anthropic-skills (sin la opción, todas)',
+    'Fuente a recoger: github-search, awesome-list, anthropic-skills o mcp-registry (sin la opción, todas)',
   )
   .option(
     '--dry-run',
@@ -99,6 +99,11 @@ program
             ? []
             : [
                 `  anthropic-skills: ${s.anthropicRequests} peticiones core (${s.anthropicNotModified ?? 0} listados con 304) · ${s.anthropicCambios ?? 0} cambios oficiales → ${s.anthropicResueltos ?? 0} candidatos resueltos, ${s.anthropicPendientes ?? 0} pendientes`,
+              ]),
+          ...(s.mcpLotes === undefined
+            ? []
+            : [
+                `  mcp-registry: ${s.mcpPaginas ?? 0} páginas del registro → ${s.mcpFilas ?? 0} servidores actualizados → ${s.mcpRepos ?? 0} repos de GitHub → ${s.mcpConsultados ?? 0} consultados (${s.mcpLotes} consultas GraphQL) → ${s.mcpDetallados ?? 0} candidatos, ${s.mcpPendientes ?? 0} pendientes`,
               ]),
           `  errores por fuente: ${run.errorsBySource.length}`,
           `→ ${file} (${totalCandidates} candidatos)`,

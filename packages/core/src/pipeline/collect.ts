@@ -28,6 +28,14 @@ import {
   type SourceError,
   collectFromGithub,
 } from '../collectors/github.js';
+import {
+  MCP_SOURCE_ID,
+  type McpRegistryReport,
+  type McpRegistryResult,
+  collectFromMcpRegistry,
+  finalizeMcpRegistryState,
+  writeMcpRegistryState,
+} from '../collectors/mcp-registry.js';
 import { loadCatalog, loadInterests } from '../config/interests.js';
 import { type Db, getDb, getReadonlyDb } from '../db/index.js';
 import { runs } from '../db/schema.js';
@@ -56,6 +64,7 @@ export const COLLECT_SOURCES = [
   SOURCE_ID,
   AWESOME_SOURCE_ID,
   ANTHROPIC_SOURCE_ID,
+  MCP_SOURCE_ID,
 ] as const;
 
 export type CollectOptions = {
@@ -75,7 +84,8 @@ export type CollectOptions = {
    * **sin escribir nada**: ni `data/candidates/`, ni `seen.sqlite`, ni `runs`, ni la
    * caché HTTP de `data/cache/`. Tampoco enriquece (gastaría ~3 peticiones `core`
    * por repo). Sí gasta las peticiones de búsqueda. Única excepción: crea las
-   * instantáneas de `data/awesome/` y `data/anthropic/` que falten (nunca sobrescribe una existente).
+   * instantáneas de `data/awesome/`, `data/anthropic/` y `data/mcp-registry/` que falten (nunca
+   * sobrescribe una existente).
    */
   dryRun?: boolean;
   /** Solo tests. */
@@ -124,6 +134,17 @@ export type DryRunSummary = {
     notModified: number;
     /** Instantáneas de `data/awesome/` que no existían y se han creado. */
     snapshotsCreadas: number;
+  };
+  /** Colector `mcp-registry`; ausente si no se ejecutó. */
+  mcpRegistry?: {
+    report: McpRegistryReport;
+    /** Peticiones al registro MCP (páginas). */
+    requests: number;
+    /** Consultas GraphQL a GitHub y puntos del cubo GraphQL que han costado. */
+    lotes: number;
+    puntos: number;
+    /** Si el estado de `data/mcp-registry/` no existía y se ha creado. */
+    estadoCreado: boolean;
   };
   /** Colector `anthropic-skills`; ausente si no se ejecutó. */
   anthropic?: {
@@ -204,6 +225,15 @@ export async function collectWeek(
       'Sin listas que recoger: añade el bloque awesome_listas a Intereses.md y ejecuta "pnpm spf interests sync".',
     );
   }
+  if (
+    requested.length === 1 &&
+    wants(MCP_SOURCE_ID) &&
+    !interests.mcp_registry_categoria
+  ) {
+    throw new Error(
+      'Sin categoría para el registro MCP: añade mcp_registry_categoria a Intereses.md y ejecuta "pnpm spf interests sync".',
+    );
+  }
   const fuentes: string[] = [];
 
   const search = wants(SOURCE_ID)
@@ -269,10 +299,42 @@ export async function collectWeek(
     }
   }
 
+  let mcp: McpRegistryResult | undefined;
+  if (wants(MCP_SOURCE_ID) && interests.mcp_registry_categoria) {
+    // Todo candidato del registro lleva el origen de `mcp_registry_categoria` (3 puntos en la
+    // categoría sugerida), así que sus estrellas se juzgan con el mínimo de esa categoría: pedir
+    // el detalle de menos estrellas sería trabajo que las reglas descartan después (en vivo,
+    // con el suelo más bajo de todas las categorías, 87 de 163 repos).
+    const minStars =
+      interests.categorias[interests.mcp_registry_categoria]?.estrellas_min ??
+      interests.reglas_globales.estrellas_min;
+    mcp = await collectFromMcpRegistry({
+      token,
+      now,
+      stateDir: path.join(repoDir, 'data', 'mcp-registry'),
+      categoria: interests.mcp_registry_categoria,
+      minStars,
+      logger,
+      throttle: options.throttle,
+      retryBaseMs: options.retryBaseMs,
+    });
+    fuentes.push(MCP_SOURCE_ID);
+    if (requested.length === 1 && mcp.report.estado === 'error') {
+      throw new Error(
+        `El registro MCP falló (${mcp.errors[0]?.message ?? 'sin detalle'}); no se escribe nada.`,
+      );
+    }
+  }
+
   // Un repo que sale de varias fuentes es un solo candidato con todos sus orígenes.
   const found = new Map<
     string,
-    { repo: GithubRepo; origins: Origin[]; source: Candidate['source'] }
+    {
+      repo: GithubRepo;
+      origins: Origin[];
+      source: Candidate['source'];
+      notes?: string[];
+    }
   >();
   for (const r of search.repos) {
     found.set(r.repo.full_name.toLowerCase(), { ...r, source: SOURCE_ID });
@@ -288,6 +350,14 @@ export async function collectWeek(
     const existing = found.get(key);
     if (existing) existing.origins.push(...r.origins);
     else found.set(key, { ...r, source: ANTHROPIC_SOURCE_ID });
+  }
+  for (const r of mcp?.repos ?? []) {
+    const key = r.repo.full_name.toLowerCase();
+    const existing = found.get(key);
+    if (existing) {
+      existing.origins.push(...r.origins);
+      existing.notes = [...(existing.notes ?? []), ...r.notes];
+    } else found.set(key, { ...r, source: MCP_SOURCE_ID });
   }
   const normalized = [...found.values()].map((r) =>
     normalizeGithubRepo(r, { interests, now }),
@@ -326,6 +396,14 @@ export async function collectWeek(
           )
         ).length
       : 0;
+    const estadoMcp = mcp
+      ? (
+          await writeMcpRegistryState(
+            finalizeMcpRegistryState(mcp, deferredNames),
+            { onlyMissing: true },
+          )
+        ).length > 0
+      : false;
     const anthropicCreadas = anthropic
       ? (
           await writeAnthropicSnapshots(
@@ -359,7 +437,8 @@ export async function collectWeek(
         rawItems:
           search.stats.rawItems +
           (awesome?.stats.resueltos ?? 0) +
-          (anthropic?.stats.resueltos ?? 0),
+          (anthropic?.stats.resueltos ?? 0) +
+          (mcp?.report.detallados ?? 0),
         uniqueRepos: found.size,
         afterDedupe: fresh.length,
         afterRules: kept.length,
@@ -373,6 +452,13 @@ export async function collectWeek(
         notModified: awesome.stats.notModified,
         snapshotsCreadas,
       },
+      mcpRegistry: mcp && {
+        report: mcp.report,
+        requests: mcp.stats.requests,
+        lotes: mcp.stats.lotes,
+        puntos: mcp.stats.puntos,
+        estadoCreado: estadoMcp,
+      },
       anthropic: anthropic && {
         repos: anthropic.sources,
         oficiales: anthropic.oficiales,
@@ -384,6 +470,7 @@ export async function collectWeek(
         ...search.errors,
         ...(awesome?.errors ?? []),
         ...(anthropic?.errors ?? []),
+        ...(mcp?.errors ?? []),
       ],
       descartadosPorRegla: byRule,
       categorias: [...categories.entries()]
@@ -429,7 +516,8 @@ export async function collectWeek(
     rawItems:
       search.stats.rawItems +
       (awesome?.stats.resueltos ?? 0) +
-      (anthropic?.stats.resueltos ?? 0),
+      (anthropic?.stats.resueltos ?? 0) +
+      (mcp?.report.detallados ?? 0),
     uniqueRepos: found.size,
     afterDedupe: fresh.length,
     afterRules: kept.length,
@@ -443,6 +531,15 @@ export async function collectWeek(
       awesomeNuevos: awesome.stats.nuevos,
       awesomeResueltos: awesome.stats.resueltos,
       awesomePendientes: awesome.stats.pendientes,
+    }),
+    ...(mcp && {
+      mcpPaginas: mcp.report.paginas,
+      mcpFilas: mcp.report.filas,
+      mcpRepos: mcp.report.repos,
+      mcpConsultados: mcp.report.consultados,
+      mcpDetallados: mcp.report.detallados,
+      mcpLotes: mcp.stats.lotes,
+      mcpPendientes: mcp.report.pendientes,
     }),
     ...(anthropic && {
       anthropicRequests: anthropic.stats.requests,
@@ -460,6 +557,7 @@ export async function collectWeek(
       ...search.errors,
       ...(awesome?.errors ?? []),
       ...(anthropic?.errors ?? []),
+      ...(mcp?.errors ?? []),
     ],
   };
 
@@ -505,6 +603,9 @@ export async function collectWeek(
       finalizeAnthropicSnapshots(anthropic, deferredNames),
     );
   }
+  if (mcp) {
+    await writeMcpRegistryState(finalizeMcpRegistryState(mcp, deferredNames));
+  }
 
   return { week, file, run, totalCandidates: merged.candidates.length };
 }
@@ -518,7 +619,7 @@ export function formatDryRun(r: DryRunSummary): string[] {
       .map(([rule, n]) => `${rule} ${n}`)
       .join(' · ') || 'ninguno';
   const lines = [
-    `DRY-RUN · semana ${r.week} · ${r.fuentes.join(' + ')} — no se escribe nada (ni data/candidates, ni seen.sqlite, ni runs, ni caché${r.awesome || r.anthropic ? `, salvo las instantáneas de ${[r.awesome && 'data/awesome', r.anthropic && 'data/anthropic'].filter(Boolean).join(' y ')} que falten` : ''}) y no se enriquece`,
+    `DRY-RUN · semana ${r.week} · ${r.fuentes.join(' + ')} — no se escribe nada (ni data/candidates, ni seen.sqlite, ni runs, ni caché${r.awesome || r.anthropic || r.mcpRegistry ? `, salvo las instantáneas de ${[r.awesome && 'data/awesome', r.anthropic && 'data/anthropic', r.mcpRegistry && 'data/mcp-registry'].filter(Boolean).join(' y ')} que falten` : ''}) y no se enriquece`,
     `  ${s.queries} consultas → ${s.requests} peticiones de búsqueda → ${s.rawItems} resultados → ${s.uniqueRepos} repos únicos`,
     `  dedupe (${r.seenLeida ? 'seen.sqlite en solo lectura' : 'sin seen.sqlite: nada visto'}): ${s.afterDedupe} · tras reglas: ${s.afterRules} (${s.afterDedupe - s.afterRules} descartados: ${rules})`,
     `  entrarían al batch: ${s.selected} · diferidos por el tope: ${s.deferred} · el enrich gastaría ~${r.enrichRequestsEstimadas} peticiones core`,
@@ -534,6 +635,7 @@ export function formatDryRun(r: DryRunSummary): string[] {
   }
   if (r.awesome) lines.push(...formatAwesome(r.awesome));
   if (r.anthropic) lines.push(...formatAnthropic(r.anthropic));
+  if (r.mcpRegistry) lines.push(...formatMcpRegistry(r.mcpRegistry));
   if (r.muestra.length > 0) {
     lines.push(
       '  primeros del batch:',
@@ -585,4 +687,26 @@ function formatAnthropic(a: NonNullable<DryRunSummary['anthropic']>): string[] {
     }
   }
   return lines;
+}
+
+function formatMcpRegistry(
+  m: NonNullable<DryRunSummary['mcpRegistry']>,
+): string[] {
+  const r = m.report;
+  const head = `  mcp-registry: ${m.requests} páginas del registro · ${m.lotes} consultas GraphQL (${m.puntos} puntos del cubo GraphQL)${m.estadoCreado ? ' · estado creado' : ''}`;
+  if (r.estado === 'primera-pasada') {
+    return [head, '    primera pasada (se anota la hora; sin candidatos)'];
+  }
+  if (r.estado === 'error') return [head, '    ERROR (ver errores por fuente)'];
+  return [
+    head,
+    `    registro: ${r.filas} servidores actualizados → ${r.activos} activos → ${r.conGithub} con repo de GitHub → ${r.repos} repos distintos`,
+    `    etapa 1 (estrellas): ${r.consultados} consultados${r.omitidos > 0 ? ` · ${r.omitidos} omitidos por el tope` : ''} → ${r.conEstrellas} llegan al mínimo → etapa 2 (detalle): ${r.detallados} candidatos · desaparecidos ${r.desaparecidos} · pendientes ${r.pendientes}`,
+    ...(r.ventanaAcotada
+      ? [
+          '    la última lectura era de hace más de 14 días: se miró solo ese tramo',
+        ]
+      : []),
+    ...(r.truncado ? ['    listado cortado por el tope de páginas'] : []),
+  ];
 }

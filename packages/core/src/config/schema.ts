@@ -70,10 +70,23 @@ export const interestsSchema = z
      * y no propone candidatos.
      */
     anthropic_categoria: z.string().min(1).optional(),
+    /**
+     * Categoría (de `categorias`) de los candidatos del registro oficial MCP (colector
+     * `mcp-registry`). Sin ella el colector no hace nada.
+     */
+    mcp_registry_categoria: z.string().min(1).optional(),
     proyectos: z.array(z.string().min(1)).default([]),
   })
   .strict()
   .superRefine((interests, ctx) => {
+    const mcp = interests.mcp_registry_categoria;
+    if (mcp !== undefined && !(mcp in interests.categorias)) {
+      ctx.addIssue({
+        code: z.ZodIssueCode.custom,
+        path: ['mcp_registry_categoria'],
+        message: `la categoría "${mcp}" no existe en categorias`,
+      });
+    }
     const anthropic = interests.anthropic_categoria;
     if (anthropic !== undefined && !(anthropic in interests.categorias)) {
       ctx.addIssue({

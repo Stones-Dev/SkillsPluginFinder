@@ -67,6 +67,14 @@ export const runStatsSchema = z
     anthropicCambios: count.optional(),
     anthropicResueltos: count.optional(),
     anthropicPendientes: count.optional(),
+    /** Colector `mcp-registry` (ausentes si no se ejecutó). Los lotes son consultas GraphQL a GitHub. */
+    mcpPaginas: count.optional(),
+    mcpFilas: count.optional(),
+    mcpRepos: count.optional(),
+    mcpConsultados: count.optional(),
+    mcpDetallados: count.optional(),
+    mcpLotes: count.optional(),
+    mcpPendientes: count.optional(),
   })
   .strict();
 

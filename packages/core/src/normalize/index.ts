@@ -98,6 +98,8 @@ export function normalizeGithubRepo(
     origins: Origin[];
     /** Colector del que salió; por defecto `github-search`. */
     source?: Candidate['source'];
+    /** Notas de riesgo de la fuente (p. ej. el manifiesto del registro MCP). */
+    notes?: string[];
   },
   ctx: { interests: Interests; now: Date },
 ): Candidate {
@@ -132,7 +134,7 @@ export function normalizeGithubRepo(
       ageDays: Math.floor(
         (ctx.now.getTime() - Date.parse(repo.created_at)) / DAY_MS,
       ),
-      notes: [],
+      notes: input.notes ?? [],
     },
     foundAt: ctx.now.toISOString(),
   };

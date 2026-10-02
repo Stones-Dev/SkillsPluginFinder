@@ -4,7 +4,7 @@ Sistema semanal que rastrea GitHub en busca de skills, plugins, servidores MCP, 
 
 Funciona en tres tramos (detalle en `Plan.md` del vault):
 
-- **Recogida** (`spf collect`): determinista, sin IA y sin acceso al vault. Busca en GitHub (`github-search`), compara cada semana los README de las listas `awesome-*` (`awesome-list`), sigue los cambios de `anthropics/skills` y del marketplace oficial de plugins (`anthropic-skills`), filtra por reglas, enriquece lo que entra en el tope y escribe `data/candidates/YYYY-Www.json`. Puede correr en GitHub Actions.
+- **Recogida** (`spf collect`): determinista, sin IA y sin acceso al vault. Busca en GitHub (`github-search`), compara cada semana los README de las listas `awesome-*` (`awesome-list`), sigue los cambios de `anthropics/skills` y del marketplace oficial de plugins (`anthropic-skills`), lee el registro oficial MCP (`mcp-registry`), filtra por reglas, enriquece lo que entra en el tope y escribe `data/candidates/YYYY-Www.json`. Puede correr en GitHub Actions.
 - **Evaluación** (`spf prepare`, `collect-batch`, `cross`, `publish`): en local, la hacen **dos agentes** sobre el mismo `data/batches/<semana>/batch.md`: Claude Code (`scoring.json`) y Antigravity por su CLI `agy` (`scoring-antigravity.json`). `spf cross` los cruza (media; disputa si difieren en 3 o más; confianza alta si los dos llegan a 7) y `publish` escribe el informe y las filas de `Catalogo.md` en el vault.
 - **Revisión** (`spf review`): por cada hallazgo en `candidato`, inventario automático del clon y veredicto `probado`, `descartado` o `adoptado`. El agente puede adoptar sin confirmación, **salvo** que haya una señal de supply-chain (scripts de instalación, registro propio, MCP remoto, repo de menos de 30 días con un solo mantenedor, privilegios, o una disputa entre los dos evaluadores): entonces queda en `probado` y se avisa en la nota diaria. Lo adoptado va a `03-Conocimiento/` y a `## Mejoras propuestas` de la nota del proyecto afectado.
 
@@ -30,7 +30,7 @@ Se ejecutan con `pnpm spf <comando>` (compila antes).
 | Comando | Qué hace |
 |---|---|
 | `week` | Imprime la semana ISO de hoy (`YYYY-Www`, Europe/Madrid). |
-| `collect [--source github-search\|awesome-list\|anthropic-skills] [--dry-run]` | Mitad nube: recoge, filtra y enriquece; sin `--source`, todas las fuentes. Con `--dry-run` hace el ensayo —colectores, dedupe (`seen.sqlite` en solo lectura), reglas y tope— y cuenta lo que pasaría **sin escribir nada** (ni `data/candidates/`, ni `seen.sqlite`, ni `runs`, ni la caché de `data/cache/`) y sin enriquecer; sí gasta las ~109 búsquedas (≈ 4 min). **Única excepción:** crea las instantáneas de `data/awesome/` y `data/anthropic/` que falten (nunca sobrescribe una existente; ver abajo). Es la forma segura de probar un colector o un cambio de `Intereses.md` antes del lunes. |
+| `collect [--source github-search\|awesome-list\|anthropic-skills\|mcp-registry] [--dry-run]` | Mitad nube: recoge, filtra y enriquece; sin `--source`, todas las fuentes. Con `--dry-run` hace el ensayo —colectores, dedupe (`seen.sqlite` en solo lectura), reglas y tope— y cuenta lo que pasaría **sin escribir nada** (ni `data/candidates/`, ni `seen.sqlite`, ni `runs`, ni la caché de `data/cache/`) y sin enriquecer; sí gasta las ~109 búsquedas (≈ 4 min). **Única excepción:** crea las instantáneas de `data/awesome/`, `data/anthropic/` y `data/mcp-registry/` que falten (nunca sobrescribe una existente; ver abajo). Es la forma segura de probar un colector o un cambio de `Intereses.md` antes del lunes. |
 | `rate-limit [--min-core N] [--min-search N]` | Consulta los límites de la API de GitHub del token (`GET /rate_limit`, no gasta cuota). Con los mínimos, sale con error si no alcanzan. |
 | `prepare --week <semana>` | Genera `data/batches/<semana>/batch.md`. |
 | `collect-batch --week <semana> [--agent antigravity] [--reason <texto>]` | Valida el scoring del evaluador y guarda los scorings. Con `--agent antigravity` valida `scoring-antigravity.json` y un fallo **no es fatal**: se anota en `runs` (con `--reason`, la causa del wrapper de `agy`) y la semana sigue solo con Claude Code. |
@@ -88,9 +88,23 @@ Sigue dos repos, sin releases ni tags (verificado): `anthropics/skills` y el mar
 
 Igual que `awesome-list`: primera pasada = solo instantánea; las instantáneas se escriben al final de la recogida; lo que difiere `enrich_max` o falla de forma transitoria no se da por visto; `--dry-run` crea la instantánea que falta y nunca sobrescribe una existente.
 
+## Registro oficial MCP (`mcp-registry`)
+
+Lee `registry.modelcontextprotocol.io` (API REST pública y sin autenticación, `GET /v0.1/servers`) y propone como candidatos los servidores con repo de GitHub. Se activa con `mcp_registry_categoria` en `Intereses.md` (la categoría de esos candidatos; sin ella no hace nada).
+
+El registro es un caudal, no un catálogo: más de 20.000 servidores, ~6.250 actualizados cada semana (~4.100 repos de GitHub distintos) y solo el 5,9 % de esos repos llega a 30★. Resolverlos con REST costaría ~4.100 peticiones `core` por semana, así que se hace en dos etapas con la API GraphQL de GitHub (25 repos por consulta, 1 punto del cubo GraphQL; con 100 contesta 504):
+
+1. Se leen los servidores actualizados desde la última vez (`updated_since`, `version=latest`, de 100 en 100; como mucho 14 días hacia atrás) y se quedan los **activos** (`deprecated` y `deleted` fuera) con repo de GitHub.
+2. **Etapa 1, estrellas**: de cada repo, con tope de 1.500 por recogida y por este orden: pendientes de la vez anterior, los que publican paquetes (npm, PyPI, OCI…: el 14,7 % llega a 30★) y, al final, los solo remotos (1,1 %), los más recientes primero. Lo omitido por el tope no se arrastra (el caudal vuelve a pasar).
+3. **Etapa 2, detalle**: solo de los que llegan al `estrellas_min` de esa categoría (máx. 300 por recogida). Salen como candidatos (origen `registry`) con el manifiesto resumido —paquetes publicados y transportes remotos— en las notas de riesgo, y siguen por el mismo normalize, dedupe, reglas y tope que el resto. Un repo que sale también de la búsqueda es un solo candidato con los dos orígenes.
+
+- **Primera pasada** (sin estado): solo se anota la hora en `data/mcp-registry/registry.modelcontextprotocol.io.json`; sin candidatos.
+- **Nada se pierde** de lo ya visto: el estado se escribe al final de la recogida; lo que supera el tope de detalles, falla de forma transitoria o difiere `enrich_max` queda como pendiente (hasta 300) y vuelve el primero. Si el registro falla, el estado no avanza. `--dry-run` crea el estado que falta y nunca sobrescribe uno existente.
+- Coste típico: ~45 s de páginas del registro y ~40–60 consultas GraphQL (≈ 70 puntos de 5.000/h), cero peticiones `core` en el listado.
+
 ## GitHub Actions (`collect.yml`)
 
-El workflow `collect` ejecuta solo la mitad nube: el cron corre los lunes a las 05:00 UTC y también se puede lanzar a mano (*Actions → collect → Run workflow*), con un input opcional `source` (`github-search`, `awesome-list` o `anthropic-skills`; vacío recoge todo). Al terminar hace commit de `data/` con el usuario `spf-bot`.
+El workflow `collect` ejecuta solo la mitad nube: el cron corre los lunes a las 05:00 UTC y también se puede lanzar a mano (*Actions → collect → Run workflow*), con un input opcional `source` (`github-search`, `awesome-list`, `anthropic-skills` o `mcp-registry`; vacío recoge todo). Al terminar hace commit de `data/` con el usuario `spf-bot`.
 
 **Estado: escrito y validado con `actionlint`, pero sin ejecutar todavía en GitHub.**
 
