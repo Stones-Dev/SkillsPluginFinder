@@ -89,6 +89,7 @@ awesome_listas:                  # colector awesome-list: lista -> categoría de
   thangchung/awesome-dotnet-core: dotnet
 
 anthropic_categoria: claude-skills   # colector anthropic-skills: categoría de los repos de los plugins nuevos del marketplace oficial
+mcp_registry_categoria: mcp-servers  # colector mcp-registry: categoría de los servidores del registro oficial MCP
 
 proyectos:
   - CRMDecoversia — CRM comercial, Laravel 11 backend + Node/Next.js frontend, JWT, colas, exports
