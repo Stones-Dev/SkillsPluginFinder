@@ -369,3 +369,87 @@ test('la lista blanca de licencias es insensible a mayúsculas y una lista vací
     only({ ...base, license: undefined }, open, [], NOW).kept,
   ).toHaveLength(1);
 });
+
+test('origen oficial de Anthropic: se salta estrellas_min pero no el máximo, la licencia, la inactividad, forks/archivados ni las exclusiones', () => {
+  const base = real('Jeffallan/claude-skills');
+  const official = [
+    {
+      categoria: 'claude-skills',
+      tipo: 'anthropic' as const,
+      query: 'anthropics/claude-plugins-official:un-plugin',
+    },
+  ];
+  const variant = (
+    over: Partial<Candidate>,
+    origins: Candidate['origins'] = official,
+  ): Candidate => ({
+    ...base,
+    origins,
+    ...over,
+  });
+
+  // un plugin del marketplace con 0★ pasa; el mismo repo salido de una búsqueda, no
+  expect(only(variant({ stars: 0 }), interests, [], NOW).kept).toHaveLength(1);
+  expect(
+    only(variant({ stars: 0 }, fromClaudeSkills), interests, [], NOW)
+      .descartados[0].motivo,
+  ).toBe('0 estrellas < 20 (mínimo de claude-skills)');
+  // basta con que UNO de sus orígenes sea el oficial
+  expect(
+    only(
+      variant({ stars: 0 }, [...fromClaudeSkills, ...official]),
+      interests,
+      [],
+      NOW,
+    ).kept,
+  ).toHaveLength(1);
+
+  // lo demás sigue aplicando
+  expect(
+    only(variant({ stars: 20001 }), interests, [], NOW).descartados[0],
+  ).toMatchObject({
+    regla: 'estrellas',
+    motivo: '20001 estrellas > 20000 (máximo de las reglas globales)',
+  });
+  expect(
+    only(variant({ stars: 0, license: undefined }), interests, [], NOW)
+      .descartados[0],
+  ).toMatchObject({
+    regla: 'licencia',
+    motivo: 'licencia: ninguna',
+  });
+  expect(
+    only(variant({ stars: 0, license: 'GPL-3.0' }), interests, [], NOW)
+      .descartados[0].regla,
+  ).toBe('licencia');
+  expect(
+    only(
+      variant({ stars: 0, lastCommitAt: '2025-01-01T00:00:00Z' }),
+      interests,
+      [],
+      NOW,
+    ).descartados[0].regla,
+  ).toBe('inactivo');
+  expect(
+    only(variant({ stars: 0, archived: true }), interests, [], NOW)
+      .descartados[0].regla,
+  ).toBe('archivado');
+  expect(
+    only(variant({ stars: 0, fork: true }), interests, [], NOW).descartados[0]
+      .regla,
+  ).toBe('fork');
+  expect(
+    only(variant({ stars: 0 }), { ...interests, excluir: [base.name] }, [], NOW)
+      .descartados[0].regla,
+  ).toBe('excluido-intereses');
+  const adopted = [
+    {
+      ...catalog[0],
+      estado: 'adoptado' as const,
+      repo: base.name.toLowerCase(),
+    },
+  ];
+  expect(
+    only(variant({ stars: 0 }), interests, adopted, NOW).descartados[0].regla,
+  ).toBe('excluido-catalogo');
+});

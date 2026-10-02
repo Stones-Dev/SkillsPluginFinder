@@ -41,7 +41,7 @@ export function matchesExclusion(pattern: string, fullName: string): boolean {
  * Filtra por reglas y devuelve qué se descarta y por qué. Las exclusiones vienen
  * de `interests.excluir` y de lo `adoptado`/`descartado` en el catálogo; el
  * resto son las `reglas_globales`, con la `estrellas_min` de la categoría
- * sugerida cuando la tiene.
+ * sugerida cuando la tiene (salvo para lo que tiene un origen `anthropic`).
  */
 export function filterCandidates(
   candidates: Candidate[],
@@ -86,7 +86,12 @@ export function filterCandidates(
 
     const category = interests.categorias[c.categoriaSugerida];
     const minStars = category?.estrellas_min ?? rules.estrellas_min;
-    if (c.stars < minStars) {
+    // Lo que sale del marketplace oficial de Anthropic ya viene filtrado por un tercero de
+    // confianza y suele ser nuevo (0★): se salta el mínimo. Sigue sujeto al máximo, a la
+    // licencia, a la inactividad, a forks/archivados y a las exclusiones, y la puerta de
+    // supply-chain de `spf review --apply` no distingue de dónde viene.
+    const official = c.origins.some((o) => o.tipo === 'anthropic');
+    if (!official && c.stars < minStars) {
       return {
         regla: 'estrellas',
         motivo: `${c.stars} estrellas < ${minStars} (mínimo de ${category ? c.categoriaSugerida : 'las reglas globales'})`,

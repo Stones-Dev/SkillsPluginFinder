@@ -51,7 +51,6 @@ categorias:
   claude-skills:
     nombre: Skills y plugins para Claude y Claude Code
     peso: 1
-    estrellas_min: 0
 anthropic_categoria: claude-skills
 proyectos:
   - CRMDecoversia — CRM comercial, Laravel 11 backend + Node/Next.js frontend
