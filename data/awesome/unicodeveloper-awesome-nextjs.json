@@ -1,8 +1,8 @@
 {
   "version": 1,
   "repo": "unicodeveloper/awesome-nextjs",
-  "etag": "\"6c9911dcb50c084c449fc73d81f9dd43ea34917d\"",
-  "fetchedAt": "2026-10-01T13:29:21.549Z",
+  "etag": "\"77d1b340c80b8f610de10a628ccba7e9c589b143\"",
+  "fetchedAt": "2026-10-19T10:35:39.555Z",
   "links": [
     "a827681306/devtoolkit",
     "alandsleman/storagebox",
@@ -64,6 +64,7 @@
     "lipp/next-todos",
     "liveduo/destack",
     "lone-cloud/next-deploy",
+    "loootai/looot-network",
     "lucleray/next-purgecss",
     "martpie/next-transpile-modules",
     "mattdamon108/nextjs-with-lambda",
