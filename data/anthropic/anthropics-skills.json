@@ -1,9 +1,9 @@
 {
   "version": 1,
   "repo": "anthropics/skills",
-  "etag": "W/\"70771303443bcbea2a2f7e04f48f2882622d3c87e6a8f37a3132df963bf1fef3\"",
+  "etag": "W/\"cc34b7fdb1dc92cc0474dec246d8f9d74f35ed0c7bcdd8b3b146782f7ad51a33\"",
   "head": "dbd4588f9e1033efb41dad4bef2f7947c8993d44",
-  "fetchedAt": "2026-10-19T10:35:39.555Z",
+  "fetchedAt": "2026-10-26T10:50:36.780Z",
   "items": {
     "academy-guide": "baddb91c315ea384f9191615054ba8026eb57ba2",
     "algorithmic-art": "4aef6bcad51d058ec32b1acb9da436851863e56e",

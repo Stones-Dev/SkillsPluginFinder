@@ -1,6 +1,1207 @@
 {
   "version": 1,
   "repo": "registry.modelcontextprotocol.io",
-  "syncedAt": "2026-10-02T17:32:48.993Z",
-  "pending": []
+  "syncedAt": "2026-10-26T10:50:36.780Z",
+  "pending": [
+    {
+      "repo": "sculptdotfun/viberank",
+      "nota": "Registro MCP: io.github.sculptdotfun/viberank 1.2.0 · paquetes: npm:viberank-mcp"
+    },
+    {
+      "repo": "pironjulien/NexusAGYmail",
+      "nota": "Registro MCP: io.github.pironjulien/nexus-agymail 0.10.0 · paquetes: pypi:nexus-agymail"
+    },
+    {
+      "repo": "pironjulien/NexusWindows-Antigravity",
+      "nota": "Registro MCP: io.github.pironjulien/nexus-windows-antigravity 3.2.6 · paquetes: pypi:nexus-windows-antigravity"
+    },
+    {
+      "repo": "pironjulien/NexusAndroid",
+      "nota": "Registro MCP: io.github.pironjulien/nexus-android 0.15.0 · paquetes: pypi:nexus-android"
+    },
+    {
+      "repo": "jsirp-dev/nestjs-mcp",
+      "nota": "Registro MCP: io.github.jsirp-dev/nestjs-mcp 0.1.0 · paquetes: npm:@jsirp/nestjs-mcp"
+    },
+    {
+      "repo": "Neschadin/askell-mcp",
+      "nota": "Registro MCP: io.github.Neschadin/askell-mcp 0.4.25 · paquetes: npm:askell-mcp"
+    },
+    {
+      "repo": "phuryn/staygreen",
+      "nota": "Registro MCP: io.github.phuryn/staygreen 1.1.1 · paquetes: npm:staygreen · remotos: streamable-http"
+    },
+    {
+      "repo": "atrislabs/atris",
+      "nota": "Registro MCP: io.github.atrislabs/atris 3.74.18 · paquetes: npm:atris"
+    },
+    {
+      "repo": "kochetkov-ma/brewpage-openapi",
+      "nota": "Registro MCP: io.github.kochetkov-ma/brewpage-mcp 1.14.2 · paquetes: npm:brewpage-mcp · remotos: streamable-http"
+    },
+    {
+      "repo": "DanceNitra/inspeximus",
+      "nota": "Registro MCP: io.github.DanceNitra/inspeximus 3.23.1 · paquetes: pypi:inspeximus"
+    },
+    {
+      "repo": "githits-com/githits-cli",
+      "nota": "Registro MCP: com.githits/githits 0.36.0 · paquetes: npm:githits · remotos: streamable-http"
+    },
+    {
+      "repo": "Apollo-lwx/rsi-boot",
+      "nota": "Registro MCP: io.github.Apollo-lwx/rsi-boot 0.1.5 · paquetes: pypi:rsi-boot"
+    },
+    {
+      "repo": "balaianu/CogZ",
+      "nota": "Registro MCP: io.github.balaianu/cogz 0.6.5 · paquetes: oci:ghcr.io/balaianu/cogz:0.6.5"
+    },
+    {
+      "repo": "deedglass/deedglass",
+      "nota": "Registro MCP: io.github.deedglass/deedglass 0.11.0 · paquetes: npm:deedglass"
+    },
+    {
+      "repo": "racstan/progressor-mcp",
+      "nota": "Registro MCP: io.github.racstan/progressor-mcp 0.7.1 · paquetes: npm:progressor-mcp"
+    },
+    {
+      "repo": "devag7/linkedin-mcp",
+      "nota": "Registro MCP: io.github.devag7/linkedin-mcp 4.1.2 · paquetes: npm:linkedin-mcp-tools"
+    },
+    {
+      "repo": "Serdnaley/metabase-mcp",
+      "nota": "Registro MCP: io.github.Serdnaley/metabase-mcp 0.4.0 · paquetes: npm:@serdnaley/metabase-mcp"
+    },
+    {
+      "repo": "Artexis10/exomem",
+      "nota": "Registro MCP: io.github.Artexis10/exomem 0.146.1 · paquetes: pypi:exomem"
+    },
+    {
+      "repo": "ggozad/haiku.rag",
+      "nota": "Registro MCP: io.github.ggozad/haiku-rag 0.101.1 · paquetes: pypi:haiku-rag"
+    },
+    {
+      "repo": "carboneio/carbone-mcp",
+      "nota": "Registro MCP: io.carbone/carbone-mcp 2.1.4 · paquetes: npm:carbone-mcp · remotos: streamable-http"
+    },
+    {
+      "repo": "gripforgeai/mcp",
+      "nota": "Registro MCP: io.github.gripforgeai/mcp 0.1.133 · paquetes: npm:@gripforgeai/mcp · remotos: streamable-http"
+    },
+    {
+      "repo": "palimkarakshay/abap-mcp",
+      "nota": "Registro MCP: io.github.palimkarakshay/abap-mcp 0.12.7 · paquetes: npm:abap-mcp"
+    },
+    {
+      "repo": "mechubsec/rustjunosmcp",
+      "nota": "Registro MCP: io.github.mechubsec/rustjunosmcp 2.1.0 · paquetes: oci:ghcr.io/mechubsec/rustjunosmcp:2.1.0"
+    },
+    {
+      "repo": "kartegagithub/laviya-agent-skills",
+      "nota": "Registro MCP: io.github.kartegagithub/laviya-agent-skills 0.1.30 · paquetes: npm:laviya-mcp-server"
+    },
+    {
+      "repo": "DevHusnainAi/zerodom",
+      "nota": "Registro MCP: io.github.DevHusnainAi/zerodom 0.1.3 · paquetes: pypi:zerodom, npm:@vexralabs/zerodom"
+    },
+    {
+      "repo": "heossihq/bee-public",
+      "nota": "Registro MCP: io.github.heossihq/bee-public 1.0.66 · paquetes: pypi:bee-sdk · remotos: streamable-http"
+    },
+    {
+      "repo": "IBazylchuk/paparats-mcp",
+      "nota": "Registro MCP: io.github.IBazylchuk/paparats-mcp 2.14.1 · paquetes: npm:@paparats/cli"
+    },
+    {
+      "repo": "qso-graph/wspr-mcp",
+      "nota": "Registro MCP: io.github.qso-graph/wspr-mcp 0.4.2 · paquetes: pypi:wspr-mcp"
+    },
+    {
+      "repo": "askads/mcp-yandex-direct",
+      "nota": "Registro MCP: io.github.askads/mcp-yandex-direct 1.7.0 · paquetes: npm:mcp-yandex-direct"
+    },
+    {
+      "repo": "nteract/semiotic",
+      "nota": "Registro MCP: io.github.nteract/semiotic 3.13.1 · paquetes: npm:semiotic · remotos: streamable-http"
+    },
+    {
+      "repo": "qso-graph/sota-mcp",
+      "nota": "Registro MCP: io.github.qso-graph/sota-mcp 0.2.2 · paquetes: pypi:sota-mcp"
+    },
+    {
+      "repo": "brechanbech/sec-mcp",
+      "nota": "Registro MCP: io.github.brechanbech/sec-mcp 0.10.0 · paquetes: cargo:sec-mcp"
+    },
+    {
+      "repo": "productdevbook/yuva",
+      "nota": "Registro MCP: io.github.productdevbook/yuva 0.3.1 · paquetes: mcpb:https://github.com/productdevbook/yuva/releases/download/v0.3.1/yuva.mcpb · remotos: streamable-http"
+    },
+    {
+      "repo": "qso-graph/solar-mcp",
+      "nota": "Registro MCP: io.github.qso-graph/solar-mcp 0.3.2 · paquetes: pypi:solar-mcp"
+    },
+    {
+      "repo": "qso-graph/qso-graph-contest-mcp",
+      "nota": "Registro MCP: io.github.qso-graph/qso-graph-contest-mcp 0.0.4 · paquetes: pypi:qso-graph-contest-mcp"
+    },
+    {
+      "repo": "qwrtaiaiai-create/the1ine-mcp",
+      "nota": "Registro MCP: com.the1ine/mcp 0.1.4 · paquetes: npm:@the_line/mcp"
+    },
+    {
+      "repo": "WaterTian/wechat-devtools-mcp",
+      "nota": "Registro MCP: io.github.WaterTian/wechat-devtools-mcp 0.9.20 · paquetes: pypi:wechat-devtools-mcp"
+    },
+    {
+      "repo": "kevynf/akshare-mcp-bridge",
+      "nota": "Registro MCP: io.github.kevynf/akbridge 0.2.1 · paquetes: pypi:akbridge"
+    },
+    {
+      "repo": "kironovlaziz-del/provenza",
+      "nota": "Registro MCP: io.github.kironovlaziz-del/provenza 0.2.1 · paquetes: pypi:provenza"
+    },
+    {
+      "repo": "idoo/app-store-connect-mcp",
+      "nota": "Registro MCP: io.github.idoo/app-store-connect-mcp 0.5.0 · paquetes: mcpb:https://github.com/idoo/app-store-connect-mcp/releases/download/v0.5.0/app-store-connect-mcp-0.5.0.mcpb, oci:ghcr.io/idoo/app-store-connect-mcp:0.5.0"
+    },
+    {
+      "repo": "qso-graph/qrz-mcp",
+      "nota": "Registro MCP: io.github.qso-graph/qrz-mcp 0.4.3 · paquetes: pypi:qrz-mcp"
+    },
+    {
+      "repo": "oxygenframe/oxframe-cli",
+      "nota": "Registro MCP: io.github.oxygenframe/oxframe 0.23.9 · paquetes: cargo:oxframe-cli"
+    },
+    {
+      "repo": "aarondpn/redmine-cli",
+      "nota": "Registro MCP: io.github.aarondpn/redmine-mcp 2.15.0 · paquetes: oci:ghcr.io/aarondpn/redmine-mcp:2.15.0"
+    },
+    {
+      "repo": "qso-graph/pota-mcp",
+      "nota": "Registro MCP: io.github.qso-graph/pota-mcp 0.4.2 · paquetes: pypi:pota-mcp"
+    },
+    {
+      "repo": "AM-Digital-Research-Environment/amira-mcp-server",
+      "nota": "Registro MCP: io.github.AM-Digital-Research-Environment/amira-mcp-server 1.26.0 · paquetes: mcpb:https://github.com/AM-Digital-Research-Environment/amira-mcp-server/releases/download/v1.26.0/amira-mcp-server.mcpb · remotos: streamable-http"
+    },
+    {
+      "repo": "noncelogic/rove",
+      "nota": "Registro MCP: io.github.noncelogic/rove 1.15.1 · paquetes: npm:@roveapi/mcp · remotos: streamable-http"
+    },
+    {
+      "repo": "qso-graph/lotw-mcp",
+      "nota": "Registro MCP: io.github.qso-graph/lotw-mcp 0.4.2 · paquetes: pypi:lotw-mcp"
+    },
+    {
+      "repo": "Voidborn-Industries/mindupload-sdk-python",
+      "nota": "Registro MCP: io.github.Voidborn-Industries/mindupload 1.15.21 · paquetes: npm:mindupload, pypi:mindupload"
+    },
+    {
+      "repo": "daddariotech/whmcs-mcp",
+      "nota": "Registro MCP: io.github.daddariotech/whmcs-mcp 2.3.8 · paquetes: oci:docker.io/daddariotech/whmcs-mcp:latest"
+    },
+    {
+      "repo": "kmdesle/sendinel-ai",
+      "nota": "Registro MCP: ai.sendinel/mcp-server 1.0.76 · paquetes: npm:@sendinel/mcp-server · remotos: streamable-http"
+    },
+    {
+      "repo": "qso-graph/js8call-mcp",
+      "nota": "Registro MCP: io.github.qso-graph/js8call-mcp 0.0.4 · paquetes: pypi:js8call-mcp"
+    },
+    {
+      "repo": "WaveSpeedAI/mcp-server",
+      "nota": "Registro MCP: ai.wavespeed/mcp 1.1.0 · paquetes: npm:@wavespeed/mcp · remotos: streamable-http"
+    },
+    {
+      "repo": "shreyassaw5394/agent-theatre",
+      "nota": "Registro MCP: io.github.shreyassaw5394/agent-theatre 1.5.5 · paquetes: npm:agent-theatre"
+    },
+    {
+      "repo": "mcp-telegram/mcp-telegram",
+      "nota": "Registro MCP: io.github.mcp-telegram/mcp-telegram 1.44.0 · paquetes: npm:@overpod/mcp-telegram · remotos: streamable-http"
+    },
+    {
+      "repo": "qso-graph/iota-mcp",
+      "nota": "Registro MCP: io.github.qso-graph/iota-mcp 0.2.2 · paquetes: pypi:iota-mcp"
+    },
+    {
+      "repo": "ProofHoldings/mcp-server",
+      "nota": "Registro MCP: holdings.proof/mcp-server 1.7.1 · paquetes: npm:@proof-holdings/mcp-server · remotos: streamable-http"
+    },
+    {
+      "repo": "qso-graph/ionis-mcp",
+      "nota": "Registro MCP: io.github.qso-graph/ionis-mcp 1.4.2 · paquetes: pypi:ionis-mcp"
+    },
+    {
+      "repo": "JasmyLab-JANCTION/janction-render",
+      "nota": "Registro MCP: io.github.JasmyLab-JANCTION/janction-render 0.4.178 · paquetes: pypi:janction-render · remotos: streamable-http"
+    },
+    {
+      "repo": "instavar/mcp-server",
+      "nota": "Registro MCP: com.instavar/mcp-server 0.6.1 · paquetes: npm:@instavar/mcp-server · remotos: streamable-http"
+    },
+    {
+      "repo": "qso-graph/hamqth-mcp",
+      "nota": "Registro MCP: io.github.qso-graph/hamqth-mcp 0.5.2 · paquetes: pypi:hamqth-mcp"
+    },
+    {
+      "repo": "Unselfisheologism/supercarto",
+      "nota": "Registro MCP: io.github.Unselfisheologism/supercarto 0.6.0 · paquetes: npm:supercarto, pypi:supercarto"
+    },
+    {
+      "repo": "ozanmutlu/Gitlab-Docs-MCP",
+      "nota": "Registro MCP: io.github.ozanmutlu/gitlab-docs 1.1.19 · paquetes: npm:gitlab-docs-mcp"
+    },
+    {
+      "repo": "qso-graph/eqsl-mcp",
+      "nota": "Registro MCP: io.github.qso-graph/eqsl-mcp 0.4.2 · paquetes: pypi:eqsl-mcp"
+    },
+    {
+      "repo": "qso-graph/eme-mcp",
+      "nota": "Registro MCP: io.github.qso-graph/eme-mcp 0.2.2 · paquetes: pypi:eme-mcp"
+    },
+    {
+      "repo": "SAP/open-ux-tools",
+      "nota": "Registro MCP: io.github.SAP/fiori-mcp-server 1.15.16 · paquetes: npm:@sap-ux/fiori-mcp-server"
+    },
+    {
+      "repo": "starreel/starreel-mcp",
+      "nota": "Registro MCP: ai.starreel/starreel 0.1.225 · paquetes: npm:@starreel/mcp"
+    },
+    {
+      "repo": "pironjulien/NexusBrowser",
+      "nota": "Registro MCP: io.github.pironjulien/nexus-browser 2.26.3 · paquetes: pypi:nexus-browser"
+    },
+    {
+      "repo": "emirmrkaljevic/iotaudit",
+      "nota": "Registro MCP: io.github.emirmrkaljevic/iotaudit 0.1.10 · paquetes: pypi:iotaudit"
+    },
+    {
+      "repo": "qso-graph/dxe-mcp",
+      "nota": "Registro MCP: io.github.qso-graph/dxe-mcp 0.0.4 · paquetes: pypi:dxe-mcp"
+    },
+    {
+      "repo": "fmadore/iwac-mcp-server",
+      "nota": "Registro MCP: io.github.fmadore/iwac-mcp-server 4.2.0 · paquetes: mcpb:https://github.com/fmadore/iwac-mcp-server/releases/download/v4.2.0/iwac-mcp-server-windows.mcpb, mcpb:https://github.com/fmadore/iwac-mcp-server/releases/download/v4.2.0/iwac-mcp-server-macos.mcpb · remotos:…"
+    },
+    {
+      "repo": "qso-graph/adif-mcp",
+      "nota": "Registro MCP: io.github.qso-graph/adif-mcp 2.0.2 · paquetes: pypi:adif-mcp"
+    },
+    {
+      "repo": "tailscale-mcp/tailscale-mcp",
+      "nota": "Registro MCP: io.github.tailscale-mcp/tailscale-mcp 2.0.5 · paquetes: npm:@tailscale-mcp/tailscale-mcp, oci:ghcr.io/tailscale-mcp/tailscale-mcp:2.0.5"
+    },
+    {
+      "repo": "sebastienrousseau/corralctl",
+      "nota": "Registro MCP: io.github.sebastienrousseau/corralctl 0.0.53 · paquetes: oci:ghcr.io/sebastienrousseau/corralctl:0.0.53"
+    },
+    {
+      "repo": "tang-vu/keryx",
+      "nota": "Registro MCP: io.github.tang-vu/keryx 0.4.38 · paquetes: npm:keryx-mcp · remotos: streamable-http"
+    },
+    {
+      "repo": "CloudCorpRecords/inboxwatch",
+      "nota": "Registro MCP: io.github.CloudCorpRecords/inboxwatch 0.1.1 · paquetes: npm:@reneturcios/inboxwatch, oci:ghcr.io/cloudcorprecords/inboxwatch:0.1.1"
+    },
+    {
+      "repo": "L337-org/docker-mcp",
+      "nota": "Registro MCP: io.github.L337-org/docker-mcp-server 2.2.9 · paquetes: pypi:docker-mcp-server, oci:ghcr.io/l337-org/docker-mcp-server:2.2.9, mcpb:https://github.com/L337-org/docker-mcp/releases/download/v2.2.9/docker-mcp-server-2.2.9.mcpb"
+    },
+    {
+      "repo": "pontivus-com/span",
+      "nota": "Registro MCP: io.github.pontivus-com/span 0.8.0 · paquetes: pypi:span-mcp"
+    },
+    {
+      "repo": "PhilipAD/health-export-mcp",
+      "nota": "Registro MCP: io.github.PhilipAD/health-export-mcp 1.7.1 · paquetes: npm:health-export-mcp, mcpb:https://github.com/PhilipAD/health-export-mcp/releases/download/v1.7.1/health-export.mcpb"
+    },
+    {
+      "repo": "CloudCorpRecords/flowcheck",
+      "nota": "Registro MCP: io.github.CloudCorpRecords/flowcheck 0.1.2 · paquetes: npm:@reneturcios/flowcheck, oci:ghcr.io/cloudcorprecords/flowcheck:0.1.2"
+    },
+    {
+      "repo": "CloudCorpRecords/actionpin",
+      "nota": "Registro MCP: io.github.CloudCorpRecords/actionpin 0.1.8 · paquetes: npm:@reneturcios/actionpin, oci:ghcr.io/cloudcorprecords/actionpin:0.1.8"
+    },
+    {
+      "repo": "Josepavese/nido",
+      "nota": "Registro MCP: io.github.Josepavese/nido 4.10.3 · paquetes: mcpb:https://github.com/Josepavese/nido/releases/download/v4.10.3/nido.mcpb, npm:nido-mcp"
+    },
+    {
+      "repo": "mo9652962-ai/circuit-agent",
+      "nota": "Registro MCP: io.github.mo9652962-ai/circuit-agent-client 0.22.0 · paquetes: pypi:circuit-agent-client"
+    },
+    {
+      "repo": "Datura-ai/lium",
+      "nota": "Registro MCP: io.github.Datura-ai/lium 0.29.1 · paquetes: pypi:lium.io"
+    },
+    {
+      "repo": "mmedum/favro-mcp",
+      "nota": "Registro MCP: io.github.mmedum/favro-mcp 4.2.1 · paquetes: mcpb:https://github.com/mmedum/favro-mcp/releases/download/v4.2.1/favro-mcp_4.2.1.mcpb"
+    },
+    {
+      "repo": "imagestep/imagestep-sdk",
+      "nota": "Registro MCP: dev.imagestep/mcp 0.2.1 · paquetes: npm:@imagestep/mcp · remotos: streamable-http"
+    },
+    {
+      "repo": "iseppo/e-arveldaja-mcp",
+      "nota": "Registro MCP: io.github.iseppo/e-arveldaja-mcp 0.34.0 · paquetes: npm:e-arveldaja-mcp"
+    },
+    {
+      "repo": "qso-graph/darc-dok-mcp",
+      "nota": "Registro MCP: io.github.qso-graph/darc-dok-mcp 0.2.1 · paquetes: pypi:darc-dok-mcp"
+    },
+    {
+      "repo": "PresentJay/dbt-plan",
+      "nota": "Registro MCP: io.github.PresentJay/dbt-plan 0.18.3 · paquetes: pypi:dbt-plan"
+    },
+    {
+      "repo": "Evalogical-Inc/devReady",
+      "nota": "Registro MCP: io.github.Evalogical-Inc/devready 1.2.0 · paquetes: pypi:devready-cli"
+    },
+    {
+      "repo": "Rul1an/assay",
+      "nota": "Registro MCP: io.github.Rul1an/assay-mcp-server 6.17.0 · paquetes: mcpb:https://github.com/Rul1an/assay/releases/download/v6.17.0/assay-mcp-server-v6.17.0-linux.mcpb"
+    },
+    {
+      "repo": "hostinger/api-mcp-server",
+      "nota": "Registro MCP: io.github.hostinger/hostinger-api-mcp 3.10.3 · paquetes: npm:@hostinger/mcp · remotos: streamable-http"
+    },
+    {
+      "repo": "DFM-Finance/dfm-agent",
+      "nota": "Registro MCP: io.github.DFM-Finance/dfm-agent 0.2.2157 · paquetes: npm:@dfm-fi/agent"
+    },
+    {
+      "repo": "Egoushka/chargehand",
+      "nota": "Registro MCP: io.github.Egoushka/chargehand 0.19.1 · paquetes: nuget:Chargehand"
+    },
+    {
+      "repo": "CHAPIBUNNY/repolens",
+      "nota": "Registro MCP: io.github.CHAPIBUNNY/repolens 1.16.0 · paquetes: npm:@chappibunny/repolens"
+    },
+    {
+      "repo": "Alexxanddr/italian-bus-search",
+      "nota": "Registro MCP: io.github.Alexxanddr/italian-bus-search 0.2.4 · paquetes: npm:italian-bus-search"
+    },
+    {
+      "repo": "ShaanGS/ventriloquist",
+      "nota": "Registro MCP: io.github.ShaanGS/ventriloquist 0.3.0 · paquetes: pypi:ventriloquist-mcp"
+    },
+    {
+      "repo": "CloudCorpRecords/injectcheck",
+      "nota": "Registro MCP: io.github.CloudCorpRecords/injectcheck 0.1.19 · paquetes: npm:@reneturcios/injectcheck, oci:ghcr.io/cloudcorprecords/injectcheck:0.1.19"
+    },
+    {
+      "repo": "CloudCorpRecords/depguard",
+      "nota": "Registro MCP: io.github.CloudCorpRecords/depguard 0.4.0 · paquetes: npm:@reneturcios/depguard, oci:ghcr.io/cloudcorprecords/depguard:0.4.0"
+    },
+    {
+      "repo": "abasmartinc/apiempresas-mcp",
+      "nota": "Registro MCP: io.github.abasmartinc/apiempresas 1.4.0 · paquetes: npm:apiempresas-mcp · remotos: streamable-http"
+    },
+    {
+      "repo": "Scottnine/filamental",
+      "nota": "Registro MCP: io.github.Scottnine/filamental 0.2.16 · paquetes: npm:filamental-mcp"
+    },
+    {
+      "repo": "MairwunNx/minecraft-mcp",
+      "nota": "Registro MCP: com.mairwunnx/minecraft-mcp 4.1.1 · paquetes: npm:@mairwunnx/minecraft-mcp"
+    },
+    {
+      "repo": "CloudCorpRecords/mcpaudit",
+      "nota": "Registro MCP: io.github.CloudCorpRecords/mcpaudit 0.1.2 · paquetes: npm:@reneturcios/mcpaudit, oci:ghcr.io/cloudcorprecords/mcpaudit:0.1.2"
+    },
+    {
+      "repo": "KushalP1/context-doctor",
+      "nota": "Registro MCP: io.github.KushalP1/context-doctor 0.37.0 · paquetes: npm:context-doctor"
+    },
+    {
+      "repo": "FunplayAI/funplay-unity-mcp",
+      "nota": "Registro MCP: io.github.FunplayAI/funplay-unity-mcp 0.7.1 · paquetes: nuget:funplay.unity.mcp"
+    },
+    {
+      "repo": "dmytrome/groundhog",
+      "nota": "Registro MCP: io.github.dmytrome/groundhog-mcp 0.22.0 · paquetes: pypi:groundhog-mcp"
+    },
+    {
+      "repo": "BeppeTemp/cartographer",
+      "nota": "Registro MCP: io.github.BeppeTemp/cartographer 0.26.1 · paquetes: oci:ghcr.io/beppetemp/cartographer:v0.26.1"
+    },
+    {
+      "repo": "CloudCorpRecords/cidiff",
+      "nota": "Registro MCP: io.github.CloudCorpRecords/cidiff 0.1.2 · paquetes: npm:@reneturcios/cidiff, oci:ghcr.io/cloudcorprecords/cidiff:0.1.2"
+    },
+    {
+      "repo": "CloudCorpRecords/gatefile",
+      "nota": "Registro MCP: io.github.CloudCorpRecords/gatefile 0.1.4 · paquetes: npm:@reneturcios/gatefile, oci:ghcr.io/cloudcorprecords/gatefile:0.1.4"
+    },
+    {
+      "repo": "gosswerner1-max/lazyrelay-integrations",
+      "nota": "Registro MCP: io.github.gosswerner1-max/lazyrelay-mcp-server 0.3.3 · paquetes: npm:@lazyrelay/mcp-server"
+    },
+    {
+      "repo": "CloudCorpRecords/prwatch",
+      "nota": "Registro MCP: io.github.CloudCorpRecords/prwatch 0.1.4 · paquetes: npm:@reneturcios/prwatch, oci:ghcr.io/cloudcorprecords/prwatch:0.1.4"
+    },
+    {
+      "repo": "mbk-dev/okama-mcp",
+      "nota": "Registro MCP: io.github.mbk-dev/okama-mcp 3.0.0 · paquetes: pypi:okama-mcp"
+    },
+    {
+      "repo": "edgarcia-id/edgeo",
+      "nota": "Registro MCP: io.github.edgarcia-id/edgeo 0.1.1 · paquetes: npm:edgeo-mcp"
+    },
+    {
+      "repo": "askuma/workflow-generator",
+      "nota": "Registro MCP: io.github.askuma/workflow-generator 0.5.0 · paquetes: pypi:workflow-generator-mcp"
+    },
+    {
+      "repo": "FortripEngineering/fortrip",
+      "nota": "Registro MCP: io.github.FortripEngineering/fortrip 1.4.0 · paquetes: npm:fortrip · remotos: streamable-http"
+    },
+    {
+      "repo": "BarredEwe/Prefire",
+      "nota": "Registro MCP: io.github.BarredEwe/prefire 6.5.0 · paquetes: mcpb:https://github.com/BarredEwe/Prefire/releases/download/6.5.0/prefire-mcp-6.5.0.mcpb"
+    },
+    {
+      "repo": "ZiggsAI/sdk",
+      "nota": "Registro MCP: io.github.ZiggsAI/ziggs 0.37.26 · paquetes: npm:@ziggs-ai/ziggs-mcp · remotos: streamable-http"
+    },
+    {
+      "repo": "cyanheads/arxiv-mcp-server",
+      "nota": "Registro MCP: io.github.cyanheads/arxiv-mcp-server 1.8.0 · paquetes: npm:@cyanheads/arxiv-mcp-server · remotos: streamable-http"
+    },
+    {
+      "repo": "chrisryugj/kordoc",
+      "nota": "Registro MCP: io.github.chrisryugj/kordoc 4.24.9 · paquetes: npm:kordoc"
+    },
+    {
+      "repo": "pironjulien/NexusWindows-Codex",
+      "nota": "Registro MCP: io.github.pironjulien/nexus-windows-codex 3.1.7 · paquetes: npm:nexus-windows-codex"
+    },
+    {
+      "repo": "cyanheads/openlibrary-mcp-server",
+      "nota": "Registro MCP: io.github.cyanheads/openlibrary-mcp-server 0.4.0 · paquetes: npm:@cyanheads/openlibrary-mcp-server · remotos: streamable-http"
+    },
+    {
+      "repo": "geekflare/geekflare-api-mcp",
+      "nota": "Registro MCP: com.geekflare/mcp 0.5.0 · paquetes: npm:@geekflare/mcp, oci:geekflarehq/geekflare-api-mcp:0.5.0 · remotos: streamable-http"
+    },
+    {
+      "repo": "CapyKkuing/naver-mail-mcp",
+      "nota": "Registro MCP: io.github.CapyKkuing/naver-mail-mcp 0.1.3 · paquetes: npm:naver-mail-mcp · remotos: streamable-http"
+    },
+    {
+      "repo": "muad-yasin/the-high-council-mcp",
+      "nota": "Registro MCP: io.github.muad-yasin/the-high-council 0.8.3 · paquetes: npm:the-high-council"
+    },
+    {
+      "repo": "Aryan-Jhaveri/mcp-statcan",
+      "nota": "Registro MCP: io.github.Aryan-Jhaveri/mcp-statcan 0.15.0 · paquetes: pypi:statcan-mcp-server · remotos: streamable-http"
+    },
+    {
+      "repo": "cyanheads/reliefweb-mcp-server",
+      "nota": "Registro MCP: io.github.cyanheads/reliefweb-mcp-server 0.3.0 · paquetes: npm:@cyanheads/reliefweb-mcp-server · remotos: streamable-http"
+    },
+    {
+      "repo": "igorsaevets/page2ai-mcp",
+      "nota": "Registro MCP: io.github.igorsaevets/page2ai-mcp 0.6.3 · paquetes: npm:@page2ai/mcp"
+    },
+    {
+      "repo": "bowmark-ai/skill",
+      "nota": "Registro MCP: ai.bowmark/bowmark 8.195.0 · paquetes: pypi:bowmark-mcp, npm:@bowmark/mcp · remotos: streamable-http"
+    },
+    {
+      "repo": "CloudCorpRecords/reprocheck",
+      "nota": "Registro MCP: io.github.CloudCorpRecords/reprocheck 0.2.0 · paquetes: npm:@reneturcios/reprocheck, oci:ghcr.io/cloudcorprecords/reprocheck:0.2.0"
+    },
+    {
+      "repo": "CloudCorpRecords/claimcheck",
+      "nota": "Registro MCP: io.github.CloudCorpRecords/claimcheck 0.1.4 · paquetes: npm:@reneturcios/claimcheck, oci:ghcr.io/cloudcorprecords/claimcheck:0.1.4"
+    },
+    {
+      "repo": "cyanheads/who-gho-mcp-server",
+      "nota": "Registro MCP: io.github.cyanheads/who-gho-mcp-server 0.4.0 · paquetes: npm:@cyanheads/who-gho-mcp-server · remotos: streamable-http"
+    },
+    {
+      "repo": "cyanheads/secedgar-mcp-server",
+      "nota": "Registro MCP: io.github.cyanheads/secedgar-mcp-server 0.17.0 · paquetes: npm:@cyanheads/secedgar-mcp-server · remotos: streamable-http"
+    },
+    {
+      "repo": "Robert0303-C/screenrec-agent",
+      "nota": "Registro MCP: io.github.Robert0303-C/screenrec-agent 0.1.3 · paquetes: npm:screenrec-agent"
+    },
+    {
+      "repo": "TranHoaiHung/figma-ui-mcp",
+      "nota": "Registro MCP: io.github.TranHoaiHung/figma-ui-mcp 2.5.30 · paquetes: npm:figma-ui-mcp"
+    },
+    {
+      "repo": "cyanheads/onebusaway-mcp-server",
+      "nota": "Registro MCP: io.github.cyanheads/onebusaway-mcp-server 0.3.0 · paquetes: npm:@cyanheads/onebusaway-mcp-server · remotos: streamable-http"
+    },
+    {
+      "repo": "aventurevc/aventure-mcp",
+      "nota": "Registro MCP: io.github.aventurevc/aventure-mcp 0.8.255 · paquetes: npm:@aventurevc/mcp-server · remotos: streamable-http"
+    },
+    {
+      "repo": "cyanheads/inaturalist-mcp-server",
+      "nota": "Registro MCP: io.github.cyanheads/inaturalist-mcp-server 0.3.0 · paquetes: npm:@cyanheads/inaturalist-mcp-server · remotos: streamable-http"
+    },
+    {
+      "repo": "cyanheads/nist-nvd-mcp-server",
+      "nota": "Registro MCP: io.github.cyanheads/nist-nvd-mcp-server 0.4.0 · paquetes: npm:@cyanheads/nist-nvd-mcp-server · remotos: streamable-http"
+    },
+    {
+      "repo": "cyanheads/eur-lex-mcp-server",
+      "nota": "Registro MCP: io.github.cyanheads/eur-lex-mcp-server 0.20.0 · paquetes: npm:@cyanheads/eur-lex-mcp-server · remotos: streamable-http"
+    },
+    {
+      "repo": "ictinnovations/pbx-mcp",
+      "nota": "Registro MCP: io.github.ictinnovations/pbx-mcp 0.1.4 · paquetes: npm:pbx-mcp"
+    },
+    {
+      "repo": "ictinnovations/ictdialer-mcp",
+      "nota": "Registro MCP: io.github.ictinnovations/ictdialer-mcp 0.1.1 · paquetes: npm:ictdialer-mcp"
+    },
+    {
+      "repo": "ictinnovations/ictcrm-mcp",
+      "nota": "Registro MCP: io.github.ictinnovations/ictcrm-mcp 0.1.1 · paquetes: npm:ictcrm-mcp"
+    },
+    {
+      "repo": "ictinnovations/ictbroadcast-mcp",
+      "nota": "Registro MCP: io.github.ictinnovations/ictbroadcast-mcp 0.1.1 · paquetes: npm:ictbroadcast-mcp"
+    },
+    {
+      "repo": "ictinnovations/ictcontact-mcp",
+      "nota": "Registro MCP: io.github.ictinnovations/ictcontact-mcp 0.1.1 · paquetes: npm:ictcontact-mcp"
+    },
+    {
+      "repo": "ictinnovations/ictpbx-mcp",
+      "nota": "Registro MCP: io.github.ictinnovations/ictpbx-mcp 0.1.1 · paquetes: npm:ictpbx-mcp"
+    },
+    {
+      "repo": "ictinnovations/ictexam-mcp",
+      "nota": "Registro MCP: io.github.ictinnovations/ictexam-mcp 0.1.1 · paquetes: npm:ictexam-mcp"
+    },
+    {
+      "repo": "ictinnovations/ictfax-mcp",
+      "nota": "Registro MCP: io.github.ictinnovations/ictfax-mcp 0.1.1 · paquetes: npm:ictfax-mcp"
+    },
+    {
+      "repo": "cyanheads/openchargemap-mcp-server",
+      "nota": "Registro MCP: io.github.cyanheads/openchargemap-mcp-server 0.2.0 · paquetes: npm:@cyanheads/openchargemap-mcp-server · remotos: streamable-http"
+    },
+    {
+      "repo": "cyanheads/openstreetmap-mcp-server",
+      "nota": "Registro MCP: io.github.cyanheads/openstreetmap-mcp-server 0.7.0 · paquetes: npm:@cyanheads/openstreetmap-mcp-server · remotos: streamable-http"
+    },
+    {
+      "repo": "bardesss/arr-mcp",
+      "nota": "Registro MCP: io.github.bardesss/arr-mcp 1.45.1 · paquetes: oci:ghcr.io/bardesss/arr-mcp:1.45.1"
+    },
+    {
+      "repo": "cyanheads/usda-mcp-server",
+      "nota": "Registro MCP: io.github.cyanheads/usda-mcp-server 0.2.0 · paquetes: npm:@cyanheads/usda-mcp-server · remotos: streamable-http"
+    },
+    {
+      "repo": "GuardBee/guardbee-mcp",
+      "nota": "Registro MCP: io.github.GuardBee/security-proxy 1.28.0 (+31 servidores más del mismo repo) · paquetes: npm:@guardbee/mcp-security-proxy, npm:@guardbee/mcp-rug-pull-detector, npm:@guardbee/mcp-oauth-auditor"
+    },
+    {
+      "repo": "chriswu727/argus",
+      "nota": "Registro MCP: io.github.chriswu727/argus 0.9.1 · paquetes: pypi:argus-testing"
+    },
+    {
+      "repo": "cyanheads/fcc-spectrum-mcp-server",
+      "nota": "Registro MCP: io.github.cyanheads/fcc-spectrum-mcp-server 0.3.0 · paquetes: npm:@cyanheads/fcc-spectrum-mcp-server · remotos: streamable-http"
+    },
+    {
+      "repo": "EricSeokgon/egovframe-scaffold-mcp",
+      "nota": "Registro MCP: io.github.EricSeokgon/egovframe-scaffold-mcp 1.6.0 · paquetes: npm:egovframe-scaffold-mcp"
+    },
+    {
+      "repo": "bruchris/canvas-lms-mcp",
+      "nota": "Registro MCP: io.github.bruchris/canvas-lms-mcp 2.9.2 · paquetes: npm:canvas-lms-mcp"
+    },
+    {
+      "repo": "Looted/kibi",
+      "nota": "Registro MCP: io.github.Looted/kibi-mcp 3.18.0 · paquetes: npm:kibi-mcp"
+    },
+    {
+      "repo": "cyanheads/openfda-mcp-server",
+      "nota": "Registro MCP: io.github.cyanheads/openfda-mcp-server 0.9.0 · paquetes: npm:@cyanheads/openfda-mcp-server · remotos: streamable-http"
+    },
+    {
+      "repo": "CloudCorpRecords/shipcheck",
+      "nota": "Registro MCP: io.github.CloudCorpRecords/shipcheck 0.2.0 · paquetes: npm:@reneturcios/shipcheck, oci:ghcr.io/cloudcorprecords/shipcheck:0.2.0"
+    },
+    {
+      "repo": "cyanheads/npi-providers-mcp-server",
+      "nota": "Registro MCP: io.github.cyanheads/npi-providers-mcp-server 0.5.0 · paquetes: npm:@cyanheads/npi-providers-mcp-server · remotos: streamable-http"
+    },
+    {
+      "repo": "cenitu/inventor-mcp-server",
+      "nota": "Registro MCP: io.github.cenitu/inventor-mcp-server 0.4.0 · paquetes: pypi:inventor-mcp-server"
+    },
+    {
+      "repo": "JoviDeCroock/pracht",
+      "nota": "Registro MCP: io.github.JoviDeCroock/pracht 1.17.0 · paquetes: npm:@pracht/cli"
+    },
+    {
+      "repo": "terrelllouis056-gi/amazon-data-api",
+      "nota": "Registro MCP: io.github.terrelllouis056-gi/amazon-data-api 0.1.1 · paquetes: npm:amazon-data-api-mcp"
+    },
+    {
+      "repo": "theluckystrike/mcp-servers",
+      "nota": "Registro MCP: io.github.theluckystrike/office-suite 0.25.0 (+143 servidores más del mismo repo) · paquetes: mcpb:https://github.com/theluckystrike/mcp-servers/releases/download/v0.25.0/office-suite.mcpb, mcpb:https://github.com/theluckystrike/mcp-servers/releases/download/v0.25.…"
+    },
+    {
+      "repo": "cyanheads/usaspending-mcp-server",
+      "nota": "Registro MCP: io.github.cyanheads/usaspending-mcp-server 0.7.0 · paquetes: npm:@cyanheads/usaspending-mcp-server · remotos: streamable-http"
+    },
+    {
+      "repo": "achiya-automation/safari-mcp",
+      "nota": "Registro MCP: io.github.achiya-automation/safari-mcp 2.22.19 · paquetes: npm:safari-mcp"
+    },
+    {
+      "repo": "Graphicle-AI/graphicle",
+      "nota": "Registro MCP: io.github.Graphicle-AI/graphicle 0.1.8 · paquetes: mcpb:https://github.com/Graphicle-AI/graphicle/releases/download/v0.1.8/graphicle-0.1.8-aarch64-apple-darwin.mcpb, mcpb:https://github.com/Graphicle-AI/graphicle/releases/download/v0.1.8/graphicle-0.1.8-x86_64-appl…"
+    },
+    {
+      "repo": "AKzar1el/god-prompt-mcp",
+      "nota": "Registro MCP: io.github.AKzar1el/god-prompt-mcp 1.0.42 · paquetes: mcpb:https://github.com/AKzar1el/god-prompt-mcp/releases/download/v1.0.42/god-prompt-mcp-1.0.42.mcpb, npm:god-prompt-mcp · remotos: streamable-http"
+    },
+    {
+      "repo": "lx1112/token-safety-check",
+      "nota": "Registro MCP: io.github.lx1112/token-safety-check 0.4.1 · paquetes: npm:token-safety-check"
+    },
+    {
+      "repo": "lumitrades/lumi-api",
+      "nota": "Registro MCP: io.github.cypher-osiris/lumi-trades-mcp 0.9.9 · paquetes: npm:lumi-trades-mcp · remotos: streamable-http"
+    },
+    {
+      "repo": "daniele-chiappa/gosidian",
+      "nota": "Registro MCP: io.github.daniele-chiappa/gosidian 2.118.0 · paquetes: oci:ghcr.io/daniele-chiappa/gosidian:v2.118.0"
+    },
+    {
+      "repo": "arthiqlabs/vedaksha",
+      "nota": "Registro MCP: io.github.arthiqlabs/vedaksha-vedic-astrology 10.0.1 · paquetes: oci:ghcr.io/arthiqlabs/vedaksha-mcp:v10.0.1"
+    },
+    {
+      "repo": "Wopee-io/wopee-mcp",
+      "nota": "Registro MCP: io.github.Wopee-io/wopee-mcp 1.32.0 · paquetes: npm:wopee-mcp"
+    },
+    {
+      "repo": "omitly/omitly-mcp",
+      "nota": "Registro MCP: io.github.omitly/omitly-mcp 4.3.0 · paquetes: npm:omitly-mcp"
+    },
+    {
+      "repo": "sohelsd/teamonly-mcp",
+      "nota": "Registro MCP: dev.teamonly/teamonly 0.6.0 · paquetes: npm:teamonly"
+    },
+    {
+      "repo": "lookoutstats/lookout-mcp",
+      "nota": "Registro MCP: io.github.lookoutstats/lookout-mcp 0.2.0 · paquetes: npm:lookout-mcp · remotos: streamable-http"
+    },
+    {
+      "repo": "ryanbiddy/uoink",
+      "nota": "Registro MCP: io.github.ryanbiddy/uoink 3.11.2 · paquetes: mcpb:https://github.com/ryanbiddy/uoink/releases/download/v3.11.2/uoink-3.11.2.mcpb"
+    },
+    {
+      "repo": "Aureliolo/gdharness",
+      "nota": "Registro MCP: io.github.Aureliolo/gdharness 1.3.25 · paquetes: npm:gdharness"
+    },
+    {
+      "repo": "Illouminus/apifacts",
+      "nota": "Registro MCP: io.github.Illouminus/apifacts 0.2.1 · paquetes: pypi:apifacts"
+    },
+    {
+      "repo": "Ataraxy-Labs/sem",
+      "nota": "Registro MCP: io.github.Ataraxy-Labs/sem 0.28.2 · paquetes: npm:@ataraxy-labs/sem"
+    },
+    {
+      "repo": "priyanshuN/jsonloupe",
+      "nota": "Registro MCP: io.github.priyanshuN/jsonloupe 1.9.0 · paquetes: npm:jsonloupe"
+    },
+    {
+      "repo": "foreverworks/mcps",
+      "nota": "Registro MCP: com.foreverworks/oblio 0.1.0 (+5 servidores más del mismo repo) · paquetes: npm:@foreverworks/mcp-oblio, npm:@foreverworks/mcp-notion, npm:@foreverworks/mcp-google"
+    },
+    {
+      "repo": "prodlint/prodlint",
+      "nota": "Registro MCP: io.github.prodlint/prodlint 0.10.2 · paquetes: npm:prodlint-mcp"
+    },
+    {
+      "repo": "nworks3d/THOR-for-claude-code",
+      "nota": "Registro MCP: io.github.nworks3d/thor 2.6.2 · paquetes: oci:ghcr.io/nworks3d/thor-mcp:2.6.2"
+    },
+    {
+      "repo": "mayim-mayim/ln-church-agent",
+      "nota": "Registro MCP: io.github.mayim-mayim/ln-church-agent-mcp 1.18.17 · paquetes: pypi:ln-church-agent"
+    },
+    {
+      "repo": "kubestellar/kubestellar-mcp",
+      "nota": "Registro MCP: io.github.kubestellar/kubestellar-mcp 0.9.21-nightly.20261026 · paquetes: oci:ghcr.io/kubestellar/kubestellar-mcp:0.9.21-nightly.20261026"
+    },
+    {
+      "repo": "CloudCorpRecords/shelfsignal",
+      "nota": "Registro MCP: io.github.CloudCorpRecords/shelfsignal 0.3.1 · paquetes: npm:@reneturcios/shelfsignal, oci:ghcr.io/cloudcorprecords/shelfsignal:0.3.1"
+    },
+    {
+      "repo": "pattrnlabs/grain",
+      "nota": "Registro MCP: io.github.pattrnlabs/grain 0.10.37 · paquetes: npm:grain-tools"
+    },
+    {
+      "repo": "badisbenhamida/ownmetrics-mcp",
+      "nota": "Registro MCP: io.github.badisbenhamida/ownmetrics-mcp 0.2.0 · paquetes: pypi:ownmetrics-mcp"
+    },
+    {
+      "repo": "microsoft/mcp-dotnet-samples",
+      "nota": "Registro MCP: io.github.microsoft/awesome-copilot 1.0.2026102605 · paquetes: oci:ghcr.io/microsoft/mcp-dotnet-samples/awesome-copilot:1.0.2026102605"
+    },
+    {
+      "repo": "contextstream/mcp-server",
+      "nota": "Registro MCP: io.github.contextstream/mcp-server 1.0.30 · paquetes: npm:@contextstream/mcp-server · remotos: streamable-http"
+    },
+    {
+      "repo": "namyunsu/crewdroid",
+      "nota": "Registro MCP: io.github.namyunsu/crewdroid 0.1.0 · paquetes: npm:crewdroid"
+    },
+    {
+      "repo": "HrRodan/agent-workspace-mcp",
+      "nota": "Registro MCP: io.github.HrRodan/agent-workspace-mcp 1.4.129 · paquetes: oci:ghcr.io/hrrodan/agent-workspace-mcp:1.4.129"
+    },
+    {
+      "repo": "CloudCorpRecords/greenlight",
+      "nota": "Registro MCP: io.github.CloudCorpRecords/greenlight 0.22.1 · paquetes: npm:@reneturcios/greenlight, oci:ghcr.io/cloudcorprecords/greenlight:0.22.1"
+    },
+    {
+      "repo": "PassTunnel/passtunnel",
+      "nota": "Registro MCP: io.github.PassTunnel/passtunnel 1.4.0 · paquetes: mcpb:https://github.com/passtunnel/passtunnel/releases/download/v1.4.0/PassTunnel-mcp-1.4.0.mcpb"
+    },
+    {
+      "repo": "CloudCorpRecords/tracewatch",
+      "nota": "Registro MCP: io.github.CloudCorpRecords/tracewatch 0.2.2 · paquetes: npm:@reneturcios/tracewatch, oci:ghcr.io/cloudcorprecords/tracewatch:0.2.2"
+    },
+    {
+      "repo": "Pangolin-spg/pangolinfo-review-mining-mcp",
+      "nota": "Registro MCP: io.github.Pangolin-spg/pangolinfo-review-mining-mcp 0.1.1 · paquetes: npm:pangolinfo-review-mining-mcp"
+    },
+    {
+      "repo": "CYAN-ECLIPSE-TECHNOLOGIES-LLC/certbridge-mcp",
+      "nota": "Registro MCP: io.github.CYAN-ECLIPSE-TECHNOLOGIES-LLC/certbridge 0.2.0 · paquetes: oci:ghcr.io/cyan-eclipse-technologies-llc/certbridge-mcp:0.2.0"
+    },
+    {
+      "repo": "The-Pixel-Boys/shield-kya",
+      "nota": "Registro MCP: io.github.The-Pixel-Boys/shield-kya 0.32.6 · paquetes: npm:@shield-agent/kya"
+    },
+    {
+      "repo": "kensaurus/mushi-mushi",
+      "nota": "Registro MCP: io.github.kensaurus/mushi-mushi 0.29.1 · paquetes: npm:@mushi-mushi/mcp · remotos: streamable-http"
+    },
+    {
+      "repo": "CloudCorpRecords/mcpvet",
+      "nota": "Registro MCP: io.github.CloudCorpRecords/mcpvet 0.2.1 · paquetes: npm:@reneturcios/mcpvet, oci:ghcr.io/cloudcorprecords/mcpvet:0.2.1"
+    },
+    {
+      "repo": "shigechika/jquants-mcp",
+      "nota": "Registro MCP: io.github.shigechika/jquants-mcp 1.5.0 · paquetes: pypi:jquants-mcp"
+    },
+    {
+      "repo": "BSVKey/inference-mcp",
+      "nota": "Registro MCP: io.github.BSVKey/inference-mcp 1.3.5 · paquetes: npm:@bsvkey/inference-mcp"
+    },
+    {
+      "repo": "WendellResearch-AI/benchwarmers",
+      "nota": "Registro MCP: io.github.WendellResearch-AI/benchwarmers 0.3.3 · paquetes: npm:@wendellresearch-ai/benchwarmers, pypi:benchwarmers"
+    },
+    {
+      "repo": "cyanheads/epa-drinking-water-mcp-server",
+      "nota": "Registro MCP: io.github.cyanheads/epa-drinking-water-mcp-server 0.2.0 · paquetes: npm:@cyanheads/epa-drinking-water-mcp-server"
+    },
+    {
+      "repo": "shigechika/mcp-stdio",
+      "nota": "Registro MCP: io.github.shigechika/mcp-stdio 0.45.2 · paquetes: pypi:mcp-stdio"
+    },
+    {
+      "repo": "sriram1983007-dev/sra-riskgate-mcp",
+      "nota": "Registro MCP: io.github.sriram1983007-dev/sra-riskgate-mcp 0.7.2 · paquetes: pypi:sra-riskgate-mcp"
+    },
+    {
+      "repo": "smaniches/uniprot-mcp",
+      "nota": "Registro MCP: io.github.smaniches/uniprot-mcp 1.3.15 · paquetes: pypi:uniprot-mcp-server"
+    },
+    {
+      "repo": "devantler-tech/ksail",
+      "nota": "Registro MCP: io.github.devantler-tech/ksail 7.206.14 · paquetes: oci:ghcr.io/devantler-tech/ksail:v7.206.14"
+    },
+    {
+      "repo": "RohanMuppa/brightspace-mcp-server",
+      "nota": "Registro MCP: io.github.RohanMuppa/brightspace 5.1.23 · paquetes: npm:brightspace-mcp-server"
+    },
+    {
+      "repo": "iVamsi/droid-agent-kit",
+      "nota": "Registro MCP: io.github.iVamsi/android-agent-kit 0.3.2-alpha · paquetes: npm:@droidagentkit/launcher"
+    },
+    {
+      "repo": "cyanheads/obsidian-mcp-server",
+      "nota": "Registro MCP: io.github.cyanheads/obsidian-mcp-server 3.7.2 · paquetes: npm:obsidian-mcp-server"
+    },
+    {
+      "repo": "cyanheads/sweden-parliament-mcp-server",
+      "nota": "Registro MCP: io.github.cyanheads/sweden-parliament-mcp-server 0.1.2 · paquetes: npm:@cyanheads/sweden-parliament-mcp-server · remotos: streamable-http"
+    },
+    {
+      "repo": "shigechika/boxadm-mcp",
+      "nota": "Registro MCP: io.github.shigechika/boxadm-mcp 0.11.1 · paquetes: pypi:boxadm-mcp"
+    },
+    {
+      "repo": "shigechika/netdiag-mcp",
+      "nota": "Registro MCP: io.github.shigechika/netdiag-mcp 0.8.1 · paquetes: pypi:netdiag-mcp"
+    },
+    {
+      "repo": "shigechika/gwsadm-mcp",
+      "nota": "Registro MCP: io.github.shigechika/gwsadm-mcp 0.23.1 · paquetes: pypi:gwsadm-mcp"
+    },
+    {
+      "repo": "shigechika/entraadm-mcp",
+      "nota": "Registro MCP: io.github.shigechika/entraadm-mcp 1.8.1 · paquetes: pypi:entraadm-mcp"
+    },
+    {
+      "repo": "puffo-ai/huddo-mcp",
+      "nota": "Registro MCP: ai.huddo/huddo 0.10.0 · paquetes: npm:huddoai · remotos: streamable-http"
+    },
+    {
+      "repo": "CloudCorpRecords/prodforge",
+      "nota": "Registro MCP: io.github.CloudCorpRecords/prodforge 0.5.0 · paquetes: npm:@reneturcios/prodforge, oci:ghcr.io/cloudcorprecords/prodforge:0.5.0"
+    },
+    {
+      "repo": "dockndevai/mcp-grafana",
+      "nota": "Registro MCP: io.github.dockndevai/mcp-grafana 0.3.3 · paquetes: npm:@dockndevai/mcp-grafana"
+    },
+    {
+      "repo": "dockndevai/mcp-percona-pg",
+      "nota": "Registro MCP: io.github.dockndevai/mcp-percona-pg 0.3.3 · paquetes: npm:@dockndevai/mcp-percona-pg"
+    },
+    {
+      "repo": "dockndevai/mcp-kafka",
+      "nota": "Registro MCP: io.github.dockndevai/mcp-kafka 0.3.3 · paquetes: npm:@dockndevai/mcp-kafka"
+    },
+    {
+      "repo": "cyanheads/us-lobbying-mcp-server",
+      "nota": "Registro MCP: io.github.cyanheads/us-lobbying-mcp-server 0.1.2 · paquetes: npm:@cyanheads/us-lobbying-mcp-server · remotos: streamable-http"
+    },
+    {
+      "repo": "thyn-ai/codna-cli",
+      "nota": "Registro MCP: io.github.thyn-ai/codna 0.2.95 · paquetes: pypi:codna"
+    },
+    {
+      "repo": "cyanheads/usitc-tariffs-mcp-server",
+      "nota": "Registro MCP: io.github.cyanheads/usitc-tariffs-mcp-server 0.1.2 · paquetes: npm:@cyanheads/usitc-tariffs-mcp-server · remotos: streamable-http"
+    },
+    {
+      "repo": "dockndevai/mcp-kubernetes",
+      "nota": "Registro MCP: io.github.dockndevai/mcp-kubernetes 0.3.3 · paquetes: npm:@dockndevai/mcp-kubernetes"
+    },
+    {
+      "repo": "dockndevai/mcp-keycloak",
+      "nota": "Registro MCP: io.github.dockndevai/mcp-keycloak 0.3.3 · paquetes: npm:@dockndevai/mcp-keycloak"
+    },
+    {
+      "repo": "dockndevai/mcp-cdp",
+      "nota": "Registro MCP: io.github.dockndevai/mcp-cdp 0.2.3 · paquetes: npm:@dockndevai/mcp-cdp"
+    },
+    {
+      "repo": "fluxmailai/fluxmail",
+      "nota": "Registro MCP: io.github.fluxmailai/fluxmail 0.17.0 · paquetes: npm:fluxmail"
+    },
+    {
+      "repo": "colibird-ai/local-mcp-releases",
+      "nota": "Registro MCP: com.local-mcp/local-mcp 3.0.425 · paquetes: npm:local-mcp · remotos: streamable-http"
+    },
+    {
+      "repo": "DarkWorldCoder/market-mirror",
+      "nota": "Registro MCP: io.github.DarkWorldCoder/market-mirror 0.4.2 · paquetes: pypi:marketmirror"
+    },
+    {
+      "repo": "cyanheads/switzerland-parliament-mcp-server",
+      "nota": "Registro MCP: io.github.cyanheads/switzerland-parliament-mcp-server 0.1.2 · paquetes: npm:@cyanheads/switzerland-parliament-mcp-server · remotos: streamable-http"
+    },
+    {
+      "repo": "skynetcmd/m3-memory",
+      "nota": "Registro MCP: io.github.skynetcmd/m3-memory 2026.10.25.0 · paquetes: pypi:m3-memory"
+    },
+    {
+      "repo": "dockndevai/mcp-azure-devops",
+      "nota": "Registro MCP: io.github.dockndevai/mcp-azure-devops 0.3.3 · paquetes: npm:@dockndevai/mcp-azure-devops"
+    },
+    {
+      "repo": "aidemd-mcp/server",
+      "nota": "Registro MCP: io.github.aidemd-mcp/server 0.12.1 · paquetes: npm:@aidemd-mcp/server"
+    },
+    {
+      "repo": "cyanheads/uk-parliament-mcp-server",
+      "nota": "Registro MCP: io.github.cyanheads/uk-parliament-mcp-server 0.1.2 · paquetes: npm:@cyanheads/uk-parliament-mcp-server · remotos: streamable-http"
+    },
+    {
+      "repo": "dcadolph/slop-chop",
+      "nota": "Registro MCP: io.github.dcadolph/slop-chop 0.55.0 · paquetes: mcpb:https://github.com/dcadolph/slop-chop/releases/download/v0.55.0/slop-chop-mcp_0.55.0_darwin_amd64.mcpb, mcpb:https://github.com/dcadolph/slop-chop/releases/download/v0.55.0/slop-chop-mcp_0.55.0_darwin_arm64.mcpb,…"
+    },
+    {
+      "repo": "cyanheads/eu-parliament-mcp-server",
+      "nota": "Registro MCP: io.github.cyanheads/eu-parliament-mcp-server 0.1.2 · paquetes: npm:@cyanheads/eu-parliament-mcp-server · remotos: streamable-http"
+    },
+    {
+      "repo": "cyanheads/openalex-mcp-server",
+      "nota": "Registro MCP: io.github.cyanheads/openalex-mcp-server 0.10.1 · paquetes: npm:@cyanheads/openalex-mcp-server · remotos: streamable-http"
+    },
+    {
+      "repo": "alyiox/mcp-mssql",
+      "nota": "Registro MCP: io.github.alyiox/mcp-mssql 1.8.0 · paquetes: nuget:Alyio.McpMssql"
+    },
+    {
+      "repo": "solaradex/Advan",
+      "nota": "Registro MCP: io.github.solaradex/advan 0.1.0 · paquetes: npm:advan-mcp · remotos: streamable-http"
+    },
+    {
+      "repo": "openvancamp/openvan-camp-public-api",
+      "nota": "Registro MCP: io.github.openvancamp/openvan-travel 0.11.0 · paquetes: npm:@openvancamp/mcp-server · remotos: streamable-http"
+    },
+    {
+      "repo": "flowing-abyss/obsidian-hybrid-search",
+      "nota": "Registro MCP: io.github.flowing-abyss/obsidian-hybrid-search 0.17.2 · paquetes: npm:obsidian-hybrid-search"
+    },
+    {
+      "repo": "CYAN-ECLIPSE-TECHNOLOGIES-LLC/agent-wallet-mcp",
+      "nota": "Registro MCP: io.github.CYAN-ECLIPSE-TECHNOLOGIES-LLC/agent-wallet 0.1.0 · paquetes: oci:ghcr.io/cyan-eclipse-technologies-llc/agent-wallet-mcp:2842d69a363c4412a4c1347878fd27b7ca9d9aeb"
+    },
+    {
+      "repo": "CYAN-ECLIPSE-TECHNOLOGIES-LLC/bazaar-mcp",
+      "nota": "Registro MCP: io.github.CYAN-ECLIPSE-TECHNOLOGIES-LLC/bazaar 0.1.0 · paquetes: oci:ghcr.io/cyan-eclipse-technologies-llc/bazaar-mcp:3d3ede38bf40a123d22ab191421b2de29f25bcf1"
+    },
+    {
+      "repo": "Harflow-Dev/HarflowMCP",
+      "nota": "Registro MCP: io.github.Harflow-Dev/harflow-mcp 0.0.2 · paquetes: pypi:harflow-mcp"
+    },
+    {
+      "repo": "cyanheads/clinicaltrialsgov-mcp-server",
+      "nota": "Registro MCP: io.github.cyanheads/clinicaltrialsgov-mcp-server 2.10.2 · paquetes: npm:clinicaltrialsgov-mcp-server · remotos: streamable-http"
+    },
+    {
+      "repo": "thestockgoatballs/clipspeed-mcp",
+      "nota": "Registro MCP: io.github.thestockgoatballs/clipspeed-mcp 1.0.3 · paquetes: npm:clipspeed-mcp · remotos: streamable-http"
+    },
+    {
+      "repo": "cyanheads/pubmed-mcp-server",
+      "nota": "Registro MCP: io.github.cyanheads/pubmed-mcp-server 2.11.1 · paquetes: npm:@cyanheads/pubmed-mcp-server · remotos: streamable-http"
+    },
+    {
+      "repo": "kapella-hub/FirekeepHQ",
+      "nota": "Registro MCP: io.github.kapella-hub/firekeep 1.8.1 · paquetes: pypi:firekeep-client"
+    },
+    {
+      "repo": "fangchenghao/latex-look",
+      "nota": "Registro MCP: io.github.fangchenghao/latex-look 0.4.0 · paquetes: npm:@fffangchenghao/dsh-latex-look"
+    },
+    {
+      "repo": "doc2video/cli",
+      "nota": "Registro MCP: io.github.doc2video/d2v 0.2.3 · paquetes: npm:doc2video · remotos: streamable-http"
+    },
+    {
+      "repo": "dudman1/mercury402",
+      "nota": "Registro MCP: io.github.dudman1/mercury402-mcp 0.1.4 · paquetes: npm:mercury402-mcp · remotos: streamable-http"
+    },
+    {
+      "repo": "neuledge/context",
+      "nota": "Registro MCP: io.github.neuledge/context 1.3.5 · paquetes: npm:@neuledge/context"
+    },
+    {
+      "repo": "atifjubaer/fastrmemory",
+      "nota": "Registro MCP: io.github.atifjubaer/fastrmemory 0.6.0 · paquetes: npm:fastrmemory"
+    },
+    {
+      "repo": "chrischall/ofw-mcp",
+      "nota": "Registro MCP: io.github.chrischall/ofw-mcp 2.21.0 · paquetes: npm:ofw-mcp"
+    },
+    {
+      "repo": "imperalcloud/imperal-mcp",
+      "nota": "Registro MCP: io.github.imperalcloud/imperal-mcp 0.8.10 · paquetes: pypi:imperal-mcp"
+    },
+    {
+      "repo": "draugr-dev/draugr",
+      "nota": "Registro MCP: dev.draugr/draugr 0.155.1 · paquetes: mcpb:https://github.com/draugr-dev/draugr/releases/download/v0.155.1/draugr-0.155.1.mcpb"
+    },
+    {
+      "repo": "gowtham0992/link",
+      "nota": "Registro MCP: io.github.gowtham0992/link 5.0.0 · paquetes: pypi:link-mcp"
+    },
+    {
+      "repo": "ooples/token-optimizer-mcp",
+      "nota": "Registro MCP: io.github.ooples/token-optimizer-mcp 7.7.1 · paquetes: npm:@ooples/token-optimizer-mcp"
+    },
+    {
+      "repo": "hermoso-ai/hermoso",
+      "nota": "Registro MCP: io.github.hermoso-ai/hermoso 0.1.440 · paquetes: npm:hermoso · remotos: streamable-http"
+    },
+    {
+      "repo": "Brandcode-Studio/brandsystem-mcp",
+      "nota": "Registro MCP: io.github.Brandcode-Studio/brandsystem-mcp 0.18.0 · paquetes: npm:@brandsystem/mcp"
+    },
+    {
+      "repo": "dylannnnn111/aussie-data-mcp",
+      "nota": "Registro MCP: io.github.dylannnnn111/aussie-data-mcp 0.2.1 · paquetes: npm:aussie-data-mcp"
+    },
+    {
+      "repo": "thyn-ai/telys-sdk",
+      "nota": "Registro MCP: io.github.thyn-ai/telys 0.1.14 · paquetes: pypi:telys"
+    },
+    {
+      "repo": "elfa-ai/mcp",
+      "nota": "Registro MCP: ai.elfa/mcp 4.9.3 · paquetes: npm:@elfa-ai/mcp"
+    },
+    {
+      "repo": "desplega-ai/agent-swarm",
+      "nota": "Registro MCP: io.github.desplega-ai/agent-swarm 2.6.0 · paquetes: npm:@desplega.ai/agent-swarm · remotos: streamable-http"
+    },
+    {
+      "repo": "novasolver/novasolver-studio",
+      "nota": "Registro MCP: io.github.novasolver/novasolver-studio 0.2.0 · paquetes: mcpb:https://github.com/novasolver/novasolver-studio/releases/download/v0.2.0/novasolver-studio-0.2.0-win64.mcpb"
+    },
+    {
+      "repo": "brittbart/verumsignal-mcp",
+      "nota": "Registro MCP: io.github.brittbart/verumsignal-mcp 0.2.0 · paquetes: pypi:verumsignal-mcp"
+    },
+    {
+      "repo": "qso-graph/itu-zones-mcp",
+      "nota": "Registro MCP: io.github.qso-graph/itu-zones-mcp 0.2.1 · paquetes: pypi:itu-zones-mcp"
+    },
+    {
+      "repo": "qso-graph/cq-zones-mcp",
+      "nota": "Registro MCP: io.github.qso-graph/cq-zones-mcp 0.2.1 · paquetes: pypi:cq-zones-mcp"
+    },
+    {
+      "repo": "paradoxsyn/rivemcp-releases",
+      "nota": "Registro MCP: io.github.paradoxsyn/rivemcp 1.19.0 · paquetes: npm:rivemcp"
+    },
+    {
+      "repo": "ecestnrkl/figjam-mcp",
+      "nota": "Registro MCP: io.github.ecestnrkl/figjam-mcp 0.11.0 · paquetes: npm:figjam-context-mcp"
+    },
+    {
+      "repo": "marciocar/kg-ssot",
+      "nota": "Registro MCP: io.github.marciocar/kg-ssot 4.29.1 · paquetes: pypi:kg-ssot, mcpb:https://github.com/marciocar/kg-ssot/releases/download/kg-ssot-v4.29.1/kg-ssot-4.29.1.mcpb"
+    },
+    {
+      "repo": "oddessentials/agent-guild",
+      "nota": "Registro MCP: ai.oddessentials/agent-guild 1.11.0 · paquetes: npm:@oddessentials/agent-guild"
+    },
+    {
+      "repo": "cyanheads/mcp-ts-core",
+      "nota": "Registro MCP: io.github.cyanheads/mcp-ts-core 0.13.18 · paquetes: npm:@cyanheads/mcp-ts-core"
+    },
+    {
+      "repo": "dgahagan/homebox-mcp",
+      "nota": "Registro MCP: io.github.dgahagan/homebox-mcp 1.3.0 · paquetes: pypi:homebox-mcp"
+    },
+    {
+      "repo": "bikemeardsley/thicken",
+      "nota": "Registro MCP: io.github.bikemeardsley/thicken 0.2.1 · paquetes: npm:thicken"
+    },
+    {
+      "repo": "byenzyme/enzyme",
+      "nota": "Registro MCP: io.github.byenzyme/enzyme 0.13.2 · paquetes: mcpb:https://github.com/byenzyme/enzyme/releases/download/v0.13.2/enzyme-mcp-0.13.2-macos-arm64.mcpb, mcpb:https://github.com/byenzyme/enzyme/releases/download/v0.13.2/enzyme-mcp-0.13.2-macos-x86_64.mcpb, mcpb:https://gi…"
+    },
+    {
+      "repo": "UpstageAI/korean-tax-calc-mcp",
+      "nota": "Registro MCP: io.github.UpstageAI/korean-tax-calc-mcp 0.12.2 · paquetes: pypi:korean-tax-calc-mcp"
+    },
+    {
+      "repo": "qso-graph/omiss-mcp",
+      "nota": "Registro MCP: io.github.qso-graph/omiss-mcp 0.2.1 · paquetes: pypi:omiss-mcp"
+    },
+    {
+      "repo": "qso-graph/netlogger-mcp",
+      "nota": "Registro MCP: io.github.qso-graph/netlogger-mcp 0.2.1 · paquetes: pypi:netlogger-mcp"
+    },
+    {
+      "repo": "entire-vc/evc-mesh-mcp",
+      "nota": "Registro MCP: io.github.entire-vc/evc-mesh-mcp 0.1.6 · paquetes: oci:ghcr.io/entire-vc/evc-mesh-mcp:0.1.6, mcpb:https://github.com/entire-vc/evc-mesh-mcp/releases/download/v0.1.6/evc-mesh-mcp-0.1.6.mcpb · remotos: streamable-http, sse"
+    },
+    {
+      "repo": "qso-graph/n1mm-mcp",
+      "nota": "Registro MCP: io.github.qso-graph/n1mm-mcp 0.3.1 · paquetes: pypi:n1mm-mcp"
+    },
+    {
+      "repo": "cloudwise-app/cloudcostwise",
+      "nota": "Registro MCP: io.github.cloudwise-app/cloudcostwise 0.1.14 · paquetes: pypi:cloudcostwise"
+    },
+    {
+      "repo": "qso-graph/meteor-mcp",
+      "nota": "Registro MCP: io.github.qso-graph/meteor-mcp 0.2.1 · paquetes: pypi:meteor-mcp"
+    },
+    {
+      "repo": "suxinsk/reset-beer-mcp",
+      "nota": "Registro MCP: io.github.suxinsk/reset-beer-mcp 1.0.1 · paquetes: npm:reset-beer-mcp"
+    },
+    {
+      "repo": "log-10x/log10x-mcp",
+      "nota": "Registro MCP: io.github.log-10x/log10x-mcp 1.30.93 · paquetes: npm:log10x-mcp"
+    },
+    {
+      "repo": "blackwell-systems/agent-lsp",
+      "nota": "Registro MCP: io.github.blackwell-systems/agent-lsp 0.23.2 · paquetes: npm:@blackwell-systems/agent-lsp"
+    },
+    {
+      "repo": "Wallet-Wall/walletwallrus-copilot",
+      "nota": "Registro MCP: io.github.Wallet-Wall/walletwall 0.2.1 · paquetes: mcpb:https://github.com/Wallet-Wall/walletwallrus-copilot/releases/download/v0.2.1/walletwall.mcpb"
+    },
+    {
+      "repo": "odaiameera/scamgate",
+      "nota": "Registro MCP: io.github.odaiameera/scamgate 0.3.3 · paquetes: pypi:scamgate"
+    },
+    {
+      "repo": "cole-h06/omneum",
+      "nota": "Registro MCP: io.github.cole-h06/omneum 1.0.9 · paquetes: mcpb:https://github.com/cole-h06/omneum/releases/download/v1.0.4/omneum-local-1.0.4.mcpb"
+    },
+    {
+      "repo": "axworks1/one-design-mcp",
+      "nota": "Registro MCP: io.github.axworks1/one-design 0.2.4 · paquetes: npm:one-design-mcp"
+    },
+    {
+      "repo": "TMHSDigital/screencast-mcp",
+      "nota": "Registro MCP: io.github.TMHSDigital/screencast-mcp 0.37.0 · paquetes: npm:@tmhs/screencast-mcp"
+    },
+    {
+      "repo": "sylvesterworks/nostalgia-ui",
+      "nota": "Registro MCP: io.github.sylvesterworks/nostalgiaui 0.1.2 · paquetes: npm:@nostalgiaui/mcp"
+    },
+    {
+      "repo": "CodesWhat/portkey-admin-mcp",
+      "nota": "Registro MCP: io.github.CodesWhat/portkey-admin-mcp 0.15.0 · paquetes: npm:portkey-admin-mcp"
+    },
+    {
+      "repo": "AHEDMUNI/resultgate",
+      "nota": "Registro MCP: io.github.AHEDMUNI/resultgate 0.3.1 · paquetes: pypi:resultgate-pilot"
+    },
+    {
+      "repo": "ArtJack/verdict",
+      "nota": "Registro MCP: io.github.ArtJack/verdict 0.93.0 · paquetes: pypi:verdict-qa-mcp"
+    },
+    {
+      "repo": "OpenImageDebugger/OpenImageDebugger",
+      "nota": "Registro MCP: io.github.OpenImageDebugger/oid-mcp 0.3.6 · paquetes: pypi:oid-mcp"
+    },
+    {
+      "repo": "allxsmith/bestax",
+      "nota": "Registro MCP: io.github.allxsmith/bestax-mcp 1.18.7 · paquetes: npm:bestax-mcp"
+    },
+    {
+      "repo": "NANDI-Services/proxmox-mcp",
+      "nota": "Registro MCP: io.github.NANDI-Services/nandi-proxmox-mcp 0.4.1 · paquetes: npm:nandi-proxmox-mcp"
+    },
+    {
+      "repo": "NJLIGamesLtd/trello-csv-import",
+      "nota": "Registro MCP: com.njligames/kanban-importer 1.0.4 · paquetes: npm:@njligames/kanban-importer-mcp"
+    }
+  ]
 }
