@@ -2,7 +2,7 @@
   "version": 1,
   "repo": "punkpeye/awesome-mcp-servers",
   "etag": null,
-  "fetchedAt": "2026-10-26T10:50:36.780Z",
+  "fetchedAt": "2026-11-02T13:14:24.664Z",
   "links": [
     "1luvc0d3/metabase-mcp",
     "1mcp-app/agent",
@@ -1352,6 +1352,7 @@
     "txn2/kubefwd",
     "tylergibbs1/backwork-mcp",
     "ugurcl/dbridge-mcp",
+    "umair/stalemap",
     "umodeler/picoberry-mcp",
     "umum-ai/claude-codex-bridge",
     "us-all/airflow-mcp-server",
