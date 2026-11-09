@@ -1,8 +1,8 @@
 {
   "version": 1,
   "repo": "unicodeveloper/awesome-nextjs",
-  "etag": "\"77d1b340c80b8f610de10a628ccba7e9c589b143\"",
-  "fetchedAt": "2026-10-19T10:35:39.555Z",
+  "etag": "\"7573724e15d8456205c08a7daad286fe73194e4f\"",
+  "fetchedAt": "2026-11-09T13:41:25.717Z",
   "links": [
     "a827681306/devtoolkit",
     "alandsleman/storagebox",
@@ -115,6 +115,7 @@
     "vercel/next.js",
     "vercel/pkg",
     "vickonrails/next-starter-peacock",
+    "vilqor/midnight-lite",
     "vriad/devii",
     "vvo/next-iron-session",
     "williamluke4/nitro",
